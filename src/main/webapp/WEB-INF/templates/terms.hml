@@ -1,0 +1,52 @@
+<!Doctype html>
+<html>
+<head th:replace="fragments/PortalHeadFragment::HeadFragment('Buy Non Veg','Buy Non Veg','Buy Non Veg')">
+</head>
+	<style>
+.bg-white {
+    background-color: #fff;
+    color: #716F6F;
+}
+.m-t-md {
+    margin-top: 20px;
+}
+.new-title {
+    color: #000;
+    height: 20px;
+    margin: 0 auto 40px;
+    text-align: center;
+    text-transform: none;
+    border-bottom: 1px #010101 dotted;
+    width: 85%;
+}
+.new-title h3 {
+    color: #555;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    padding: 10px 45px;
+    position: relative;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    background: #fff;
+    letter-spacing: 1px;
+}
+.m-b-md {
+    margin-bottom: 20px;
+    }
+    </style>
+<body>
+	<div class="container">
+	<div class="col-lg-12 bg-white m- t-md">
+	<div class="new-title">
+	<h3>ABOUT US</h3>
+	</div>
+	<div style="margin-top: 111px;">
+	<div class="col-sm-12 col-lg-12 col-md-12 m-b-md">
+	</div>
+	</div>
+	</div>
+	</div>
+	</body>
+	</html>

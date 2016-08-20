@@ -1,0 +1,91 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
+			<h4 style="color:#cc2828;">ContactUs</h4>
+				<div>
+					<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+						<div style='height:381px;'>
+							<div id='gmap_canvas' style='height:100%;width:100%;'></div>
+							<style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+						</div>
+						<script type='text/javascript'>
+							function init_map(){
+							var myOptions = {
+								zoom:6,
+								center:new google.maps.LatLng(17.494967500000005,78.45287841132811),
+								mapTypeId: google.maps.MapTypeId.ROADMAP
+								};
+								map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+								marker = new google.maps.Marker({
+									map: map,position: new google.maps.LatLng(17.494967500000005,78.45287841132811)
+								});
+								infowindow = new google.maps.InfoWindow({
+									content:'<strong><span style="color:#cc2828;">B</span>UY<span style="color:#cc2828;">N</span>ON<span style="color:#cc2828;">V</span>EG</strong><br/>Open Thoughts Pvt Ltd <br/>Plot No 890 2 Vivekananda Nagar Kukatpally<br/> Hyderabad 500072.<br/> Mobile:+91 9912211004<br/>'
+									});
+									google.maps.event.addListener(marker, 'click', 
+									function(){
+										infowindow.open(map,marker);
+										});
+										infowindow.open(map,marker);
+										}
+										google.maps.event.addDomListener(window, 'load', init_map);
+						</script>
+
+				</div>
+		</div>
+	</div>
+</div>
+<div class="container" style="background-color: #fff;">
+	<div class="row">
+		<div class="col-sm-6 col-md-6 col-xs-6 col-lg-6">
+			<h3>Contact Detail</h3>
+				<p>Now a days one gets everything, almost everything in the online market, however, people find it difficult to buy organic meat of good quality neither in people’s market nor in online market.BUYNONVEG.com stands as a one stop solution to buy organic meat online</p>
+				<div class="row">
+					<div class="col-sm-6 col-md-6 col-xs-6 col-lg-6">
+						<h3 style="    margin-left: 14px;">Office</h3>
+							<i class="fa fa-building-o left" aria-hidden="true"></i>
+								<address>
+									Open Thoughts Pvt Ltd 
+									Plot No 890 2 Vivekananda Nagar Kukatpally
+									Hyderabad 500072.
+								</address>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-3 col-lg-3">
+						<h3 style="margin-left: 14px;">Phone</h3>
+	    				<i class="fa fa-phone left " aria-hidden="true"></i>
+	    				+91 9912211004
+	    			</div>
+	    			<div class="col-sm-3 col-md-3 col-xs-3 col-lg-3">
+	    			<h3 style="margin-left: 18px;" >mail</h3>
+	    			<i class="fa fa-envelope left" aria-hidden="true"></i>
+	    			<p>info.buynonveg@gmail.com</p>
+					</div>
+				</div>
+		</div>
+		<!-- <div class="col-sm-6 col-md-6 col-xs-6 col-lg-6">
+			<h3>Quick Inquiry</h3>
+				<p>Information About BuyNonVeg.com</p>
+				<form class="top">
+					<div class="form-group">
+						<input type="Name" class="form-control" id="Name" placeholder="Name"/>
+						<i class="fa fa-user right" aria-hidden="true"></i>
+		  			</div>
+					<div class="form-group">
+	  				<input type="Email" class="form-control" id="Email" placeholder="Email"/>
+	  				<i class="fa fa-envelope right" aria-hidden="true"></i>
+					</div>
+		  		<div class="form-group">
+	  				<input type="telphone" class="form-control" id="telphone" placeholder="telephone"/>
+	  				<i class="fa fa-phone right" aria-hidden="true"></i>
+		  		</div>
+		  		<div class="form-group">
+		    		<textarea class="form-control" rows="5" id="Message-Here" placeholder="Message-Here" ></textarea>
+		 			</div>
+		 			<div>
+	 				 <button class="btn btn-flat waves-effect waves-light shopping-cart-button right" type="submit" name="action">Submit Now</button>
+		 			</div>
+		  	</form>
+		</div> -->
+	</div>
+</div>
+

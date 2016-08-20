@@ -1,0 +1,214 @@
+
+
+<form class="form-horizontal">
+	<div class="row">
+		<div class="col-md-6">
+			<th:block th:if="${user}">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label"><span class="f-f-u">Name:</span></label>
+    <div class="col-sm-9 col-md-9 col-xs-9">
+      <input type="text"   placeholder="User Name" class="form-control hide editable" th:attr="ng-init='setIntialValues(\'userName\',\''+${user.userName}+'\')'" ng-model="user['properties'].userName" th:value="${user.userName}"  />
+	<h4 class="text-success h-lh-30 no_edit" ng-model="user['properties'].userName" th:text="${user.userName}"></h4> 
+    </div>
+  </div>
+</th:block>
+</div>
+  <div class="col-md-6">
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 control-label"><span class="f-f-u">Gender:</span></label>
+    <div class="col-sm-9 col-md-9 col-xs-9">
+       <select class="form-control hide" id="sel1">
+    <option>Male</option>
+    <option>Female</option>
+   
+  </select>
+   	<h4 class="text-success h-lh-30" th:attr="ng-init='setIntialValues(\'gender\',\''+${user.gender}+'\')'" ng-model="user['properties'].gender" th:text="${user.gender}"></h4>
+    </div>
+  </div>
+</div>
+</div>
+	<div class="row">
+		<div class="col-md-6">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label"><span class="f-f-u">DOB:</span></label>
+    <div class="col-sm-9 col-md-9 col-xs-9">
+      			<input type="text" placeholder="Web Developer" class="form-control hide editable" th:attr="ng-init='setIntialValues(\'dob\',\''+${#dates.format(user.dob, 'dd/MM/yyyy')}+'\')'" ng-model="user['properties'].dob" th:value="${#dates.format(user.dob, 'dd/MM/yyyy')}" />
+															<h4 class="text-success h-lh-30 no_edit" ng-model="user['properties'].dob" th:text="${#dates.format(user.dob, 'dd/MM/yyyy')}"></h4>
+    </div>
+  </div></div>
+  <div class="col-md-6">
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 control-label"><span class="f-f-u">Ph Number:</span></label>
+    <div class="col-sm-9 col-md-9 col-xs-9">
+     			<input type="text"  placeholder="+1 646 580 DEMO (6284)" class="form-control hide editable" th:attr="ng-init='setIntialValues(\'phoneNo\',\''+${user.phoneNo}+'\')'" ng-model="user['properties'].phoneNo" th:value="${user.phoneNo}" />
+															<h5 class="text-success h-lh-30 no_edit" ng-model="user['properties'].phoneNo" th:text="${user.phoneNo}"></h5>
+    </div>
+  </div>
+</div>
+</div>
+	<div class="row">
+		<div class="col-md-6">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label"><span class="f-f-u">Email:</span></label>
+    <div class="col-sm-9 col-md-9 col-xs-9">
+      		<input type="text"   placeholder="Design, Web etc." class="form-control hide editable" th:attr="ng-init='setIntialValues(\'emailId\',\''+${user.emailId}+'\')'" ng-model="user['properties'].emailId"  th:value="${user.emailId}" />
+															<h4 class="text-success h-lh-30 no_edit" ng-model="user['properties'].emailId" th:text="${user.emailId}"></h4>
+    </div>
+  </div></div>
+
+  <div class="col-md-6">
+ <!--  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 control-label"><span class="f-f-u">Status:</span></label>
+    <div class="col-sm-9 col-md-9 col-xs-9">
+     
+															<h4 class="text-success h-lh-30" ng-model="user['properties'].status" th:text="${user.status}"></h4>
+    </div>
+  </div> -->
+</div>
+</div>
+
+  	<div class="row text-center mgt30">
+				<button class="btn btn-large btn-default no_edit" ng-click="EditUser($event)">Edit</button>
+				<button class="btn btn-large btn-success hide editable" ng-click="updateUser(user)">Save</button>
+				<button class="btn btn-large btn-danger hide editable" ng-click = "cancelEdit($event)">Cancel</button>
+
+			</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

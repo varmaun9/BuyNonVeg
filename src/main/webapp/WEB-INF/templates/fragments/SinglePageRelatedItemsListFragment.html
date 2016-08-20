@@ -1,0 +1,27 @@
+								<div class="product-related">
+									<h5 class="title-1 textup"><span class="fcr">R</span>elated <span class="fcr">I</span>tems</h5>
+									<div class="related-item navtop">
+		    									<div class="product animated zoomIn text-center item_effet" style="border: 1px dashed #E7F3EF !important;" th:each='relativeItem :${relativeItems}' th:if="${relativeItem.id!=item.id}">
+										<div class="p-image item">
+											<a th:href="'/meatitem/'+${#strings.replace(#strings.replace(relativeItem.itemName  ,' ','-'),'/','-')}+'?id='+${relativeItem.id}">
+											 <img class="" th:each="image:${relativeItem.itemImageses}" th:src="${image.imageLocation}" th:if="${image.imageType=='LISTIMAGE'}" width="170" height="139" /> </a>
+
+											<div class="p-mask textbox" style="top:40px !important;left:40px !important;">
+								
+											</div>
+										</div>
+										<div class="p-info" th:with="itemUrl = '/meatitem/'+${#strings.replace(#strings.replace(item.itemName,' ','-'),'/','-')}+'?id='+${item.id}">
+											<h4 class="m-10"><a th:href="'/meatitem/'+${#strings.replace(#strings.replace(relativeItem.itemName  ,' ','-'),'/','-')}+'?id='+${relativeItem.id}" th:text="${relativeItem.itemName}">Pelican Chair</a></h4>
+											<!-- <span class="price">
+												<span class="amount" th:inline="text">&#8377; [[${item.price}]]</span>
+												
+											</span> -->
+
+											<span class="price">
+													<!-- <span class="amount" th:text="${relativeItem.marketPrice}">$192.00</span> -->
+												</span>
+										
+										</div>
+									</div><!-- product#1 -->
+									</div><!-- .related-item -->
+								</div><!-- .product-related -->

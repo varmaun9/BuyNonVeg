@@ -1,0 +1,91 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="dashboards.CompanyTimingsTemplate">Company Branch Timings List</a>
+      </li>
+      <li class="active">
+        <strong>Single Company Branch Timings List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div ng-controller="SingleCompanyTimingsController">
+	<div class="col-lg-12">
+		<div class="tabs-container">
+			<div class="tabs-right">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" data-target="#tab-1"> COMPANY BRANCH TIMINGS INFO </a></li>
+				</ul>
+				<div class="tab-content ">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">INFO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="COMPANYForm" >
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Company Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{companyBranchTimingsdetails['properties'].companyName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Branch Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{companyBranchTimingsdetails['properties'].branchName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Timing Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{companyBranchTimingsdetails['properties'].timingName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Start Time</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{companyBranchTimingsdetails['properties'].startTime}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">End Time</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{companyBranchTimingsdetails['properties'].endTime}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Status</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{companyBranchTimingsdetails['properties'].companyBranchTimingsStatus}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="BranchTimingsEdit(companyBranchTimingsdetails['properties'])" class="btn btn-outline btn-primary">
+											EDIT
+										</a>	
+										<a ui-sref="dashboards.CompanyTimingsTemplate" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+</style>

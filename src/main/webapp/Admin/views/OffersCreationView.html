@@ -1,0 +1,435 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Offers Creation</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="#/Offers/OffersTemplate">Offers List</a>
+			</li>
+			<li class="active">
+				<strong>Offers Creation</strong>
+			</li>
+		</ol>
+	</div>
+	<div class="col-lg-2">
+
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" style="padding: 12px 10px 22px;" ng-controller="OffersCreationController">
+	<div class="row">
+		<div class="col-lg-12" style="padding:0px;">
+			<div class="ibox">
+				<div class="ibox-content wizard" style="padding:12px 12px 10px 10px;">
+					<div class="wizard">
+						<div class="content">
+							<form id="offersForm" method="get" action="" class="form-horizontal">
+								<div id="offerswizard">
+									<ul>
+									  <li><a data-target="#tab1" class="text-center" data-toggle="tab">OFFERS DETAILS</a></li>
+										<li><a data-target="#tab2" class="text-center" data-toggle="tab">AMOUNT DETAILS</a></li>
+										<li><a data-target="#tab3" class="text-center text-uppercase" data-toggle="tab">{{Selected}} DETAILS</a></li>
+										<li><a data-target="#tab4" class="text-center text-uppercase" data-toggle="tab">EXCLUDES</a></li>
+										<li><a data-target="#tab5" class="text-center" data-toggle="tab">CONFIRM</a></li>
+									</ul>
+									<div class="tab-content">
+									  <div class="tab-pane" id="tab1">
+									    <div class="form-group">
+												<label class="col-sm-2 control-label">Offer Name</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="OfferName" ng-model="Offer.offerName" required autofocus placeholder="Enter Offer Name.." />
+												</div>
+												<label class="col-sm-2 control-label">Offer Days</label>
+												<div class="col-sm-4">
+														<input type="number" class="form-control" name="OfferDays" ng-model="Offer.offerNoOfDays" required placeholder="Enter Offer Days.."/>
+												</div>
+										 	</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Start Date</label>
+												<div class="col-sm-4">
+													<input type="datetime" class="form-control" date-time ng-model="Offer.offerFromDate" min-view="date" auto-close="true" format="dd/MM/yyyy" placeholder="Enter Start Date.." required />
+												</div>
+												<label class="col-sm-2 control-label">End Date</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" ng-model="Offer.offerToDate" placeholder="Enter End Date.." required ng-mouseover="dateChange()"/>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Start Time</label>
+												<div class="col-sm-4" clock-picker data-autoclose="true">	
+													<input type="text" class="form-control" name="startTime" ng-model="Offer.offerFromTime" required placeholder="Enter Start Time.."/>
+												</div>
+												<label class="col-sm-2 control-label">End Time</label>
+												<div class="col-sm-4" clock-picker data-autoclose="true">
+													<input type="text" placeholder="Enter End Time.." class="form-control" name="endTime" ng-model="Offer.offerToTime" required/>
+												</div>
+											</div>
+									    <div class="form-group">
+												<label class="col-sm-2 control-label">OfferBy</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_1" ng-model="Offer.placedByStatus" style="width: 100%" ng-change="offerStatusChange(Offer.placedByStatus)">
+                            <option value=""></option>
+                            <option value="ITEM">ITEM</option>
+                            <option value="SELLERITEM">SELLER ITEM</option>
+                            <option value="CATEGORY">CATEGORY</option>
+                            <option value="SUBCATEGORY">SUBCATEGORY</option>
+                            <option value="SELLER">SELLER</option>
+                            <option value="SELLERBRANCH">SELLER BRANCH</option>
+                        	</select>
+												</div>
+											<!-- </div>
+											<div class="form-group"> -->
+												<label class="col-sm-2 control-label">offer Type</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_14" ng-model="Offer.offerType" style="width: 100%" ng-change="offerTypeChange(Offer.offerType)">
+                            <option value=""></option>
+                            <option value="OFFER">OFFER</option>
+                            <option value="COUPON">COUPON</option>
+                        	</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Status</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_15" ng-model="Offer.status" style="width: 100%">
+                            <option value=""></option>
+                            <option value="ACTIVE">ACTIVE</option>
+                            <option value="INACTIVE">INACTIVE</option>
+                        	</select>
+												</div>
+											</div>
+									  </div>
+									  <div class="tab-pane" id="tab2"> 
+									  	<div class="portlet-body">
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Amount Type</label>
+													<div class="col-sm-4" clock-picker data-autoclose="true">
+														<select class="form-control select2_demo_2" ng-model="Offer.amountTypeId" required style="width:100%;" name="amountDescription"  ng-change="amountType(Offer.amountTypeId)">
+															<option value=""></option>
+															<option value="{{amountype['properties'].id}}" data="{{amountype['properties'].amountDescription}}" ng-repeat="amountype in amountTypeDetails">{{amountype['properties'].amountDescription}} </option>
+														</select>
+													</div>
+													<label class="col-sm-2 control-label">Amount Value</label>
+													<div class="col-sm-4">	
+														<input type="text"  class="form-control" name="amountValue" ng-model="Offer.amountTypeValue" required placeholder="Enter Amount Value.."/>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Invoice Amount</label>
+													<div class="col-sm-4">	
+														<input type="text" class="form-control" name="InvoiceAmount" ng-model="Offer.invoiceAmount"  placeholder="Enter Invoice Amount.."/>
+													</div>
+													<label class="col-sm-2 control-label">Quantity</label>
+													<div class="col-sm-4">	
+														<input type="number" class="form-control" name="quantity" ng-model="Offer.quantity"  placeholder="Enter Item Quantity.."/>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Description</label>
+													<div class="col-sm-4">
+														<textarea class="form-control" name="description" ng-model="Offer.description" placeholder="Enter Offer Description.."></textarea>
+													</div>
+													<label class="col-sm-2 control-label">Bank</label>
+													<div class="col-sm-4">
+														<select class="form-control select2_demo_3" ng-model="Offer.bankName" required style="width:100%;" name="amountDescription">
+															<option value=""></option>
+															<option value="ICICI">ICICI</option>
+															<option value="HDFC">HDFC</option>
+															<option value="SBI">SBI</option>
+															<option value="AXIS">AXIS</option>
+															<option value="VIJAYABANK">VIJAYABANK</option>
+															<option value="ANDHRABANK">ANDHRABANK</option>
+														</select>
+													</div>
+												</div>
+											</div>
+									  </div>
+										<div class="tab-pane" id="tab3">
+											<div class="row text-center" style="padding:10px;">{{OfferSuccessData['properties'].offerCode}} {{OfferSuccessData['properties'].offerName}} {{OfferSuccessData['properties'].description}}</div>
+											<div class="portlet-body">
+												<div class="form-group" ng-show="Selected ==  'SELLER' || Selected == 'SELLERBRANCH' || Selected== 'SELLERITEM'">
+							            <label class="col-sm-2 control-label">Seller</label>
+							            <div class="col-sm-4">
+						                <select class="form-control select2_demo_4" multiple ng-model="includeFinalSeller" name="Seller" ng-change="offerChange(includeFinalSeller,'SELLER')" style="width:100%;">
+						                  <option value=""></option>
+						                  <option value="{{offerres['properties'].id}}" ng-repeat="offerres in Offersrestaurant">{{offerres['properties'].sellerName}}</option>
+						                  <option value="ALL">ALL</option>
+						                </select>
+							            </div>
+							          </div>
+							          <div class="form-group" ng-show="Selected ==  'SELLER' || Selected == 'SELLERBRANCH' || Selected== 'SELLERITEM'">
+							            <label class="col-sm-2 control-label">Seller Branch</label>
+							            <div class="col-sm-4">
+						                <select class="form-control select2_demo_6" multiple ng-model="includeFinalSellerBranch" ng-change="offerChange(includeFinalSellerBranch,'SELLERBRANCH')" style="width:100%;">
+						                  <option value=""></option>
+						                  <option value="{{offerresbranch['properties'].id}}" ng-repeat="offerresbranch in OffersrestBranch">{{offerresbranch['properties'].branchName}}</option>
+						                  <option value="ALL">ALL</option>
+						                </select>
+							            </div>
+							            
+							          </div>
+							           <div class="form-group" ng-show="Selected == 'SELLER' || Selected == 'SELLERBRANCH' || Selected == 'CATEGORY' || Selected == 'SUBCATEGORY' "> 
+							            <label class="col-sm-2 control-label">Category</label>
+							            <div class="col-sm-4">
+						                <select class="form-control select2_demo_10" multiple ng-model="includeFinalCategory" name="Category" ng-change="offerChange(includeFinalCategory,'CATEGORY')"  style="width:100%;">
+						                  <option value=""></option>
+						                  <option value="{{offercat['properties'].id}}" ng-repeat="offercat in Offerscategory">{{offercat['properties'].categoryName}}</option>
+						                  <option value="ALL">All</option>
+						                </select>
+							            </div>
+							          </div>
+							          <div class="form-group" ng-show="Selected == 'SELLER' || Selected == 'SELLERBRANCH' || Selected == 'SUBCATEGORY' ">
+							            <label class="col-sm-2 control-label">SubCategory</label>
+							            <div class="col-sm-4">
+						                <select class="form-control select2_demo_11" multiple ng-model="includeFinalSubCategory" ng-change="offerChange(includeFinalSubCategory,'SUBCATEGORY')" style="width:100%;">
+						                  <option value=""></option>
+						                  <option value="{{offersubcat['properties'].id}}" ng-repeat="offersubcat in OfferssubCategory">{{offersubcat['properties'].subCategoryName}}</option>
+						                  <option value="ALL">All</option>
+						                </select>
+							            </div>
+							          </div>
+							          <div class="form-group" ng-show="Selected== 'SELLERITEM'">
+							            <label class="col-sm-2 control-label">Items</label>
+							            <div class="col-sm-4">
+							              <select class="form-control select2_demo_12" multiple ng-model="includeFinalItems" ng-change="offerChange(includeFinalItems,'SELLERITEM')" style="width:100%;">
+							                  <option value=""></option>
+							                  <option value="{{offeritem['properties'].id}}" ng-repeat="offeritem in OffersSellerItem">{{offeritem['properties'].sellerItemName}}</option>
+							                  <option value="ALL">All</option>
+							                </select>
+							            </div>
+							          </div>
+						        	</div>
+										</div>
+										<div class="tab-pane" id="tab4">
+											<div class="form-group">
+						            <label class="col-sm-2 control-label" ng-show="excluSELLER">Excluding Seller</label>
+						            <div class="col-sm-4" ng-show="excluSELLER">
+					                <select class="form-control select2_demo_5" multiple ng-model="excludItems" name="Seller" style="width:100%;">
+					                  <option value=""></option>
+					                  <option value="{{offerres['properties'].id}}" ng-repeat="offerres in Offersrestaurant">{{offerres['properties'].sellerName}}</option>
+					                </select>
+						            </div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" ng-show="excluSELLERBRANCH">Excluding Seller Branch</label>
+							            <div class="col-sm-4" ng-show="excluSELLERBRANCH">
+						                <select class="form-control select2_demo_7" multiple ng-model="excludItems" style="width:100%;">
+						                  <option value=""></option>
+						                  <option value="{{offerresbranch['properties'].id}}" ng-repeat="offerresbranch in OffersrestBranch">{{offerresbranch['properties'].branchName}}</option>
+						                </select>
+							            </div>
+											</div>
+											<div class="form-group">
+						            <label class="col-sm-2 control-label" ng-show="excluCATEGORY">Excluding Category</label>
+						            <div class="col-sm-4" ng-show="excluCATEGORY">
+					                <select class="form-control select2_demo_11" multiple ng-model="excludItems" style="width:100%;">
+					                  <option value=""></option>
+					                  <option value="{{offercat['properties'].id}}" ng-repeat="offercat in Offerscategory">{{offercat['properties'].categoryName}}</option>
+					                </select>
+						            </div>
+											</div>
+											<div class="form-group">
+						            <label class="col-sm-2 control-label" ng-show="excluSUBCATEGORY">Excluding SubCategory</label>
+						            <div class="col-sm-4" ng-show="excluSUBCATEGORY">
+					                <select class="form-control select2_demo_16" multiple ng-model="excludItems" style="width:100%;">
+					                  <option value=""></option>
+					                 <option value="{{offersubcat['properties'].id}}" ng-repeat="offersubcat in OfferssubCategory">{{offersubcat['properties'].subCategoryName}}</option>
+					                </select>
+						            </div>
+											</div>
+											<div class="form-group">
+						            <label class="col-sm-2 control-label" ng-show="excluSELLERITEM">Excluding Items</label>
+						            <div class="col-sm-4"	ng-show="excluSELLERITEM">
+					                <select class="form-control select2_demo_13" multiple ng-model="excludItems" style="width:100%;">
+					                  <option value=""></option>
+					                  <option value="{{offeritem['properties'].id}}" ng-repeat="offeritem in OffersSellerItem">{{offeritem['properties'].sellerItemName}}</option>
+					                </select>
+						            </div>
+											</div>
+										</div>
+										<div class="tab-pane" id="tab5">
+											<div class="row">
+												<h3 class="block text-center b-b">CONFIRM THE ACCOUNT</h3>
+												<div class="col-lg-6 b-r">
+													<div class="form-group">
+														<label class="control-label col-md-4">OFFER NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="packageCode" ng-model="Offer.offerName">{{Offer.offerName}}</p>
+														</div>
+														<!-- <label class="control-label col-md-4">PACKAGE NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" ng-model="Package.packageName">
+																{{Package.packageName}}</p>
+														</div> -->
+														<label class="control-label col-md-4">OFFER DAYS:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="Offer.offerNoOfDays" ng-model="Offer.offerNoOfDays">
+															{{Offer.offerNoOfDays}}</p>
+														</div>
+													<!--</div>
+													<h4 class="form-section">SEO:</h4> 
+													<div class="form-group">-->
+														<label class="control-label col-md-4">DATE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="startDate" ng-model="Offer.offerFromDate">
+															{{Offer.offerFromDate}} - {{Offer.offerToDate}}</p>
+														</div>
+														<label class="control-label col-md-4">TIME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="endDate" ng-model="Offer.endDate">
+																{{Offer.offerFromTime}} : {{Offer.offerToTime}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">OFFERBY:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="Package.status" ng-model="Package.status">
+															{{Offer.placedByStatus}}</p>
+														</div>
+													</div>
+												</div>
+												 <div class="col-lg-6">
+													<!-- <h4 class="form-section">ADDRESS:</h4> -->
+													<div class="form-group">
+														<label class="control-label col-md-4">Amount Type.:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="amountType" >
+																{{amountType}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">AMOUNT VALUE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="amountTypeValue" ng-model="Offer.amountTypeValue">
+															{{Offer.amountTypeValue}}</p>
+														</div>
+														<label class="control-label col-md-4">INVOICE AMOUNT :</label>
+														<div class="col-md-8">
+															<p class="form-control-static" ng-model="Offer.invoiceAmount">
+															{{Offer.invoiceAmount}}</p>
+														</div>
+														<label class="control-label col-md-4">QUANTITY:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="quantity" ng-model="Offer.quantity">
+															{{Offer.quantity}}</p>
+														</div>
+														<label class="control-label col-md-4">DESCRIPTION:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="description" ng-model="Offer.description">
+															{{Offer.description}}</p>
+														</div>
+													</div>
+												</div> 
+											</div>
+									  </div>
+										<ul class="pager wizard">
+											<li class="previous first" style="display:none;"><a >First</a></li>
+										  <li class="next pull-right"><a ng-click="offerData(Offer,nextCount)">NEXT</a></li>
+											<li class="previous pull-right m-r-sm"><a>PREVIOUS</a></li>
+											<li class="pull-right m-r-sm"><a href="#/Offers/OffersTemplate">CLOSE</a></li>
+											<li class="next last" style="display:none;"><a>Last</a></li>
+											<li class="confirm hide" ng-hide="confirm"><a ng-click="save(Offer,excludItems,includeFinalItems,includeFinalCategory,includeFinalSubCategory,includeFinalSeller,includeFinalSellerBranch)">CONFIRM</a></li>
+										</ul>
+									</div>	
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+
+#offerswizard >  ul > li{
+	width: 19% !important;
+}
+label.error{
+	display: block !important;
+	margin-bottom: 0px !important
+}
+.tab-pane{
+	padding: 10px;
+}
+.border{
+	border: 1px solid #1ab394;
+}
+.tag-list li a{
+	font-size: 15px;
+}
+.select2-search__field{
+	width:100% !important;
+}
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 0px !important; 
+}
+</style>
+<script>
+$(".select2_demo_1").select2({
+    placeholder: "SELECT OFFERBY.....",
+    allowClear: true
+});
+$(".select2_demo_2").select2({
+    placeholder: "SELECT AMOUNT TYPE.....",
+    allowClear: true
+});	
+$(".select2_demo_3").select2({
+    placeholder: "SELECT BANK.....",
+    allowClear: true
+});
+$(".select2_demo_4").select2({
+    placeholder: "SELECT SELLER'(s).....",
+    allowClear: true
+});
+$(".select2_demo_5").select2({
+    placeholder: "EXCLUDE SELLERS.....",
+    allowClear: true
+});
+$(".select2_demo_6").select2({
+    placeholder: "SELECT SELLER BRANCH.....",
+    allowClear: true
+});
+$(".select2_demo_7").select2({
+    placeholder: "EXCLUDE SELLER BRANCH.....",
+    allowClear: true
+});
+$(".select2_demo_8").select2({
+    placeholder: "SELECT COMPANY.....",
+    allowClear: true
+});
+$(".select2_demo_9").select2({
+    placeholder: "EXCLUDE COMPANY.....",
+    allowClear: true
+});
+$(".select2_demo_10").select2({
+    placeholder: "SELECT CATEGORY.....",
+    allowClear: true
+});
+$(".select2_demo_11").select2({
+    placeholder: "SELECT SUBCATEGORY.....",
+    allowClear: true
+});
+$(".select2_demo_12").select2({
+    placeholder: "SELECT ITEMS.....",
+    allowClear: true
+});
+$(".select2_demo_13").select2({
+    placeholder: "EXCLUDE ITEMS.....",
+    allowClear: true
+});
+$(".select2_demo_14").select2({
+    placeholder: "SELECT OFFER TYPE.....",
+    allowClear: true
+});
+$(".select2_demo_15").select2({
+    placeholder: "SELECT STATUS.....",
+    allowClear: true
+});
+$(".select2_demo_16").select2({
+    placeholder: "EXCLUDE SUBCATEGORY.....",
+    allowClear: true
+});
+
+</script>

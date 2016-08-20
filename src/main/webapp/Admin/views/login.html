@@ -1,0 +1,21 @@
+<div ng-controller="LoginController">
+  <div class="middle-box text-center loginscreen  animated fadeInDown" style="padding:200px 15px 20px 25px">
+    <div>
+    <h3>Welcome to Meat</h3>
+    <form class="m-t" name="myForm" validate>
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="userName" placeholder="Username" required name="username" ng-class="{'has-error':myForm.username.$invalid && myForm.username.$dirty}"/>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" ng-model="password" placeholder="Password" required name="password" ng-class="{'has-error':myForm.password.$invalid && myForm.password.$dirty}">
+      </div>
+      <a href="#/dashboards/ItemsTemplate">
+        <!-- <input type="button" ng-disabled="myForm.$invalid" class="btn btn-primary" value="SIGN IN"/> -->
+        <input type="submit" class="btn purple" value="Submit" ng-disabled="myForm.$invalid">
+      </a>
+      <a class="btn btn-primary">Cancel</a>
+    </form>
+    <p class="m-t"> <small>Arthvedi &copy; 2015</small> </p>
+  </div>
+</div>
+</div>

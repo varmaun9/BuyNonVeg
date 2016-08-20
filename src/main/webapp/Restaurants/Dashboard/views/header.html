@@ -1,0 +1,146 @@
+<div>
+	<div class="row border-bottom white-bg">
+		<nav class="navbar navbar-static-top" role="navigation" ng-controller="HeaderCtrl">
+			<div class="navbar-header" >
+				<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+					<i class="fa fa-reorder"></i>
+				</button>
+				<a href="#" class="navbar-brand uppercase">{{restaurantName}}</a>
+			</div>
+			<div class="navbar-collapse collapse" id="navbar">
+				<ul class="nav navbar-nav">
+					<li class="" >
+						<a href="index.html" > DASHBOARD</a>
+						
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="dashboards.orders"><i class="fa fa-envelope"></i> <span class="nav-label">ORDERS</span></a>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="dashboards.items"><i class="fa fa-diamond"></i> <span class="nav-label">ITEMMASTER</span></a>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="dashboards.offers"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">OFFERS</span></a>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="dashboards.reports"><i class="fa fa-flask"></i> <span class="nav-label">REPORTS</span></a>
+					</li>
+					<!--<li style="padding-top: 10px;">
+						
+						 <select class="form-control select2_demo_1" ng-model="timing" ng-change="timingChange(timing)" name="timing">
+							<option value=""></option>
+							<option value="LUNCH" selected="selected">LUNCH</option>
+							<option value="SNACKS">SNACK</option>
+							<option value="DINNER">DINNER</option>
+						</select> 
+						
+					</li>-->
+				</ul>
+				<ul class="nav navbar-top-links navbar-right">
+									 
+					<li>
+						<a href="/restaurant/logout">
+							<i class="fa fa-sign-out"></i> Log out
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<!-- <div class="" >
+		<nav class="navbar navbar-static-top" role="navigation">
+			<ul class="nav navbar-nav" style="margin-left:240px;background:#66C1AF;width:45%;">
+				<li class="uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center " style="padding: 8px;" >
+					<span class="nav-label" style="cursor: pointer;">TODAY</span> | <span class="nav-label" style="cursor: pointer;">TOMORROW</span>
+				</li>
+				<li class=" uppercase col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding" style="padding-top: 2px;">
+					<div class="col-lg-12 no-padding"><input type="datetime" class="form-control" date-time ng-model="Offer.offerFromDate" min-view="date" auto-close="true" format="dd/MM/yyyy" placeholder="DATE.." required /></div>
+				</li>
+				<li class="main_change uppercase col-lg-2 col-md-2 col-sm-2 col-xs-2" >
+					<a ui-sref="dashboards.deliveredOrders"> <small class="nav-label">LUNCH</small></a>
+				</li> 
+				<li class="main_change uppercase col-lg-2 col-md-2 col-sm-2 col-xs-2" >
+					<a ui-sref="dashboards.cancelledOrders"> <small class="nav-label">SNACK</small></a>
+				</li> 
+				<li class="main_change uppercase col-lg-2 col-md-2 col-sm-2 col-xs-2" >
+					<a ui-sref="dashboards.cancelledOrders"> <small class="nav-label">DINNER</small></a>
+				</li> 
+				<li class="main_change uppercase col-lg-1 col-md-1 col-sm-1 col-xs-1" >
+					<a ui-sref="dashboards.cancelledOrders"> <small class="nav-label m-l-n-sm" >ALL</small></a>
+				</li>
+			</ul>-->
+
+		  <!-- </nav>
+	 </div>
+	<div class="m-t-n-xs" ng-if="$state.current.name =='dashboards.orders' ||$state.current.name =='dashboards.confirmedOrders' || $state.current.name =='dashboards.deliveredOrders' ||$state.current.name =='dashboards.cancelledOrders' "> 
+		<nav class="navbar navbar-static-top" role="navigation"> -->
+			<!--<ul class="nav navbar-nav h_change" style="float:right;margin-right:100px;background:#66C1AF;margin-top:40px;">
+				<li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+					<a ui-sref="dashboards.orders"> <small class="nav-label">ORDERS</small></a>
+				</li>
+				<li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" ui-sref-active="active">
+					<a ui-sref="dashboards.confirmedOrders"> <small class="nav-label">Confirmed</small></a>
+				</li>
+				<li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+					<a ui-sref="dashboards.deliveredOrders"> <small class="nav-label">Delivered</small></a>
+				</li> 
+				<li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+					<a ui-sref="dashboards.cancelledOrders"> <small class="nav-label">Cancelled</small></a>
+				</li>
+			</ul>
+		</nav>
+	</div> -->
+	<!-- <div class="" ng-if="$state.current.name =='dashboards.orders' ||$state.current.name =='dashboards.confirmedOrders' || $state.current.name =='dashboards.deliveredOrders' ||$state.current.name =='dashboards.cancelledOrders' ">
+    <nav class="navbar navbar-static-top" role="navigation">
+        <ul class="nav navbar-nav h_change" style="float:right;margin-right:100px;background:#66C1AF;">
+            <li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+                <a ui-sref="dashboards.orders"> <span class="nav-label">ORDERS</span></a>
+            </li>
+            <li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" ui-sref-active="active">
+                <a ui-sref="dashboards.confirmedOrders"> <span class="nav-label">Confirmed</span></a>
+            </li>
+            <li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+                <a ui-sref="dashboards.deliveredOrders"> <span class="nav-label">Delivered</span></a>
+            </li> 
+            <li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+                <a ui-sref="dashboards.cancelledOrders"> <span class="nav-label">Cancelled</span></a>
+            </li> 
+        </ul>
+    </nav>
+</div> -->
+</div>
+
+<style>
+.uppercase{
+	text-transform: uppercase;
+}
+.main_change a {
+	 padding: 7px 20px !important;
+	 color: #6A8E87 !important;
+}
+.main_change a:hover {
+	 /*padding: 10px 20px !important;*/
+	 background: #fff !important;
+}
+.main_change{
+	/*color: #F4F4F5 !important;*/
+	/*color: #FFFFFF !important;*/
+	padding: 0px;
+	cursor: pointer;
+}
+.navbar-top-links ul{
+	background: white;
+}
+.dropdown-menu{
+	z-index: 1000 !important;
+}
+</style>
+<script>
+$(document).on('click','.main_change',function () {
+	 $('.h_change li').removeClass('text-white');
+	 $(this).addClass('text-white');
+	//$(this).find('a').addClass('text-success');
+});
+
+
+</script>

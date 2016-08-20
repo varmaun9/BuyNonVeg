@@ -1,0 +1,137 @@
+
+<ion-content>
+ <ion-slide-box on-slide-changed="slideChanged(index)">
+  <ion-slide>
+    <div>
+       <img src="img/01.jpg" style="width:335px;height: 186px;" />
+    </div>
+    <h4 class="img_font">
+      Chicken Breast
+    </h4>
+    <p class="para_font">
+     Rs250
+    </p>
+    <div class="float_f">
+      <button class="button button-small button-assertive">
+        Buy Now
+      </button>
+    </div>
+  </ion-slide>
+   <ion-slide>
+    <div>
+       <img src="img/04.jpg" style="width:360px;height: 186px;" />
+    </div>
+    <h4 class="img_font">
+     Mutton Liver
+    </h4>
+    <p class="para_font">
+     Rs450
+    </p>
+     <div class="float_f">
+       <button class="button button-small button-assertive">
+        Buy Now
+      </button>
+    </div>
+  </ion-slide>
+  <ion-slide>
+    <div>
+       <img src="img/07.jpg" style="width:360px;height: 186px;" />
+    </div>
+    <h4 class="img_font">
+     Chicken Boneless
+    </h4>
+    <p class="para_font">
+     Rs250
+    </p>
+     <div class="float_f">
+       <button class="button button-small button-assertive">
+        Buy Now
+      </button>
+    </div>
+  </ion-slide>
+  <ion-slide>
+     <div>
+       <img src="img/08.jpg" style="width:360px;height: 186px;" />
+      </div>
+      <h4 class="img_font">
+        Tiger Prawns
+      </h4>
+      <p class="para_font">
+        Rs350
+      </p>
+     <div class="float_f">
+        <button class="button button-small button-assertive">
+          Buy Now
+        </button>
+    </div>
+  </ion-slide>
+  <ion-slide>
+     <div>
+       <img src="img/05.jpg" style="width:360px;height: 186px;" />
+      </div>
+      <h4 class="img_font">
+        Chicken Bones
+      </h4>
+      <p class="para_font">
+        Rs210
+      </p>
+     <div class="float_f">
+        <button class="button button-small button-assertive">
+          Buy Now
+        </button>
+    </div>
+  </ion-slide>
+ </ion-slide-box>
+
+  <div class="row">
+    <div class="col col-50" th:each="subCategory:${subCategories}">
+       <div class="col">
+          <a th:href="'#/app/Items/'+${subCategory.id}"><img src="img/chicken_drumstick.jpg" class="img_border" /></a>
+        </div>
+        <div class="col text_size">
+          <div th:text="${subCategory.subCategoryName}"></div>
+        </div>
+    </div>
+    <!-- <div class="col col-50">
+       <div class="col">
+          <a><img src="img/chicken_leg.jpg" class="img_border" /></a>
+        </div>
+        <div class="col text_size">
+          <div>Chicken Legs</div>
+        </div>
+    </div> -->
+  </div>
+
+
+</ion-content>
+
+<style>
+.img_font{
+  margin-top: -72px;
+    font-size: 15px;
+    color: #fff;
+    margin-left: 28px;
+}
+.para_font{
+  font-size: 18px;
+    color: #fff;
+    margin-left: 26px;
+
+}
+.float_f{
+    position: absolute;
+    top: 134px;
+    right: 10px;
+}
+.img_border{
+      width: 148px;
+    height: 160px;
+    border: 1px solid grey;
+}
+.text_size{
+    margin-top:-50px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+</style>

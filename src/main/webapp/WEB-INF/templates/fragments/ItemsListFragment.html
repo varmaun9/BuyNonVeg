@@ -1,0 +1,56 @@
+
+	<div class="category-products">
+  <ul class="products-grid first last odd"> 
+      <th:block th:each="item : ${items}" th:if='not ${#lists.isEmpty(items)}'>     
+          <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6 animated zoomIn">
+    <div class="item-inner">
+      <div class="item-img">
+        <div class="item-img-info">
+           <a th:href="'/meatitem/'+${#strings.replace(#strings.replace(item.itemName,' ','-'),'/','-')}+'?id='+${item.id}" class="product-image">
+              <img class="" th:each="image:${item.itemImageses}" th:if="${image.imageType=='LISTIMAGE'}" id="product-collection-image-106" th:src="${image.imageLocation}" th:alt="${item.itemName}" />
+            </a>
+           
+        </div><!--item-img-info-->
+      </div><!--item-img-->
+      <div class="item-info" th:with="itemUrl = '/item/'+${#strings.replace(#strings.replace(item.itemName,' ','-'),'/','-')}+'?id='+${item.id}">
+        <div class="info-inner">
+          <div class="item-title" th:with="zid=${#httpServletRequest.getParameter('zid')}">
+            <a th:href="'/meatitem/'+${#strings.replace(#strings.replace(item.itemName,' ','-'),'/','-')}+'?id='+${item.id}" th:text="${item.itemName}" data-placement="bottom" data-toggle="tooltip" th:title="${item.itemName}">Retis lapen casen</a>
+               
+          </div><!--item-title-->
+                    <div class="item-content">
+                           <div class="ratings"><div class="rating-box"><div style="width:0%" class="rating"></div></div></div>
+                          <div class="item-price" th:with=" sellerItems = ${#lists.toList(item.sellerItems)}">
+
+              	<th:block th:with="price=${sellerItems[0].sellingPrice}">
+               
+    <div class="price-box">
+    <p th:inline="text" style="background: #539853;color: #fff;width: 50px;position: absolute;z-index: 99;top: 130px;">[[${sellerItems[0].offerPrice}]] %</p>
+                                                            <span class="regular-price" id="product-price-106" th:inline="text">
+                                            <span class="price"><i class="fa fa-inr"></i>[[${price}]]</span>                                    </span>
+                                              <span><del th:inline="text"><i class="fa fa-inr"></i>[[${sellerItems[0].marketPrice}]]</del></span>
+                                          <p>  from <b th:inline="text" class="text-info"> [[${#lists.size(#lists.toList(item.sellerItems))}]] Sellers</b></p>
+                        
+        </div>
+        	</th:block>
+             </div><!--item-price-->
+             <!-- <div class="add_cart">
+                                <button type="button" title="Add to Cart" class="button btn-cart" onclick="setLocation('#')"><span>Add to Cart</span><	/button>
+                
+             </div> --><!--add_cart-->
+          </div><!--item-content-->
+        </div><!--info-inner-->
+      </div><!--item-info-->
+    </div><!--item-inner-->
+   <!--  <div class="clearfix"> </div>    -->
+  </li>      
+  </th:block>
+  <th:block th:unless='not ${#lists.isEmpty(items)}'>
+
+<p class="empty-list">  That's all we have</p>
+
+
+   </th:block>
+   </ul>          
+</div>	
+

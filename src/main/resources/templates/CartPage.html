@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head th:replace="fragments/PortalHeadFragment::HeadFragment('Buy Non Veg','Buy Non Veg','Buy Non Veg')"></head>
+	<body ng-app="HungryHomeTerminal">
+		<div th:replace="fragments/LocationFragment"></div>
+		<div class="wrapper">
+			<!-- #site-header -->
+			<header th:replace="fragments/HeaderFragment :: HeaderFragment('false')"></header>
+			<div id="site-main">
+	
+
+					<div th:replace="fragments/CartMainFragment"></div>
+					
+	
+			</div><!-- #site-main -->
+
+			<div th:replace="fragments/FooterFragment"></div>
+		</div><!-- .wrapper -->
+		
+		<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+
+	</body>
+
+</html>

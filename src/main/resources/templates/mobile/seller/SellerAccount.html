@@ -1,0 +1,130 @@
+<ion-view view-title="ACCOUNT" hide-back-button="true">
+  <ion-nav-bar class="bar-stable main-menu">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color:#FFFFFF">
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-title align-title="center">
+      <span class="fontpro" style="color:#FFFFFF;">ACCOUNT</span>
+    </ion-nav-title>
+    <ion-nav-buttons side="right"></ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content ng-controller="AccountController">
+    <ion-refresher on-refresh="refreshTasks()" refreshing-icon="ion-load-c" refreshing-text="Loading...">
+    </ion-refresher>
+    <div class="list" style="margin-top: 44px;">
+      <div class="item item-avatar">
+        <img ng-src="{{imgURI}}" ng-click="choosePhoto()"/>
+        <h2>MRCB</h2>
+        <p>Status: Active</p>
+      </div>
+      <div>
+        <div class="account" ng-click='accountModal()'>
+          <div class="col"><i class="ion ion-compose"></i>  PROFILE</div>
+        </div>
+        <div class="account" ng-click='passwordModal()'>
+          <div class="col"><i class="ion ion-key"></i> PASSWORD</div>
+        </div>
+        <div class="account" ng-click='employeeModal()'>
+          <div class="col"><i class="ion ion-person-add"></i> EMPLOYEE</div>
+        </div>
+        <div class="account" ng-click='toggle(4)'>
+          <div class="col"><i class="ion ion-ios-navigate-outline"></i> ADDRESS</div>
+          <div class="row" ng-show='isShown(4)'>
+            <div class="col" style="top: 0px">
+              <div style="text-align: center;">
+                <textarea rows="5" cols="40">JNTU, kukatpally, hyderabad, 500072.</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="account" ng-click='employeesListModal(5)'>
+          <div class="col"><i class="ion ion-earth"></i> EMPLOYEES</div>
+        </div>
+        <div class="account">
+          <div class="col" ui-sref="app">
+            <i class="ion ion-power pull-left" style="font-size: 20px;"></i><span> Log out </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+  <!-- </ion-side-menu-content>
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable" style="height:110px;">
+      <h1 class="title">TEJA</h1>
+    </ion-header-bar>
+    <ion-content style="margin-top:110px">
+      <ion-list class="">
+         <ion-item menu-close="" class="text-center row">
+          <a href="#/start/orders" class="col col-50 menu-list">
+            <i class="ion ion-ios-color-filter" style="font-size: 30px;"></i>
+            <p>ORDERS</p>
+          </a>
+          <a href="#/start/items" class="col col-50 menu-list">
+            <i class="ion ion-ios-settings-strong" style="font-size: 30px;"></i>
+            <p>ITEMS</p>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center row">
+          <a href="#/start/reports" class="col col-50 menu-list">
+            <i class="ion ion-clipboard" style="font-size: 30px;"></i>
+            <p>REPORTS</p>
+          </a>
+          <a href="#/account" class="col col-50 menu-list">
+            <i class="ion ion-android-contacts" style="font-size: 30px;"></i> 
+            <p>ACCOUNT</p>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center menu-list" href="#/app">
+          <i class="ion ion-log-out" style="font-size: 30px;"></i> &nbsp;<p>LOG OUT</p>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+</ion-modal-view> -->
+<style type="text/css">
+  /*.tabs-top > .tabs, .tabs.tabs-top {
+    top: 80px !important;
+    padding-top: 0;
+    background-position: bottom;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+  }
+  .tab-title{
+    font-size: 10px !important;
+    font-family: cursive;
+  }
+  .tabs-stable > .tabs, .tabs.tabs-stable {
+    border-color: #b2b2b2 !important;
+    background-color: #5D9A2F !important;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #FFFFFF;
+    width: 99%;
+    left: 2px;
+    border-radius: 8px;
+  }*/
+  .bar.bar-stable {
+    border-color: #b2b2b2;
+    /*background-color: #08B383 !important;*/
+    /*background-color: #EF4B4B !important;*/
+    /*background-color: #FFFFFF !important;*/
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #444;
+}
+ /* .has-header {
+    top: 0px !important;
+  }*/
+  .list .account{
+    margin: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #E2D7D7;
+  }
+  /*.menu-list{
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif ;
+  padding: 25px !important;
+}*/
+</style>

@@ -1,0 +1,196 @@
+
+<ion-view view="" title="ItemsTemplate" ng-controller="ItemsController">
+    
+<ion-content>
+
+<th:block th:each="item : ${items}"  >
+
+<div class="list item-text-wrap effect7" >
+   <div class="item" href="#">
+    <div class="row p-none">
+    <div class="col-15">
+       <img class="full-image" src="img/170x139/f_s_1.png" width="100" height="80" alt="Product 15" />
+     </div>
+      <!-- <h2>Pretty Hate Machine</h2>
+      <p>Nine Inch Nails</p> -->
+       <div class="col-15">
+        <span class="row" th:inline="text">[[${item.price}]]</span>
+        <th:block th:each="tagName:${item.item.itemTagses}" >
+         <span class="veg" th:if="${tagName.tags.tagName=='Veg'}"></span>
+         </th:block>
+        <th:block th:each="tagName:${item.item.itemTagses}" >
+          <span class="non-veg" th:if="${tagName.tags.tagName=='NonVeg'}"></span>
+         </th:block>
+        <th:block th:each="tagName:${item.item.itemTagses}" th:if="${tagName.tags.tagType.tagTypeName=='Organic'}">
+          <span class="organic"><a></a></span>  
+           </th:block>
+         </div>
+         <div class="col-60">
+      <span><a class="t-d row" th:href="'/itemf/'+${#strings.replace(#strings.replace(item.restaurantItemName,' ','-'),'/','-')}+'?id='+${item.id}" th:text="${item.restaurantItemName}"></a></span>
+      </div>
+     <div class="col-10">
+     <a  class="button button-small button-positive" th:attr="ng-click='getItemDetails(\''+${item.id}+'\',\''+${item.restaurantItemName}+'\')'">View</a>
+   </div>
+    </div>
+  </div>
+
+  <!--        <div class="list" >
+         
+  <div class="row" >
+    <div class="item item-avatar item-button-right col col-50"  href="#">
+      <div class="row responsive-sm responsive-md">
+        <div class="col-50">
+        <img class="full-image" src="img/170x139/f_s_1.png" width="100" height="100" alt="Product 15" />
+         </div> 
+      <div class="col-33">
+        <span th:inline="text">[[${item.price}]]</span>
+        <th:block th:each="tagName:${item.item.itemTagses}" >
+         <span class="veg" th:if="${tagName.tags.tagName=='Veg'}"></span>
+         </th:block>
+        <th:block th:each="tagName:${item.item.itemTagses}" >
+          <span class="non-veg" th:if="${tagName.tags.tagName=='NonVeg'}"></span>
+         </th:block>
+        <th:block th:each="tagName:${item.item.itemTagses}" th:if="${tagName.tags.tagType.tagTypeName=='Organic'}">
+          <span class="organic"><a></a></span>  
+           </th:block>
+      <p><a th:href="'/itemf/'+${#strings.replace(#strings.replace(item.restaurantItemName,' ','-'),'/','-')}+'?id='+${item.id}" th:text="${item.restaurantItemName}"></a></p>
+
+    </div> 
+    <div class="col-17">
+      <a class="button button-outline button-medium icon-right ion-ios-redo button-balanced" ng-click="openModal()">View</a>
+    </div>
+  </div>
+</div> -->
+   
+   <!--  <div class="item item-avatar item-button-right col col-50" href="#">
+      <div class="row responsive-sm responsive-md">
+          <div class="col-50">
+      <img class="full-image" src="img/170x139/f_s_1.png" width="100" height="100" alt="Product 15" />
+  
+    </div>  
+        <div class="col-33">
+     <span th:inline="text">[[${items[prodStat.index+1].price}]]</span>
+    
+      <th:block th:each="tagName:${items[prodStat.index+1].item.itemTagses}" >
+        <span class="veg" th:if="${tagName.tags.tagName=='Veg'}"></span>
+        </th:block>
+      <th:block th:each="tagName:${items[prodStat.index+1].item.itemTagses}" >
+        <span class="non-veg" th:if="${tagName.tags.tagName=='NonVeg'}"></span>
+        </th:block>
+      <th:block th:each="tagName:${items[prodStat.index+1].item.itemTagses}" th:if="${tagName.tags.tagType.tagTypeName=='Organic'}">
+        <span class="organic"><a></a></span>
+        </th:block>
+      <p><a th:href="'/itemf/'+${#strings.replace(#strings.replace(items[prodStat.index+1].restaurantItemName,' ','-'),'/','-')}+'?id='+${items[prodStat.index+1].id}" th:text="${items[prodStat.index+1].restaurantItemName}"></a></p>
+
+    </div> 
+
+    
+    <div class="col-20">
+      <a class="button button-outline button-medium icon-right ion-ios-redo button-balanced" ng-click="openModal()">View</a>
+    </div>
+  </div>
+    </div> -->
+<!--   
+ </div> -->
+
+</div>
+
+</th:block>
+      <script id="AddItemTemplateModal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar style="background-color:slategrey;">
+      <h1 class="title" style="color:#fff;">Item Details</h1>
+      <a class="button button-clear icon ion-ios-close-empty" ng-click="closeModal()"></a>
+    </ion-header-bar>
+    <ion-content style="padding: 15px;">
+      <div class=""><h4>Order Name</h4></div>
+
+
+<div class="row">
+  <div class="col">
+  <div class=""><h5>Item Code</h5></div>
+  <div class="">Item Name</div>
+  <div class="">Item Name</div>
+  <div class="">Item Name</div>
+
+  </div>
+  <div class="col">
+  <div class=""><h5>Item Name</h5></div>
+  <div class="">Item Name</div>
+  <div class="">Item Name</div>
+  <div class="">Item Name</div>
+  </div>
+  <div class="col">
+  <div class=""><h5>Quantity</h5></div>
+  <div class="">100grams</div>
+  <div class="">100grams</div>
+  <div class="">100grams</div>
+  </div>
+   <div class="col">
+  <div class=""><h5>Units</h5></div>
+  <div class="">2</div>
+  <div class="">1</div>
+  <div class="">1</div>
+  <div class=""><h5>Total Price</h5></div>
+  </div>
+  <div class="col">
+  <div class=""><h5>Price</h5></div>
+  <div class="">99/-</div>
+  <div class="">149/-</div>
+  <div class="">199/-</div>
+
+  <div class=""><h5>447/-</h5></div>
+
+  </div>
+  
+</div>
+<div class=""><h4 class="title">Address Details</h4></div>
+
+<div class="row">
+ <div class="col">
+ <div class=""><h5>Employee Name</h5></div>
+  <div class="">Ashok Varma</div>
+  
+ </div>
+  <div class="col">
+  <div class=""><h5>Company</h5></div>
+  <div class="">Infosys Bachibowli</div>
+  </div>
+  <div class="col">
+  <div class=""><h5>Address</h5></div>
+  <div class="">5th Floor,DLF</div>
+  </div>
+  <div class="col">
+  <div class=""><h5>Area</h5></div>
+  <div class="">Gachibowli</div>
+  </div>
+  <div class="col">
+  <div class=""><h5>Estimate Time</h5></div>
+  <div class="">70Min</div>
+  </div>
+  
+</div>
+  /*  </ion-content>*/
+
+    <ion-footer-bar style="border-top:1px solid #ddd;">
+    <div class="row">
+    <div class="col col-25">
+      <a class="button  button-small icon-right ion-android-done button-positive" style="margin-top:-10px;">Confirmed</a>
+      </div>
+      <div class="col col-25">
+      <a class="button  button-small icon-right ion-navicon button-energized" style="margin-top:-10px;">Delivered</a>
+      </div>
+      <div class="col col-25">
+      <a class="button  button-small icon-right ion-navicon button-stable" style="margin-top:-10px;">Alert</a>
+</div>
+  <div class="col col-25">
+     <a class="button  button-small icon-right ion-android-close button-assertive" style="margin-top:-10px;">Canceled</a>
+</div>
+    </div>
+    </ion-footer-bar>
+  </ion-modal-view>
+</script> 
+   
+</ion-content>
+
+</ion-view>

@@ -1,0 +1,44 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<!-- <i class="fa fa-laptop modal-icon"></i> -->
+		<h4 class="modal-title">ITEM ATTRIBUTE EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b itemform" name="ItemForm">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">ATTRIBUTE Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<!-- {{ItemEditData.itemName}} -->
+						<input type="text" class="form-control" name="attributeName" ng-model="ItemEditData.attributeName" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">ATTRIBUTE VALUE</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="attributeValue" ng-model="ItemEditData.attributeValue" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class="form-control" name="select" ng-model="ItemEditData.status" style="width:100%;" required>
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="itemattributeEdit(ItemEditData)">Save changes</button>
+	</div>
+</div>
+

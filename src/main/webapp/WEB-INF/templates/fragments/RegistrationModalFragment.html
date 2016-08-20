@@ -1,0 +1,131 @@
+<div id="regismodal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg centered">
+
+    <!-- Modal content-->
+    <div class="modal-content b-r-n">
+      <!-- <div class="modal-header" >
+        <button type="button" class="close" data-dismiss="modal" style="display:inline">&times;</button>
+        <h4 class="modal-title" style="display:inline; font-weight:bold;">New Customer</h4>
+      </div> -->
+
+      <div class="modal-body p-none effect6 b-t-r" >
+        <button type="button" class="close" data-dismiss="modal" style="display:inline;font-size: 40px;font-weight: lighter;margin: -3px 8px;">&times;</button>
+<div class="register-signup-newDialog" ng-controller="RegistrationController">
+
+  <div class="row">
+    
+    <form name="registerForm">
+      <div class="col-lg-6 col-md-6">
+        
+        <img class="b-s-r" src="/common/img/home/regbanner1.png" />
+      </div>
+    <div class="col-sm-6 col-md-6 reg_div">
+      <div>
+
+        <a class="reg_a" style="text-align: center;margin: 0px 110px;float: left;">Register</a>
+
+      </div>
+      
+        <div class="row" style="margin-top:15px;">
+       
+              
+        <span class="input input--yoshiko" ng-class="{'has-error':registerForm.userName.$invalid &amp;&amp; !registerForm.userName.$pristine}">
+          <input class="input__field input__field--yoshiko mgb10" type="text"  name="userName"  ng-model="userdata.userName"  required="required" />
+          <i class="fa fa-user icon-fix-non"></i>
+          <label class="input__label input__label--yoshiko inputlabel-pad" for="userName">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+              Name
+            </span>
+          </label>
+           <span ng-show="registerForm.userName.$invalid &amp;&amp; !registerForm.userName.$pristine" class="help-block">You name is required.</span>
+        </span>
+
+
+        <span class="input input--yoshiko reg_email_span" ng-class="{'has-error':registerForm.email.$invalid &amp;&amp; !registerForm.email.$pristine}">
+          <input class="input__field input__field--yoshiko mgb10" type="email" ng-model="userdata.emailId"  name="email" required="required"/>
+          <i class="fa fa-envelope-o icon-fix-non"></i>
+          <label class="input__label input__label--yoshiko inputlabel-pad" for="email">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+              Email Id
+            </span>
+          </label>
+          <p ng-show="registerForm.email.$invalid &amp;&amp; !registerForm.email.$pristine" class="help-block">Enter a valid email.</p>
+        </span>
+
+        <span class="input input--yoshiko  mgt10" ng-class="{'has-error':registerForm.phoneNo.$invalid &amp;&amp; !registerForm.phoneNo.$pristine}">
+         
+          <input class="input__field input__field--yoshiko mgb10 phnumber" type="number" title="please enter mobile number" ng-minlength="10" ng-maxlength="10"   name="phoneNo" ng-model="userdata.phoneNo"  required="required" />
+          <i class="fa fa-mobile icon-fix-non"></i>
+          <label class="input__label input__label--yoshiko inputlabel-pad" for="password">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+              Mobile number
+            </span>
+          </label>
+           <p ng-show="registerForm.phoneNo.$error.minlength" class="help-block">MobileNo is too short. Must be 10 digits</p>
+            <p ng-show="registerForm.phoneNo.$error.maxlength" class="help-block">MobileNo is too long. Must be 10 digits</p>
+        </span>
+
+        <div class="row" style="margin-right:90px;">
+        
+        <div class="col-lg-6">
+              <span class="input input--yoshiko  mgt10" ng-class="{'has-error':registerForm.password.$invalid &amp;&amp; !registerForm.password.$pristine}">
+          <input class="input__field input__field--yoshiko mgb10" type="password" name="password"  ng-model="userdata.password" required="required" id="reg_password" minlength="8"/>
+          <i class="fa fa-lock icon-fix-non"></i>
+          <label class="input__label input__label--yoshiko inputlabel-pad" for="password">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+              Password
+            </span>
+          </label>
+        </span>
+        </div>
+        <div class="col-lg-6">
+
+        <span class="input input--yoshiko  mgt10" ng-class="{'has-error':registerForm.confirmPassword.$invalid &amp;&amp; !registerForm.confirmPassword.$pristine}">
+          <input class="input__field input__field--yoshiko mgb10" type="password" name="confirmPassword"  ng-model="userdata.confirmPassword" id="reg_confirm_password" required="required" minlength="8"/>
+          <i class="fa fa-lock icon-fix-non"></i>
+          <label class="input__label input__label--yoshiko inputlabel-pad" for="password">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+              Confirm</span>
+          </label>
+            </span>
+        </div>
+        <p id="wrg_pass" class="help-block hide mgl20"><i class="fa fa-asterisk ls5" aria-hidden="true"></i>Please enter confirm Password same as Password!</p>
+      
+      </div>
+      <div class="" style="float: right;margin-right: 100px;">
+        <input type="checkbox" required="required" name="agree" style="position: relative;top: 2px;" />
+        <a >I agree to the <strong>terms &amp; conditions</strong></a>
+      </div>
+</div>
+      
+
+            <div class="row">
+        
+        <div class="clear-fix"></div>
+        <input type="submit" class="register-btn-non" ng-disabled="registerForm.$invalid"  ng-click="userRegistration(userdata)" />
+      </div>
+  
+      </div>
+    
+
+   
+  </form>
+
+
+
+
+
+
+
+
+
+   
+  </div>
+
+</div>
+      </div>
+     
+    </div>
+
+  </div>
+</div>

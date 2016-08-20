@@ -1,0 +1,46 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">ITEM ATTRIBUTE ADD</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b itemattributesform" name="AttributesForm">
+			<div class="form-group">
+					<div class="col-sm-4">
+						<label class="control-label">Attribute Name</label> 
+					</div>
+					<div class="col-sm-4">
+						<label class="control-label">Attribute Value</label> 
+					</div>
+					<div class="col-sm-4">
+						 <label class="control-label">Status</label> 
+					</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4">
+					<select class="form-control" name="select" style="width:100%;" required ng-model="itemAttributes.categoryAttributesId" placeholder="">
+						<!-- <option option="default" selected>Select Attribute Name</option> -->
+						<option ng-repeat="attributesData in attributesDetails" ng-init="attributesId.attributes=attributesData['properties'].attributesId" value="{{attributesData['properties'].id}}">{{attributesData['properties'].attributeName}}</option>
+					</select>
+				</div>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" name="attributeValue" style="width:100%;" required ng-model="itemAttributes.attributeValue" />
+				</div>
+				<div class="col-sm-4">
+					<select class=" form-control" name="select" style="width:100%;" required ng-model="itemAttributes.status">
+						<option value=""></option>
+						<option value="ACTIVE">ACTIVE</option>
+						<option value="INACTIVE">INACTIVE</option>
+					</select>
+				</div>
+				<!-- <div class="col-sm-3">
+					
+				</div> -->
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="itemAttributeCreate(itemAttributes,attributesId)">ADD</button>
+	</div>
+</div>
+

@@ -1,0 +1,211 @@
+<div class="inmodal">
+	<div class="modal-header" style="height:50px;">
+		<h4 class="modal-title">SELLER EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<tabset>
+      <tab heading="SELLERS BRANCH">
+      	<form class="form-horizontal form-bordered padder-t-b" name="sellerBranchForm">
+      		<div class="form-group" style="height:30px;">
+				<label class="col-sm-4 col-md-4 control-label">Branch Name</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="branchName" ng-model="SellerEditData['properties'].branchName" />
+					</div>
+				</div>
+			<label class="col-sm-4 control-label">Branch Email</label>
+			<div class="col-sm-8">
+				<div class="form-control-static">
+					<input type="text" class="form-control" name="sellerEmailId" ng-model="SellerEditData['properties'].sellerEmailId" />
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Phone Number</label>
+			<div class="col-sm-8">
+				<div class="form-control-static">
+					<input type="text" class="form-control" name="branchEmail" ng-model="SellerEditData['properties'].sellerPhoneNo" />
+				</div>
+			</div>
+			<label class="col-sm-4 control-label">Minimum Order Time</label>
+			<div class="col-sm-8">
+				<div class="form-control-static">
+					<input type="text" class="form-control" name="branchEmail" ng-model="SellerEditData['properties'].minimumOrderTime" />
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-4">Zone Name</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<select class="form-control" name="Zone" ng-model="SellerEditData.ZoneId" style="width:100%;" required>
+							<option value=""></option>
+							<option ng-repeat="Zone in zonesDetails.entities" value="{{Zone['properties'].id}}">{{Zone['properties'].zoneName}}</option>
+						</select>
+					</div>
+				</div>
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<select class="select2_demo_2 form-control" name="select" ng-model="SellerEditData.status" style="width:100%;" required>
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</div>
+      	</form>
+      </tab>
+      <tab heading="BRANCH ADDRESS">
+      	<form class="form-horizontal form-bordered padder-t-b" name="sellerBranchAddressForm">
+      		<div class="form-group">
+				<label class="col-sm-4 control-label">Address Type</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<select class="select2_demo_2 form-control" name="select" ng-model="SellerEditData.type" style="width:100%;" required>
+							<option value=""></option>
+							<option value="PERMINENT">PERMINENT</option>
+							<option value="PRESENT">PRESENT</option>
+						</select>
+					</div>
+				</div>
+				<label class="col-sm-4 control-label">Line1</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="line1" ng-model="branchAddress['properties'].line1" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">City</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="city" ng-model="branchAddress['properties'].city" />
+					</div>
+				</div>
+				<label class="col-sm-4 control-label">Town</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="town" ng-model="branchAddress['properties'].town" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">District</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="district" ng-model="branchAddress['properties'].district" />
+					</div>
+				</div>
+				<label class="col-sm-4 control-label">State</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="state" ng-model="branchAddress['properties'].state" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Country</label>
+				<div class="col-sm-8">
+				<div class="form-control-static">
+				<input type="text" class="form-control" name="country" ng-model="branchAddress['properties'].country"/>
+					</div>
+				</div>
+				<label class="col-sm-4 control-label">ZipCode</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="zipcode" ng-model="branchAddress['properties'].zipcode" />
+					</div>
+				</div>
+			</div>
+      	</form>
+      </tab>
+      <tab heading="ITEMS">
+      	<div class="widget style1 navy-bg col-xs-4 m-r-xs" ng-repeat="itemData in itemDetails.entities">
+	        <div class="row">
+	        	<div class="col-xs-12">
+	        		<div class="text-warning text-center font-bold h6">{{itemData['properties'].itemName}}
+	        		</div>
+	            	<div class="clearfix"></div>
+	        	</div>
+			</div>
+		</div>
+    </tab>
+	<tab heading="Taxes">
+	<div class="table-responsive">
+		<table class="table table-bordered table-stripped">
+			<thead>
+			<tr>
+				<th style="width:28%">
+					Tax Name
+				</th>
+				<th style="width:28%">
+					Tax Type
+				</th>
+				<th style="width:20%">
+					Tax Value
+				</th>
+				<th style="width:24%">
+					Tax Status
+				</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="taxes in sellerBranchAddres" ng-if="taxes['class']=='sellerBranchTax'">
+					<td>
+						<input type="text" class="form-control" disabled ng-model="taxes['properties'].taxName">
+					</td>
+					<td>
+						<!-- <input type="text" class="form-control" disabled ng-model="taxes['properties'].taxType"> -->
+						<select class="form-control" ng-model="taxes['properties'].taxType" style="width:100%" required name="status">
+							<option value=""></option>
+							<option value="MARGIN">MARGIN</option>
+							<option value="TAX">TAX</option>
+						</select>
+					</td>
+					<td>
+						<input type="text" class="form-control" disabled value="1" ng-model="taxes['properties'].taxValue">
+					</td>
+					<td>
+						<select class="form-control" name="type" ng-model="taxes['properties'].sellerBranchTaxStatus" style="width:100%;" required>
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+        					<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</tab>
+		</tabset>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="BranchEdit(SellerEditData)">Save changes</button>
+	</div>
+</div>
+<style>
+
+label.error{
+	display: block !important;
+	margin-bottom: 0px !important
+}
+.tab-pane{
+	padding: 10px;
+}
+.border{
+	border: 1px solid #1ab394;
+}
+.tag-list li a{
+	font-size: 15px;
+}
+
+.modal-body{
+	max-height: calc(100vh - 225px);
+	overflow-y: scroll;
+}
+</style>
+
+

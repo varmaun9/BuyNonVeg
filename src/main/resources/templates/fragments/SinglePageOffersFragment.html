@@ -1,0 +1,66 @@
+
+
+  <div class="modal fade location-model" id="sellerItemOffers" role="dialog">
+    
+      <div class="modal-dialog" >
+      <!-- Modal content-->
+        <div class="modal-content">
+          
+          <div class="modal-header bg-r text-center">
+          
+            <a ><img src="/common/img/home/img/meat_logo1.png" alt="WooPlus" width="200" height="35" /></a>
+            
+          </div>
+          <div class="modal-body" style="padding-top:0px;">
+           
+            
+            <!-- <ul>
+              
+            </ul> -->
+
+            <div class="row">
+                         <div class="col-md-12">
+                  
+                   <div class="div_latest_header">
+              <a href="#">
+               
+               <h6 class="latest_div" id="myModalLabel" th:inline="text" style="font-size:12px !important;"> Offers on [[${item.itemName}]] </h6>
+               </a> 
+               </div>
+                 
+
+                    <div class="cart p-none m-none" th:each="offer:${lowestSellingPriceSellerItemOffers}">
+     
+       <div class="offer_col" data-toggle="collapse" data-target="#demo"><i class="fa fa-star l-s-5" aria-hidden="true"></i><a class="m-t-b-5 pointer" th:text="${offer.offerName}">Offer1</a>
+
+       </div>
+          <div class="collapse" id="demo" style="background-color:rgba(249, 227, 227, 0.36);" >
+         
+       <h5 ></h5>
+       <p ></p>
+
+
+       <ul class="list-n pull-left">
+                          <li th:inline="text"><i class="fa fa-angle-right" aria-hidden="true"></i><a th:text="${offer.description}"></a></li>
+                          
+                        </ul>
+            </div>
+          
+  
+        </div><!-- .shop-cart -->
+                </div><!-- .col-md-12 -->      
+                </div>
+              
+
+
+
+
+
+
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div> -->
+        </div>
+      </div>
+    </div>

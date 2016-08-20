@@ -1,0 +1,163 @@
+<ion-content ng-controller="singleItemCtrl">
+	<div class="list card list_height">
+		<div class="item item-avatar" style="padding-top: 14px;padding-bottom: 14px;">
+			<h2 class="font-pro" style="float: left; margin-left: -91px;" th:text="${item.itemName}"></h2>
+			
+			<!-- <th:block th:with=" price =${sellerItems[0].offerPrice}">
+            <span class="price" style="float:right;" th:inline="text">[[${price}]]</span>
+            <span class="assertive" style="float:right"><del style="font-size: 12px;" th:text="${sellerItems[0].sellingPrice}"></del></span>
+      </th:block> -->
+      <div th:with=" sellerItems =${#lists.toList(item.sellerItems)}">
+          <th:block th:with=" price =${sellerItems[0].offerPrice}">
+          <th:block th:with="sellerName=${sellerItems[0].sellerBranch.seller.sellerName}">
+          <p class="sell_txt" style="font-size: 10px;" th:inline="text"> By : [[${sellerName}]]</p>
+            <span class="pric" style="float:right;" th:inline="text">[[${sellerItems[0].marketPrice}]]</span>
+            <span class="assertive" style="float:right"><del th:text="${sellerItems[0].sellingPrice}"></del></span>
+          </th:block>
+          </th:block>
+        </div>
+		</div>
+		<div class="list">
+			<ion-slide-box>
+			<ion-slide style="min-height: 170px">
+				<div class="box text-center" style="margin-top:1px;">
+					<img src="img/chillichicken.png"/>
+				</div>
+			</ion-slide>
+			<ion-slide>
+				<div class="box text-center" style="margin-top:1px;">
+					<img src="img/chicken.png"/>
+				</div>
+			</ion-slide>
+			<ion-slide>
+				<div class="box text-center" style="margin-top:1px;">
+					<img src="img/chillichicken.png"/>
+				</div>
+			</ion-slide>
+			</ion-slide-box>
+		</div>
+	</div>
+	<div class="row" style="margin-top: -6px;">
+		<div class="col col-10" style="padding: 0px;">
+			<label ng-click="decrementQuantity(quantity)"><i class="ion ion-minus ion-i"></i></label>
+		</div>
+		<div class="row" style="padding: 0px;">
+			<div class="col col-30 gram_g">
+				<label class="text-center" style="font-size: 12px;">QTY</label>
+			</div>
+			<div class="col col-40 text-center quantity">
+				<span ng-model="quantity">{{quantity}}</span>
+			</div>
+			<div class="col col-30 gram_g">
+				<label>kg</label>
+			</div>
+		</div>
+		<div class="col col-10" style="padding: 0px;">
+			<label ng-click="incrementQuantity(quantity)"><i class="ion ion-plus ion-i"></i></label>
+		</div>
+	</div>
+	<ion-item class="item-stable" ng-click="toggleGroup('1')">
+	  Item Details
+	  <i class="icon pull-right" ng-class="isGroupShown('1') ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+	</ion-item>
+	<ion-item class="item-accordion" ng-show="isGroupShown('1')">
+	   <div class="row header">
+		  <div style="position: absolute;border-bottom:2px solid lightgrey;">Item Name</div>
+		  <div style="position: absolute;left: 185px;border-bottom:2px solid lightgrey;">Brand</div>
+		  <div class="col"></div>
+		</div>
+		<div class="row">
+		  <div class="col col-40" style="position: absolute;margin-top: -18px;">Boneless Chicken</div>
+		   <div class="col col-40" style="position: absolute;margin-top: -18px;margin-left: 166px;">Sneha Chicken</div>
+		</div>
+	</ion-item>
+	  <ion-item class="item-stable" ng-click="toggleGroup('2')">
+		More Sellers
+		<i class="icon pull-right" ng-class="isGroupShown('2') ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+	  </ion-item>
+	  <ion-item class="item-accordion" ng-show="isGroupShown('2')">
+		 <div class="row header">
+		  <div style="position: absolute;border-bottom:2px solid lightgrey;">Name</div>
+		  <div style="position: absolute;left: 185px;border-bottom:2px solid lightgrey;">Price</div>
+		  <div class="col"></div>
+		</div>
+		<div class="row">
+		  <div class="col col-40">Suguna chicken</div>
+		  <div class="col col-40" style="position: absolute;left: 185px;">Rs 250</div>
+		  <div class="col col-20" style="position: absolute;right:-10px;top: 72px;"><i class="ion-android-cart" style="color:#EF473A;"></i></div>
+		</div>
+	  </ion-item>
+</ion-content>
+<ion-footer-bar align-title="left">
+  <div class="col col-50">
+	<a ui-sref="app.Cartpage">
+		<button class="button button-outline button-assertive button-small ion-android-cart" style="width: 140px;">Add To Cart</button>
+	</a>
+  </div>
+  <div class="col col-50">
+		<button class="button button-outline button-balanced button-small ion-android-cart" style="width: 140px;">
+			BUY NOW
+		</button>
+  </div>
+</ion-footer-bar>
+<style>
+.item-avatar{
+	padding-left: 116px;
+	min-height:10px;
+}
+.img_mid{
+	margin-left:90px;
+margin-top:10px;
+}
+.sell_txt{
+	float:left;
+	 margin-top:20px;
+	 margin-left: -90px;
+}
+.qty_unt{
+		margin-left: 7px;
+margin-top: -20px;
+}
+.deti{
+		margin-top: 0px;
+}
+.list_height{
+	border-radius: 2px;
+background-color: #fff;
+overflow: hidden;
+margin: 0px;
+bottom: 9px;
+}
+.bar.bar-footer{
+	height: 62px !important;
+}
+ .ion-i{
+ width: 35px;
+ padding: 10px;
+ line-height: 2px;
+ text-align: center;
+ color: #cc2828;
+ box-sizing: border-box;
+ border-radius: 5px;
+ -webkit-box-shadow: 1px 0px 5px 2px rgba(196,186,196,0.40);
+-moz-box-shadow: 1px 0px 5px 2px rgba(196,186,196,0.40);
+box-shadow: 1px 0px 5px 2px rgba(196,186,196,0.40);
+
+ }
+ .gram_g{
+	  padding: 4px 4px 8px 30px;
+	border-radius: 5px;
+ }
+ .price{
+	font-size: 16px;
+font-weight: 500;
+margin-right: 2px;
+ }
+ .quantity{
+	border: 2px solid wheat;
+	-webkit-box-shadow: 1px 0px 5px 2px rgba(196,186,196,0.40);
+-moz-box-shadow: 1px 0px 5px 2px rgba(196,186,196,0.40);
+box-shadow: 1px 0px 5px 2px rgba(196,186,196,0.40);
+ }
+
+</style>

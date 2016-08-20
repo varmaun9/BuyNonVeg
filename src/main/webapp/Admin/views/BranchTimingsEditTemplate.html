@@ -1,0 +1,45 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">BRANCH TIMINGS EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<tabset>
+		<form class="form-horizontal form-bordered padder-t-b" name="TimingForm">
+			<!-- <div class="form-group">
+				<label class="control-label col-md-4">Timing Name</label>
+					<div class="col-sm-7">
+						<div class="form-control-static">
+						<input type="text" class="form-control" name="timingName" ng-model="BranchTimingsEditData.timingName" />
+							<select class="form-control" name="timingName" ng-model="BranchTimingsEditData['properties'].timingsId" style="width:100%;" required>
+								<option value=""></option>
+								<option ng-repeat="sellerBranchTimings in sellerBranchTimingsesDetails.entities" value="{{sellerBranchTimings['properties'].id}}">{{sellerBranchTimings['properties'].timingName}}</option>
+							</select>
+						</div>
+					</div>
+				</div> -->
+				<div class="form-group">
+					<label class="col-sm-4 control-label">Status</label>
+					<div class="col-sm-7">
+						<div class="form-control-static">
+							<select class="select2_demo_2 form-control" name="select" ng-model="BranchTimingsEditData['properties'].status" style="width:100%;" required>
+								<option value=""></option>
+								<option value="ACTIVE">ACTIVE</option>
+								<option value="INACTIVE">INACTIVE</option>
+							</select>
+						</div>
+					</div>
+				</div>
+		</form>
+	</tabset>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="TimingsEdit(BranchTimingsEditData)">Save changes</button>
+	</div>
+</div>
+<style>
+
+.popover.clockpicker-popover.bottom.clockpicker-align-left{
+	z-index: 3000 !important;
+}
+</style>

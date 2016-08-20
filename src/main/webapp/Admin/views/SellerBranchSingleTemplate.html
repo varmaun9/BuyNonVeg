@@ -1,0 +1,366 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+	<ol class="breadcrumb">
+	  <li>
+		<a href="index.html">Home</a>
+	  </li>
+	  <li>
+		<a ui-sref="Sellers.SellerBranchesTemplate">Branch List</a>
+	  </li>
+	  <li class="active">
+		<strong>Single Branch VIew</strong>
+	  </li>
+	</ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div ng-controller="SingleBranchController">
+	<div class="col-lg-12">
+		<div class="tabs-container">
+			<div class="tabs-right">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" data-target="#tab-1"> BRANCH INFO</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-2">ADDRESS</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-3">BRANCH TIMINGS</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-4">BRANCH USERS</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-5">BRANCH TAXES</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-6">BRANCH CHARGES</a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">BRANCH INFO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="ItemForm">
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Branch Name:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{sellerBranchesDetails.branchName}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="control-label col-md-4">E-Mail:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{sellerBranchesDetails.sellerEmailId}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="control-label col-md-4">Phone Number:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{sellerBranchesDetails.sellerPhoneNo}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="control-label col-md-4">Min Order Time:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{sellerBranchesDetails.minimumOrderTime}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="control-label col-md-4">Delivery CutOff Days:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{sellerBranchesDetails.deliveryCutoffDays}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Status:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{sellerBranchesDetails.branchStatus}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="editBranch(sellerBranchesDetails)" class="btn btn-outline btn-primary">
+											EDIT
+										</a>
+										<a ui-sref="Sellers.SellerBranchesTemplate" class="btn btn-outline btn-warning">
+											CLOSE
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">ADDRESS</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="ItemSeoForm">
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Type:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{sellerBranchAddressDetails.type}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Line1:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{sellerBranchAddressDetails.line1}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Town:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{sellerBranchAddressDetails.town}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4">City:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{sellerBranchAddressDetails.city}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4">District:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{sellerBranchAddressDetails.district}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4">State:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{sellerBranchAddressDetails.state}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4">Country:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{sellerBranchAddressDetails.country}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4">Pincode:</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{sellerBranchAddressDetails.zipcode}}
+										</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="editAddress(sellerBranchAddressDetails)" class="btn btn-outline btn-primary">
+											EDIT
+										</a>
+										<a ui-sref="ItemMaster.ItemsTemplate" class="btn btn-outline btn-warning">
+											CLOSE
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-3" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+								<div class="font-bold text-center col-lg-8">TIMINGS</div>
+								<div class="col-lg-4">
+									<a ng-click="addTimings()" class="pull-right">
+										<i class="fa fa-plus"></i>
+										ADD BRANCH TIMINGS
+									</a>
+								</div>
+							</div>
+							<table class="table table-striped toggle-arrow-tiny">
+								<thead>
+									<tr>
+										<th data-toggle="true">Timing Name</th>
+										<th>Start Time</th>
+										<th>End Time</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="sellerBranchTimings in sellerBranchTimingsDetails">
+										<td>{{sellerBranchTimings['properties'].timingName}}</td>
+										<td>{{sellerBranchTimings['properties'].startTime}}</td>
+										<td>{{sellerBranchTimings['properties'].endTime}}</td>
+										<td>{{sellerBranchTimings['properties'].status}}</td>
+										<td>
+											<a href="javascript:;" ng-click="editTimings(sellerBranchTimings)" class="btn btn-outline btn-primary">
+												EDIT
+											</a>
+										</td>
+									</tr>
+								</tbody>
+								<!-- <tfoot>
+									<tr>
+										<td colspan="4">
+								  			<ul class="pagination pull-right"></ul>
+										</td>
+									</tr>
+								</tfoot> -->
+							</table>
+						</div>
+					</div>
+					<div id="tab-4" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+								<div class="font-bold text-center col-lg-8">BRANCH USERS</div>
+								<div class="col-lg-4">
+									<a ng-click="addsellerUser()" class="pull-right">
+										<i class="fa fa-plus"></i>
+										ADD BRANCH USERS
+									</a>
+								</div>
+							</div>
+							<table class="footable table table-striped toggle-arrow-tiny" data-page-size="5">
+								<thead>
+									<tr>
+										<th>User Name</th>
+										<!-- <th>User Email</th> -->
+										<th>User PhoneNo</th>
+										<th>Gender</th>
+										<th>Seller Name</th>
+										<!-- <th>Seller User Type</th> -->
+										<th>Status</th>
+										<th> </th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="sellerUser in sellerBranchUsersDetails" my-directive>
+										<td>{{sellerUser['properties'].userName}}</td>
+										<!-- <td>{{sellerUser['properties'].userEmail}}</td> -->
+										<td>{{sellerUser['properties'].userPhoneNo}}</td>
+										<td>{{sellerUser['properties'].gender}}</td>
+										<td>{{sellerUser['properties'].sellerName}}</td>
+										<!-- <td>{{sellerUser['properties'].sellerUserType}}</td> -->
+										<td>{{sellerUser['properties'].userStatus}}</td>
+										<td>
+											<a ng-click="editSellerBranchUser(sellerUser)" class="">
+												Edit
+											</a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="8">
+								  		<ul class="pagination pull-right"></ul>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+					<div id="tab-5" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+								<div class="font-bold text-center col-lg-8">BRANCH TAXES</div>
+								<div class="col-lg-4">
+									<a ng-click="addTaxes()" class="pull-right">
+										<i class="fa fa-plus"></i>
+										ADD BRANCH TAXES
+									</a>
+								</div>
+							</div>
+							<table class="footable table table-striped toggle-arrow-tiny" data-page-size="8">
+								<thead>
+									<tr>
+										<th data-toggle="true">Tax Name</th>
+										<th>Tax Value</th>
+										<th>Tax Type</th>
+										<th>Tax Description</th>
+										<th>Status</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="sellerBranchTax in sellerBranchTaxDetails">
+										<td>{{sellerBranchTax['properties'].taxName}}</td>
+										<td>{{sellerBranchTax['properties'].taxValue}}</td>
+										<td>{{sellerBranchTax['properties'].taxType}}</td>
+										<td>{{sellerBranchTax['properties'].amountDescription}}</td>
+										<td>{{sellerBranchTax['properties'].sellerBranchTaxStatus}}</td>
+										<td>
+											<a href="javascript:;" ng-click="editTax(sellerBranchTax)" class="btn btn-outline btn-primary">
+												EDIT
+											</a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="5">
+								  			<ul class="pagination pull-right"></ul>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+					<div id="tab-6" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+								<div class="font-bold text-center col-lg-8">BRANCH CHARGES</div>
+								<div class="col-lg-4">
+									<a ng-click="addBranchCharges()" class="pull-right">
+										<i class="fa fa-plus"></i>
+										ADD BRANCH CHARGES
+									</a>
+								</div>
+							</div>
+							<table class="footable table table-striped toggle-arrow-tiny" data-page-size="8">
+								<thead>
+									<tr>
+										<th data-toggle="true">Charges Type</th>
+										<th>Charges Amount</th>
+										<th>Amount Type</th>
+										<th>Status</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="sellerCharges in sellerBranchChargesDetails">
+										<td>{{sellerCharges['properties'].chargesType}}</td>
+										<td>{{sellerCharges['properties'].chargesAmount}}</td>
+										<td>{{sellerCharges['properties'].amountDescription}}</td>
+										<td>{{sellerCharges['properties'].status}}</td>
+										<td>
+											<a href="javascript:;" ng-click="editCharges(sellerCharges)" class="btn btn-outline btn-primary">
+												EDIT
+											</a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="5">
+								  			<ul class="pagination pull-right"></ul>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+		  	</div>
+		</div>
+	</div>
+</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+</style>
+
+<script type="text/javascript" src="js/plugins/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="js/plugins/footable/footable.all.min.js"></script>
+<script type="text/javascript" src="js/plugins/dataTables/dataTables.bootstrap.js"></script>

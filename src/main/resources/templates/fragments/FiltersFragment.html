@@ -1,0 +1,157 @@
+<div class="col-md-3 col-sm-12 col-xs-12" ng-controller="FilterController">
+								<aside class="widget widget_search">
+									<form class="form-inline">
+										<div class="form-group">
+											<input type="email" class="form-control" placeholder="Search..."/>
+										</div>
+									</form>
+								</aside><!-- .widget_search -->
+								<!-- <aside class="widget widget_categories">
+									<h3 class="widget-title">Restaurants</h3>
+									<ul class="checker" th:with="list=(${#httpServletRequest.getParameterValues('rid')}==null)?${array}:${#httpServletRequest.getParameterValues('rid')}">
+										 <th:block  th:each="res:${restaurants}" th:with="selectedStatus=${#lists.contains(#lists.toList(list),res.id)}">
+										 <p th:text="${selectedStatus}"></p>
+						<li class="cat-item "><input type="checkbox" th:checked="${selectedStatus}==true?'true':'false'" th:id="${res.id}"  th:attr="ng-model='res.'+${res.id}, ng-change='getItembyFilters(\''+${res.id}+'\')'" filter="rid" th:name="${res.id}"/>
+											<label th:for="${res.id}" href="#" th:inline="text" th:name="${res.id}">[[${res.branchName}]]<span class="count pull-right">1</span></label></li>
+										</th:block>
+									</ul>
+								</aside> -->
+								<aside class="widget widget_categories" th:each="filters:${tagTypes}" th:id="${filters.id}">
+									<h3 class="widget-title" th:text="${filters.tagTypeName}">Categories</h3>
+									<ul class="checker" th:with="list=(${#httpServletRequest.getParameterValues('tid')}==null)?${array}:${#httpServletRequest.getParameterValues('tid')}">
+										 <th:block th:each="tag:${filters.tagses}" th:with="selectedStatus=${#lists.contains(#lists.toList(list),tag.id)}">
+										<li class="cat-item">
+
+								<div class="checkbox checkbox-circle checkbox-danger">
+                        <!-- <input id="checkbox7" class="styled" type="checkbox"  /> -->
+                     <input type="checkbox" th:checked="${selectedStatus}==true?'true':'false'" th:id="${tag.id}" th:name="${tag.id}"    th:attr="ng-model='tag.'+${tag.id}, ng-change='getItembyFilters($event,\''+${filters.id}+'\')'" filter="tid" />
+                     <label for="checkbox7">
+                           
+                        </label>
+                        
+                    </div>
+                     <!--   <div class="checkbox checkbox-circle">
+                        <input class="styled" type="checkbox" />
+                        <label for="checkbox7">
+                           
+                        </label>
+                    </div>
+											 -->
+	<!-- <label for="cb3">United States</label> --><label th:for="${tag.id}" href="#" th:inline="text" style="display:inline-block;" >[[${tag.tagName}]]<span class="count pull-right">1</span></label></li>
+										</th:block>
+									</ul>
+								</aside>
+<aside class="widget widget_categories" th:each="attribute:${attributes}" th:id="${attribute.id}" >
+									<h3 class="widget-title" th:text="${attribute.attributeName}">Categories</h3>
+									<ul class="checker" th:with="list=(${#httpServletRequest.getParameterValues('atval')}==null)?${array}:${#httpServletRequest.getParameterValues('atval')}" style="height:284px;overflow-y: scroll;">
+										 <th:block th:each="itemAttribute:${#lists.toList(attribute.itemAttributeses)}">
+										<li class="cat-item" >
+
+											<div class="checkbox checkbox-circle checkbox-danger">
+                        <!-- <input id="checkbox7" class="styled" type="checkbox"  /> -->
+                     <input type="checkbox" th:id="${itemAttribute.attributeValue}" th:name="${itemAttribute.attributeValue}"    th:attr="ng-model='attr.'+${itemAttribute.attributeValue}, ng-change='getItembyFilters(\''+${itemAttribute.attributeValue}+'\')'" th:content="${attribute.id}" filter="atval" th:checked="${selectedStatus}==true?'true':'false'"/>
+                     <label for="checkbox7">
+                           
+                        </label>
+                        
+                    </div>
+											
+	<!-- <label for="cb3">United States</label> --><label th:for="${itemAttribute.attributeValue}" href="#" th:inline="text" style="display:inline-block;" >[[${itemAttribute.attributeValue}]]<span class="count pull-right" th:inline="text">([[${itemAttribute.countFlag}]])</span></label></li>
+										</th:block>
+									</ul>
+								</aside>
+
+
+								<aside class="widget widget_categories">
+									<h3 class="widget-title">Filter by price</h3>
+									<div class="f-price">
+										<div id="slider-range"></div> 
+										<input type="text" id="amount" th:value="${'₹'+minPrice+'-₹'+maxPrice}"/>
+										<button class="btn btn-dashed textup" type="button" th:attr="ng-init='initSliderRange(\''+${minPrice}+'\',\''+${maxPrice}+'\')'">Filter</button>
+									</div>
+								</aside>
+								
+							
+								<!-- <aside class="widget_text mgb20">
+									<img src="placeholder/shop/adv.png" width="271" height="335" alt="adv" />
+								</aside> -->
+								<!-- <aside class="widget wr_widget_recent_posts">
+									<h3 class="widget-title">Best seller</h3>
+									<div class="widget-post-slider navtop">
+										<div class="post-slider-wrap">
+											<div class="post-item">
+												<img src="/common/img/home/img/50x50/xs_1.png" width="50" height="50" alt="Product 1" />
+												<div class="wrp-meta">
+													<a href="shop_details_fullwidth.html">Chairs Design Decorating</a>
+													<span class="price">$124.00</span>
+												</div>
+											</div>
+											<div class="post-item">
+												<img src="/common/img/home/img/50x50/xs_2.png" width="50" height="50" alt="Product 2" />
+												<div class="wrp-meta">
+													<a href="shop_details_fullwidth.html">The Journeyman Art Kit</a>
+													<span class="price">$154.00</span>
+												</div>
+											</div>
+											<div class="post-item">
+												<img src="/common/img/home/img/50x50/xs_3.png" width="50" height="50" alt="Product 3" />
+												<div class="wrp-meta">
+													<a href="shop_details_fullwidth.html">Chairs Design Decorating</a>
+													<span class="price">$199.00</span>
+												</div>
+											</div>
+											<div class="post-item">
+												<img src="/common/img/home/img/50x50/xs_4.png" width="50" height="50" alt="Product 4" />
+												<div class="wrp-meta">
+													<a href="shop_details_fullwidth.html">Modern Footstool</a>
+													<span class="price">$75.00</span>
+												</div>
+											</div>
+											<div class="post-item">
+												<img src="/common/img/home/img/50x50/xs_5.png" width="50" height="50" alt="Product 5" />
+												<div class="wrp-meta">
+													<a href="shop_details_fullwidth.html">Commodo laoreet semper</a>
+													<span class="price">$99.00</span>
+												</div>
+											</div>
+										</div>
+										<div class="post-slider-wrap">
+											<div class="post-item">
+												<img src="/common/img/home/img/50x50/xs_6.png" width="50" height="50" alt="Product 1" />
+												<div class="wrp-meta">
+													<a href="shop_details_fullwidth.html">Chairs Design Decorating</a>
+													<span class="price">$124.00</span>
+												</div>
+											</div>
+											<div class="post-item">
+												<img src="/common/img/home/img/50x50/xs_7.png" width="50" height="50" alt="Product 2" />
+												<div class="wrp-meta">
+													<a href="shop_details_fullwidth.html">The Journeyman Art Kit</a>
+													<span class="price">$154.00</span>
+												</div>
+											</div>
+											<div class="post-item">
+												<img src="/common/img/home/img/50x50/xs_8.png" width="50" height="50" alt="Product 3" />
+												<div class="wrp-meta">
+													<a href="shop_details_fullwidth.html">Chairs Design Decorating</a>
+													<span class="price">$199.00</span>
+												</div>
+											</div>
+											<div class="post-item">
+												<img src="/common/img/home/img/50x50/xs_1.png" width="50" height="50" alt="Product 4" />
+												<div class="wrp-meta">
+													<a href="shop_details_fullwidth.html">Modern Footstool</a>
+													<span class="price">$75.00</span>
+												</div>
+											</div>
+											<div class="post-item">
+												<img src="/common/img/home/img/50x50/xs_2.png" width="50" height="50" alt="Product 5" />
+												<div class="wrp-meta">
+													<a href="shop_details_fullwidth.html">Commodo laoreet semper</a>
+													<span class="price">$99.00</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</aside> -->
+							</div><!-- .col-md-3 -->

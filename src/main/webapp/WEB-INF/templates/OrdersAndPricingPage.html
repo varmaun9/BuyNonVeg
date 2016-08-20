@@ -1,0 +1,59 @@
+
+<!doctype html>
+<html>
+
+<head th:replace="fragments/PortalHeadFragment::HeadFragment('FreshMeet','FreshMeet','FreshMeet')"></head>
+<style>
+.bg-r {
+    background-color: #353535 !important;
+    box-shadow: none;
+}
+.modal-header {
+    min-height: 16.43px;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.text-center {
+    text-align: center;
+}
+h4 {
+    font-size: 14px;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, h6 {
+   /* margin: 0 0 5px;*/
+    line-height: 1.35;
+}
+</style>
+
+	<body ng-app="HungryHomeTerminal">
+		<div th:replace="fragments/LocationFragment"></div>
+		<div class="wrapper">
+			<!-- #site-header -->
+			<header th:replace="fragments/HeaderFragment :: HeaderFragment('false')"></header>
+			<div id="site-main">
+			<div th:replace="fragments/OrderAndPricingFragment"></div>
+			
+	</div>
+	</div>
+	
+
+				
+	
+				
+
+				<hr class="container"/>
+
+				<!-- <div th:replace="fragments/OurBrandsFragment"></div> -->
+	
+			<!-- #site-main -->
+
+			<div th:replace="fragments/FooterFragment"></div>
+<!-- .wrapper -->
+		
+		<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+
+
+	</body>
+
+</html>

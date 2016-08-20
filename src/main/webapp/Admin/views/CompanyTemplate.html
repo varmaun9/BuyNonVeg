@@ -1,0 +1,94 @@
+
+
+<!-- <div class="row wrapper border-bottom white-bg page-heading"> -->
+<div class="row wrapper border-bottom white-bg" style="padding:5px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li class="active">
+        <strong>Company List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div class="row" ng-controller="CompanyController">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title" style="min-height:38px;padding:5px 0px;">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6">
+          <h4>COMPANY LIST</h4>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <div class="btn-group pull-right" style="padding-top: 4px;">
+            <a ui-sref="dashboards.companyCreateView" class="btn-fit-height grey-salt" data-close-others="true">
+            <i class="fa fa-plus"></i> COMPANY
+            </a>|
+            <a ui-sref="dashboards.companyBranchCreateView" class="btn-fit-height grey-salt" data-close-others="true">
+            <i class="fa fa-plus"></i> COMPANY BRANCH
+            </a>
+          </div>
+          <!-- <div ibox-tools></div> -->
+        </div>
+      </div>
+      <div class="ibox-content">
+        <table class="table table-striped table-bordered table-hover" id="companyTable">
+                <thead>
+                  <tr>
+                    <th>
+                      COMPANY NAME   
+                    </th>
+                    <th>
+                      COMPANY PHONEN0.
+                    </th>
+                    <th>
+                      STATUS
+                    </th>
+                    <th>
+                      
+                    </th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>
+                      COMPANY NAME   
+                    </th>
+                    <th>
+                      COMPANY PHONEN0.
+                    </th>
+                    <th>
+                      STATUS
+                    </th>
+                    <th>
+                      
+                    </th>
+                  </tr>
+                </tfoot>
+                <!-- <tbody>
+                  <tr ng-repeat="Subcategory in catagories.entities">
+                    <td>
+                      {{Subcategory['properties'].SubcategoryCode}}
+                    </td>
+                    <td>
+                      {{Subcategory['properties'].SubcategoryName}}
+                    </td>
+                    <td>
+                      {{Subcategory['properties'].createdDate}}
+                    </td>
+                    <td>
+                      {{Subcategory['properties'].description}}
+                    </td>
+                    <td>
+                      {{Subcategory['properties'].status}}
+                    </td>
+                    <td><a href="#/SubCategory/{{Subcategory['properties'].SubcategoryName}}/{{Subcategory['properties'].id}}">View</a></td>
+                  </tr>
+                </tbody> -->
+              </table>
+      </div>
+    </div>
+  </div>
+</div>

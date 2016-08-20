@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+	<div style="margin:0px;padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#f3f3f3">
+<tbody><tr>
+   <td height="42"></td>
+</tr>
+<tr><td>
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" bgcolor="#ffffff">
+   <tbody><tr>
+      <td colspan="3" bgcolor="#d6d6d6" height="1" style="line-height:1px"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#d6d6d6" width="1"></td>
+    <td>
+      <table cellpadding="0" cellspacing="0" border="0" align="center" width="598">
+         <tbody>
+            <tr style="background: rgba(0, 0, 0, 0.79) ;">
+               <td><img src="meat_logo1.png" alt="Buynonveg" style="margin-left:90px;"/></td>
+                <td style="text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-size:20px;padding-left:198px;font-weight:bold;color:#6ac451"><img src="mobile-icon.png"width="40px;" /><p style="color:#fff;font-size:10px;">Download Mobile App</p></td>
+            </tr>
+            <tr>
+                <td colspan="4" bgcolor="#d6d6d6" height="1" style="line-height:1px"></td>
+            </tr>
+            <tr>
+                <td colspan="4" bgcolor="#ffffff" height="1" style="line-height:1px"></td>
+            </tr>
+            
+            <tr>
+               
+               <td colspan="4" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#666666; border-bottom:1px solid #eee; ">
+                 <table width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;border-left:solid 0px #e6e6e6;border-right:solid 0px #e6e6e6;text-align:center;"> <tbody><tr> <td align="left" valign="top" style="color:#2c2c2c;display:block;font-weight:300;margin:0 auto;clear:both;border-bottom:0px solid #e6e6e6;padding:10px" > <table style="width:100%;border-collapse:collapse"> 
+       <tbody>
+         
+            <tr> 
+             <td colspan="3" style="text-align:left;padding:7px 0 5px 0;vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> <h3 style="font-size:20px;line-height:24px;margin:0;padding:0;font-weight:normal;color:rgb(0,0,0)!important">Order Placed</h3> Order #<a href="" style="text-decoration:none;color:rgb(0,102,153);font:12px/16px Arial,sans-serif" target="_blank" th:text="${orders.orderCode}"></a> <br/> </td> 
+            </tr> 
+           </tbody>
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> 
+          <table style="width:100%;border-collapse:collapse "> 
+           <tbody>
+            <tr> 
+             <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif;"> <h3 style="font-size:18px;color:#008600;margin:7px 0 0 0;font-weight:normal" th:inline="text">Hello [[${users.userName}]],</h3> <p style="margin:0 0 7px 0;font:12px/16px Arial,sans-serif;margin-bottom:20px;"> Thank you for your order. We'll send a confirmation when your order ships. </p></td> 
+            </tr>
+            <tr> 
+             <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> </td> 
+            </tr> 
+           </tbody>
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> 
+          <table style="border-collapse:collapse"> 
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> 
+          <table style="width:100%;border-top:1px solid rgba(45,55,65,0.3);border-collapse:collapse"> 
+           <tbody>
+            <tr> 
+             <td style="font-size:14px;padding:11px 18px 18px 18px;width:50%;vertical-align:top;line-height:18px;font-family:Arial,sans-serif;background-color:#f9f9f9"> <p style="margin:2px 0 9px 0;font:14px Arial,sans-serif"> <span style="font-size:14px;color:rgb(102,102,102)">Arriving:</span><br/> <b style="color:#009900"> Soon<!-- Tuesday, November 03, 2015 --></b> </p> <p style="margin:2px 0 9px 0;font:14px Arial,sans-serif"> <span style="font-size:14px;color:rgb(122,122,122)">Your shipping speed:</span> <br/> <b> Free Delivery on eligible orders </b> </p> <a href="" style="font-size:11px;color:rgb(102,102,102);text-decoration:underline;font:12px/16px Arial,sans-serif" target="_blank"> <img alt="Your Orders" border="0" src="https://ci5.googleusercontent.com/proxy/KfTShBMmiT22TA_5FwDnQfqjVK9vJHwVH5sEz8IuY-ND--GTuMuGTf8r3weEOwkv4QUdHPOVx1QarN7kzslJ-r43eUvxR3sPB_E7fxt12pgKLdu5uKjzbXI5w0TGITTVQfK6Xg=s0-d-e1-ft#http://g-ecx.images-amazon.com/images/G/01/e-mail/img14/buttons/cta_manage.png" style="border:0" class="CToWUd" /> </a> </td> 
+             <td style="font-size:14px;padding:11px 18px 18px 18px;width:50%;vertical-align:top;line-height:18px;font-family:Arial,sans-serif;background-color:#f9f9f9"> <p style="margin:2px 0 9px 0;font:14px Arial,sans-serif"> <span style="font-size:14px;color:rgb(102,102,102)" th:if="${shippingAddress}" >Your order will be sent to:</span> <br/> <b th:inline="text"> [[${shippingAddress.address.contactPerson}]] <br/>[[${shippingAddress.address.line1}]], [[${shippingAddress.address.town}]] <br/> [[${shippingAddress.address.city}]] , [[${shippingAddress.address.district}]] <br/>[[${shippingAddress.address.state}]], [[${shippingAddress.address.zipcode}]] [[${shippingAddress.address.country}]] <br/> India </b> </p> </td> 
+            </tr> 
+           </tbody>
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> </td> 
+        </tr> 
+        <tr> 
+         <td style="border-bottom:1px solid rgb(204,204,204);vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> <h3 style="font-size:18px;color:#008600;margin:10px 0 10px 0;font-weight:normal">Order Details</h3> </td> 
+        </tr> 
+        <tr> 
+         <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> 
+          <table style="width:100%;border-collapse:collapse;margin-top:5px;"> 
+           <tbody>
+            <tr> 
+             <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif; "> Order #<a href="" style="text-decoration:none;color:rgb(0,102,153);font:12px/16px Arial,sans-serif" target="_blank" th:text="${orders.orderCode}">402-0157830-9933171</a> <br/> <span style="font-size:12px;color:rgb(102,102,102)">Placed on Tuesday, November 28, 2016</span> </td> 
+            </tr> 
+           </tbody>
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td style="padding-left:32px;vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif;"> 
+          <table style="width:95%;border-collapse:collapse;margin-bottom:5px;" th:each="orderItem:${orders.orderItems}"> 
+           <tbody>
+            <tr> 
+             <td style="width:150px;text-align:center;padding:16px 0 0px 0;vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif;"> <a href="" title="B0157VJNMC" style="text-decoration:none;color:rgb(0,102,153);font:12px/16px Arial,sans-serif" target="_blank"> <img src="item.jpg" style="border:0" class="CToWUd"/> </a> </td> 
+             <td style="color:rgb(102,102,102);padding:10px 0 0 0;vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> <a href="" style="text-decoration:none;color:rgb(0,102,153);font:12px/16px Arial,sans-serif" target="_blank" th:text="${orderItem.sellerItem.sellerItemName}"> Asus Flip Cover for Asus Zenfone 2 Laser ZE550KL </a>  <a href="" style="text-decoration:none;color:rgb(0,102,153);font:12px/16px Arial,sans-serif" target="_blank" th:text="${orderItem.sellerItem.sellerBranch.seller.sellerName}">Cloudtail</a> <br/> 
+              </td> 
+             <td style="width:110px;text-align:right;font-size:14px;padding:10px 10px 0 0;vertical-align:top;line-height:18px;font-family:Arial,sans-serif"> <strong th:inline="text">Rs.[[${orderItem.orderItemTotalPrice+orderItem.taxValue}]]</strong> <br/> </td> 
+            </tr> 
+           </tbody>
+          </table> 
+          
+          </td> 
+        </tr> 
+        <tr> 
+         <td style="padding-left:32px;vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> 
+          <table style="width:95%;border-collapse:collapse"> 
+           <tbody>
+            <tr> 
+             <td colspan="2" style="border-top:1px solid rgb(234,234,234);padding:0 0 16px 0;text-align:right;line-height:18px;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> </td> 
+            </tr> 
+            <tr> 
+             <td style="text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> Item Subtotal: </td> 
+             <td style="width:120px;text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> Rs.1203.00 </td> 
+            </tr> 
+            <tr> 
+             <td style="text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> Shipping &amp; Handling: </td> 
+             <td style="width:120px;text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> Rs.0.00 </td> 
+            </tr> 
+            <tr> 
+             <td style="text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> Promotion Applied: </td> 
+             <td style="width:120px;text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> -Rs.612.00 </td> 
+            </tr> 
+            <tr> 
+             <td colspan="2" style="text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> <p style="margin:0 0 8px 0;font:12px/16px Arial,sans-serif"></p> </td> 
+            </tr> 
+            <tr> 
+             <td style="text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> Total Before Tax: </td> 
+             <td style="width:120px;text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> Rs.591.00 </td> 
+            </tr> 
+            <tr> 
+             <td style="text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> Estimated Tax: </td> 
+             <td style="width:120px;text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> Rs.0.00 </td> 
+            </tr> 
+            <tr> 
+             <td colspan="2" style="text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> <p style="margin:0 0 8px 0;font:12px/16px Arial,sans-serif"></p> </td> 
+            </tr> 
+            <tr> 
+             <td colspan="2" style="text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> <p style="margin:0 0 8px 0;font:12px/16px Arial,sans-serif"></p> </td> 
+            </tr> 
+            <tr> 
+             <td style="font-size:14px;font-weight:bold;font:12px/16px Arial,sans-serif;text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-family:Arial,sans-serif"> <strong>Order Total:</strong> </td> 
+             <td style="font-size:14px;font-weight:bold;font:12px/16px Arial,sans-serif;text-align:right;line-height:18px;padding:0 10px 0 0;vertical-align:top;font-family:Arial,sans-serif"> <strong>Rs.591.00</strong> </td> 
+            </tr> 
+            <tr> 
+             <td colspan="2" style="padding:0 0 16px 0;text-align:right;line-height:18px;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> </td> 
+            </tr> 
+            <tr> 
+             <td colspan="2" style="border-top:1px solid rgb(234,234,234);padding:0 0 16px 0;text-align:right;line-height:18px;vertical-align:top;font-size:13px;font-family:Arial,sans-serif"> </td> 
+            </tr> 
+           </tbody>
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> </td> 
+        </tr> 
+        <tr> 
+         <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> 
+          <table style="width:100%;margin:20px 0 0 0;border-collapse:collapse"> 
+           <tbody>
+            <tr> 
+             <td style="vertical-align:top;font-size:13px;line-height:18px;font-family:Arial,sans-serif"> <p style="font-size:10px;color:rgb(102,102,102);line-height:16px;margin:0 0 10px 0;font:10px"> This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message. </p> </td> 
+            </tr> 
+            <tr>  
+            </tr> 
+           </tbody>
+          </table>
+          </td> 
+        </tr> 
+       </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+                  <td  colspan="4">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;border-left:solid 0px #e6e6e6;border-right:solid 0px #e6e6e6"> 
+                      <tbody>
+                        <tr> 
+                          <td valign="top" align="center" width="300" style="background-color:#f9f9f9;"> <br/> 
+                            <table width="100%" cellspacing="0" cellpadding="0"> 
+                              <tbody>
+                                <tr> 
+                                  <td valign="top" align="left" style="padding:0 10px 15px 20px;margin:0;border-right:dashed 1px #b3b3b3"> <p style="padding:0;margin:0 0 7px 0;font-size:16px;color:#565656">What Next?</p> <p style="padding:0;margin:0;font-size:11px;color:#565656;line-height:20px; ">Enjoy your shopping! Visit the <a style="text-decoration:underline" href="" target="_blank"><span style="color:#666;font-size:11px">My Orders</span></a> page to see your orders</p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                          <td valign="top" align="center" width="300" style="background-color:#f9f9f9;"> <br/> 
+                            <table width="100%" cellspacing="0" cellpadding="0">
+                              <tbody>
+                                <tr>
+                                  <td valign="top" align="left" style="padding:0 10px 15px 20px;margin:0"> <p style="padding:0;margin:0 0 7px 0;font-size:16px;color:#565656">Any Questions?</p> <p style="padding:0;margin:0;font-size:11px;color:#565656;line-height:20px">Get in touch with our 24x7<a style="text-decoration:underline" href=""><span style="color:#666;font-size:11px">Customer Care</span></a>team.</p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                   </td>
+                </tr>
+                <tr>
+                   <td colspan="4" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#000;line-height:24px">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;border:solid 0px #e6e6e6;border-top:none">
+                      <tbody> 
+                        <tr> 
+                          <td valign="top" align="center" style="text-align:center;background-color:#f9f9f9;display:block;margin:0 auto;clear:both;padding:15px 40px" bgcolor="#F9F9F9"> <p style="padding:0;margin:0 0 7px 0"><a title="Flipkart.com" style="text-decoration:none;color:#565656" href="" target="_blank"><span style="color:#565656;font-size:13px">Buynonveg.com</span></a></p><p style="padding:10px 0 0 0;margin:0;border-top:solid 1px #cccccc;font-size:11px;color:#565656">24x7 Customer Support&nbsp; | &nbsp;Buyer Protection&nbsp; | &nbsp;Flexible Payment Options&nbsp; | &nbsp;Largest Collection</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+            <tr>
+                <td colspan="4" bgcolor="#d6d6d6" height="1" style="line-height:1px"></td>
+            </tr>
+            <tr>
+               <td height="10" colspan="4" style="background: rgba(0, 0, 0, 0.79) ;"></td>
+            </tr>
+               
+            <tr>
+              <td colspan="6" style="background: rgba(0, 0, 0, 0.79) ;">
+                  <table>
+                     <tbody>
+                      <tr style="height: 70px;">
+                        <td style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#666666;line-height:32px;background: rgba(0, 0, 0, 0.79) ;">For any issues at all, please reach us at <a style="text-decoration:none;color:#c56100" href="mailto:support@paymoney.com" target="_blank">Customercare@Buynonveg.com </a>
+                        </td>
+                        <td>
+                          <a href="" target="_blank"><img style="position: relative;width: 35px;" src="https://ci3.googleusercontent.com/proxy/Xg8DsCa_q2NL1n0hfL46Bpvl3-HZv1Gba3nGggTmAEjzvFGr7OFYf0Wg0PG3wHtota08wn54CCRht36fB7FG3yqmmiWeGMl7e4Xn=s0-d-e1-ft#https://www.payumoney.com/media/images//face_book.jpg" alt="facebook"/></a>
+                        </td>
+                        <td>
+                          <a href="" target="_blank"><img style="position: relative;width: 35px;" src="https://ci4.googleusercontent.com/proxy/Meh7b6MdigT178ENsGJQmFaTc2r8xjg5uiw931s7Q3iozME-_ib2W37YYsPCUixhvaJSRFcLaKPIMSw2eYlzSD3cZtOXeAl4=s0-d-e1-ft#https://www.payumoney.com/media/images//twiter.jpg" alt="twitter"/></a></td>
+                        <td>
+                          <a href="" target="_blank"><img style="position: relative;width: 35px;" src="https://ci5.googleusercontent.com/proxy/vfSBTQsQv4UGhxPascYspEWSLw2mCL7acf1QdAeQnFaNIZwz3oCL7ddns-mbCQdGUnzhhUuO1snOkIcXpsUE6zUsCWg=s0-d-e1-ft#https://www.payumoney.com/media/images//in.jpg" alt="linkedin"/></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+            </tr>
+            
+            <tr>
+               <td height="10" colspan="4" style="background: rgba(0, 0, 0, 0.79) ;"></td>
+            </tr>
+            
+        </tbody></table>
+    </td>
+    <td bgcolor="#d6d6d6" width="1"></td>
+    </tr>
+    <tr>
+    <td colspan="3" bgcolor="#d6d6d6" height="1" style="line-height:1px"></td>
+    </tr>
+</tbody></table>
+</td></tr>
+<tr>
+   <td height="42"></td>
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

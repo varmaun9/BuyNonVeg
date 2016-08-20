@@ -1,0 +1,72 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="Tags.CutTypeTemplate">CutType List</a>
+      </li>
+      <li class="active">
+        <strong>Single CutType View</strong>
+      </li>
+    </ol>
+  </div>			
+  <div class="col-lg-2"></div>
+</div>
+<div ng-controller="SingleCutTypeController">
+	<div class="col-lg-12">
+		<div class="tabs-container">
+			<div class="tabs-right">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" data-target="#tab-1"> CutType INFO</a></li>
+				</ul>
+				<div class="tab-content ">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">CutType INFO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="AttributeForm" >
+								<div class="form-group" style="height:30px;">
+									<label class="control-label col-md-4">CutType Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{cutTypeDetails['properties'].cutTypeName}}</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Status</label>
+									<div class="col-sm-8">
+										<div class="form-control-static">{{cutTypeDetails['properties'].status}}</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Description</label>
+									<div class="col-sm-8">
+										<div class="form-control-static">{{cutTypeDetails['properties'].description}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="CutTypeEdit(cutTypeDetails['properties'])" class="btn btn-outline btn-primary">
+											EDIT
+										</a>
+										<a ui-sref="Tags.CutTypeTemplate" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+</style>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	
+<head th:replace="fragments/PortalHeadFragment::HeadFragment(${item.seo.seoTitle},${item.seo.seoKeywords},${item.seo.seoMetaDescription})"></head>
+	<body ng-app="HungryHomeTerminal">
+	<div th:replace="fragments/LocationFragment"></div>
+		<div class="wrapper">
+					<header th:replace="fragments/HeaderFragment :: HeaderFragment('false')"></header>
+
+			<div id="site-main">
+			
+
+				<div class="shop-details" ng-controller="SingleItemController">
+					<div class="container">
+						<div th:replace="fragments/SingleItemPropertiesFragment"></div>
+						<div class="row">
+							<div class="col-md-12">
+								
+								<div th:replace="fragments/SinglePageRelatedItemsListFragment"></div>
+								<!-- <div th:replace="fragments/SinglePageRecentItemsListFragment"></div> -->
+							</div><!-- .col-md-12 -->
+						</div><!-- .row -->
+					</div><!-- .container -->
+				</div><!-- .shop-cart -->
+
+			</div><!-- #site-main -->
+<div th:replace="fragments/FooterFragment"></div>			
+		</div><!-- .wrapper -->
+	
+
+			<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+
+	</body>
+
+
+</html>

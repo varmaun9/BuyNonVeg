@@ -1,0 +1,22 @@
+
+<div class="col-md-3 col-sm-12 col-xs-12" ng-controller="FilterController">
+
+
+
+		<aside class="widget wr_widget_recent_posts">
+									<h3 class="widget-title">Types</h3>
+									<div class="widget-post-slider navtop">
+										<div class="post-slider-wrap">
+											<div class="post-item" th:each="subCategory:${subCategories}">
+												<img th:src="${#lists.toList(subCategory.subCategoryImageses)[0].imageLocation}" th:href="${'/items/category/'+subCategory.category.categoryName+'/a?id='+subCategory.category.id+'&amp;scid='+subCategory.id}" width="50" height="50" alt="Product 1" />
+												<div class="wrp-meta">
+													<a th:href="${'/items/category/'+subCategory.category.categoryName+'/a?id='+subCategory.category.id+'&amp;scid='+subCategory.id}" th:text="${subCategory.subCategoryName}"></a>
+													<!-- <span class="price">$124.00</span> -->
+												</div>
+											
+											
+										</div>
+								</div>
+									</div>
+								</aside>
+							</div>

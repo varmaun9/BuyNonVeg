@@ -1,0 +1,671 @@
+<div class=""  ng-controller="restaurantOrdersCtrl">
+	<div class="row" role="navigation">
+		<!-- <ul class="nav navbar-nav" style="margin-left:200px;background:#66C1AF;width:48%;"> -->
+		<ul class="nav navbar-nav" style="margin-left:200px;background:#FFF;width:48%;">
+			<li class="uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" style="padding: 7px;" >
+				<!-- <button class="btn btn-info dim btn-xs" type="button">TODAY</button> | <button class="btn btn-info dim btn-xs" type="button">TOMORROW</button> -->
+				<label class="btn btn-primary btn-xs" ng-model="main.radioModel" btn-radio="'TODAY'" ng-click="today()">TODAY</label> | 
+				<label class="btn btn-primary btn-xs" ng-model="main.radioModel" btn-radio="'TOMORROW'" ng-click="tomorrow()">TOMORROW</label>
+			</li>
+			<li class="uppercase col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
+				<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 no-padding">
+					<input type="datetime" class="form-control" date-time ng-model="main.currentDate" min-view="date"  auto-close="true" format="dd/MM/yyyy" placeholder="DATE.." required />
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 no-padding">
+					<button class="btn btn-primary no-padding" type="button" ng-click="dateChange(main.currentDate)" style="line-height:2.4;margin-left:-17px"><i class="fa fa-check"></i></button>
+				</div>
+			</li>
+			<li class="main_change uppercase col-lg-2 col-md-2 col-sm-2 col-xs-2" >
+				<a ng-click="timingName('Td1')"> <small class="nav-label">LUNCH</small></a>
+			</li> 
+			<li class="main_change uppercase col-lg-2 col-md-2 col-sm-2 col-xs-2" >
+				<a ng-click="timingName('Td2')"> <small class="nav-label">SNACKS</small></a>
+			</li> 
+			<li class="main_change uppercase col-lg-2 col-md-2 col-sm-2 col-xs-2" >
+				<a ng-click="timingName('Td3')"> <small class="nav-label">DINNER</small></a>
+			</li> 
+			<li class="main_change uppercase col-lg-1 col-md-1 col-sm-1 col-xs-1" >
+				<a ng-click="timingName('ALL')"> <small class="nav-label" >ALL</small></a>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav h_change" style="float:right;margin-right:30px;background:#fff;border-radius: 5px 20px 5px;">
+			<!-- <li class="main_change uppercase col-lg-1 col-md-3 col-sm-3 col-xs-3 text-center" >
+				<a ui-sref="dashboards.orders"> <small class="nav-label m-l-n-sm">ALL</small></a>
+			</li> -->
+			<li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+				<a ui-sref="dashboards.orders"> <small class="nav-label">Pending</small></a>
+			</li>
+			<li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" ui-sref-active="active">
+				<a ui-sref="dashboards.confirmedOrders"> <small class="nav-label">Confirmed</small></a>
+			</li>
+			<li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+				<a ui-sref="dashboards.deliveredOrders"> <small class="nav-label">Delivered</small></a>
+			</li> 
+			<li class="main_change uppercase col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+				<a ui-sref="dashboards.cancelledOrders"> <small class="nav-label">Cancelled</small></a>
+			</li>
+		</ul>
+	</div>
+
+<div class="col-lg-12 m-t-sm no-padding">
+  <div class="col-lg-4">
+  	<div class="ibox">
+			<div class="ibox-content text-center">
+				<h3>SUBORDERS LIST</h3>
+			</div>
+			<ul class="agile-list" full-scroll style="margin-left:-35px;">
+				<li ng-repeat="order in orderData" class="" ng-class="{'danger-element':order['properties'].timingName=='SNACKS', 'warning-element':order['properties'].timingName=='DINNER', 'info-element':order['properties'].timingName=='LUNCH'}" ng-click="subOrder(order.entities,order['properties'].startTimeInterval,order['properties'].endTimeInterval,order['properties'].taxValue,order['properties'].discount,order['properties'].subOrderTotalPrice)" style="padding: 8px;">{{order['properties'].subOrderCode}}    {{order['properties'].subOrderTotalPrice}}
+					<div class="agile-detail">
+						<i class="fa fa-clock-o"></i> {{order['properties'].startTimeInterval}} - {{order['properties'].endTimeInterval}} &nbsp;&nbsp;&nbsp; <span class="font-bold" ng-class="{'text-danger':order['properties'].timingName=='SNACKS', 'text-warning':order['properties'].timingName=='DINNER', 'text-info':order['properties'].timingName=='LUNCH'}">{{order['properties'].timingName}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+  <div class="row col-lg-8" >
+            <div class="ibox-content p-xl">
+            	<div class="row p-xs border-bottom">
+	                <span class="text-left">
+	                    <button class="btn btn-danger"><i class="fa fa-dollar"></i> Cancel Order</button>
+	                </span>
+	                <span class="pull-right">
+	                    <button class="btn btn-primary"><i class="fa fa-dollar"></i> Confirm Order</button>
+	                </span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5>From:</h5>
+                        <address>
+                            <strong>Inspinia, Inc.</strong><br>
+                            104 Jorg Avenu, 400/10<br>
+                            Chicago, VT 32454<br>
+                            <abbr title="Phone">P:</abbr> (123) 401-4590
+                        </address>
+                    </div>
+                    <!-- <div class="col-sm-4 text-center">
+                        <h4>Sankar</h4>
+                        <h4 class="text-navy">9912211004</h4>
+                    </div> -->
+                    <div class="col-sm-6 text-right">
+                        <h4>Invoice No.</h4>
+                        <h4 class="text-navy">INV-000567F7-00</h4>
+                        <span>To:</span>
+                        <address>
+                            <strong>Corporate, Inc.</strong><br>
+                            112 Street Avenu, 1080<br>
+                            Miami, CT 445611<br>
+                            <abbr title="Phone">P:</abbr> (120) 9000-4321
+                        </address>
+                        <p>
+                            <!-- <span><strong>Invoice Date:</strong> Marh 18, 2014</span><br/> -->
+                          <span><strong style="font-style:italic;">Delivery Time:</strong> {{orderDeliveryTime}}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="table-responsive m-t">
+                    <table class="table invoice-table">
+                        <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Unit</th>
+                            <th>Unit Price</th>
+                            <th>Tax</th>
+                            <th>Total Price</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="suborderItem in  subOrderItemsData" ng-if="suborderItem['class']=='orderItem'">
+                            <td style="font-style:italic;">{{suborderItem['properties'].itemName}}</td>
+                            <td>{{suborderItem['properties'].units}}</td>
+                            <td>{{suborderItem['properties'].price}}</td>
+                            <td>{{suborderItem['properties'].taxValue}}%</td>
+                            <td>{{suborderItem['properties'].orderItemTotalPrice}}</td>
+                            <td><button type="button" class="btn btn-primary btn-xs dropdown-toggle" ng-click="replaceOrderItem(suborderItem['properties'].id)">Replace</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /table-responsive -->
+
+                <table class="table invoice-total">
+                    <tbody>
+                    <tr>
+                        <td><strong>DISCOUNT :</strong></td>
+                        <td><i class="fa fa-inr"></i> {{finalDiscount}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TAX :</strong></td>
+                        <td>{{finalTax}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TOTAL :</strong></td>
+                        <td><i class="fa fa-inr"></i> {{finalPrice}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                
+
+                <!-- <div class="well m-t"><strong>Comments</strong>
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less
+                </div> -->
+            </div>
+  <!-- <div class="row col-lg-10" ng-controller="restaurantOrdersCtrl"> -->
+	<!-- <div class="col-lg-2">
+	  <div class="ibox float-e-margins">
+		<div class="ibox-content">
+		  <div class="file-manager">
+			<h3 class="b-b">ORDERS</h3>
+			
+			<div class="clearfix"></div>
+		  </div>
+		</div>
+	  </div>
+	</div> -->
+	<!-- <div  masonry="{ gutter: 20 }" load-images="false" preserve-order column-width="60" reload-on-resize>
+	  
+
+	<div class="masonry-brick unread col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="order in orderData" ng-if="order.itemStatus == 'OrderPlaced' ">
+		<div class="ibox">
+			<div class="ibox-content product-box">
+
+				<div class="product-imitation" style="text-align: start !important;font-size:small;padding-left: 10px;">
+					{{order.subOrderCode}}
+				</div>
+				<div class="product-desc">
+				  <span class="product-price">
+					  {{order.deliveryTime}}
+				  </span>
+				  <div class="row">                                
+					  <small class="text-muted col-md-8 col-sm-8 col-xs-8">Item Name</small>
+					  <small class="text-muted col-md-4 col-sm-4 col-xs-4">Units</small>
+					   <small class="text-muted col-md-4">Units</small> 
+				  </div>
+					<div class="row" ng-repeat="orderItem in order.items">
+					  <a href="#" class="product-name col-md-8 col-sm-8 col-xs-8">{{orderItem.itemName}}</a>
+					  <a href="#" class="product-name col-md-4 col-sm-4 col-xs-4 text-center"> {{orderItem.unit}}</a>
+					</div>
+					<div class="col-lg-12" style="padding:0;">
+						<a href="#" class="text-left col-lg-6 col-md-6 col-sm-6 col-xs-6 btn btn-xs btn-primary" ng-click="confirmOrder(order.items)">CONFIRM</a>
+						
+						<a href="" ng-if="order.items.length <= 3" class="text-right col-lg-6 col-md-6 col-sm-6 col-xs-6" ng-click="openModal(order)">MORE ITEMS...</a>
+						<a href="" ng-if="order.items.length >= 4" class="text-right col-lg-6 col-md-6 col-sm-6 col-xs-6" ng-click="openModal(order)">MORE INFO...</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </div> -->
+ <!-- <a href="#" ng-if="order.items.length < 3" class="text-right col-lg-6 menu-toggle" ng-click="itemsData(order)" ng-click="openModal()">MORE ITEMS...</a> -->
+	<!-- <div class="col-md-3">
+		<div class="ibox">
+			<div class="ibox-content product-box">
+
+				<div class="product-imitation">
+					[ INFO ]
+				</div>
+				<div class="product-desc">
+							<span class="product-price">
+								$10
+							</span>
+					<small class="text-muted">Category</small>
+					<a href="#" class="product-name"> Product</a>
+
+
+
+					<div class="small m-t-xs">
+						Many desktop publishing packages and web page editors now.
+					</div>
+					<div class="m-t text-righ">
+
+						<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="ibox">
+			<div class="ibox-content product-box">
+
+				<div class="product-imitation">
+					[ INFO ]
+				</div>
+				<div class="product-desc">
+							<span class="product-price">
+								$10
+							</span>
+					<small class="text-muted">Category</small>
+					<a href="#" class="product-name"> Product</a>
+
+
+
+					<div class="small m-t-xs">
+						Many desktop publishing packages and web page editors now.
+					</div>
+					<div class="m-t text-righ">
+
+						<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<!-- <div class="col-lg-9 animated fadeInRight">
+	  <div class="mail-box">
+		<tabset>
+		  <tab>
+			<tab-heading>
+			  LUNCH
+			  <span class="label label-warning">1</span>
+			</tab-heading>
+			<div class="panel-body">
+				<table class="table table-hover table-mail" style="margin-bottom:0px;" ng-controller="restaurantOrdersCtrl">
+				  <thead>
+						<tr>
+							<th>Name</th>
+							<th>Order Name</th>
+							<th>Ordered Time</th>
+							<th>Delivery Time</th>
+							<th>Address</th>
+							<th></th>
+							<th></th>
+						</tr>
+						</thead>
+				  <tbody>
+					<tr class="unread" ng-repeat="person in persons" >
+						 <td class="check-mail">
+							<input icheck type="checkbox" ng-model="checkOne">
+						</td>                       
+						<td class="mail-ontact"><a ui-sref="email_view">{{person.firstName}}</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">Lorem ipsum dolor noretek imit set.</a></td>
+						<td class=""><a>{{person.time}}</a></td>
+						<td class="mail-date">{{person.time}} AM</td>
+						<td class="mail-date">{{person.address}}</td>
+						<td class="text-right mail-date"><button class="btn btn-info btn-circle" type="button" ng-click="success(order)"><i class="fa fa-check"></i></button></td>
+						<td class="text-right mail-date"><a ui-sref="mailbox.singleOrder({name:person.firstName,id:123})" class="btn btn-primary btn-rounded btn-outline">View</a></td>
+					</tr>
+				  </tbody>
+				</table>
+			  </div>
+			</tab>
+			<tab>
+			  <tab-heading>
+				  SNACK
+			  </tab-heading>
+			  <div class="panel-body">
+				<table class="table table-hover table-mail">
+				  <tbody>
+					<tr class="unread">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="checkOne">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Anna Smith</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">Lorem ipsum dolor noretek imit set.</a></td>
+						<td class=""> <i class="fa fa-paperclip"></i> </td>
+						<td class="text-right mail-date">6.10 AM</td>
+					</tr>
+					<tr class="unread">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="checkTwo">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Jack Nowak</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">Aldus PageMaker including versions of Lorem Ipsum.</a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">8.22 PM</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check3">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Facebook</a>  <span class="label label-warning pull-right">Clients</span> </td>
+						<td class="mail-subject"><a ui-sref="email_view">Many desktop publishing packages and web page editors.</a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">Jan 16</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check4">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Mailchip</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">There are many variations of passages of Lorem Ipsum.</a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">Mar 22</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check5">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Alex T.</a> <span class="label label-danger pull-right">Documents</span></td>
+						<td class="mail-subject"><a ui-sref="email_view">Lorem ipsum dolor noretek imit set.</a></td>
+						<td class=""> <i class="fa fa-paperclip"></i></td>
+						<td class="text-right mail-date">December 22</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check6">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Monica Ryther</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">The standard chunk of Lorem Ipsum used.</a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">Jun 12</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check7">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Sandra Derick</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">Contrary to popular belief.</a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">May 28</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check8">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Patrick Pertners</a>  <span class="label label-info pull-right">Adv</span></td>
+						<td class="mail-subject"><a ui-sref="email_view">If you are going to use a passage of Lorem </a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">May 28</td>
+					</tr>
+				  </tbody>
+				</table>
+			  </div>
+			</tab>
+			<tab>
+			  <tab-heading>
+				DINNER
+			  </tab-heading>
+			  <div class="panel-body">
+				<table class="table table-hover table-mail">
+				  <tbody>
+					<tr class="unread">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="checkOne">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Anna Smith</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">Lorem ipsum dolor noretek imit set.</a></td>
+						<td class=""> <i class="fa fa-paperclip"></i> </td>
+						<td class="text-right mail-date">6.10 AM</td>
+					</tr>
+					<tr class="unread">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="checkTwo">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Jack Nowak</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">Aldus PageMaker including versions of Lorem Ipsum.</a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">8.22 PM</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check3">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Facebook</a>  <span class="label label-warning pull-right">Clients</span></td>
+						<td class="mail-subject"><a ui-sref="email_view">Many desktop publishing packages and web page editors.</a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">Jan 16</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check4">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Mailchip</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">There are many variations of passages of Lorem Ipsum.</a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">Mar 22</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check5">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Alex T.</a>  <span class="label label-danger pull-right">Documents</span> </td>
+						<td class="mail-subject"><a ui-sref="email_view">Lorem ipsum dolor noretek imit set.</a></td>
+						<td class=""> <i class="fa fa-paperclip"></i> </td>
+						<td class="text-right mail-date">December 22</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check6">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Monica Ryther</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">The standard chunk of Lorem Ipsum used.</a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">Jun 12</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check7">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Sandra Derick</a></td>
+						<td class="mail-subject"><a ui-sref="email_view">Contrary to popular belief.</a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">May 28</td>
+					</tr>
+					<tr class="read">
+						<td class="check-mail">
+							<input icheck type="checkbox" ng-model="check8">
+						</td>
+						<td class="mail-ontact"><a ui-sref="email_view">Patrick Pertners</a>  <span class="label label-info pull-right">Adv</span> </td>
+						<td class="mail-subject"><a ui-sref="email_view">If you are going to use a passage of Lorem </a></td>
+						<td class=""></td>
+						<td class="text-right mail-date">May 28</td>
+					</tr>
+				</tbody>
+			  </table>
+			</div>
+		  </tab>
+		</tabset>
+	  </div>
+	</div> -->
+  </div>
+</div></div>
+
+<style>
+.category-list li{
+	border-bottom: 1px solid #e7eaec;
+}
+.order_table li{
+	padding:5px;
+	display: inline-block;
+}
+.success_li{
+	border-left: 1px solid #f8ac59 !important;
+	border-right: 1px solid #1ab394 !important;
+	border-top: 1px solid #f8ac59 !important;
+	border-bottom: 1px solid #1ab394 !important;
+}
+.order_table{
+	background: #FAFAFB;
+	border: 1px solid #e7eaec;
+	margin: -20px 0 10px -20px;
+	padding: 10px;
+	border-radius: 2px;
+	float: right;
+}
+.product-imitation{
+	padding:10px 0;
+	font-weight: bold;
+	color: #000;
+}
+.ibox-content{
+	padding: 10px 10px 10px 10px;
+}
+.b-b{
+	border-bottom: 1px dotted #000000;
+}
+.product-desc{
+	padding: 10px 5px 25px 5px;
+}
+.product-name{
+	font-size: 14px;
+}
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
+#page-wrapper {
+	padding-left: 0;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+#page-wrapper.toggled {
+	padding-left: 250px;
+}
+
+#sidebar-wrapper {
+	z-index: 1000;
+	position: fixed;
+	left: 250px;
+	width: 0;
+	top: 88px;
+	height: 100%;
+	margin-left: -250px;
+	overflow-y: auto;
+	background: #000;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+#page-wrapper.toggled #sidebar-wrapper {
+	width: 250px;
+}
+
+#page-content-wrapper {
+	width: 100%;
+	position: absolute;
+	padding: 15px;
+}
+
+#page-wrapper.toggled #page-content-wrapper {
+	position: absolute;
+	margin-right: -250px;
+}
+
+.main_change a {
+	 padding: 7px 20px !important;
+	 color: #6A8E87 !important;
+}
+.main_change a:hover {
+	 /*padding: 10px 20px !important; 66C1AF*/
+	 /*background: #fff !important;*/
+	 background: #66C1AF !important;
+	 /*color: #6A8E87 !important;*/
+	 color: #FFF !important;
+}
+.main_change{
+	padding: 0px;
+	cursor: pointer;
+}
+/* Sidebar Styles */
+
+.sidebar-nav {
+	position: absolute;
+	top: 0;
+	width: 250px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sidebar-nav li {
+	text-indent: 10px;
+	line-height: 40px;
+}
+
+.sidebar-nav li a {
+	display: inline-block;
+	text-decoration: none;
+	color: #999999;
+}
+
+.sidebar-nav li a:hover {
+	text-decoration: none;
+	color: #fff;
+	background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+	text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+	height: 40px;
+	font-size: 18px;
+	line-height: 40px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+	color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+	color: #fff;
+	background: none;
+}
+.btn-xs{
+	font-size: 10px !important;
+}
+.form-control{
+	padding: 17px 5px;
+	font-size: 12px;
+}
+.agile-list li{
+	margin: 0px 0px 8px 0px;
+}
+/*@media(min-width:768px) {
+	#page-wrapper {
+		padding-left: 250px;
+	}
+
+	#page-wrapper.toggled {
+		padding-left: 0;
+	}
+
+	#sidebar-wrapper {
+		width: 250px;
+	}
+
+	#page-wrapper.toggled #sidebar-wrapper {
+		width: 0;
+	}
+
+	#page-content-wrapper {
+		padding: 20px;
+		position: relative;
+	}
+
+	#page-wrapper.toggled #page-content-wrapper {
+		position: relative;
+		margin-right: 0;
+	}
+}*/
+</style>
+<script>
+
+$(document).on('click','.main_change',function () {
+	 $('.success_li').removeClass('success_li');
+	 $(this).addClass('success_li');
+	//$(this).find('a').addClass('text-success');
+});
+$(document).on('click','.menu-toggle',function(e) {
+		e.preventDefault();
+	if($("#page-wrapper").hasClass('toggled')){
+		$("#page-wrapper").removeClass("toggled");
+	}else{
+		$("#page-wrapper").toggleClass("toggled");
+	}
+	});
+</script>

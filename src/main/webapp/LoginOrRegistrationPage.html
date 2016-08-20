@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head th:replace="fragments/PortalHeadFragment::HeadFragment"></head>
+	<body ng-app="HungryHomeTerminal">
+		
+		<div class="wrapper">
+			<!-- #site-header -->
+			<header th:replace="fragments/HeaderFragment :: HeaderFragment('true')">
+				
+			</header>
+
+			<div id="site-main">
+				
+					   <th:block th:switch="${#httpServletRequest.requestURI}">
+
+      <div th:case="'/login'" th:include="fragments/LoginFragment"> </div>
+      <div th:case="'/register'" th:include="fragments/RegistrationFragment"> </div>
+</th:block> 				
+					
+
+				
+	
+				
+
+				<hr class="container"/>
+
+				
+	
+			</div><!-- #site-main -->
+
+			<div th:replace="fragments/FooterFragment"></div>
+		</div><!-- .wrapper -->
+		
+		<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+
+	</body>
+
+</html>

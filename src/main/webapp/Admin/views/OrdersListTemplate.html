@@ -1,0 +1,188 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-8">
+		<h2>ORDERS</h2>
+	</div>
+	<div class="col-lg-4">
+		<ol class="breadcrumb m-t-lg">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li class="active">
+				<strong>Orders</strong>
+			</li>
+		</ol>
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight ecommerce" ng-controller="ordersListController">
+	<div class="ibox-content border-bottom m-b-sm">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label class="control-label" for="order_id">ID</label>
+					<!-- <input type="text" name="order_id" value="" ng-model="orders.ordersCode" placeholder="Order ID / SubOrder ID" class="form-control" autofocus ng-keypress="ordersUpLength()" ng-keydown="ordersDownLength()"  ng-show="oc"> -->
+					<input type="text" name="order_id" value="" ng-model="orders.ordersCode" placeholder="Order ID / SubOrder ID" class="form-control" autofocus ng-change="ordersUpLength()" ng-show="oc">
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label class="control-label" for="status">Restaurant Branch</label>
+					<div class="" ng-show="ob">
+					  <select class="select2_demo_5 form-control" ng-model="orders.branchId" ng-change="orderBranchChange()">
+						<option></option>
+						<option value="{{branch['properties'].id}}" ng-repeat="branch in onlyRestBranchData">{{branch['properties'].branchName}}</option>
+					  </select>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label class="control-label" for="customer">User</label>
+					<input type="text" ng-model="orders.user" name="customer" value="" placeholder="Mobile / Email" class="form-control" ng-show="ou" ng-change="orderUserChange()">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label class="control-label" for="select_date_range">Range Select</label>
+					<input date-range-picker options="{separator: ' to ',format: 'YYYY-MM-DD'}" class="form-control date-picker" type="text" ng-model="daterange" placeholder="Select Date Range" name="daterange" ng-show="od" ng-keypress="orderDateChange()" />
+					<!-- <div class="dropdown" dropdown>
+						<a class="dropdown-toggle btn btn-primary btn-sm" dropdown-toggle>
+							Select range
+						</a>
+						<span>
+							Selected date: {{(a|date)}} - {{(b|date)}}
+						</span>
+						<div class="dropdown-menu" ng-click="$event.preventDefault();$event.stopPropagation()">
+							<div date-range start="a" end="b"></div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label class="control-label" for="date_modified">Status</label>
+					<div class="" ng-show="os">
+					  <select class="select2_demo_4 form-control" ng-model="orders.status" >
+						<option></option>
+						<option value="PLACEDDATE">CREATED</option>
+						<!-- <option value="CONFIRMED">CONFIRMED</option> -->
+						<option value="DELIVEREDDATE">DELIVERED</option>
+						<option value="DELIVERYDATE">DELIVERY</option>
+						<option value="CANCELLEDDATE">CANCELLED</option>
+					  </select>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="form-group m-t-md">
+					<button type="button" class="btn btn-info" ng-click="ordersSearch(orders,daterange)" style="width:70%;">SEARCH</button>
+					<button type="reset" class="btn btn-danger" ng-click="ordersReset()" style="width:25%;">RESET</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox">
+				<div class="ibox-content">
+
+					<table class="table table-striped table-bordered table-hover dataTables-example" id="orderTable">
+						<thead>
+						<tr>
+
+							<th>Order ID</th>
+							<th data-hide="phone">Customer</th>
+							<th data-hide="phone">Amount</th>
+							<!-- <th data-hide="phone">Date added</th>
+							<th data-hide="phone,tablet" >Date modified</th> -->
+							<th data-hide="phone">Status</th>
+							<th class="text-right">Action</th>
+
+						</tr>
+						</thead>
+						<!-- <tbody>
+						<tr ng-repeat="orders in OrderData">
+							<td>
+								{{orders['properties'].subOrderCode}}
+							</td>
+							<td>
+								{{orders['properties'].userName}}
+							</td>
+							<td>
+								{{orders['properties'].subOrderTotalPrice}}
+							</td>-->
+							<!-- <td>
+								03/04/2015
+							</td>
+							<td>
+								03/05/2015
+							</td> -->
+							<!--<td>
+								<span class="label label-primary">{{orders['properties'].subOrderStatus}} - {{orders['properties'].subOrderDeliveryDate}}</span>
+							</td>
+							<td class="text-right">
+								<div class="btn-group">
+									<button class="btn-white btn btn-xs" ng-click="singleOrderView(orders['properties'].orderId)">View</button>
+									<button class="btn-white btn btn-xs">Edit</button>-->
+									<!-- <button class="btn-white btn btn-xs">Delete</button> -->
+								<!--</div>
+							</td>
+						</tr>
+						</tbody> -->
+						<tfoot>
+							<tr>
+							<th>Order ID</th>
+							<th data-hide="phone">Customer</th>
+							<th data-hide="phone">Amount</th>
+							<!-- <th data-hide="phone">Date added</th>
+							<th data-hide="phone,tablet" >Date modified</th> -->
+							<th data-hide="phone">Status</th>
+							<th class="text-right">Action</th>
+							</tr>
+						</tfoot>
+						
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+<script>
+$(document).ready(function(){
+$(".select2_demo_5").select2({
+				placeholder: "SELECT A RESTAURANT BRANCH.....",
+				allowClear: true
+			}); 
+$(".select2_demo_4").select2({
+				placeholder: "SELECT STATUS.....",
+				allowClear: true
+			});   
+ // 
+ // $(function () {
+	// 	$('.footable').footable();
+		
+	// });
+// $('.footable').DataTable( {
+//         "pagingType": "full_numbers"
+//     } );
+});
+
+
+//  Changed fields in angular-daterangepicker.js  {separator: ' - ', format: 'YYYY-MM-DD',}
+</script>
+
+<style>
+	.select2-container--default .select2-selection--single{
+		border-radius: 1px;
+	}
+	.select2-container .select2-selection--single{
+		height: 32px;
+	}
+</style>

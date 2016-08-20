@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+	
+
+<head th:replace="fragments/PortalHeadFragment::HeadFragment(${seo.seoTitle},${seo.seoKeywords},${seo.seoMetaDescription})"></head>
+	<body ng-app="HungryHomeTerminal">
+			<div th:replace="fragments/LocationFragment"></div>
+		<div class="wrapper">
+				<header th:replace="fragments/HeaderFragment :: HeaderFragment('false')"></header>
+
+		<div th:replace="fragments/ItemsMainFragment"></div>
+
+		<div th:replace="fragments/FooterFragment"></div>
+		</div><!-- .wrapper -->
+		<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+	</body>
+
+<!-- Mirrored from demo.woorockets.com/themes/wooplus/html/shop.html by HTTrack Website Copier/3.x [XR&amp;CO'2014], Fri, 12 Jun 2015 11:32:37 GMT -->
+</html>

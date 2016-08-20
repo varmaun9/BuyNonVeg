@@ -1,0 +1,65 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">BRANCH TAX EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<tabset>
+			<form class="form-horizontal form-bordered padder-t-b" name="TaxForm">
+				<div class="form-group">
+					<label class="control-label col-md-4">Tax Name</label>
+					<div class="col-sm-7">
+						<div class="form-control-static">
+							<select class="form-control" name="taxName" ng-model="BranchTaxEditData['properties'].taxId" style="width:100%;" required>
+								<option value=""></option>
+								<option ng-repeat="tax in taxesDetails.entities" value="{{tax['properties'].id}}">{{tax['properties'].taxName}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4">Tax Amount</label>
+					<div class="col-sm-7">
+						<div class="form-control-static">
+							<input type="text" class="form-control" name="taxValue" ng-model="BranchTaxEditData['properties'].taxValue" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4">Tax Name</label>
+					<div class="col-sm-7">
+						<div class="form-control-static">
+							<select class="form-control" name="amountDescription" ng-model="BranchTaxEditData['properties'].amountTypeId" style="width:100%;" required>
+								<option value=""></option>
+								<option ng-repeat="amountType in amountTypesDetails" value="{{amountType['properties'].id}}">{{amountType['properties'].amountDescription}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label">Tax Type</label>
+					<div class="col-sm-7">
+						<select class="form-control select2_demo_2" name="taxType" ng-model="BranchTaxEditData['properties'].taxType" style="width:100%;" required>
+							<option value=""></option>
+							<option value="Margin">MARGIN</option>
+							<option value="Tax">TAX</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label">Status</label>
+					<div class="col-sm-7">
+						<select class="form-control select2_demo_2" name="sellerBranchTaxStatus" ng-model="BranchTaxEditData['properties'].sellerBranchTaxStatus" style="width:100%;" required>
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</form>
+		</tabset>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="BranchTaxEdit(BranchTaxEditData)">Save</button>
+	</div>
+</div>

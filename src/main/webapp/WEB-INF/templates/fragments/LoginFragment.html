@@ -1,0 +1,156 @@
+<div class="page-content login-signup-newDialog" ng-controller="LoginController">
+	<div class="container">
+		<div class="row">
+			<div class="page-section pdt30 pdb20">
+				<div class="col-md-1 login-div">
+       				
+     			</div>
+			<div class="col-md-5 form-signin">
+
+       				<!-- <div th:replace="fragments/RegistrationFragment"></div> -->
+       				<br/><br/><br/><br/>
+	       				<h4 class="text-center" style="font-size: 13px;">New to buynonveg?</h4>
+	       				<h5 class="text-center ">Create a Buynonveg account</h5>
+	       				<a class="btn btn-lg  btn-block sigin mgt20" data-toggle="modal" data-target="#regismodal">Mobile number or Email</a>
+	       				
+	       				<h4 class="text-center tc">By continuing with registration I agree to <strong class="">Terms &amp; Conditions</strong></h4>
+       			</div> 
+       			<div class="col-md-1" >
+ 					<div class=" border-line"></div>
+       			</div>    
+				
+       			<div class="col-md-5" style="margin:auto 0px;">
+
+       				<div th:if="${param.re}" class="alert alert-danger fade in" style="margin-top:18px;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+    <strong>Oops! Something went wrong.</strong><br/> please check the email or password.
+</div>
+       				<form class="form-signin" method="post" action="/login">
+						<h3>Registered Customers</h3>
+						<section class="content">
+							<span class="input input--yoshiko">
+								<input class="input__field input__field--yoshiko mgb10" type="email"  name="username" id="username" required="required" />
+								<i class="fa fa-envelope-o icon-fix-non"></i>
+								<label class="input__label input__label--yoshiko" for="username">
+									<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+										Email
+									</span>
+								</label>
+							</span>
+							<span class="input input--yoshiko  mgt10">
+								<input class="input__field input__field--yoshiko" type="password" name="password" id="password" required="required"/>
+								<i class="fa fa-lock icon-fix-non"></i>
+								<label class="input__label input__label--yoshiko" for="password">
+									<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+										Password
+									</span>
+								</label>
+							</span>
+							<input type="hidden" name="refUrl" th:value="${#httpServletRequest.getHeader('referer')}" />
+						</section>
+				        
+        				<!-- <div class="row">
+        					<div class="col-md-6 mgt40" >
+        						<a href="">Forgot Password ?</a>
+        					</div>
+        					<div class="col-md-5 mgt30" >
+        						<div class="text-right ">
+        							<input type="button" class="" value="LOGIN"></input>
+        							
+      							</div>
+        					</div>
+        				</div> -->
+        				<div class="login-btn-wrap mgt20">
+        					<a ng-click="showForgotPassword()" class="frgt-pwd-link pointer t-d-u">Forgot Password?</a>
+        					<!-- <input type="button" value="LOGIN" class="submit-btn"></input> -->
+        					<button type="submit" class="submit-btn" name="login" value="LOGIN">Submit</button>
+
+        				</div>
+        				<div class="login-btn-wrap mgt20">
+        				<br/>
+        				<!-- <a class="or_using t-c-r">(OR USING)</a> -->
+        			</div>
+        			<br/>
+        			
+        				<!-- <button class="fb-button" type="button"></button>
+    					<button class="g-button" type="button"></button> -->
+      				</form>
+       			</div>
+       			<div class="col-md-1 login-div">
+       				
+     			</div>
+       			
+  			</div><!-- .page-section -->
+   		</div>
+  	</div>
+  	<div th:replace="fragments/RegistrationModalFragment"></div>
+ </div>
+<th:block th:replace="fragments/HotCategoriesFragment"></th:block>
+<th:block th:replace="fragments/ForgotPasswordFragment"></th:block> 
+
+			<!--  -->
+
+<script src="/js/classie.js"></script>
+		<script>
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled a' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'active', onInputActive );
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+					function onInputActive( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}else{
+
+						classie.add( ev.target.parentNode, 'a' );
+					}
+				}
+			})();
+
+
+		</script>
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+

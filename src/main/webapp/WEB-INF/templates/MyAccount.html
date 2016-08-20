@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+
+<head th:replace="fragments/PortalHeadFragment::HeadFragment('FreshMeet','FreshMeet','FreshMeet')"></head>
+	<body ng-app="HungryHomeTerminal">
+		<div th:replace="fragments/LocationFragment"></div>
+		<div class="wrapper" ng-controller="MyAccountController">
+			<!-- #site-header -->
+			<header th:replace="fragments/HeaderFragment :: HeaderFragment('true')"></header>
+			<div id="site-main">
+				
+					<div class="container">
+
+								<div class="row">
+
+										<div class="col-lg-3 col-md-3">
+												<aside class="widget myaccount-widget widget_categories">
+														<h4 class="widget-title">My Account</h4>
+														<ul >
+																<li class="cat-item">
+																	<a th:classappend="${#httpServletRequest.requestURI} == '/myaccount/profile'? 'tab_profile_active'"  class="tab_profile_a"  th:href="@{/myaccount/profile}"><i class="fa fa-cog"></i> My Profile</a>
+																</li>
+
+																<li  class="cat-item">
+															
+																	<a th:classappend="${#httpServletRequest.requestURI} == '/myaccount/orders'? 'tab_profile_active'" class="tab_profile_a"  th:href="@{/myaccount/orders}"><i class="fa fa-cog"></i> My Orders</a>
+																</li>
+																<li  class="cat-item">
+																		<a th:classappend="${#httpServletRequest.requestURI} == '/myaccount/changepassword'? 'tab_profile_active'" class="tab_profile_a"  th:href="@{/myaccount/changepassword}"><i class="fa fa-cog"></i> Change Password</a>
+																</li>
+															<!-- 	<li class="cat-item"><a href="/myaccount/reviews"><i class="fa fa-cog"></i> My Reviews</a></li> -->
+														</ul>
+
+
+												</aside>
+
+
+
+									</div>
+									 <th:block th:switch="${#httpServletRequest.requestURI}">
+									<div class="col-lg-9 col-md-9" th:case="'/myaccount/profile'" >
+										<aside class="widget" ng-controller="MyAccountController">
+										<h4 class="widget-title">My Account / Profile</h4>
+												<div th:replace="fragments/ProfileFragment"></div>
+
+										</aside>
+									</div>
+									
+									<div class="col-lg-9 col-md-9" th:case="'/myaccount/orders'">
+										<aside class="widget">
+												<h4 class="widget-title">My Account / Orders</h4>
+												<div th:replace="fragments/UserOrdersFragment"></div>
+
+										</aside>
+
+
+
+
+
+									</div>
+									<div class="col-lg-9 col-md-9" th:case="'/myaccount/changepassword'">
+										<aside class="widget">
+												<h4 class="widget-title">My Account / Change Password</h4>
+													<div th:replace="fragments/ChangePasswordFragment"></div>
+												
+										</aside>
+
+
+
+
+
+									</div>
+									<div class="col-lg-9 col-md-9" th:case="'/myaccount/reviews'">
+										<aside class="widget">
+												<h4 class="widget-title">My Account / My Reviews</h4>
+
+
+										</aside>
+
+
+
+
+
+									</div>
+									
+									
+
+								</th:block>
+
+								</div>
+
+
+
+
+
+
+					</div>	
+
+				
+	
+				
+<!-- 
+				<hr class="container"/> -->
+
+				<!-- <div th:replace="fragments/OurBrandsFragment"></div> -->
+	
+			</div><!-- #site-main -->
+
+			<div th:replace="fragments/FooterFragment"></div>
+		</div><!-- .wrapper -->
+		
+		<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+
+
+<script type="text/javascript">
+
+//the $(document).ready() function is down at the bottom
+
+(function ( $ ) {
+ 
+    $.fn.rating = function( method, options ) {
+		method = method || 'create';
+        // This is the easiest way to have default options.
+        var settings = $.extend({
+            // These are the defaults.
+			limit: 5,
+			value: 0,
+			glyph: "glyphicon-heart",
+            coloroff: "gray",
+			coloron: "gold",
+			size: "2.0em",
+			cursor: "default",
+			onClick: function () {},
+            endofarray: "idontmatter"
+        }, options );
+		var style = "";
+		style = style + "font-size:" + settings.size + "; ";
+		style = style + "color:" + settings.coloroff + "; ";
+		style = style + "cursor:" + settings.cursor + "; ";
+	
+
+		
+		if (method == 'create')
+		{
+			//this.html('');	//junk whatever was there
+			
+			//initialize the data-rating property
+			this.each(function(){
+				attr = $(this).attr('data-rating');
+				if (attr === undefined || attr === false) { $(this).attr('data-rating',settings.value); }
+			})
+			
+			//bolt in the glyphs
+			var n =[1,2,3,4,5];
+			for (var i in n)
+			{
+				this.append('<span data-value="' + (i) + '" class="ratingicon glyphicon ' + settings.glyph + '" style="' + style + '" aria-hidden="true"></span>');
+			}
+			
+			
+			//paint
+			this.each(function() { paint($(this)); });
+
+		}
+		if (method == 'set')
+		{
+			this.attr('data-rating',options);
+			this.each(function() { paint($(this)); });
+		}
+		if (method == 'get')
+		{
+			return this.attr('data-rating');
+		}
+		//register the click events
+		this.find("span.ratingicon").click(function() {
+			rating = $(this).attr('data-value')
+			$(this).parent().attr('data-rating',rating);
+			paint($(this).parent());
+			settings.onClick.call( $(this).parent() );
+		})
+		function paint(div)
+		{
+			rating = parseInt(div.attr('data-rating'));
+			div.find("input").val(rating);	//if there is an input in the div lets set it's value
+			div.find("span.ratingicon").each(function(){	//now paint the stars
+				
+				var rating = parseInt($(this).parent().attr('data-rating'));
+				var value = parseInt($(this).attr('data-value'));
+				if (value > rating) { $(this).css('color',settings.coloroff); }
+				else { $(this).css('color',settings.coloron); }
+			})
+		}
+
+    };
+ 
+}( jQuery ));
+
+$(document).ready(function(){
+
+	/*$("#stars-default").rating();*/
+	$("#stars-red").rating('create',{coloron:'red',onClick:function(){ alert('rating is ' + this.attr('data-rating')); }});
+	/*$("#stars-herats").rating('create',{coloron:'red',limit:10,glyph:'glyphicon-heart'});	*/
+});
+</script>
+	</body>
+
+</html>

@@ -1,0 +1,87 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Seller Item Creation</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="#/ItemMaster/ItemsTemplate">Items List</a>
+			</li>
+			<li>
+				<a href="#/ItemMaster/Item/{{ItemId}}">Single Item View</a>
+			</li>
+			<li class="active">
+				<strong>Seller Item Creation</strong>
+			</li>
+		</ol>
+	</div>
+	<div class="col-lg-2">
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" ng-controller="ItemImageCreationController">
+	<div class="ibox-content wizard">
+		<div class="wizard">
+			<div class="content">
+				<form action="#" id="itemImageForm" class="form-horizontal">
+				<!-- <form action="#" id="categoryForm" class="form-horizontal" novalidate> -->
+					<div id="itemwizard">
+						<ul>
+							<li><a data-target="#tab1" class="text-center" data-toggle="tab">Item Image</a></li>
+						</ul>
+						<div class="row" style="margin-top:15px;">
+					    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+					    </div>
+					    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+					      <select class="select2_demo_3 form-control" ng-model="subCategoryOptionData" style="padding:5px" ng-change="subCategorySelect(subCategoryOptionData)">
+					        <option></option>
+					        <option value="{{subCategory['properties'].id}}" data="{{ subCategory['properties'].subCategoryName }}" ng-repeat="subCategory in subCategoryData">{{ subCategory['properties'].subCategoryName }}</option>
+					      </select>
+					    </div>
+					    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+					    </div>
+					  </div>
+						<div class="row" style="margin-top:20px;">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Item Image Upload</label>
+								<div class="col-sm-4" style="margin-top:8px;">
+									<div class="input-group">
+										<input type="file" id="imageId" onchange="angular.element(this).scope().uploadSubCategoryImage(this, this.id)" class="form-control" name="itemThumbImage1" />
+									</div>
+								</div>
+								<div class="col-sm-4" style="margin-top:8px;">
+									<div class="input-group">
+										<a class="btn btn-primary m-r-sm"  ng-click="saveSubCategoryImage()">SAVE</a>
+									</div>
+								</div>
+							</div>
+					  </div>
+					  <div class="row subCategoryPreview">
+					  	{{responseSubCategoryImageData}}
+					  </div>
+							</div>
+						</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+	<style>
+#itemwizard >  ul > li{
+	width: 100% !important;
+}
+.pager li{
+	display: inline !important;
+}
+.label{
+	display: block;
+	margin-bottom: 0px !important;
+}
+</style>
+<script>
+	$(".select2_demo_3").select2({
+	placeholder: "SELECT ITEM.....",
+	allowClear: true
+});
+</script>

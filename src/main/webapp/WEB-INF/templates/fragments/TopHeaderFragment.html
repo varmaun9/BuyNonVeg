@@ -1,0 +1,44 @@
+	<div class="top top-bg-h" th:fragment="TopHeaderFragment">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-sm-8 col-xs-6">
+								<nav id="top-menu">
+									<!-- <ul class="menu" th:switch="${session.isEmpty()}">
+
+										<th:block th:case="false" >
+										<li class="menu-item"><a href="#"><i class="fa fa-cog"></i> My Account</a></li>
+										<input type="hidden" th:attr="ng-init='setSessionVariables(\''+${session.userName}+'\',\''+${session.userId}+'\')'"/>
+										<li class="menu-item"><a href="#"><i class="fa fa-heart-o"></i> Wishlist</a></li>
+										<li class="menu-item"><a href="shop_checkout.html"><i class="fa fa-credit-card"></i> Checkout</a></li>
+										</th:block>
+										<th:block th:case="true">
+
+										
+										<li class="menu-item" ng-init="clearSession()"><a href="/login"><i class="fa fa-smile-o"></i> Login / Register</a></li>
+									</th:block>
+									</ul> --><!-- .menu -->
+								</nav><!-- #top-menu -->
+								<div class="dl-menuwrapper mobile-menu">
+									<button class="dl-trigger"><i class="fa fa-bars"></i></button>
+									
+								</div><!-- /dl-menuwrapper -->
+							</div><!-- .col-md-8 -->
+							<div class="col-md-4 col-sm-4 col-xs-6">
+							<!-- 	<div class="extra-info" style="z-index:100;position:relative;float:left !important;font-size:12px;color:#009966;margin-left:28px;">
+									<ul th:switch="${session.isEmpty()}">
+										<th:block th:case="true">
+										<li class="menu-item"><a href="/login"><img th:src="@{/common/img/home/img/login/l.png}" alt="icon" style="float:left;margin-top:0px;"/>Login / Register</a></li>
+									</th:block>
+										<th:block th:case="false" >
+										<input type="hidden" th:attr="ng-init='setSessionVariables(\''+${session.userName}+'\',\''+${session.userId}+'\')'"/>
+										<li class="menu-item"><a href="/myaccount/profile"><i class="fa fa-cog"></i> My Account</a></li> -->
+										<!-- <li class="menu-item"><a href="#"><i class="fa fa-heart-o"></i> Wishlist</a></li> -->
+
+									<!-- 	<li class="menu-item"><a href="/myaccount/logout"><i class="fa fa-credit-card"></i> LogOut</a></li>
+									</th:block>
+									</ul>
+								</div> --><!-- .extra-info -->
+							</div><!-- .col-md-4 -->
+						</div><!-- .row -->
+					</div><!-- .container -->
+				</div><!-- .top -->

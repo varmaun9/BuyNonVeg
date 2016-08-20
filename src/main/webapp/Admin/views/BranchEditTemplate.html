@@ -1,0 +1,70 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">BRANCH EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b itemform" name="ItemForm">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Branch Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="branchName" ng-model="BranchEditData.branchName" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">E-mail</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="sellerEmailId" ng-model="BranchEditData.sellerEmailId" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Phone Number</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="sellerPhoneNo" ng-model="BranchEditData.sellerPhoneNo" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Min Order Time</label>
+				<div class="col-sm-7" clock-picker data-autoclose="true">
+					<input type="text" placeholder="OrderTime" class="form-control" name="minimumOrderTime" ng-model="BranchEditData.minimumOrderTime" required/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Delivery Cut Off Days</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="deliveryCutoffDays" ng-model="BranchEditData.deliveryCutoffDays" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class=" form-control" name="select" ng-model="BranchEditData.branchStatus" style="width:100%;" required>
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="branchEdit(BranchEditData)">Save changes</button>
+	</div>
+</div>
+<style>
+
+.popover.clockpicker-popover.bottom.clockpicker-align-left{
+	z-index: 3000 !important;
+}
+</style>
+

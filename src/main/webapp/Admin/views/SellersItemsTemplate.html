@@ -1,0 +1,90 @@
+
+<div class="row wrapper border-bottom white-bg" style="padding:5px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li class="active">
+        <strong>Sellers List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div class="row" ng-controller="SellersItemsListController">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title" style="min-height:38px;padding:5px 0px;">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+          <h4>SELLERS LIST</h4>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+          <!-- <div class="btn-group pull-right" style="padding-top: 4px;">
+            <a ui-sref="dashboards.CategoryCreateView" class="btn-fit-height grey-salt" data-close-others="true">
+            <i class="fa fa-plus"></i> RESTAURANTS 
+            </a>
+          </div> -->
+          <!-- <div ibox-tools></div> -->
+        </div>
+      </div>
+      <div class="ibox-content">
+        <input type="text" class="form-control input-sm m-b-xs" id="filter" placeholder="Search in table">
+        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8" data-filter="#filter">
+          <thead>
+              <tr>
+                <th data-toggle="true">Seller Name</th>
+                <th>Status</th>
+                <th></th>
+                <th data-hide="all">Branch Name</th>
+                <!-- <th data-hide="all">Price</th>
+                <th data-hide="all">Units</th>
+                <th data-hide="all">Quantity</th> -->
+                <!-- <th>DeliveryDate</th> -->
+              </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="sellerItems in entities | filter:deliverSearch" my-directive>
+              <td>{{sellerItems['properties'].sellerName}}</td>
+              <td>{{sellerItems['properties'].status}}</td>
+              <td><a href="#/ItemMaster/SingleSellerItems/{{sellerItems['properties'].id}}">View</a></td>
+              <td><ol class="nav navbar-nav"><li ng-repeat="sellerItem in sellerItems.entities" class="m-l-sm"><a href="#/ItemMaster/SellerBranchItems/{{sellerItem['properties'].id}}/{{sellerItems['properties'].sellerName}}/{{sellerItems['properties'].id}}">{{$index + 1}}. {{sellerItem['properties'].branchName}}</a></li></ol></td>
+              <!-- <td><ul><li ng-repeat="sellerItem in sellerItems.entities">{{sellerItem['properties'].price}}</span></td>
+              <td><ul><li ng-repeat="sellerItem in sellerItems.entities">{{sellerItem['properties'].units}}</li></ul></li></ul></td>
+              <td><ul><li ng-repeat="sellerItem in sellerItems.entities">{{sellerItem['properties'].quantity}}</li></ul></td> -->
+            </tr>
+          </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">
+                  <ul class="pagination pull-right"></ul>
+                </td>
+              </tr>
+            </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+.footable-row-detail-row{
+    display: inline-block;
+    line-height: 1.5em;
+}
+.footable-row-detail-value {
+    display: table-row;
+}
+.footable-row-detail-inner {
+    display: inline;
+}
+ul {list-style-type: none;}
+.footable-row-detail-name{
+    text-align: center;
+}
+</style>
+
+<script>
+// $(document).ready(function () {
+//   $('.footable').footable();
+// })
+</script>

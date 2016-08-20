@@ -1,0 +1,216 @@
+<div class="row checkoutContainer" ng-controller="CheckOutController">
+<div class=" text-center proceed" style="position:absolute;right:210px;"><button ng-click="proceedtopayment(items)" class="btn btn-sm btn-success">Proceed</button>
+	</div>
+
+<div id="rootwizard" ng-init="intializeFormWizard()">
+	<ul class="ul-tabs"><li ><a href="#tab1" data-toggle="tab"><span class="label">1</span> Order Summary</a></li>
+	  	<li><a href="#tab2" data-toggle="tab"><span class="label">2</span>Delivery Address</a></li>
+		
+		<li ><a href="#tab3" data-toggle="tab"><span class="label">3</span> Third</a></li>
+ 	<!-- 	<li><a href="#tab7" data-toggle="tab"><span class="label">7</span> Seventh</a></li>  -->
+	</ul>
+	
+
+	<div class="tab-content">
+	  
+	    <div class="tab-pane" id="tab1">
+	     				<div class="row">
+	    <div class="ordr_prds">
+       	 <div class="order_prd_bod">
+       	 <i>
+       	 <div class="selected_ordl col-lg-12" th:each="subOrder:${preOrderCartItemsHash}"><!-- selected_ordl -->
+       	 <div class="seller_brnc_name col-lg-12">
+   	 		<h4 th:inline="text">Seller: [[${subOrder.value[0].sellerItem.sellerBranch.branchName}]]</h4>
+
+   	 		</div>
+   	 		<div class="col-lg-5">
+   	 		
+   	 		<div class="selected_ite_box ">
+   	 		<div class="order_prd_hed">
+			<div class="col-lg-6 ">
+        	    <h4>Product Name</h4> 
+			</div>
+			<div class="col-lg-3"> 
+         		 <h4>Quantity </h4>
+    		</div>
+        	<div class="col-lg-3"> 
+         		<h4>Price</h4>
+   			</div>
+       	 </div><!-- order_prd_head -->
+   	 			<div class="selected_item" th:each="cartItem:${subOrder.value}">
+   	 			<div class="col-lg-6">
+   	 				<a th:href="@{'/meatitem/'+${cartItem.sellerItem.item.itemName}(id=${cartItem.sellerItem.item.id})}" th:text="${cartItem.sellerItem.item.itemName}"></a>
+   	 				<input type="hidden" th:attr="ng-init='setCartIItems(\''+${cartItem.id}+'\',\''+${cartItem.sellerItem.id}+'\',\''+${cartItem.sellerItem.quantity}+'\',\''+${cartItem.cutType}+'\',\''+${cartItem.units}+'\',\''+${cartItem.sellerItem.measurementUnit}+'\',\''+${cartItem.sellerItem.baseUnit}+'\',\''+${cartItem.price}+'\',\''+${cartItem.price}+'\',\''+${cartItem.itemTax}+'\',\''+${cartItem.itemDiscount}+'\',\''+${subOrder.key}+'\',\''+${subOrder.value[0].sellerItem.sellerBranch.minimumOrderTime}+'\',\''+${subOrder.value[0].sellerItem.sellerBranch.minimumOrderAmount}+'\',\''+${subOrder.value[0].sellerItem.sellerBranch.minimumOrderDeliveryAmount}+'\',\''+${subOrder.value[0].sellerItem.sellerBranch.deliveryCharges}+'\',\''+${cartItem.statusFlag}+'\')'"/>
+      
+            <input type="hidden" th:each="charge:${subOrder.value[0].sellerItem.sellerBranch.sellerBranchCharges}" 
+            th:attr="ng-init='setSubOrderCharges(\''+${charge.chargesAmount}+'\',\''+${subOrder.value[0].sellerItem.sellerBranch.id}+'\')'"/>
+             <input type="hidden" th:each="tax:${subOrder.value[0].sellerItem.sellerBranch.sellerBranchTaxes}" th:if="${tax.tax.taxType}=='TAX'"
+            th:attr="ng-init='setSubOrderTaxes(\''+${tax.tax.displayName}+'\',\''+${tax.taxValue}+'\',\''+${subOrder.value[0].sellerItem.sellerBranch.id}+'\')'"/>
+   	 			</div>
+   	 			<div class="col-lg-3 ">
+   	 			<h5>	<span class="amount" th:if="${cartItem.sellerItem.measurementUnit}=='KG'" th:text="${cartItem.units*1000}+'Gms'"> </span></h5>
+   	 			</div>
+   	 			<div class="col-lg-3">
+   	 			<h5>	<i class="fa fa-inr"></i> <span class="amount"  th:text="${cartItem.price}">220.00 </span></h5>
+   	 			</div>
+   	 			</div><!-- item --> 
+   	 	
+   
+   	 			<div class="delivr_chrg mgt10">
+   	 			<div class="col-lg-5" ></div>
+          <th:block th:each="charge:${subOrder.value[0].sellerItem.sellerBranch.sellerBranchCharges}">
+   	 				<div class=" col-lg-4 "><strong th:text="${charge.displayName}"></strong></div>
+   	 				<div class=" col-lg-3"><i class="fa fa-inr"></i>   <strong th:text="${charge.chargesAmount}"></strong></div>
+            </th:block>
+             
+   	 			</div>
+            <div class="delivr_chrg mgt10">
+          <div class="col-lg-5" ></div>
+           <th:block th:each="tax:${subOrder.value[0].sellerItem.sellerBranch.sellerBranchTaxes}" th:if="${tax.tax.taxType}=='TAX'">
+            <div class=" col-lg-4 "><strong th:text="${tax.tax.displayName}"></strong></div>
+            <div class=" col-lg-3">   <strong th:text="${tax.taxValue+'%'}"></strong></div>
+            </th:block>
+            </div>
+   	 			<div class="s_subtotal">
+   	 				<div class="pull-right col-lg-3"><strong th:attr="ng-bind='sellerBranch[\''+${subOrder.value[0].sellerItem.sellerBranch.id}+'\'][\'subOrderTotalPrice\']'"><i class="fa fa-inr"></i>660.00</strong></div>
+   	 				<div class="pull-right col-lg-3 "><strong>SubTotal:</strong></div>
+   	 			</div>
+   	 		</div>
+   	 		<div th:attr="ng-show='sellerBranch[\''+${subOrder.key}+'\'][\'orderDeliveryStatus\']'"><p th:inline="text">your order Will be delivered in <ins class="text-danger">[[${subOrder.value[0].sellerItem.sellerBranch.minimumOrderTime}]] mins </ins>from the seller</p></div>
+<div th:attr="ng-hide='sellerBranch[\''+${subOrder.key}+'\'][\'orderDeliveryStatus\']'"><p th:inline="text">your can pick up your order <ins class="text-danger">[[${subOrder.value[0].sellerItem.sellerBranch.minimumPickupTime}]] mins </ins>from the seller</p></div>
+   	 		</div>
+   	 		<div class="col-lg-2 pdl0 pdr0 delvry-btns text-center">
+   	 		<div class = "btn-group " data-toggle = "buttons" >
+               <label class = "btn btn-primary active"  th:attr="ng-click='changeOrderTimings(\''+${subOrder.key}+'\',\'ORDERNOW\')'">
+                  <input type = "radio" name ="options"   /> Order Now
+               </label>
+   
+               <label class = "btn btn-primary" th:attr="ng-click='changeOrderTimings(\''+${subOrder.key}+'\',\'ORDERLATER\')'">
+                  <input type = "radio" name = "options" /> Order Later
+                </label> 
+            </div>
+            	<div class = "btn-group  " data-toggle = "buttons">
+             <label class = "btn btn-primary active" th:attr="ng-click='changeOrderDeliveryType(\''+${subOrder.key}+'\',\'DELIVERY\')'">
+                <input type = "radio" name ="options" /> Delivery
+             </label>
+             <label class = "btn btn-primary" th:attr="ng-click='changeOrderDeliveryType(\''+${subOrder.key}+'\',\'PICKUP\')'">
+               <input type = "radio" name = "options" /> pickup
+             </label>  
+       </div>	
+   	 		
+   	 		</div>	
+   	 		
+   	 		<div class="col-lg-4 col-md-4 col-sm-4">
+   	 			<div class="delvr_timedt animated fadeIn" th:attr="ng-hide='sellerBranch[\''+${subOrder.key}+'\'][\'orderDeliveryTime\']'">
+   	 		<div class="datepicr col-lg-6 col-md-6 col-sm-6" >
+   	 	<strong>Select Date</strong>
+   	 		<div class="input-group"> <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar"></i></span> <input th:attr="ng-model='sellerBranch[\''+${subOrder.key}+'\'][\'deliveryDate\']'" type="text" class="form-control date-picker" aria-describedby="basic-addon1"/> </div>
+   	 		</div>
+   	 		<div class="input-group selectime col-lg-6 col-md-6 col-sm-6" >
+   	 		<strong>Select Time</strong>
+   	 		<div class="input-group select"> 
+        <select class="form-control" aria-describedby="basic-addon1" th:attr="ng-model='sellerBranch[\''+${subOrder.key}+'\'][\'timings\']'">
+             <option   th:each="timing:${subOrder.value[0].sellerItem.sellerBranch.sellerBranchTimingses}" th:text="${timing.timings.timingName+' ('+timing.timings.startTime+'-'+timing.timings.endTime+')'}" th:value="${timing.timings.id}"></option>
+   	 		</select>
+   	 		<span class="input-group-addon" id="basic-addon1"><i class="fa fa-clock-o"></i></span> 
+   	 		 </div>
+
+   	 		
+   	 		</div>
+             
+   	 		</div>	
+   	 		<div class="animated fadeIn chkot-pick-up" th:attr="ng-hide='sellerBranch[\''+${subOrder.key}+'\'][\'orderDeliveryStatus\']'">
+
+   	 	<span class="text-danger">Pick up Address</span>
+	      		<p class="" th:inline="text">
+
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].line1}]],
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].town}]],
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].city}]],
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].district}]],
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].state}]],
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].zipcode}]]</p>
+	      		<span class="phone"><i class="fa fa-mobile"></i>9493735542</span>
+	      	</div>
+   	 		</div>	
+   	 		<!-- <div class="col-lg-2 col-md-2 alert alert-info animated rubberBand" th:attr="ng-hide='sellerBranch[\''+${subOrder.key}+'\'][\'orderDeliveryStatus\']'">
+   	 			
+<div class="" th:attr="ng-hide='sellerBranch[\''+${subOrder.key}+'\'][\'orderDeliveryStatus\']'">
+
+   	 	<span class="text-danger">Pick up Address</span>
+	      		<p class="" th:inline="text">
+
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].line1}]],
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].town}]],
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].city}]],
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].district}]],
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].state}]],
+	      			[[${subOrder.value[0].sellerItem.sellerBranch.addresses[0].zipcode}]]</p>
+	      		<span class="phone"><i class="fa fa-mobile"></i>9493735542</span>
+	      	</div>
+   	 		</div> -->	
+<!-- <div th:attr="ng-show='sellerBranch[\''+${subOrder.key}+'\'][\'orderDeliveryStatus\']'"><p th:inline="text">your order Will be delivered in <ins class="text-danger">[[${subOrder.value[0].sellerItem.sellerBranch.minimumOrderTime}]] mins </ins>from the seller</p></div>
+<div th:attr="ng-hide='sellerBranch[\''+${subOrder.key}+'\'][\'orderDeliveryStatus\']'"><p th:inline="text">your can pick up your order <ins class="text-danger">[[${subOrder.value[0].sellerItem.sellerBranch.minimumPickupTime}]] mins </ins>from the seller</p></div> -->
+   	 		
+         </div><!-- selected_ordl -->
+         <!-- selected_ordl -->
+         </i>
+         <hr/>
+         <div class="col-lg-5">
+         <!-- <div class="row">
+         	<span class="col-lg-5 col-md-5 col-sm-5 "><h4 >Total Amount :</h4></span><span class="col-lg-6 col-md-6 col-sm-6   text-right" ><h4 >45,646.00</h4></span>
+         	</div>
+         	<div class="row">
+         	<span class="col-lg-5 col-md-5 col-sm-5 "><h4 >Total Charges : </h4 ></span><span class="col-lg-6 col-md-6 col-sm-6  text-right "><h4>455.00</h4></span>
+         	</div> -->
+         	<div class="row">
+         	<span ng-init="calculateTotalPrices()" class="col-lg-5 col-md-5 col-sm-5 "><h3 >Grand Total :</h3 ></span><span class="col-lg-6 col-md-6 col-sm-6 text-right"><b><i class="fa fa-inr"></i><strong class="text-danger font-bold ord-grnd-tot" ng-bind="orderTotalPrice">64,644.00</strong></b></span>
+         	</div>
+
+          
+         </div>
+         
+       	 </div><!-- order_prd_bod -->
+    	</div>
+	     				
+<div class="col-lg-3">
+	
+
+
+</div>
+															</div>
+													
+														<div class=" text-center proceed" style="position:absolute;right:210px;"><button ng-click="proceedtoaddress()" class="btn btn-sm btn-success">Proceed</button>
+	</div>	
+	    </div>
+<th:block th:replace="fragments/CheckOutAddressFragment"></th:block>
+	<!-- 	<div class="tab-pane" id="tab3">
+			3
+	    </div>
+		<div class="tab-pane" id="tab4">
+			4
+	    </div>
+		<div class="tab-pane" id="tab5">
+			5
+	    </div>
+		<div class="tab-pane" id="tab6">
+			6
+	    </div>
+		<div class="tab-pane" id="tab7">
+			7
+	    </div> -->
+	    <!-- <div class="row text-right mgt40 mgb40 proceed"><button ng-click="proceedtopayment()" class="btn btn-sm btn-success mgr20">Proceed</button></div> -->
+		<ul class="pager wizard">
+			<li class="previous first" style="display:none;"><a href="#">First</a></li>
+			<li class="previous"><a href="#">Previous</a></li>
+			<li class="next last" style="display:none;"><a href="#">Last</a></li>
+		  	<li class="next"><a href="#" ng-click="proceedToAddress()">Next</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<th:block th:replace="fragments/CheckOutAddressCreateFragment"></th:block>
+</div>
+
+

@@ -1,0 +1,52 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">BRANCH CHARGES ADD</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b" name="sellerBranchForm">
+      		<div class="form-group">
+				<label class="col-sm-4 col-md-4 control-label">Charge Type</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<select class=" form-control" name="chargesType" ng-model="BranchChargesEditData['properties'].chargesType" style="width:100%;" required>
+							<option value=""></option>
+							<option value="DELIVERY CHARGES" >DELIVERY CHARGES</option>
+							<option value="PACKAGING CHARGES">PACKAGING CHARGES</option>
+						</select>
+					</div>
+				</div>
+				<label class="col-sm-4 control-label">Charge Amount</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="chargesAmount" ng-model="BranchChargesEditData['properties'].chargesAmount" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 col-md-4 control-label">Charge Status</label>
+				<div class="col-sm-8">
+					<div class="form-control-static">
+						<select class="selectStatus form-control" name="amountDescription" ng-model="BranchChargesEditData['properties'].amountTypeId" style="width:100%;" required >
+							<option value=""></option>
+							<option value="{{amountDetails['properties'].id}}" ng-repeat="amountDetails in amountTypeData" data="{{amountDetails['properties'].amountDescription}}">{{amountDetails['properties'].amountDescription}}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+					<label class="col-sm-4 control-label">Status</label>
+					<div class="col-sm-7">
+						<select class="form-control select2_demo_2" name="status" ng-model="BranchChargesEditData['properties'].status" style="width:100%;" required>
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">CLOSE</button>
+		<button type="button" class="btn btn-primary" ng-click="SellerBranchChargesEdit(BranchChargesEditData)">SAVE</button>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">CATEGORY ATTRIBUTE ADD</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b categoryattributesform" name="AttributesForm">
+			<div class="form-group">
+					<div class="col-sm-4">
+						<label class="control-label">Attribute Name</label> 
+					</div>
+					<div class="col-sm-4">
+						 <label class="control-label">Status</label> 
+					</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4">
+					 	<select class=" form-control" name="select" style="width:100%;" required ng-model="categoryAttributes.attributesId">
+						<option value=""></option>
+						<option ng-repeat="attributeData in attributesDetails" value="{{attributeData['properties'].id}}">{{attributeData['properties'].attributeName}}</option>
+					</select>
+				</div>
+				<div class="col-sm-4">
+					<select class=" form-control" name="select" style="width:100%;" required ng-model="categoryAttributes.status">
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+				</div>
+				<!-- <div class="col-sm-3">
+					
+				</div> -->
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="CategoryAttributeCreate(categoryAttributes)">ADD</button>
+	</div>
+</div>
+

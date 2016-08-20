@@ -1,0 +1,117 @@
+<!-- <div class="row wrapper border-bottom white-bg page-heading"> -->
+<div class="row wrapper border-bottom white-bg" style="padding:5px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="ItemMaster.ItemsTemplate">Items List</a>
+      </li>
+      <li class="active">
+        <strong>Restaurant Items</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div class="row" ng-controller="RestauranBranchtItemsListController">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title" style="min-height:38px;padding:5px 0px;">
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 text-center">
+          <h4>
+            <span class="text-uppercase text-warning">{{restBranchName}}</span> 
+            RESTAURANT ITEMS LIST
+          </h4>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+          <div class="btn-group pull-right" style="padding-top: 4px;">
+            <a ui-sref="ItemMaster.ItemsTemplate" class="btn-fit-height grey-salt" data-close-others="true">
+             CLOSE 
+            </a>
+          </div>
+          <!-- <div ibox-tools></div> -->
+        </div>
+      </div>
+    </div>
+    <div class="row text-center" style="padding-bottom:20px">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <select class="select2_demo_5 form-control" ng-model="branchOptionData" ng-change="BranchItemChange(branchOptionData)">
+          <option></option>
+          <option value="{{branch['properties'].id}}" data="{{branch['properties'].branchName}}" ng-repeat="branch in onlyRestBranchData">{{branch['properties'].branchName}}</option>
+        </select>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      </div>
+    </div>
+    <div class="ibox-content">
+      <table class="table table-striped table-bordered table-hover dataTables-example" id="branchTable">
+        <thead>
+          <tr>
+            <th>
+            Item Name
+            </th>
+            <th>
+            Category
+            </th>
+            <th>
+            Sub Category
+            </th>
+            <th>
+            Status
+            </th>
+            <th>
+
+            </th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>
+            Item Name
+            </th>
+            <th>
+            Category
+            </th>
+            <th>
+            Sub Category
+            </th>
+            <th>
+            Status
+            </th>
+            <th>
+
+            </th>
+          </tr>
+        </tfoot>
+        <!-- <tbody>
+          <tr ng-repeat="items in onlyBranchItemData">
+            <td>{{ items['properties'].itemCode }}</td>
+            <td>{{ items['properties'].itemName }}</td>
+            <td>{{ items['properties'].description }}</td>
+            <td>{{ items['properties'].status }}</td>
+            <td>
+            <a href="#/ItemMaster/Item/{{ items['properties'].id }}">View</a>
+            </td>
+          </tr>
+        </tbody> -->
+      </table>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".select2_demo_5").select2({
+                placeholder: "SELECT A RESTAURANT BRANCH.....",
+                allowClear: true
+            });
+</script>
+<style>
+.select2-container .select2-selection--single{
+  height: 35px;
+}
+</style>

@@ -1,0 +1,178 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+	<div class="col-lg-10">
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a ui-sref="Sellers.SellersTemplate">Sellers List</a>
+			</li>
+			<li class="active">
+				<strong>Single Sellers List</strong>
+			</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div ng-controller="SingleSellerController">
+	<div class="col-lg-12">
+		<div class="tabs-container">
+			<div class="tabs-right">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" data-target="#tab-1"> SELLERS INFO </a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-2"> SEO </a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-3"> BRANCH INFO</a></li>
+				</ul>
+				<div class="tab-content ">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">INFO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="SellerForm" >
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 col-md-4 control-label">Seller Code</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleSellerDetails['properties'].sellerCode}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleSellerDetails['properties'].sellerName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Seller Type</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleSellerDetails['properties'].sellerType}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Status</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleSellerDetails['properties'].status}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Description</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleSellerDetails['properties'].description}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="editSeller(singleSellerDetails['properties'])" class="btn btn-outline btn-primary">
+											EDIT
+										</a>	
+										<a ui-sref="Sellers.SellerTemplate" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">SEO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="SellerSeoForm">
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Title</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{singleSellerDetails['properties'].seoTitle}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Keywords</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{singleSellerDetails['properties'].seoKeywords}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="control-label col-md-4">Meta Description</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{singleSellerDetails['properties'].seoMetaDescription}}
+										</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="editSellerSeo(singleSellerDetails['properties'])" class="btn btn-outline btn-primary">
+											EDIT
+										</a>
+										<a ui-sref="Sellers.SellersTemplate" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END Seo -->
+					</div>
+					<div id="tab-3" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+								<div class="col-lg-8 font-bold text-center"> BRANCH DETAILS</div>
+								<div class="col-lg-4">
+									<a ng-click="addBranch(singleSellerDetails['properties'].id)" class="pull-right">
+										<i class="fa fa-plus"></i>
+										ADD BRANCH
+									</a>
+								</div>
+							</div>
+								<div class="" ng-repeat="branchDetails in singleSellerDetails.entities">
+									<div class="col-lg-4">
+										<div class="widget style2 navy-bg">
+											<h2>
+												{{branchDetails['properties'].branchName}}
+											</h2>
+											<ul class="list-unstyled m-t-md">
+												<li>
+											<span class="m-r-xs"></span>
+										<label>Min Order Time: </label>
+											{{branchDetails['properties'].minimumOrderTime}}
+										</li>
+											<li>
+											<span class="fa fa-envelope m-r-xs"></span>
+										<label>Email:</label>
+										{{branchDetails['properties'].sellerEmailId}}
+										</li>
+										<li ng-repeat="branchAddress in branchDetails.entities" ng-if="branchAddress['class']=='address'">
+											<address style="font-weight:bolder;">
+											<span class="fa fa-home m-r-xs"></span>
+										{{branchAddress['properties'].line1}}, {{branchAddress['properties'].town}}<br>
+										{{branchAddress['properties'].city}},{{branchAddress['properties'].district}}<br>
+										{{branchAddress['properties'].state}},{{branchAddress['properties'].zipcode}}<br>
+										<abbr title="Phone">Ph.No:</abbr> {{branchDetails['properties'].sellerPhoneNo}}
+										</address>
+										</li>
+										</ul>
+										<div>
+											<a href="javascript:;" ng-click="editbranch(singleSellerDetails.entities[$index])" class="btn btn-outline btn-success" style="background:whitesmoke;">
+												EDIT
+											</a>
+										</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+</style>

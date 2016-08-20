@@ -1,0 +1,526 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Seller Item Creation</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="#/ItemMaster/ItemsTemplate">Items List</a>
+			</li>
+			<li>
+				<a href="#/ItemMaster/Item/{{ItemId}}">Single Item View</a>
+			</li>
+			<li class="active">
+				<strong>Seller Item Creation</strong>
+			</li>
+		</ol>
+	</div>
+	<div class="col-lg-2">
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" style="padding: 12px 10px 22px;">
+	<div class="row">
+		<div class="col-lg-12" style="padding:0px;">
+			<div class="ibox">
+				<div class="ibox-content wizard" style="padding:12px 12px 10px 10px;">
+					<div class="wizard">
+						<div class="content">
+							<form id="SellerItemForm" method="get" action="" class="form-horizontal">
+								<div id="SellerItemwizard">
+									<ul>
+									  <li><a data-target="#tab1" class="text-center" data-toggle="tab">ITEM DETAILS</a></li>
+										<!-- <li><a data-target="#tab2" class="text-center" data-toggle="tab">TIMINGS</a></li> -->
+										<li><a data-target="#tab2" class="text-center" data-toggle="tab">IMAGES</a></li>
+										<li><a data-target="#tab3" class="text-center" data-toggle="tab">CONFIRM</a></li>
+									</ul>
+									<div class="tab-content">
+									  <div class="tab-pane" id="tab1">
+									    <div class="form-group" style="">
+												<label class="control-label col-md-2">Seller Name <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<select class="select2_demo_1 form-control" name="select" ng-model="sellerId" style="width:100%;" required ng-change="sellerData(sellerId)">
+														<option value=""></option>
+														<option ng-repeat="seller in sellersObj" value="{{seller['properties'].id}}"  data="{{seller['properties'].sellerName}}">{{seller['properties'].sellerName}}</option>
+													</select>
+												</div>
+												<label class="control-label col-md-2">Seller Branch <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<select class="select2_demo_2 form-control" name="select" ng-model="sellerDetails.sellerBranchId" style="width:100%;" required ng-change="sellerBranch()">
+														<option value=""></option>
+														<option ng-repeat="sellerBranch in sellerBranchObj" value="{{sellerBranch['properties'].id}}" data="{{sellerBranch['properties'].branchName}}">{{sellerBranch['properties'].branchName}}
+														</option>
+													</select>
+												</div>
+										 	</div>
+											<div class="form-group">
+												<label class="control-label col-md-2">Item Name <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<input type="text" class="form-control text-uppercase" value="{{itemName}}" disabled name="sellerItemName" required />
+												</div>
+												<label class="control-label col-md-2">Market Price <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<input type="number" class="form-control" ng-model="sellerDetails.marketPrice" name="price" placeholder="ENTER PRICE.." required/>
+												</div>
+											</div>
+											<div class="form-group">
+											<label class="control-label col-md-2">Selling Price <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<input type="number" class="form-control" ng-model="sellerDetails.sellingPrice" name="price" placeholder="ENTER PRICE.." required/>
+												</div>	
+												<label class="col-sm-2 control-label">Quantity
+													<span class="required">* </span>
+												</label>
+												<div class="col-sm-4">
+													<input type="number" class="form-control" ng-model="sellerDetails.quantity" name="quantity" placeholder="ENTER QUANTITY.." required/>
+												</div>
+											</div>
+											<div class="form-group">
+													<label class="col-sm-2 control-label">Base Unit
+													<span class="required">* </span>
+													</label>
+													<div class="col-sm-4">
+														<div class="input-group m-b">
+															<input type="text" class="form-control" ng-model="sellerDetails.baseUnit" name="baseUnit" placeholder="ENTER BASE UNIT [0.25,0.5,0.75,1]" required/>
+															<span class="input-group-addon">.00</span>
+													</div>
+												</div>
+											<label class="col-sm-2 control-label">Measurement Unit
+													<span class="required">* </span>
+												</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_6" ng-model="sellerDetails.measurementUnit" name="measurementUnit" style="width:100%;" required>
+														<option value=""></option>
+														<option value="Grams">Grams</option>
+														<option value="Kg">Kg</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">SpecialTag</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_4" ng-model="sellerDetails.specialTag" name="specialTag" style="width:100%;" required>
+														<option value=""></option>
+														<option value="Yes">Yes</option>
+														<option value="No">No</option>
+													</select>
+												</div>
+												<label class="control-label col-md-2">CutTypes</label>
+													<div class="col-md-4">
+														<select class="form-control select2_demo_3" ng-model="cutTypeId" multiple style="width:100%;" required name="cutTypes" ng-change="cutTypeChange()">
+														  <option value=""></option>
+															<option ng-repeat="cutTypes in cutTypeEntities" value="{{cutTypes['properties'].id}}" data="{{cutTypes['properties'].cutTypeName}}">{{cutTypes['properties'].cutTypeName}}</option>
+														</select>
+													</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Status
+													<span class="required">* </span>
+												</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_5" ng-model="sellerDetails.itemAvailableStatus" name="status" style="width:100%;" required>
+														<option value=""></option>
+														<option value="ACTIVE">ACTIVE</option>
+														<option value="INACTIVE">INACTIVE</option>
+													</select>
+												</div>
+												<label class="col-sm-2 control-label">Description</label>
+												<div class="col-sm-4">
+													<textarea class="form-control" ng-model="sellerDetails.description" name="description" placeholder="ENTER DESCRIPTION.." required></textarea>
+												</div>
+											</div>
+											<span class="col-lg-12" style="border-bottom:1px solid #E7E2E2;margin-bottom:10px;">SEO</span>
+											<div class="form-group" style="margin-bottom:10px;">
+												<label class="col-sm-2 control-label">Title <span class="required">
+												* </span></label>
+												<div class="col-sm-4">
+													<input type="text"  class="form-control" ng-model="sellerDetails.seoTitle" value=""  placeholder="ENTER TITLE.." required/>
+												</div>
+												<label class="col-sm-2 control-label">Keywords<span class="required">
+												* </span></label>
+												<div class="col-sm-4">
+													<input type="text"  class="form-control" ng-model="sellerDetails.seoKeywords" value=""  placeholder="ENTER KEYWORDS.." required/>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Meta Description<span class="required">
+												* </span></label>
+												<div class="col-sm-4">
+													<textarea type="text" class="form-control" ng-model="sellerDetails.seoMetaDescription" value="" placeholder="ENTER METADESCRIPTION.." required></textarea>
+												</div>
+											</div>
+									  </div>
+										<div class="tab-pane" id="tab2">
+											<div class="form-group">
+												<label class="col-sm-1 control-label">Image Name</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+													<input type="text" ng-model="itemThumbImage1.imageName" name="imageName" class="form-control" value="{{sellerItemName}}"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Image Type</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" ng-model="itemThumbImage1.imageType" name="imageType" class="form-control" disabled value="80X61" />
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Thumb Image</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" class="form-control" name="itemImageThumb1" />
+													</div>
+												</div>
+												<div class="col-sm-3" style="margin-top:8px;">
+													<div class="input-group itemImgPath1" >
+															<!-- <img ng-src="//{{categoryParallaxImage.imageLocation}}" alt="imagelocation" /> -->
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-1 control-label">Image Name</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+													<input type="text" ng-model="itemThumbImage2.imageName" class="form-control" />
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Image Type</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" ng-model="itemThumbImage2.imageType"  class="form-control" disabled value="80X61"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Thumb Image</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" class="form-control" name="itemImageThumb2"/>
+													</div>
+												</div>
+												<div class="col-sm-3" style="margin-top:8px;">
+													<div class="input-group itemImgPath2" >
+															<!-- <img ng-src="//{{categoryParallaxImage.imageLocation}}" alt="imagelocation" /> -->
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-1 control-label">Image Name</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+													<input type="text" ng-model="itemThumbImage3.imageName"  class="form-control"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Image Type</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" ng-model="itemThumbImage3.imageType"  class="form-control" disabled value="80X61"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Thumb Image</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" class="form-control" name="itemImageThumb3"/>
+													</div>
+												</div>
+												<div class="col-sm-3" style="margin-top:8px;">
+													<div class="input-group itemImgPath3" >
+															<!-- <img ng-src="//{{categoryParallaxImage.imageLocation}}" alt="imagelocation" /> -->
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-1 control-label">Image Name</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+													<input type="text" ng-model="itemThumbImage4.imageName"  class="form-control"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Image Type</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" ng-model="itemThumbImage4.imageType"  class="form-control" disabled value="80X61"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Thumb Image</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" class="form-control" name="itemImageThumb4"/>
+													</div>
+												</div>
+												<div class="col-sm-3" style="margin-top:8px;">
+													<div class="input-group itemImgPath4" >
+															<!-- <img ng-src="//{{categoryParallaxImage.imageLocation}}" alt="imagelocation" /> -->
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-1 control-label">Image Name</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+													<input type="text" ng-model="itemNormalImage5.imageName" name="imageName" class="form-control" value="{{restaurantItemName}}"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Image Type</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" name="imageType" ng-model="itemNormalImage5.imageType"  class="form-control" disabled value="360X360"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Normal Image</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" class="form-control" name="itemImageNormal5"/>
+													</div>
+												</div>
+												<div class="col-sm-3" style="margin-top:8px;">
+													<div class="input-group itemImgPath5" >
+															<!-- <img ng-src="//{{categoryParallaxImage.imageLocation}}" alt="imagelocation" /> -->
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-1 control-label">Image Name</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" ng-model="itemNormalImage6.imageName"  class="form-control"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Image Type</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" class="form-control" ng-model="itemNormalImage6.imageType" disabled value="360X360"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Normal Image</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" class="form-control" name="itemImageNormal6"/>
+													</div>
+												</div>
+												<div class="col-sm-3" style="margin-top:8px;">
+													<div class="input-group itemImgPath6" >
+															<!-- <img ng-src="//{{categoryParallaxImage.imageLocation}}" alt="imagelocation" /> -->
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-1 control-label">Image Name</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" ng-model="itemNormalImage7.imageName"  class="form-control"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Image Type</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text"  class="form-control" ng-model="itemNormalImage7.imageType" disabled value="360X360"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Normal Image</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" name="itemImageNormal7" class="form-control"/>
+													</div>
+												</div>
+												<div class="col-sm-3" style="margin-top:8px;">
+													<div class="input-group itemImgPath7" >
+															<!-- <img ng-src="//{{categoryParallaxImage.imageLocation}}" alt="imagelocation" /> -->
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-1 control-label">Image Name</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" ng-model="itemNormalImage8.imageName"  class="form-control"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Image Type</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text"  class="form-control" ng-model="itemNormalImage8.imageType" disabled value="360X360"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Normal Image</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" name="itemImageNormal8" class="form-control"/>
+													</div>
+												</div>
+												<div class="col-sm-3" style="margin-top:8px;">
+													<div class="input-group itemImgPath8" >
+															<!-- <img ng-src="//{{categoryParallaxImage.imageLocation}}" alt="imagelocation" /> -->
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-1 control-label">Image Name</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" ng-model="itemMainImage.imageName"  class="form-control" value="{{restaurantItemName}}"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Image Type</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text"  class="form-control" ng-model="itemMainImage.imageType" disabled value="170X139"/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Main Image</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" name="itemMainImage" class="form-control"/>
+													</div>
+												</div>
+												<div class="col-sm-3" style="margin-top:8px;">
+													<div class="input-group itemMainImgPath" >
+															<!-- <img ng-src="//{{categoryParallaxImage.imageLocation}}" alt="imagelocation" /> -->
+													</div>
+												</div>
+											</div>
+											<!--End Images Data -->
+										</div>
+										<div class="tab-pane" id="tab3">
+											<div class="row">
+												<h3 class="block text-center">CONFIRM THE ACCOUNT</h3>
+												<div class="col-lg-6 b-r">
+													<div class="form-group">
+														<label class="control-label col-md-4">SELLER NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="sellerName" ng-model="sellerName">
+															{{sellerName}}</p>
+														</div>
+														<label class="control-label col-md-4">SELLERBRANCH NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static"  data-display="branchName" ng-model="branchName">
+															{{branchName}}</p>
+														</div>
+														<label class="control-label col-md-4">MARKET PRICE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="marketPrice" ng-model="seller.marketPrice">
+															{{sellerDetails.marketPrice}}</p>
+														</div>
+														<label class="control-label col-md-4">SELLING PRICE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="sellingPrice" ng-model="seller.sellingPrice">
+															{{sellerDetails.sellingPrice}}</p>
+														</div>
+														<label class="control-label col-md-4">CutType Name:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="cutTypeName" ng-model="cutTypeName" ng-repeat="cutTypeData in cutType">
+															{{cutTypeData.cutTypeName}}</p>
+														</div>
+														<div class="clearfix"></div>
+														<label class="control-label col-md-4">DESCRIPTION:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="description" ng-model="sellerDetails.description">
+															{{sellerDetails.description}}</p>
+														</div>
+													</div>
+													<h4 class="form-section">SEO:</h4>
+													<div class="form-group">
+														<label class="control-label col-md-4">TITLE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="seoTitle" ng-model="sellerDetails.seoTitle">
+															{{sellerDetails.seoTitle}}</p>
+														</div>
+														<label class="control-label col-md-4">KEYWORDS:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="seoKeywords" ng-model="sellerDetails.seoKeywords">
+																{{sellerDetails.seoKeywords}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">META DESCRIPTION:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="seoMetaDescription" ng-model="sellerDetails.seoMetaDescription">
+															{{sellerDetails.seoMetaDescription}}</p>
+														</div>
+													</div>
+												</div>
+												<!-- <div class="col-lg-6">
+													<h4 class="form-section">Selected Timings:</h4>
+													<ul class="actions">
+														<li class="btn default yellow-stripe btn-sm" style="" ng-repeat="timedetails in sellerTimeDetails">
+															<i class="fa fa-adn"></i>
+															{{timedetails.timingName}}:{{timedetails.startTime}} - {{timedetails.endTime}}
+														</li>
+													</ul>
+												</div> -->
+											</div>
+									  </div>
+										<ul class="pager wizard">
+											<li class="previous first" style="display:none;"><a >First</a></li>
+										  <li class="next pull-right"><a >NEXT</a></li>
+											<li class="previous pull-right m-r-sm"><a >PREVIOUS</a></li>
+											<li class="pull-right m-r-sm"><a href="#/ItemMaster/Item/{{ItemId}}">CLOSE</a></li>
+											<li class="next last" style="display:none;"><a>Last</a></li>
+											<li class="confirm hide" ng-hide="confirm"><a ng-click="sellerSubmit(sellerDetails)">CONFIRM</a></li>
+										</ul>
+									</div>	
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+
+#SellerItemwizard >  ul > li{
+	width: 33% !important;
+}
+label.error{
+	display: block !important;
+	margin-bottom: 0px !important
+}
+.tab-pane{
+	padding: 10px;
+}
+.border{
+	border: 1px solid #1ab394;
+}
+.tag-list li a{
+	font-size: 15px;
+}
+.content{
+	cursor: pointer;
+}
+</style>
+<script>
+$(document).ready(function(){
+$(".select2_demo_1").select2({
+    placeholder: "SELECT A SELLER.....",
+    allowClear: true
+});
+$(".select2_demo_2").select2({
+    placeholder: "SELECT A SELLERBRANCH.....",
+    allowClear: true
+});
+$(".select2_demo_3").select2({
+	placeholder: "SELECT CUTTYPES.....",
+	allowClear: true
+});
+$(".select2_demo_4").select2({
+    placeholder: "SELECT A SPECIAL TAG.....",
+    allowClear: true
+});
+$(".select2_demo_5").select2({
+    placeholder: "SELECT A STATUS.....",
+    allowClear: true
+});
+$(".select2_demo_6").select2({
+    placeholder: "SELECT A UNITS.....",
+    allowClear: true
+});
+});
+</script>

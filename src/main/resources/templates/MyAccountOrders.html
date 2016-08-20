@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head th:replace="fragments/PortalHeadFragment::HeadFragment('FreshMeet','FreshMeet','FreshMeet')"></head>
+	<body ng-app="HungryHomeTerminal">
+		<div th:replace="fragments/LocationFragment"></div>
+		<div class="wrapper">
+			<!-- #site-header -->
+			<header th:replace="fragments/HeaderFragment :: HeaderFragment('false')"></header>
+			<div id="site-main">
+				
+					<div class="container">
+
+								<div class="row">
+
+										<div class="col-lg-3 col-md-3">
+												<aside class="widget myaccount-widget widget_categories">
+														<h4 class="widget-title">My Account</h4>
+														<ul >
+																<li class="cat-item active"><a href="/myaccount/profile"><i class="fa fa-cog"></i> My Profile</a></li>
+																<li class="cat-item"><a href="/myaccount/orders"><i class="fa fa-cog"></i> My Orders</a></li>
+																<li class="cat-item"><a href="/myaccount/changepassword"><i class="fa fa-cog"></i> Change Password</a></li>
+				<!-- 												<li class="cat-item"><a href="/myaccount/reviews"><i class="fa fa-cog"></i> My Reviews</a></li> -->
+																
+																
+
+
+
+
+														</ul>
+
+
+												</aside>
+
+
+
+									</div>
+									 <th:block th:switch="${#httpServletRequest.requestURI}">
+							
+									
+									<div class="col-lg-9 col-md-9" th:case="'/myaccount/orders'">
+										<aside class="widget" ng-controller="MyAccountController">
+												<h4 class="widget-title">My Account / Orders</h4>
+												<div th:replace="fragments/UserOrdersFragment"></div>
+
+										</aside>
+
+
+
+
+
+									</div>
+									
+									
+									
+
+								</th:block>
+
+								</div>
+
+
+
+
+
+
+					</div>	
+
+				
+	
+				
+
+				<hr class="container"/>
+
+				<!-- <div th:replace="fragments/OurBrandsFragment"></div> -->
+	
+			</div><!-- #site-main -->
+
+			<div th:replace="fragments/FooterFragment"></div>
+		</div><!-- .wrapper -->
+		
+		<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+
+	</body>
+
+</html>

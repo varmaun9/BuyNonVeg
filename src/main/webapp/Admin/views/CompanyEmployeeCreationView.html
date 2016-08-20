@@ -1,0 +1,176 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Company Employee Creation</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="#/dashboards/CompanyEmployeeTemplate">Company Employee List</a>
+			</li>
+			<li class="active">
+				<strong>Company Employee Creation</strong>
+			</li>
+		</ol>
+	</div>
+	<div class="col-lg-2">
+
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" style="padding: 12px 10px 22px;">
+	<div class="row">
+		<div class="col-lg-12" style="padding:0px;">
+			<div class="ibox">
+				<div class="ibox-content wizard" style="padding:12px 12px 10px 10px;">
+					<div class="wizard">
+						<div class="content">
+							<form id="companyEmployeeForm" method="get" action="" class="form-horizontal">
+								<div id="companyEmployeewizard">
+									<ul>
+									  <li><a data-target="#tab1" class="text-center" data-toggle="tab">COMPANY EMPLOYEE DETAILS</a></li>
+									</ul>
+									<div class="tab-content">
+									  <div class="tab-pane" id="tab1">
+									    <div class="form-group">
+												<label class="col-sm-2 control-label">Customer Name</label>
+												<div class="col-sm-4">
+													<input type="text" name="userName" class="form-control" ng-model="customer.userName" required value=""/>
+												</div>
+												<label class="col-sm-2 control-label">Company Name</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_1" ng-model="customer.companyBranchId" required style="width:100%;" ng-change="changeCompany()" name="companyName">
+														<option value=""></option>
+														<option value="{{companyNames['properties'].id}}" ng-repeat="companyNames in companydetails">{{companyNames['properties'].companyName}}@{{companyNames['properties'].branchName}} </option>
+													</select>
+												</div>
+										 	</div>											
+									  <!-- </div>
+									  <div class="tab-pane" id="tab2"> -->
+									    <div class="form-group">
+												
+												<label class="col-sm-2 control-label">Email ID</label>
+												<div class="col-sm-4">
+														<input type="text" class="form-control" name="emailId" ng-model="customer.emailId" required/>
+												</div>
+												<label class="control-label col-md-2">Gender<span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<label style="display:inline-block;">
+														<div class="radio"> 
+															<input type="radio" id="radio1" name="radioTest" ng-model="customer.gender" value="Male"> <label for="radio1">Male </label>
+														</div>
+													</label>
+                          <label style="display:inline-block;"> 
+                          	<div class="radio"> 
+                          	<input type="radio" id="radio2" name="radioTest" ng-model="customer.gender" value="Female"> <label for="radio2">Female  </label>
+                          	</div>
+                          </label>
+												</div>
+											</div>
+											<div class="form-group">
+												
+						            <label class="control-label col-md-2">DeskNo</label>
+						            <div class="col-md-4" >
+						                <input type="text" class="form-control" name="deskNo" ng-model="customer.deskNo" value="" required/>
+						            </div>
+												
+												<label class="col-sm-2 control-label">Phone Number</label>
+												<div class="col-sm-4">	
+														<input type="text"  class="form-control" name="phoneNo" ng-model="customer.phoneNo" required/>
+												</div>
+											</div>
+											<div class="form-group">
+
+												<label class="control-label col-md-2">DOB <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<input type="datetime" class="form-control" date-time ng-model="customer.dob" min-view="date" auto-close="true" format="dd/MM/yyyy">
+													<!-- <input type="text" class="form-control" ng-model="customer.dob" auto-close="true"> -->
+												</div>
+												
+												<label class="control-label col-md-2">Status <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<select class="select2_demo_2 form-control" ng-model="customer.status" style="width:100%" required name="status">
+														<option value=""></option>
+														<option value="Active">Active</option>
+														<option value="InActive">InActive</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+							            <label class="col-sm-2 control-label">Password</label>
+							            <div class="col-sm-4">
+							                <input type="password" class="form-control" ng-model="customer.password" value="" required ng-click="AddDates(customer.dob)"/>
+							            </div>
+							            <label class="control-label col-md-2">Confirm Password</label>
+							            <div class="col-md-4" >
+							                <input type="password" class="form-control" ng-model="customer.confirmPassword" value="" required/>
+							            </div>											
+							          </div>
+							         <div class="form-group">
+							         	<label class="col-sm-2 control-label">extensionNo</label>
+						            <div class="col-sm-4">
+						                <input type="text" class="form-control" name="extnNumber" ng-model="customer.extensionNo" value="" required/>
+						            </div>
+							         </div>
+									  </div>
+										<ul class="pager wizard">
+											<!-- <li class="previous first" style="display:none;"><a >First</a></li>
+										  <li class="next pull-right"><a >NEXT</a></li>
+											<li class="previous pull-right m-r-sm"><a >PREVIOUS</a></li> -->
+											<li class="pull-right m-r-sm"><a href="#/dashboards/CompanyEmployeeTemplate">CLOSE</a></li>
+											<!-- <li class="next last" style="display:none;"><a>Last</a></li> -->
+											<li class="confirm" ng-hide="confirm"><a ng-click="save(customer)">CONFIRM</a></li>
+										</ul>
+									</div>	
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+
+#companyEmployeewizard >  ul > li{
+	width: 100% !important;
+}
+label.error{
+	display: block !important;
+	margin-bottom: 0px !important
+}
+.tab-pane{
+	padding: 10px;
+}
+.border{
+	border: 1px solid #1ab394;
+}
+.tag-list li a{
+	font-size: 15px;
+}
+</style>
+<script>
+$(".select2_demo_1").select2({
+    placeholder: "SELECT A COMPANY .....",
+    allowClear: true
+});	
+$(".select2_demo_2").select2({
+    placeholder: "SELECT A STATUS.....",
+    allowClear: true
+});
+$(".select2_demo_3").select2({
+    placeholder: "SELECT  ZONES.....",
+    allowClear: true
+});
+$(".select2_demo_4").select2({
+    placeholder: "SELECT BRANCH TYPE.....",
+    allowClear: true
+});
+</script>
+<!-- <input type="radio" name="optionsRadios" value="{{tags['properties'].tagName}}" ng-model="tabbed.tagName" /> -->

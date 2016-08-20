@@ -1,0 +1,195 @@
+<div class="modal fade itemquickview shop-details">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+
+							<span class="modal-title h3" th:text="${item.item.itemName}"> </span>
+<button type="button" class="close mgbt20" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i><!-- <span aria-hidden="true">&times;</span> --></button>
+					</div>
+					
+					<div class="modal-body">
+						<div class="row">
+						<div class="col-md-5 col-sm-12 col-xs-12">
+								<div id="p-preview">
+									<div class="item">
+										<img class="product-slider-image" th:src="@{/common/img/home/img/268x268/cate_1.png}" alt="" title="Product Photo" />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+									</div>
+								<!-- 	<div class="item">
+										<img class="product-slider-image" src="placeholder/shop/100x100/large.jpg" alt="" title="Product Photo" />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+									</div>
+									<div class="item">
+										<img class="product-slider-image" src="placeholder/shop/100x100/large.jpg" alt="" title="Product Photo" />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+									</div>
+									<div class="item">
+										<img class="product-slider-image" src="placeholder/shop/100x100/large.jpg" alt="" title="Product Photo" />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+									</div> -->
+								</div>
+							<!-- 	<div id="p-thumb">
+									<div class="item">
+										<img width="100" height="100" src="placeholder/shop/100x100/01_thumb.png" class="attachment-shop_thumbnail" alt="Product Photo" />
+									</div>
+									<div class="item">
+										<img width="100" height="100" src="placeholder/shop/100x100/02_thumb.png" class="attachment-shop_thumbnail" alt="Product Photo" />
+									</div>
+									<div class="item">
+										<img width="100" height="100" src="placeholder/shop/100x100/03_thumb.png" class="attachment-shop_thumbnail" alt="Product Photo" />
+									</div>
+									<div class="item">
+										<img width="100" height="100" src="placeholder/shop/100x100/04_thumb.png" class="attachment-shop_thumbnail" alt="Product Photo" />
+									</div>
+								</div> -->
+							</div>
+							<div class="col-md-7 col-sm-12 col-xs-12">
+								<div class="product" th:attr="ng-init='setQuickRestaurantItem(\''+${item.item.id}+'\',\''+${item.id}+'\',\''+${item.restaurantBranch.restaurant.id}+'\',\''+${item.restaurantBranch.restaurant.restaurantName}+'\',\''+${item.restaurantItemName}+'\',\''+${item.price}+'\',\''+${item.quantity}+'\');'">
+									<div class="p-info" >
+										<h1 th:text="${item.restaurantItemName}"></h1>
+
+										<span class="price">	<del>&#8377; 99.00</del>
+											<span class="amount" th:inline="text">&#8377; [[${item.price}]]</span>
+										<th:block th:each="tag:${item.item.itemTagses}">
+											<a href="#" th:if="${tag.tags.tagName=='Veg'}" >	<img src="../../common/img/home/img/20x22/veg-icon.jpg" alt="Cart" width="12" height="20" /></a>
+												<a href="#" th:if="${tag.tags.tagName=='NonVeg'}" >
+													<img src="../../common/img/home/img/20x22/nonveg_icon.png" alt="Cart" width="12" height="20" />	</a>
+										</th:block>
+										</span>
+										<div class="p-rate clearfix">
+											<div class="star-rating pull-left">
+												<span style="width:60%"></span>
+											</div>
+											<div class="pull-right">1 reviews / <a href="#">Write a review</a></div>
+										</div>
+									<div class="p-desc">
+								
+										</div> 
+										<div class="p-meta">
+											<div class="p-meta-one">
+												<ul>
+													<li th:inline="text"><span>Restaurant</span>:[[${item.restaurantBranch.restaurant.restaurantName}]]</li>
+													<!-- <li><span>Item Code</span>: Product 3</li> -->
+													<!-- <li><span>Reward Points</span>: 200</li>
+													<li><span>Availability</span>: In Stock </li> -->
+												</ul>
+											</div>
+											<!-- <div class="p-meta-two">
+												<ul>
+													<li><span>Category</span>: <a href="#">Decoration</a></li>
+												</ul>
+											</div> -->
+											<div class="p-meta-three">
+												<ul>
+													<li><span>Category</span>: <a href="#" th:text="${item.item.subCategory.category.categoryName}"></a> </li>
+													<li><span>Sub Category</span>: <a href="#" th:text="${item.item.subCategory.subCategoryName}"></a> </li>
+													<li th:each="tag:${item.item.itemTagses}" th:if="${tag.tags.tagName=='Indian'}">
+													<span>Cuisine</span>: <a href="#" th:text="'Indian'"></a></li>
+
+												</ul>
+											</div>	
+										</div> 
+									
+										<div class="p-action row col-lg-12 col-md-12 mgt10 t_division animated p-none">
+												<div class="col-lg-4 col-md-4 col-sm-4 p-none">
+												<a><i class="fa fa-calendar"></i></a>
+											<input type="text"  ng-model="deliveryDate" class="singleQuickItemDatePicker form-control"   style="width:100px !important;"/>
+											</div>
+												<div class="col-lg-4 col-md-4 col-sm-4 p-none">
+													
+											<a><i class="fa fa-cloud"></i></a>
+											<!-- <p  th:each="itemTiming:${item.restaurantItemTimingses}"  th:text="${itemTiming.timingDetails.timingName}" ></p> -->
+											<select class="h-40 w-110" ng-model="timingId">
+												<option   th:each="itemTiming:${item.restaurantItemTimingses}" th:value="${itemTiming.timingDetails.id}" th:text="${itemTiming.timingDetails.timingName}" th:attr="ng-init='setTimingDetails(\''+${itemTiming.timingDetails.id}+'\',\''+${itemTiming.restaurantItemTimingsStatus}+'\',\''+${itemTiming.timingDetails.timingName}+'\')'"></option>
+											</select>
+										
+											</div>
+										<div class="col-lg-4 col-md-4 p-none">
+											<a><i class="fa fa-clock-o"></i></a>
+											
+											<select class="h-40 w-60 " ng-model="deliveryTime">
+												<option  ng-repeat="timings in availableTimings[timingId]" ng-bind="timings" value="{{timings}}"></option>
+											</select>
+										</div>
+										<!-- <div class="col-lg-1 col-md-1 p-none"><a href="javascript:;" ng-click="checkOutNow(timingId,deliveryDate,deliveryTime,itemUnits)"><img src="/common/img/home/img/list_tick.png"/></a></div> -->
+										</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+									<!-- <div class="row">
+										<div class="col-lg-4 col-md-4 col-sm-4">
+											<input type="text" class="date-picker form-control" ng-init="initQuickDatePicker()"/>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-4">
+										<select  class="form-control">
+
+											<option  th:each="itemTiming:${item.restaurantItemTimingses}" th:value="${itemTiming.timingDetails.id}" th:text="${itemTiming.timingDetails.timingName}" th:attr="ng-init='setAvailableTimings(\''+${itemTiming.timingDetails.id}+'\',\''+${itemTiming.restaurantItemTimingsStatus}+'\',\''+${itemTiming.timingDetails.timingName}+'\')'"></option>
+										</select>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4">
+										<select ng-model="deliveryTime"  class="form-control">
+											<option  ng-repeat="timings in availableTimings[timingId]" ng-bind="timings" value="{{timings}}"></option>
+											
+										</select>
+									</div>
+								</div> -->
+										<div class="p-action">
+											<h5 class="textup">Quantity:</h5>
+											<input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty" size="4"/>
+											<!-- <input type="text"  ng-model="deliveryDate" value="1" title="date"/> -->
+											
+											<a href="#" class="add-to-cart" ng-click="checkOutNow()"><i class="fa fa-money"></i> Check Out Now</a>
+											
+											<!-- <h5 class="textup">Date &amp; Time:</h5>
+											
+											<a href="#" class="add-to-cart" ng-click="checkOutNow()"><i class="fa fa-fast-forward"></i> Check Out Now</a> -->
+										</div>
+										
+										<div class="p-share clearfix">
+											<span class="pull-left">Share:</span>
+											<ul class="social pull-left">
+												<li><a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+												<li><a href="#" title="Dribbble" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+												<li><a href="#" title="Googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+												<li><a href="#" title="Youtube" target="_blank"><i class="fa fa-youtube"></i></a></li>
+											</ul>
+										</div>
+									</div><!-- .p-info -->
+								</div><!-- .summary.product -->
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer"></div>
+				</div><!-- .modal-content -->
+			</div><!-- .modal-dialog -->
+		</div><!-- .modal -->
+		<script src = "/common/lib/bootstrap-datepicker.js"></script>
+		<script>
+		(function(){
+			
+$('.singleQuickItemDatePicker').datepicker({
+			autoclose:'true',
+			
+			
+			format:'dd/mm/yyyy',
+			todayHighlight:'true',
+			orientation:'bottom',
+			defaultDate:new Date()
+
+		}); 
+})();
+
+		</script>

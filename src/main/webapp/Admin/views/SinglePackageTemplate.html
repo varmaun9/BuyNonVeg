@@ -1,0 +1,125 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="dashboards.PackageTemplate">Package List</a>
+      </li>
+      <li class="active">
+        <strong>Single Package List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div ng-controller="SinglePackageController">
+	<div class="col-lg-12">
+		<div class="tabs-container">
+			<div class="tabs-right">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" data-target="#tab-1"> INFO</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-2"> SEO</a></li>
+				</ul>
+				<div class="tab-content ">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">Package INFO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="TagForm" >
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Tag Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{PackageDetails['properties'].tagName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="control-label col-md-4">TagType Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{PackageDetails['properties'].tagTypeName}}</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Status</label>
+									<div class="col-sm-8">
+										<div class="form-control-static">{{PackageDetails['properties'].status}}</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Description</label>
+									<div class="col-sm-8">
+										<div class="form-control-static">{{PackageDetails['properties'].description}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="editTag(PackageDetails['properties'])" class="btn btn-outline btn-primary">
+											EDIT
+										</a>
+										<a ui-sref="dashboards.PackageTemplate" class="btn btn-outline btn-warning">
+											CLOSE
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<div class="panel-body">
+							<!-- START Seo Title -->
+							<div class="font-bold text-center b-b">TAG SEO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="TagSeo">
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Title</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{PackageDetails['properties'].seoTitle}}
+										</div>
+									</div>
+								</div>
+								<!-- <div class="clearfix"></div> -->
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Keywords</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{PackageDetails['properties'].seoKeyWords}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4">Meta Description</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{PackageDetails['properties'].seoMetaDescription}}
+										</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="editTagSeo(PackageDetails['properties'])" class="btn btn-outline btn-primary">
+											EDIT
+										</a>
+										<a ui-sref="dashboards.PackageTemplate" class="btn btn-outline btn-warning">
+											CLOSE
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END Seo Title -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+</style>

@@ -1,0 +1,81 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">COMPANY BRANCH TIMING EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b" name="EmployeeForm" >
+			<div class="form-group">
+				<label class="col-sm-4 control-label"> Company Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">{{BranchTimingsEditData.companyName}}@
+					{{BranchTimingsEditData.branchName}}</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label"> Branch Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class="form-control" ng-model="BranchTimingsEditData.companyBranchId" required style="width:100%;" ng-change="changeCompany()" name="companyName">
+							<option value=""></option>
+							<option value="{{companyNames['properties'].id}}" ng-repeat="companyNames in companydetails">{{companyNames['properties'].companyName}}@{{companyNames['properties'].branchName}} </option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Timing Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<!-- <input type="text" class="form-control" ng-model="{{BranchTimingsEditData.timingName}}"> -->
+						<select class="form-control" ng-model="BranchTimingsEditData.timingsId" style="width:100%" required name="timingsId">
+							<option value=""></option>
+              <option value="{{companytimedata['properties'].id}}" ng-repeat="companytimedata in companyTimingDetails">{{companytimedata['properties'].timingName}}</option>
+            </select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Start Time</label>
+				<div class="col-sm-7">
+					<div class="form-control-static" clock-picker data-autoclose="true">
+						<input type="text" class="form-control" ng-model="BranchTimingsEditData.startTime"></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">End Time</label>
+				<div class="col-sm-7">
+					<div class="form-control-static"  clock-picker data-autoclose="true">
+						<input type="text" class="form-control" ng-model="BranchTimingsEditData.endTime"></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class=" form-control" name="select" style="width:100%;" required ng-model="BranchTimingsEditData.companyBranchTimingsStatus">
+						<option value=""></option>
+						<option value="Active">Active</option>
+						<option value="InActive">InActive</option>
+					</select>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="update(BranchTimingsEditData)">Save changes</button>
+	</div>
+</div>
+
+<style>
+.modal-header{
+	padding: 10px 15px !important;
+}
+.modal-body {
+    padding: 0px 30px 0px 30px;
+}
+.popover.clockpicker-popover.bottom.clockpicker-align-left{
+	z-index: 3000 !important;
+}
+</style>

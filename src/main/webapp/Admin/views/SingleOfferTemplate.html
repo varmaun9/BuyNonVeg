@@ -1,0 +1,137 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="dashboards.OffersTemplate">Offer List</a>
+      </li>
+      <li class="active">
+        <strong>Single Offer List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div ng-controller="SingleOfferController">
+	<div class="col-lg-12">
+		<div class="tabs-container">
+			<div class="tabs-right">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" data-target="#tab-1"> OFFER INFO </a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-2"> OFFER DETAILS </a></li>
+				</ul>
+				<div class="tab-content ">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">INFO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="OfferForm" >
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 col-md-4 control-label"> Offer Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleOfferDetails['properties'].offerName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Offer Days</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleOfferDetails['properties'].offerNoOfDays}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Date</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleOfferDetails['properties'].offerFromDate}} - {{singleOfferDetails['properties'].offerToDate}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Time</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleOfferDetails['properties'].offerFromTime}} - {{singleOfferDetails['properties'].offerToTime}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Amount Value</label>
+									<div class="col-sm-7">
+										<div class="form-control-static" ng-if="singleOfferDetails['properties'].amountDescription== 'Amount' ">{{singleOfferDetails['properties'].amountTypeValue}} Rs</div>
+										<div class="form-control-static" ng-if="singleOfferDetails['properties'].amountDescription != 'Amount' ">{{singleOfferDetails['properties'].amountTypeValue}} %</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> OfferBy</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleOfferDetails['properties'].placedByStatus}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Status</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleOfferDetails['properties'].status}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Description</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleOfferDetails['properties'].description}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a  ui-sref="dashboards.OffersTemplate" ng-click="editOffer(singleOfferDetails['properties'])" class="btn btn-outline btn-primary">
+											EDIT
+										</a>	
+										<a href="javascript:;" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b col-lg-12">
+								<div class="col-lg-8"> DETAILS </div>
+								<div class="col-lg-4"><i class="fa fa-circle text-navy"></i>&nbsp;Include  &nbsp;<i class="fa fa-circle text-danger"></i>&nbsp;Exclude</div>
+							</div>
+							<div class="m-t-sm style1 col-lg-4" ng-repeat="offerdetails in singleOfferDetails.entities" ng-class="{'navy-bg':offerdetails['properties'].attributeName=='RestaurantItemId','red-bg':offerdetails['properties'].includeExcludeStatus=='Exclude'}" ng-if="offerdetails['properties'].attributeName=='RestaurantItemId'">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="text-warning text-center font-bold h5">{{offerdetails['properties'].attributeValue}}</div>
+                    <div class="clearfix"></div>
+                    <!-- <div class="font-bold text-center">Restaurant Item</div> -->
+                    <div class="text-center" style="font-size:smaller">
+                    	<p class="font-bold">Restaurant Item</p>
+                  	</div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-t-sm style1 col-lg-4" ng-repeat="offerdetails in singleOfferDetails.entities" ng-class="{'navy-bg':offerdetails['properties'].includeExcludeStatus=='Include','red-bg':offerdetails['properties'].includeExcludeStatus=='Exclude'}" ng-if="!offerdetails['properties'].attributeName">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="text-warning text-center font-bold h5">{{offerdetails['properties'].restaurantItemName}}</div>
+                    <div class="clearfix"></div>
+                    <div class="text-center" style="font-size:smaller">
+                    	<p class="font-bold">{{offerdetails['properties'].restaurantName}} -	
+                    	{{offerdetails['properties'].restaurantBranchName}}</p>
+                  	</div>
+                    <div class="font-bold text-center">{{offerdetails['properties'].restaurantBranchOfferStatus}}</div>
+                  </div>
+                </div>
+              </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+</style>

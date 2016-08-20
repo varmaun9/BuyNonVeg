@@ -1,0 +1,42 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">ATTRIBUTE EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b itemform" name="cutTypeForm">
+			<div class="form-group" style="height:30px;">
+				<label class="col-sm-4 col-md-4 control-label">Cut Type Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="" ng-model="cutTypeEditedData.cutTypeName" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class="form-control" name="status" ng-model="cutTypeEditedData.status" style="width:100%;" required>
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Description</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<textarea type="text" class="form-control" name="description" ng-model="cutTypeEditedData.description" ></textarea>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="cutTypeModelEdit(cutTypeEditedData)">Save changes</button>
+	</div>
+</div>
+

@@ -1,0 +1,58 @@
+<div class="top-cate m-none">
+        <div class="featured-pro container">
+          <div class="row">
+            <div class="slider-items-products">
+            <div class="new_title">
+              <h2 th:inline= "text">Types of [[${category.categoryName}]]</h2>
+            </div>
+            <div id="top-categories" class="product-flexslider hidden-buttons">
+              <div class="slider-items slider-width-col4 products-grid owl-carousel owl-theme" style="opacity: 1; display: block;">
+                          
+
+
+<div class="sub-category">
+									
+									<div class="related-item navtop" th:with="list=(${#httpServletRequest.getParameterValues('scid')}==null)?${array}:${#httpServletRequest.getParameterValues('scid')}">
+									
+										<th:block th:each="subCategory:${subCategories}" th:with="selectedStatus=${#lists.contains(#lists.toList(list),subCategory.id)}">
+										
+									
+										<div class="product style-2 c-p sub-cat" th:classappend="(${selectedStatus}==true)?'selected'" th:name="${subCategory.id}">
+					<a ng-click="getProductsBySubCategoryRemove($event)"><i class="fa fa-times-circle sel-cross-ico c-p" ></i></a>
+											<div class="sub-cat" ng-click="getProductsBySubCategory($event)">
+											<div class="pro-img">
+												
+												<img  th:src="${#lists.toList(subCategory.subCategoryImageses)[0].imageLocation}" width="100" height="139" alt="Product 01" />
+												<div class="pro-info">
+												<h4><a href="#" th:text="${subCategory.subCategoryName}"></a></h4>
+												
+												
+											</div>
+												
+											</div>
+											
+										</div>
+										</div>
+									
+									</th:block>
+									
+										
+									
+										
+									</div><!-- .related-item -->
+								</div>
+
+                               
+                          
+                            <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev"><a class="flex-prev"></a></div><div class="owl-next"><a class="flex-next"></a></div></div></div></div><!-- slider-items slider-width-col4 products-grid--> 
+            </div><!--top-categories-->
+          </div><!--slider-items-products-->
+        </div><!--row-->   
+      </div><!--featured-pro container wow bounceInUp animated animated-->
+    </div>
+
+
+
+
+
+

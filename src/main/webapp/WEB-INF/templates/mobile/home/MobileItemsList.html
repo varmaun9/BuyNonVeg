@@ -1,0 +1,94 @@
+<ion-view ng-controller="personCtrl" style="font-family: 'Abel', sans-serif;">
+  <ion-scroll direction="x" zooming="true" class="widescroll" style="">
+    <ul class="catList">
+      <li class="catItems" th:attr="ng-click='subCategoryItemsList(\''+${subCategory.id}+'\')'" th:each="subCategory:${subCategories}" th:attr="ng-change='subCategoryItemsList(\''+${subCategory.id}+'\')'" style="padding:10px;border:1px solid #cc2828">
+          <img th:src="${#lists.toList(subCategory.subCategoryImageses)[0].imageLocation}" width="100px" height="100px" />
+        <p th:inline="text">[[${subCategory.subCategoryName}]]</p>
+      </li>
+    </ul>
+  </ion-scroll>
+  <ion-content class="has-subheader" style="top:150px;margin-top: 65px;">
+    <div class="row c_item_list">
+    <div class="col col-50 c_item_1">
+      <a href="" th:each="subCategoryItems:${items}">
+        <img src="img/white-fish-fillet-and-scallions_large.jpg" class="full-image" height="134px"/>
+      <p class="c_item_name" th:inline="text">[[${subCategoryItems.itemName}]]</p>
+      <p style="font-family: sans-serif;">
+        <del style="background-color: #fff;font-size: 13px;color: #000;color: #999;">Rs.170</del> 
+        <span style="font-size: 17px;font-weight: bold;color: #cc2828;">Rs.150</span> 
+      </p>
+      <p class="c_sellr_nme">form <span style="color: #31708f">1 seller</span></p>
+      </a>
+    </div>
+    <div class="col col-50 c_item_1">
+      <a href="" th:each="subCategoryItems:${items}">
+        <img src="img/dreamstime_m_10525539_large.jpg" class="full-image" height="134px"/>
+      <p class="c_item_name" th:inline="text">[[${subCategoryItems.itemName}]]</p>
+      <p style="font-family: sans-serif;">
+        <del style="background-color: #fff;font-size: 13px;color: #000;color: #999;">Rs.170</del> 
+        <span style="font-size: 17px;font-weight: bold;color: #cc2828;">Rs.150</span> 
+      </p>
+      <p class="c_sellr_nme">from <span style="color: #31708f">2 seller</span></p>
+      </a>
+    </div>
+  </div>
+  </ion-content>
+</ion-view>
+<style>
+ .widescroll {
+    overflow: scroll;
+    white-space: nowrap;
+    top: 50px;
+    left: 3px;
+    /*height: 50px;*/
+  }
+  .scroll { 
+    min-width: 100%;
+  }
+  .catList li{
+    display: inline-block;
+  }
+  .catItems:active{
+    background-color: #cc2828;
+    color: #fff;
+  }
+
+    .c_item_list_head .chi h2{
+    text-align: center;
+  }
+  .c_item_list{
+    text-align: center;
+  }
+
+  .c_item_list_head .chi p{
+    text-align: center;
+  }
+  .c_item_list .c_item_1{
+    border: 1px solid #ddd;
+  }
+  .c_item_list .c_item_1 .add_btn{
+    border: none;
+    font-size: 10px;
+    padding: 5px 5px 5px 5px;
+    color: #fff;
+    background-color: #cc2828;
+  }
+  .c_item_list .c_item_1 .buy_now{
+    border: none;
+    font-size: 10px;
+    padding: 5px 13px 5px 13px;
+    color: #fff;
+    background-color: #cc2828;
+    float: right;
+  }
+  .c_item_list .c_item_1 .c_item_name{
+    color: #cc2828;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .c_item_list .c_item_1 .c_sellr_nme{
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
+  }
+</style>

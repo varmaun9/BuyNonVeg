@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head th:replace="fragments/PortalHeadFragment::HeadFragment('FreshMeat','FreshMeat','FreshMeat')"></head>
+	<body ng-app="HungryHomeTerminal">
+			<div th:replace="fragments/LocationFragment"></div>
+	
+		<div class="wrapper" id="top1">
+			<!-- #site-header -->
+			<header th:replace="fragments/HeaderFragment :: HeaderFragment('hide')"></header>
+			<div id="site-main">
+				
+		<div th:replace="fragments/MainSliderFragment::MainSliderFragment"></div>	
+		    <div class="lightbox hide animated"></div>
+					<div th:replace="fragments/PromotionThumbsFragment"></div>				
+					<div th:include="fragments/LatestDealsFragment" ng-controller="SingleItemController"></div>				
+					
+					<!-- <div th:replace="fragments/NewArrivalsFragment"></div> -->
+					<!-- <div th:replace="fragments/RecentBlogFragment"></div> -->
+
+				<!-- <hr class="container"/> -->
+						<div th:replace="fragments/HotCategoriesFragment"></div>
+				<div th:replace="fragments/OurBrandsFragment"></div>
+
+			</div><!-- #site-main -->
+			
+			<div th:replace="fragments/FooterFragment"></div>
+			
+			
+		</div><!-- .wrapper -->
+<a href="#site-main" id="back-top" class="goTop"  style="display: block;"><i class="fa fa-angle-up"></i></a>
+ 
+	
+
+		<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+
+	</body>
+
+</html>

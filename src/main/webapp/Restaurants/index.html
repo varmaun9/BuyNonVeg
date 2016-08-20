@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head th:replace="fragments/PortalHeadFragment::HeadFragment('FreshMeet','FreshMeet','FreshMeet')"></head>
+	<body ng-app="HungryHomeTerminal">
+		
+		<div class="wrapper">
+			<!-- #site-header -->
+			<header th:replace="fragments/HeaderFragment :: HeaderFragment('true')"></header>
+			<div id="site-main">
+				
+		<div th:replace="fragments/MainSliderFragment::MainSliderFragment"></div>	
+		    <div class="lightbox hide animated fadeInDown"></div>
+					<div th:replace="fragments/PromotionThumbsFragment"></div>				
+					<div th:replace="fragments/LatestDealsFragment"></div>				
+					
+					<!-- <div th:replace="fragments/NewArrivalsFragment"></div> -->
+					<!-- <div th:replace="fragments/RecentBlogFragment"></div> -->
+
+				<!-- <hr class="container"/> -->
+						<div th:replace="fragments/HotCategoriesFragment"></div>
+				<div th:replace="fragments/OurBrandsFragment"></div>
+			</div><!-- #site-main -->
+			<div th:replace="fragments/FooterFragment"></div>
+		</div><!-- .wrapper -->
+		
+		<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+
+	</body>
+
+</html>

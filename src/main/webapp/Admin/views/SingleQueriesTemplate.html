@@ -1,0 +1,73 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="dashboards.QueriesTemplate">Queries List</a>
+      </li>
+      <li class="active">
+        <strong>Single Queries View</strong>
+      </li>
+    </ol>
+  </div>			
+  <div class="col-lg-2"></div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" style="padding: 12px 10px 22px;">
+	<div class="row">
+		<div class="col-lg-12" style="padding:0px;">
+			<div class="ibox">
+				<div class="ibox-content wizard" style="padding:12px 12px 10px 10px;">
+					<div class="wizard">
+						<div class="content">
+							<div class="font-bold text-center b-b">Queries INFO</div>
+							<form class="form-horizontal form-bordered" style="padding: 50px;">
+								<div class="row form-group" style="height:30px;">
+									<label class="control-label col-md-2" style="text-align:start;">Seller Name:</label>
+									<div class="col-sm-4">
+										<div class="form-control-static">{{Attributesdetails['properties'].attributeName}}</div>
+									</div>
+									<label class="col-sm-2 control-label" style="text-align:start;">Query Id:</label>
+									<div class="col-sm-4">
+										<div class="form-control-static">{{Attributesdetails['properties'].status}}</div>
+									</div>
+								</div>
+								<div class="row form-group" style="height:30px;">
+									<label class="control-label col-md-2" style="text-align:start;">Query:</label>
+									<div class="col-sm-4">
+										<div class="form-control-static">{{Attributesdetails['properties'].attributeName}}</div>
+									</div>
+									<label class="col-sm-2 control-label" style="text-align:start;">Answered By:</label>
+									<div class="col-sm-4">
+										<div class="form-control-static">
+											<input type="text"  class="form-control" name="seoTitle" ng-model="Attributes.seoTitle" value="" required/>
+										</div>
+									</div>
+								</div>
+								<div class="row form-group" style="margin-top: 50px;">
+									<label class="control-label col-md-3">Answer To Query:<span class="required">
+									* </span>
+									</label>
+									<div class="col-md-8">
+										<textarea type="text" class="form-control" placeholder="Please Enter a Text below 100 words" maxlength="120" ng-model="Attributes.description" required></textarea>
+									</div>
+								</div>
+							</form>
+							<ul class="pager wizard">
+								<li class="m-r-sm"><a href="#/dashboards/QueriesTemplate">CLOSE</a></li>
+								<li class="confirm" ng-hide="confirm"><a ng-click="save(Attributes)">SUBMIT</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+</style>

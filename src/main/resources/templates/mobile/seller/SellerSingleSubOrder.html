@@ -1,0 +1,146 @@
+<!-- <ion-view view-title="Single Order" hide-back-button="true">
+  <ion-nav-buttons>
+    <button class="button icon ion-ios-arrow-thin-left cursor-p {{$state.current.name}}" ng-click="modal.hide()"></button>
+        <span class="pull-right"><button class="button energized button-small" ng-click="showAddress()">Show Address</button></span> 
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+  </ion-nav-buttons>
+  <ion-content>
+    
+  </ion-content>
+</ion-view> -->
+
+
+<ion-modal-view>
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-android-arrow-back cursor-p" style="color:#FFFFFF" menu-toggle="right" ng-click="modal.hide()"></button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+      <span class="fontpro" style="color:#FFFFFF;">ORDER DETAILS</span>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear ion-android-send cursor-p" style="color:#FFFFFF" menu-toggle="right" th:attr="ng-click='confirmOrder(\''+${subOrder.id}+'\',\'CONFIRMED\')'"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <!-- <div class="list" style="top: 47px;padding: 5px;">
+      <div class="item">
+        <span th:text="${subOrder.subOrderCode}"> </span>
+      </div>
+      <div class="item item-body">
+        <div class="list list-inset">
+          <div class="" style="padding:8px;" th:each="orderItem:${subOrder.orderItems}">
+            <span th:text="${orderItem.sellerItem.item.itemName}"></span>
+            <span class="pull-right" th:text="${orderItem.orderItemTotalPrice}"></span>
+          </div>
+        </div>
+      </div> -->
+      <ul class="paper" style="margin-top: 47px;padding: 5px;background-color:#FFFFFF">
+        <li> 
+          <div>
+            <ul class="row">
+              <li class="font-size no-padding col-50 b-n" style="color: #B9ACAC;">Delivery Time</li>
+              <li class="font-size no-padding col-50 b-n" style="text-align: right;color: #B9ACAC;">Order No</li>
+            </ul>
+            <ul class="row">
+              <li class="col-67 font-size no-padding b-n" style="font-weight: bold;color: #4CAF50;" th:text="${#dates.format(subOrder.subOrderDeliveryDate, 'dd-MMM-yyyy')} + ' ' + ${subOrder.subOrderDeliveryTime}">
+              </li>
+              <li class="col-33 font-size no-padding b-n" style="font-weight: bold;text-align: right;color: #4CAF50;" th:text="${subOrder.subOrderCode}"></li>
+            </ul>
+          </div>
+        </li>
+        <li th:each="orderItem:${subOrder.orderItems}">
+          <div class="row">
+            <span class="col-50" th:text="${orderItem.sellerItem.item.itemName}"></span>
+            <span class="col-25" th:text="${orderItem.units}"></span>
+            <span class="col-25" style="text-align: right;" th:text="${orderItem.price}"></span>
+          </div>
+        </li>
+        <li>
+          <div class="row subtotal">
+            <span class="col-50">Sub Total</span>
+            <span class="col-50" style="text-align: right;" th:inline="text">[[${subOrder.subOrderSubTotalPrice}]]</span>
+          </div>
+        </li>
+        <li>
+          <div class="row subtotal">
+            <span class="col-50">Tax Value</span>
+            <span class="col-50" style="text-align: right;" th:inline="text">[[${subOrder.taxValue}]]%</span>
+          </div>
+        </li>
+        <li>
+          <div class="row subtotal">
+            <span class="col-50">Discount</span>
+            <span class="col-50" style="text-align: right;" th:text="${subOrder.discount}"></span>
+          </div>
+        </li>
+        <li>
+          <div class="row subtotal">
+            <span class="col-50">Delivery Charges</span>
+            <span class="col-50" style="text-align: right;" th:text="${subOrder.subOrderDeliveryCharges}"></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4 class="col-offset-33" style="text-align: right;">
+              Total : <span class="total" th:inline="text"><i class='fa fa-rupee'></i> [[${subOrder.subOrderTotalPrice}]]</span>
+            </h4>
+          </div>
+        </li>
+      </ul>
+    <!-- </div> -->
+    <div class="card">
+      <div class="item item-text-wrap" style="border-width:3px;border-style:dashed solid; border-color:#8BC34A">
+        <address style="margin-bottom:0px;">
+        <span th:inline="text" style="font-size:12px;">
+          [[${subOrder.orders.orderDeliveryOptionses[0].address.line1}]]
+          [[${subOrder.orders.orderDeliveryOptionses[0].address.area}]]<br />
+          [[${subOrder.orders.orderDeliveryOptionses[0].address.town}]]
+          [[${subOrder.orders.orderDeliveryOptionses[0].address.city}]]<br />
+          [[${subOrder.orders.orderDeliveryOptionses[0].address.state}]]
+          [[${subOrder.orders.orderDeliveryOptionses[0].address.district}]]
+          [[${subOrder.orders.orderDeliveryOptionses[0].address.country}]]
+          [[${subOrder.orders.orderDeliveryOptionses[0].address.mobileNo}]]
+          [[${subOrder.orders.orderDeliveryOptionses[0].address.zipcode}]]
+
+        </span>
+        </address>
+      </div>
+    </div>
+  </ion-content>
+
+  <div class="bar bar-footer">
+    <div class="row">
+      <button class="button button-small button-assertive col" th:attr="ng-click='declineOrder(\''+${subOrder.id}+'\',\'CANCELLED\')'">CANCEL</button>
+    <!-- </div>
+    <div class="row"> -->
+      <button class="button button-small button-balanced col" th:attr="ng-click='confirmOrder(\''+${subOrder.id}+'\',\'CONFIRMED\')'">CONFIRM</button>
+    </div>
+  </div>
+</ion-modal-view>
+
+<style type="text/css">
+  .b-n{
+    border: none !important;
+  }
+  .total{
+    /*background-color: #FFF6A6;*/
+    padding: 4px;
+    margin-left: 22px;
+    color: #F00;
+  }
+  .button.ion-android-arrow-back:before{
+    font-size: 25px !important;
+  }
+  .subtotal{
+    /*color: #FFA588 !important;*/
+    color: #000000 !important;
+  }
+  .bar .title + .buttons{
+    position: absolute;
+    top: 0px !important;
+    right: 0px !important;
+    bottom: 0px !important;
+  }
+</style>

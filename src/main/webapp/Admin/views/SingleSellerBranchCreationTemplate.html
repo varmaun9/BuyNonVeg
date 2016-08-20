@@ -1,0 +1,260 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Seller Branch Creation</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="#/Sellers/SellersTemplate">Sellers List</a>
+			</li>
+			<li>
+				<a href="#/Sellers/SellersTemplate">Single Seller View</a>
+			</li>
+			<li class="active">
+				<strong>Seller Branch Creation</strong>
+			</li>
+		</ol>
+	</div>
+	<div class="col-lg-2">
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" style="padding: 12px 10px 22px;">
+	<div class="row">
+		<div class="col-lg-12" style="padding:0px;">
+			<div class="ibox" ng-controller="SingleSellerBranchCreationController">
+				<div class="ibox-content wizard" style="padding:12px 12px 10px 10px;">
+					<div class="wizard">
+						<div class="content">
+							<form id="sellersBranchForm" method="get" action="" class="form-horizontal">
+								<div id="sellersBranchwizard">
+									<ul>
+										<li><a data-target="#tab1" class="text-center" data-toggle="tab">SELLERS BRANCH</a></li>
+										<li><a data-target="#tab2" class="text-center" data-toggle="tab">BRANCH ADDRESS</a></li>
+										<li><a data-target="#tab3" class="text-center" data-toggle="tab">CONFIRM</a></li>
+									</ul>
+									<div class="tab-content">
+									  <div class="tab-pane active" id="tab1">
+										<div class="form-group">
+												<label class="col-sm-2 control-label">Branch Name</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="branchName" ng-model="sellerBranch.branchName" required/>
+												</div>
+												<label class="col-sm-2 control-label">Email ID</label>
+												<div class="col-sm-4">
+														<input type="text" class="form-control" name="sellerEmailId" ng-model="sellerBranch.sellerEmailId" required/>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Phone Number</label>
+												<div class="col-sm-4">
+														<input type="text" data-mask="(999) 999-9999" class="form-control" name="sellerPhoneNo" ng-model="sellerBranch.sellerPhoneNo" placeholder="Phone Number" required/>
+												</div>
+												<label class="col-sm-2 control-label">Min.OrderTime</label>
+												<div class="col-sm-4" clock-picker data-autoclose="true">
+													<input type="text" placeholder="OrderTime" class="form-control" name="minimumOrderTime" ng-model="sellerBranch.minimumOrderTime" required/>
+												</div>
+											</div>
+											<div class="form-group">
+													<label class="control-label col-md-2">Zones</label>
+													<div class="col-md-4">
+														<select class="form-control select2_demo_3" ng-model="zoneId" multiple style="width:100%;" required name="zone" ng-change="zoneChange()">
+														  <option value=""></option>
+															<option ng-repeat="zone in zoneEntities" value="{{zone['properties'].id}}" data="{{zone['properties'].zoneName}">{{zone['properties'].zoneName}}</option>
+														</select>
+													</div>
+												<label class="control-label col-md-2">Status <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<select class="select2_demo_1 form-control" name="branchStatus" ng-model="sellerBranch.branchStatus" style="width:100%;" required>
+														<option value=""></option>
+														<option value="ACTIVE">ACTIVE</option>
+														<option value="INACTIVE">INACTIVE</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									  <div class="tab-pane" id="tab2">
+										<div class="form-group">
+												<label class="col-sm-2 control-label">Address Type</label>
+													<div class="col-sm-4">
+														<select class="form-control select2_demo_2" name="type" ng-model="address.type" style="width:100%;" required>
+															<option value=""> </option>
+															<option value="Permanent">Permanent</option>
+															<option value="Temporary">Temporary</option>
+														</select>
+													</div>
+												<label class="col-sm-2 control-label">LINE:</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="line1" ng-model="address.line1" placeholder="Line1" required/>
+												</div>
+											</div> 
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Town</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="town" ng-model="address.town" placeholder="Town" required/>
+												</div>
+												<label class="col-sm-2 control-label">City</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="city" ng-model="address.city" placeholder="City" required/>
+												</div>
+											</div> 
+											<div class="form-group">
+												<label class="col-sm-2 control-label">District</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="district" ng-model="address.district" placeholder="District" required/>
+												</div>
+												<label class="col-sm-2 control-label">State</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="state" ng-model="address.state" placeholder="State" required/>
+												</div>
+											</div> 
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Country</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="country" ng-model="address.country" placeholder="country" required/>
+												</div>
+												<label class="col-sm-2 control-label">Zip Code</label>
+												<div class="col-sm-4">
+													<input type="number" class="form-control" name="zipcode" ng-model="address.zipcode" placeholder="Pincode" required/>
+												</div>
+											</div>
+									  </div>
+										<div class="tab-pane" id="tab3">
+											<div class="row">
+												<h3 class="block text-center">CONFIRM THE ACCOUNT</h3>
+												<div class="col-lg-6">
+													<div class="form-group">
+														<label class="control-label col-md-4">BRANCH NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" ng-model="sellerBranch.branchName">
+															{{sellerBranch.branchName}}</p>
+														</div>
+														<label class="control-label col-md-4">EMAILID:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="sellerEmailId" ng-model="sellerBranch.sellerEmailId">
+															{{sellerBranch.sellerEmailId}}</p>
+														</div>
+														<label class="control-label col-md-4">MIN ORDER TIME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="minimumOrderTime" ng-model="sellerBranch.minimumOrderTime">
+															{{sellerBranch.minimumOrderTime}}</p>
+														</div>
+														<label class="control-label col-md-4">PHONE NUMBER:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="sellerPhoneNo" ng-model="sellerBranch.sellerPhoneNo">
+																{{sellerBranch.sellerPhoneNo}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">STATUS:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" ng-model="sellerBranch.branchStatus">
+															{{sellerBranch.branchStatus}}</p>
+														</div>
+														<label class="control-label col-md-4">ZONES:</label>
+														<span class="form-label-static" data-display="zoneName" ng-model="zoneName" ng-repeat="zoneData in zone">{{zoneData.zoneName}} </span>
+													</div>
+												</div>
+												<div class="col-lg-12">
+													<h4 class="form-section">ADDRESS:</h4>
+													<div class="form-group">
+														<label class="control-label col-md-2">ADDRESS TYPE:</label>
+														<div class="col-md-2">
+															<p class="form-control-static" data-display="type" ng-model="address.type">
+															{{address.type}}</p>
+														</div>
+														<label class="control-label col-md-2">Line</label>
+														<div class="col-md-2">
+															<p class="form-control-static" data-display="line1" ng-model="address.line1">
+																{{address.line1}}
+															</p>
+														</div>
+														<label class="control-label col-md-2">TOWN:</label>
+														<div class="col-md-2">
+															<p class="form-control-static" data-display="town" ng-model="address.town">
+															{{address.town}}</p>
+														</div>
+														<label class="control-label col-md-2">CITY:</label>
+														<div class="col-md-2">
+															<p class="form-control-static" data-display="city" ng-model="address.city">
+															{{address.city}}</p>
+														</div>
+														<label class="control-label col-md-2">DISTRICT:</label>
+														<div class="col-md-2">
+															<p class="form-control-static" data-display="district" ng-model="address.district">
+															{{address.district}}</p>
+														</div>
+														<label class="control-label col-md-2">STATE:</label>
+														<div class="col-md-2">
+															<p class="form-control-static" data-display="state" ng-model="address.state">
+															{{address.state}}</p>
+														</div>
+														<label class="control-label col-md-2">ZIPCODE:</label>
+														<div class="col-md-2">
+															<p class="form-control-static" data-display="zipcode" ng-model="address.zipcode">
+															{{address.zipcode}}</p>
+														</div>
+													</div>
+												</div>
+											</div>
+									  </div>
+										<ul class="pager wizard">
+											<li class="previous first" style="display:none;"><a >First</a></li>
+										  <li class="next pull-right"><a >NEXT</a></li>
+											<li class="previous pull-right m-r-sm"><a >PREVIOUS</a></li>
+											<li class="pull-right m-r-sm"><a href="#/Sellers/SellersTemplate">CLOSE</a></li>
+											<li class="next last" style="display:none;"><a>Last</a></li>
+											<li class="confirm hide" ng-hide="confirm"><a ng-click="save(sellerBranch,address,zoneId)">CONFIRM</a></li>
+										</ul>
+									</div>	
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+
+#sellersBranchwizard >  ul > li{
+	width: 33% !important;
+}
+label.error{
+	display: block !important;
+	margin-bottom: 0px !important
+}
+.tab-pane{
+	padding: 10px;
+}
+.border{
+	border: 1px solid #1ab394;
+}
+.tag-list li a{
+	font-size: 15px;
+}
+</style>
+<script>
+$(".select2_demo_1").select2({
+	placeholder: "SELECT A STATUS.....",
+	allowClear: true
+});	
+$(".select2_demo_2").select2({
+	placeholder: "SELECT ADDRESS TYPE.....",
+	allowClear: true
+});
+$(".select2_demo_3").select2({
+	placeholder: "SELECT ZONES.....",
+	allowClear: true
+});
+$(".select2_demo_4").select2({
+	placeholder: "SELECT A SELLER TYPE.....",
+	allowClear: true
+});
+$(".select2_demo_5").select2({
+	placeholder: "SELECT A SELLER.....",
+	allowClear: true
+});
+</script>

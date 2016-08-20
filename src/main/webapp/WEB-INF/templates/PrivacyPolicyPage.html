@@ -1,0 +1,51 @@
+
+<!doctype html>
+<html>
+
+<head th:replace="fragments/PortalHeadFragment::HeadFragment('FreshMeet','FreshMeet','FreshMeet')"></head>
+<style>
+	.privacypolicy{
+		font-size: 13px;
+    text-align: justify;
+    word-spacing: 2px;
+    line-height: 1.5;
+	}
+	.privacypolicy h2 {
+	margin: 20px 0 0 -10px;
+	padding-left: 10px;
+	font-size: 16px;
+	}
+</style>
+
+	<body ng-app="HungryHomeTerminal">
+		<div th:replace="fragments/LocationFragment"></div>
+		<div class="wrapper">
+			<!-- #site-header -->
+			<header th:replace="fragments/HeaderFragment :: HeaderFragment('false')"></header>
+			<div id="site-main">
+			<div th:replace="fragments/PrivacyPolicyFragment"></div>
+
+			
+	</div>
+	</div>
+	
+
+				
+	
+				
+
+				<hr class="container"/>
+
+				<!-- <div th:replace="fragments/OurBrandsFragment"></div> -->
+	
+			<!-- #site-main -->
+
+			<div th:replace="fragments/FooterFragment"></div>
+<!-- .wrapper -->
+		
+		<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+
+
+	</body>
+
+</html>

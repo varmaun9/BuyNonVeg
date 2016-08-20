@@ -1,0 +1,92 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2 class="col-lg-6">Zone Creation</h2>
+		<ol class="breadcrumb col-lg-6 m-t-lg">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="#/Settings/ZonesTemplate">Zone List</a>
+			</li>
+			<li class="active">
+				<strong>Zone Creation</strong>
+			</li>
+		</ol>
+	</div>
+	<div class="col-lg-2">
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight"  style="padding: 12px 10px 22px;">
+	<div class="row">
+		<div class="col-lg-12" style="padding:0px;">
+			<div class="ibox">
+				<div class="ibox-content wizard" style="padding:12px 12px 10px 10px;">
+					<div class="wizard">
+						<div class="content">
+							<form action="#" id="zoneForm" class="form-horizontal">
+							<!-- <form action="#" id="categoryForm" class="form-horizontal" novalidate> -->
+								<div id="zonewizard">
+									<ul>
+										<li><a data-target="#tab1" class="text-center" data-toggle="tab">ZONE</a></li>
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane" id="tab1">
+											<div class="form-group">
+												<label class="control-label col-md-2">Zone City<span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<input type="text" class="form-control" name="cityName" ng-model="Zones.cityName" required value=""/>
+												</div>
+												<label class="control-label col-md-2">Status <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<select class="select2_demo_2 form-control" ng-model="Zones.status" style="width:100%" required name="status">
+														<option value=""></option>
+														<option value="ACTIVE">ACTIVE</option>
+														<option value="INACTIVE">INACTIVE</option>
+													</select>
+												</div>
+												</div>
+												
+										</div>
+										<ul class="pager wizard">
+											<!-- <li class="previous first" style="display:none;"><a >First</a></li>
+										  <li class="next pull-right" style="display:none;"><a >Next</a></li>
+											<li class="previous pull-right m-r-sm" style="display:none;"><a >Previous</a></li> -->
+											<li class=" m-r-sm"><a href="#/Settings/ZonesTemplate">CLOSE</a></li>
+											<!-- <li class="next last" style="display:none;"><a>Last</a></li> -->
+											<li class="confirm" ng-hide="confirm"><a ng-click="save(Zones)">CONFIRM</a></li>
+										</ul>
+									</div>
+								</div>
+    					</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+#zonewizard >  ul > li{
+	width: 100% !important;
+}
+.pager li{
+	display: inline !important;
+}
+.tab-pane{
+	padding: 10px;
+}
+label{
+	display: block;
+	margin-bottom: 0px !important;
+}
+</style>
+<script>
+$(".select2_demo_2").select2({
+                placeholder: "SELECT A STATUS.....",
+                allowClear: true
+            });
+</script>

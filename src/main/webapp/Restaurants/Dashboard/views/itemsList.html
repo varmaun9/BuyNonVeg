@@ -1,0 +1,421 @@
+<div ng-controller="restaurantItemsController">
+	<div class="row border-bottom white-bg" style="padding-top:10px">
+		<div class="col-sm-2 col-md-2 col-xs-2" >
+      <a href="#" class="navbar-brand uppercase">ITEMS LIST</a>
+	  </div>
+		<form class="form-horizontal">
+			<div class="form-group col-sm-10 col-md-10 col-xs-10">
+				<label class="col-sm-2 col-md-2 col-xs-2 control-label"><a class="bg-warning"><i class="fa fa-plus"></i>ADD ITEM</a></label>
+				<label class="col-sm-2 col-md-2 col-xs-2 control-label">Search</label>
+				<div class="col-sm-4 col-md-4 col-xs-4">
+					<input type="text" class="form-control" ng-model="searchText" placeholder="Search for Items...." />
+				</div>
+				<label class="col-sm-1 col-md-1 col-xs-1 control-label">Category</label>
+				<div class="col-sm-2 col-md-2 col-xs-2 input-group">
+	        <select class="form-control" ng-model="category" ng-change="changeItem(category)">
+	        	<option ng-repeat="catData in categoryData" value="{{catData.categoryId}}">{{catData.categoryName}}</option>
+	        	<option value="ALL">ALL</option>
+	        </select>
+				</div>
+			</div>
+		</form>
+	</div> 
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="restItems in restaurantsItemsList | filter:searchText">
+				<div class="ibox">
+					<div class="ibox-content product-box">
+						<div class="product-desc">
+							<span class="product-price" style="top: -1px;padding: 3px 10px;">
+								{{restItems.price}}
+							</span>
+							<span class="product-quan" style="top: -1px;">
+								{{restItems.quantity}}
+							</span>
+							<span class="product-name"> {{restItems.itemName}}</span>
+							<!-- <div class="small m-t-xs">
+								Many desktop publishing packages and web page editors now.
+							</div> -->
+							<div class="m-t text-righ">
+								<!-- {{restItems.itemName}} -->
+								<!-- <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a> -->
+					      <div class="switch">
+	                <select ng-change="itemEdit(option,restItems.id)" ng-model="option">
+	                	<option value="Active" ng-selected="restItems.itemAvailableStatus=='Active' " >Active</option>
+	                	<option value="InActive" ng-selected="restItems.itemAvailableStatus=='InActive' " >InActive</option>
+	                </select>
+					      </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+
+
+
+
+
+	
+	<!-- <div class="row">
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content product-box">
+
+					<div class="product-imitation">
+						[ INFO ]
+					</div>
+					<div class="product-desc">
+								<span class="product-price">
+									$10
+								</span>
+						<small class="text-muted">Category</small>
+						<a href="#" class="product-name"> Product</a>
+
+
+
+						<div class="small m-t-xs">
+							Many desktop publishing packages and web page editors now.
+						</div>
+						<div class="m-t text-righ">
+
+							<a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div> -->
+
+
+
+	</div>
+</div>
+
+<script>
+$(document).on('click','.ibox .ibox-content',function () {
+	$('.active').removeClass('active');
+	$(this).addClass('active');
+})
+</script>
+<style>
+.product-quan{
+	  font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #1ab394;
+    padding: 3px 10px;
+    position: absolute;
+    top: -32px;
+    right: 68px;
+}
+.onoffswitch-switch {
+    display: block;
+    width: 18px;
+    margin: 0px;
+    background: #FFFFFF;
+    border: 2px solid #1AB394;
+    border-radius: 3px;
+    position: absolute;
+    top: 0px;
+    height: 20px;
+    bottom: 0;
+    right: 50px;
+    -moz-transition: all 0.3s ease-in 0s;
+    -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: -11px;
+}
+.onoffswitch-inner:after {
+    content: "INACTIVE";
+    padding-right: 0px;
+    background-color: #FFFFFF;
+    color: #919191;
+    text-align: right;
+    padding-left: 14px;
+}
+.onoffswitch-inner:before {
+    content: "ACTIVE";
+    padding-left: 7px;
+    background-color: #1AB394;
+    color: #FFFFFF;
+}
+</style>

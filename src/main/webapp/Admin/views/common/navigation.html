@@ -1,0 +1,277 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+	<div class="sidebar-collapse">
+		<ul side-navigation class="nav metismenu " id="side-menu" style="display:block;">
+			<li class="nav-header">
+				<div class="dropdown profile-element" dropdown>
+					<img alt="image" class="img-circle" src="img/profile_small.jpg"/>
+					<a class="dropdown-toggle" dropdown-toggle href>
+							<span class="clear">
+								<span class="block m-t-xs">
+									<strong class="font-bold">SANKAR</strong>
+							 </span>
+								<span class="text-muted text-xs block">ADMIN <b class="caret"></b></span>
+							</span>
+					</a>
+					<ul class="dropdown-menu animated fadeInRight m-t-xs">
+						<li><a ui-sref="profile">Profile</a></li>
+						<li><a ui-sref="contacts">Contacts</a></li>
+						<li><a ui-sref="inbox">Mailbox</a></li>
+						<li class="divider"></li>
+						<li><a href="../login.html">Logout</a></li>
+					</ul>
+				</div>
+				<div class="logo-element">
+					SANKAR varma
+				</div>
+			</li>
+			<li ng-class="{active: $state.includes('dashboards')}">
+				<a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'DASHBOARD' | translate }}</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('dashboards')}">
+					<li ui-sref-active="active"><a ui-sref="dashboards.DashboardTemplate">DASHBOARD</a></li>
+					
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('ItemMaster')}">
+				<a><i class="fa fa-diamond"></i> <span class="nav-label">ITEMMASTER</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('ItemMaster')}">
+					<li ui-sref-active="active"><a ui-sref="ItemMaster.ItemsTemplate">ITEMS</a></li>
+					<li ui-sref-active="active"><a ui-sref="ItemMaster.CategoryTemplate">CATEGORY</a></li>
+					<li ui-sref-active="active"><a ui-sref="ItemMaster.SubCategoryTemplate">SUBCATEGORY</a></li>
+					<li ui-sref-active="active" ng-class="{'active': $state.includes('ItemMaster.SellersItemsTemplate') || $state.includes('ItemMaster.SingleSellerItemTemplate')}"><a ui-sref="ItemMaster.SellersItemsTemplate">SELLER ITEMS</a></li>
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('Tags')}">
+				<a href=""><i class="fa fa-bar-chart-o"></i> <span class="nav-label">TAGS</span><span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('Tags')}">
+					<li ui-sref-active="active"><a ui-sref="Tags.TagsTemplate">TAGS</a></li>
+					<li ui-sref-active="active"><a ui-sref="Tags.TagTypeTemplate">TAG TYPES</a></li>
+					<li ui-sref-active="active"><a ui-sref="Tags.AttributesTemplate">ATTRIBUTES</a></li>
+					<li ui-sref-active="active"><a ui-sref="Tags.CutTypeTemplate">CUT TYPES</a></li>
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('Sellers')}">
+				<a ui-sref="inbox"><i class="fa fa-envelope"></i> <span class="nav-label">SELLERS </span>
+					<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('Sellers')}">
+					<li ui-sref-active="active"><a ui-sref="Sellers.SellersTemplate">SELLERS</a></li>
+					<li ui-sref-active="active"><a ui-sref="Sellers.SellerBranchesTemplate">SELLER BRANCHES</a></li>
+					<li ui-sref-active="active"><a ui-sref="Sellers.SellerBranchEmployeesListTemplate">SELLER BRANCH EMPLOYEES</a></li>
+					<li ui-sref-active="active"><a ui-sref="Sellers.SellerBranchTimings">SELLER BRANCH TIMINGS</a></li>
+				</ul>
+			</li>
+			<!-- <li ng-class="{active: $state.includes('offers')}">
+				<a ui-sref="inbox"><i class="fa fa-files-o"></i> <span class="nav-label">OFFERS </span>-->
+					<!-- <span class="label label-warning pull-right">16/24</span> --><!--<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('offers')}">
+					<li ui-sref-active="active"><a ui-sref="dashboards.PackageTemplate">PACKAGES</a></li>
+					<li ui-sref-active="active"><a ui-sref="dashboards.PlansTemplate">PLANS</a></li>
+					<li ui-sref-active="active"><a ui-sref="dashboards.OffersTemplate">OFFERS</a></li>
+					<li ui-sref-active="active"><a ui-sref="dashboards.ComboPackTemplate">COMBO PACK'S</a></li>
+					<li ui-sref-active="active"><a ui-sref="dashboards.CouponTemplate">COUPONS</a></li>
+				</ul>
+			</li> -->
+			<!-- <li ui-sref-active="active" ng-class="{active: $state.includes('offers')}">
+				<a ui-sref="offers"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ 'OFFERS' | translate }}</span> </a>
+			</li> -->
+			<li ng-class="{active: $state.includes('Offers')}">
+				<a href="index.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ 'OFFERS' | translate }}</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('Offers')}">
+					<!-- <li ui-sref-active="active"><a ui-sref="dashboards.OffersZone">OFFERS</a></li> -->
+					<li ui-sref-active="active"><a ui-sref="Offers.PackageTemplate">PACKAGES</a></li>
+					<li ui-sref-active="active"><a ui-sref="Offers.PlansTemplate">PLANS</a></li>
+					<li ui-sref-active="active"><a ui-sref="Offers.OffersTemplate">OFFERS</a></li>
+					<li ui-sref-active="active"><a ui-sref="Offers.ComboPackTemplate">COMBO PACK'S</a></li>
+					<li ui-sref-active="active"><a ui-sref="Offers.CouponTemplate">COUPONS</a></li>
+					<li ui-sref-active="active"><a ui-sref="Offers.TaxesListTemplate">TAX</a></li>
+				</ul>
+			</li>
+			<!-- <li ng-class="{active: $state.includes('companies')}">
+				<a href=""><i class="fa fa-edit"></i> <span class="nav-label">COMPANIES</span><span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('companies')}">
+					<li ui-sref-active="active"><a ui-sref="dashboards.CompanyTemplate">COMPANIES LIST</a></li>
+					<li ui-sref-active="active"><a ui-sref="dashboards.CompanyEmployeeTemplate">COMPANIES EMPLOYEES</a></li>
+					<li ui-sref-active="active"><a ui-sref="dashboards.CompanyAdminTemplate">COMPANY ADMIN USERS</a></li>
+					<li ui-sref-active="active"><a ui-sref="dashboards.CompanyTimings">COMPANY TIMINGS</a></li>
+				</ul>
+			</li> -->
+			<li ng-class="{active: $state.includes('Meat')}">
+				<a href=""><i class="fa fa-desktop"></i> <span class="nav-label">MEAT</span><span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('Meat')}">
+					<li ui-sref-active="active"><a ui-sref="Meat.MeatTemplate">MEAT</a></li>
+					<li ui-sref-active="active"><a ui-sref="Meat.MeatAdminTemplate">MEAT ADMIN</a></li>
+					<li ui-sref-active="active"><a ui-sref="Meat.MeatEmployeeTemplate">MEAT EMPLOYEES</a></li>
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('Timings')}">
+				<a href="index.html"><i class="fa fa-star"></i> <span class="nav-label">TIMINGS</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('Timings')}">
+					<li ui-sref-active="active"><a ui-sref="Timings.TimingTemplate">TIMINGS</a></li>
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('Orders')}">
+				<a href="index.html"><i class="fa fa-globe"></i> <span class="nav-label">ORDERS</span> 
+					<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('Orders')}">
+					<li ui-sref-active="active"><a ui-sref="Orders.OrdersTemplate">ORDERS</a></li>
+					<li ui-sref-active="active"><a ui-sref="Orders.InvoiceTemplate">INVOICE</a></li>
+					<li ui-sref-active="active"><a >DELIVERIES</a></li>
+					<!-- <li ui-sref-active="active"><a ui-sref="Orders.dashboard_1">DELIVERIES</a></li> -->
+					<!-- <li ui-sref-active="active"><a ui-sref="dashboards.TaxesTemplate">TAXES</a></li> -->
+					
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('Settings')}">
+				<a href="index.html"><i class="fa fa-gear"></i> <span class="nav-label">SETTINGS</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('Settings')}">
+					<li ui-sref-active="active"><a>GENERAL SETTINGS</a></li>
+					<!-- <li ui-sref-active="active"><a ui-sref="Settings.dashboard_1">GENERAL SETTINGS</a></li> -->
+					<li ui-sref-active="active"><a ui-sref="Settings.CriteriaTemplate">CRITERIA</a></li>
+					<li ui-sref-active="active"><a ui-sref="Settings.ZonesTemplate">ZONES</a></li>
+					
+				</ul>
+			</li>
+			<!-- <li ng-class="{active: $state.includes('app')}">
+				<a href=""><i class="fa fa-desktop"></i> <span class="nav-label">{{ 'APPVIEWS' | translate }}</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('app')}">
+					<li ui-sref-active="active"><a ui-sref="app.contacts">Contacts</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.profile">Profile</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.profile_2">Profile v.2</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.contacts_2">Contacts v.2</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.projects">Projects</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.project_detail">Project detail</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.teams_board">Teams board</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.social_feed">Social feed</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.clients">Clients</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.vote_list">Vote list</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.file_manager">File manager</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.calendar">Calendar</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.issue_tracker">Issue tracker</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.blog">Blog</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.article">Article</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.faq">FAQ</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.timeline">Timeline</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.pin_board">Pin board</a></li>
+					<li ui-sref-active="active"><a ui-sref="app.invoice">Invoice</a></li>
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('pages')}">
+				<a href=""><i class="fa fa-files-o"></i> <span class="nav-label">{{ 'OTHERPAGES' | translate }}</span><span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('pages')}">
+					<li ui-sref-active="active"><a ui-sref="pages.search_results">Search results</a></li>
+					<li><a ui-sref="lockscreen">Lockscreen</a></li>
+					<li><a ui-sref="errorOne">404 Page</a></li>
+					<li><a ui-sref="errorTwo">500 Page</a></li>
+					<li><a ui-sref="login">Login</a></li>
+					<li><a ui-sref="login_two_columns">Login v.2</a></li>
+					<li><a ui-sref="forgot_password">Forgot password</a></li>
+					<li><a ui-sref="register">Register</a></li>
+					<li ui-sref-active="active"><a ui-sref="pages.empy_page">Empty page</a></li>
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('miscellaneous')}">
+				<a href=""><i class="fa fa-globe"></i> <span class="nav-label">{{ 'MISCELLANEOUS' | translate }}</span> <span class="label label-info pull-right">NEW</span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('miscellaneous')}">
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.notify">Notification</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.nestable_list">Nestable list</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.agile_board">Agile board</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.timeline_2">Timeline v.2</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.diff">Diff</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.sweet_alert">Sweet alert</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.idle_timer">Idle timer</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.spinners">Spinners</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.live_favicon">Live favicon</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.google_maps">Google maps</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.code_editor">Code editor</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.forum_view">Forum view</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.validation">Validation</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.modal_window">Modal window</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.chat_view">Chat view</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.masonry">Masonry</a></li>
+					<li ui-sref-active="active"><a ui-sref="miscellaneous.toastr">Toastr notification</a></li>
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('ui')}">
+				<a href=""><i class="fa fa-flask"></i> <span class="nav-label">{{ 'UIELEMENTS' | translate }}</span><span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('ui')}">
+					<li ui-sref-active="active"><a ui-sref="ui.typography">Typography</a></li>
+					<li ui-sref-active="active"><a ui-sref="ui.icons">Icons</a></li>
+					<li ui-sref-active="active"><a ui-sref="ui.draggable">Draggable Panels</a></li>
+					<li ui-sref-active="active"><a ui-sref="ui.buttons">Buttons</a></li>
+					<li ui-sref-active="active"><a ui-sref="ui.video">Video</a></li>
+					<li ui-sref-active="active"><a ui-sref="ui.tabs_panels">Panels</a></li>
+					<li ui-sref-active="active"><a ui-sref="ui.tabs">Tabs</a></li>
+					<li ui-sref-active="active"><a ui-sref="ui.notifications_tooltips">Notifications & Tooltips</a></li>
+					<li ui-sref-active="active"><a ui-sref="ui.badges_labels">Badges, Labels, Progress</a></li>
+				</ul>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="grid_options"><i class="fa fa-laptop"></i> <span class="nav-label">{{ 'GRIDOPTIONS' | translate }}</span></a>
+			</li>
+			<li ng-class="{active: $state.includes('tables')}">
+				<a href=""><i class="fa fa-table"></i> <span class="nav-label">{{ 'TABLES' | translate }}</span><span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('tables')}">
+					<li ui-sref-active="active"><a ui-sref="tables.static_table">Static Tables</a></li>
+					<li ui-sref-active="active"><a ui-sref="tables.data_tables">Data Tables</a></li>
+					<li ui-sref-active="active"><a ui-sref="tables.foo_table">Foo Table</a></li>
+					<li ui-sref-active="active"><a ui-sref="tables.nggrid">NG Grid</a></li>
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('commerce')}">
+				<a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">{{ 'COMMERCE' | translate }}</span><span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('commerce')}">
+					<li ui-sref-active="active"><a ui-sref="commerce.products_grid">Products grid</a></li>
+					<li ui-sref-active="active"><a ui-sref="commerce.product_list">Products list</a></li>
+					<li ui-sref-active="active"><a ui-sref="commerce.product">Product edit</a></li>
+					<li ui-sref-active="active"><a ui-sref="commerce.product_details">Product detail</a></li>
+					<li ui-sref-active="active"><a ui-sref="commerce.orders">Orders</a></li>
+					<li ui-sref-active="active"><a ui-sref="commerce.payments">Credit Card form</a></li>
+				</ul>
+			</li>
+			<li ng-class="{active: $state.includes('gallery')}">
+				<a href=""><i class="fa fa-picture-o"></i> <span class="nav-label">{{ 'GALLERY' | translate }}</span><span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('gallery')}">
+					<li ui-sref-active="active"><a ui-sref="gallery.basic_gallery">Lightbox Gallery</a></li>
+					<li ui-sref-active="active"><a ui-sref="gallery.slick_gallery">Slick Carousel</a></li>
+					<li ui-sref-active="active"><a ui-sref="gallery.bootstrap_carousel">Bootstrap Carousel</a></li>
+
+				</ul>
+			</li>
+			<li>
+				<a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ 'MENULEVELS' | translate }}</span><span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse">
+					<li>
+						<a href="">Third Level <span class="fa arrow"></span></a>
+						<ul class="nav nav-third-level">
+							<li>
+								<a href="">Third Level Item</a>
+							</li>
+							<li>
+								<a href="">Third Level Item</a>
+							</li>
+							<li>
+								<a href="">Third Level Item</a>
+							</li>
+
+						</ul>
+					</li>
+					<li><a href="">Second Level Item</a></li>
+					<li>
+						<a href="">Second Level Item</a></li>
+					<li>
+						<a href="">Second Level Item</a></li>
+				</ul>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="css_animations"><i class="fa fa-magic"></i> <span class="nav-label">{{ 'ANIMATIONS' | translate }}</span><span class="label label-info pull-right">62</span></a>
+			</li>
+			<li class="landing_link">
+				<a ui-sref="landing"><i class="fa fa-star"></i> <span class="nav-label">{{ 'LANDING' | translate }}</span> <span class="label label-warning pull-right">NEW</span></a>
+			</li> -->
+		</ul>
+
+	</div>
+</nav>
+<script>
+	
+
+</script>

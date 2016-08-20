@@ -1,0 +1,97 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">SELLER BRANCH EMPLOYEE EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b" name="EmployeeForm" >
+			<div class="form-group">
+				<label class="col-sm-4 col-md-4 control-label">Employee Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" ng-model="SellerBranchEmployeeEditData.userName" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 col-md-4 control-label">Branch Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">{{SellerBranchEmployeeEditData.sellerBranchName}}</div>
+				</div>
+			</div>
+			<!-- <div class="form-group">
+				<label class="col-sm-4 control-label"> Branch Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" ng-model="SellerBranchEmployeeEditData.branchName" />
+					</div>
+				</div>
+			</div> -->
+			<div class="form-group">
+				<label class="col-sm-4 control-label">EmailId</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" ng-model="SellerBranchEmployeeEditData.userEmail" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">PhoneNo</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" ng-model="SellerBranchEmployeeEditData.userPhoneNo" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Gender</label>
+				<div class="col-sm-7">
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class="form-control" name="gender" ng-model="SellerBranchEmployeeEditData.gender" style="width:100%;" required>
+							<option value=""></option>
+							<option value="MALE">MALE</option>
+							<option value="FEMALE">FEMALE</option>
+						</select>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">User Type</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class="form-control" name="sellerUserType" ng-model="SellerBranchEmployeeEditData.sellerUserType" style="width:100%;" required>
+							<option value=""></option>
+							<option value="SELLER_ADMIN">ADMIN</option>
+							<option value="SELLER_USER">USER</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class="form-control" name="userStatus" ng-model="SellerBranchEmployeeEditData.userStatus" style="width:100%;" required>
+							<option value=""></option>
+							<option  value="ACTIVE">ACTIVE</option>
+							<option  value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="branchEmployeeEdit(SellerBranchEmployeeEditData)">Save changes</button>
+	</div>
+</div>
+<style>
+.modal-header{
+	padding: 10px 15px !important;
+}
+.modal-body {
+    padding: 0px 30px 0px 30px;
+}
+</style>

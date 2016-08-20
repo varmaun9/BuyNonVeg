@@ -1,0 +1,164 @@
+<ion-view>
+  <ion-nav-bar class="bar-stable main-menu">
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color:#FFFFFF">
+          </button>
+        </ion-nav-buttons>
+        <ion-nav-title align-title="center">
+          <span class="fontpro" style="color:#FFFFFF;">ORDERS</span>
+        </ion-nav-title>
+        <ion-nav-buttons side="right">
+          <button class="button button-icon button-clear ion-android-calendar" style="color:#FFFFFF" th:attr="ng-click='toggleCalendar()'">
+          </button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+<!-- <ion-content> -->
+  
+  
+  <!-- <ion-refresher on-refresh="refreshTasks()" refreshing-icon="ion-load-c" refreshing-text="Loading..."></ion-refresher> -->
+  <div class=""> 
+    <!-- <div class="row" style="margin-top: 45px;background-color: #fff;" ng-show="custom">
+      <ul>
+        <li class="text-center cursor-p" th:attr="ng-repeat='arr in array'" ng-click="dateChange(arr)">{{arr.day}} 
+          <span class="date-style" ng-class="{'text-danger':arr.status==true}" style="">{{arr.date}}</span>
+        </li>
+      </ul>
+    </div> -->
+    <!-- <div class="row" style="margin-top: -11px;"> -->
+      <!-- <div class="col col-50">
+      <ionic-datepicker input-obj="datepickerObjectPopup">
+        <a class="button icon-left ion-ios-calendar-outline button-clear button-small button-positive ng-binding" ng-model="deliveryDate" style="margin-top: 4px;">{{datepickerObjectPopup.inputDate | date:'dd / MM / yyyy'}}</a>
+      </ionic-datepicker> 
+    </div>-->
+    <!--<div class="col col-50">
+       <div class="pull-right" style="margin-top: 4px;">
+        <button class="button button-royal" ng-click="showActionsheet()" >
+          Select Timing
+        </button>
+      </div>
+    </div>--> 
+    <!-- </div>     
+  </div>-->
+<ion-tabs class="tabs-stable tabs-icon-left tabs-top">
+  <!-- <ion-tab title="Pending" icon-on="ion-funnel" icon-off="ion-funnel-outline" on-select="taskChange('PLACED')"> -->
+
+  <ion-tab title="Pending" href="#/start/orders/PLACED?{{clickedDate}}">
+
+    <ion-nav-view class="content" name="placedContent"></ion-nav-view>
+
+  </ion-tab>
+
+  <!-- <ion-tab title="Confirmed" icon-on="ion-android-done-all" icon-off="ion-android-done-all-outline" on-select="taskChange('CONFIRMED')"> -->
+  <!-- <ion-tab title="Confirmed" on-select="taskChange('CONFIRMED')"> -->
+  <ion-tab title="Confirmed" href="#/start/orders/CONFIRMED?{{clickedDate}}">
+    <ion-nav-view class="content" name="confirmContent">
+      </ion-nav-view>
+  </ion-tab>
+
+  <!-- <ion-tab title="Shipped" icon-on="ion-android-boat" icon-off="ion-android-boat-outline" on-select="taskChange('SHIPPED')"> -->
+  <ion-tab title="Shipped" href="#/start/orders/SHIPPED?{{clickedDate}}">
+    <ion-nav-view class="content" name="shippedContent">
+      </ion-nav-view>
+  </ion-tab>
+  <!-- <ion-tab title="Delivered" icon-on="ion-gear-a" icon-off="ion-gear-a-outline" on-select="taskChange('DELIVERED')"> -->
+  <ion-tab title="Delivered" href="#/start/orders/DELIVERED?{{clickedDate}}">
+    <ion-nav-view class="content" name="deliveredContent">
+      </ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>
+  
+</div>
+
+<!-- </ion-content> -->
+</ion-view>
+
+<style type="text/css">
+  .tabs-top > .tabs, .tabs.tabs-top{
+    top: 44px !important;
+   /* width: 99%;
+    left: 2px;*/
+    border-bottom-width: 0 !important;
+  }
+  .tabs > .tab-item-active{
+      /*border-bottom: 3px solid #CE3330 !important;
+      background-color: #f8f8f8 !important;*/
+      /*color: #CE3330 !important;*/
+      color: #92AC2D !important;
+      border-bottom: 2px solid !important;
+  }
+  .tabs-stable > .tabs, .tabs.tabs-stable{
+    background-color: #FFFFFF !important;
+    border-top: 1px solid #E0DDDD;
+    /*border-bottom: 1px solid #E0DDDD;*/
+  }
+  .content{
+    top: 1px;
+    height: 573px;
+    min-height: 385px;
+    /*font-family: Verdana, Geneva, sans-serif;*/
+    /*font-family: 'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif;*/
+    font-family: 'Montserrat-Regular', sans-serif ;
+  }
+  .tab-title{
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+    font-size: 14px;
+  }
+  
+  .bar .button.button-clear, .bar button.button-clear{
+    font-size: 12px;
+  }
+
+  .item-complex .item-content, .item-radio .item-content {
+    position: relative;
+    z-index: 2;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    background-color: #fff;
+  }
+  /*.button.button-full {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }*/
+  .bar{
+    padding: 0px !important;
+  }
+  /*.bar .title + .button:last-child, .bar > .button + .button:last-child, .bar > .button.pull-right, .bar .buttons.pull-right, .bar .title + .buttons{
+    position: absolute;
+    top: 70px !important;
+    right: 0px !important;
+    bottom: 0px !important;
+  }*/
+  /*.card, .list-inset {
+    overflow: hidden;
+    margin: 0px 0px !important; 
+    border-radius: 2px;
+    background-color: #fff;
+  }*/
+  
+  .button-red{
+    /*color: #FFFFFF;*/
+    color: #F44336;
+    border: 2px solid #F44336;
+    /*background-color: #F85B62 !important;*/
+    /*background-color: #DFDFDF !important;*/
+  }
+  .button-green{
+    /*color: #FFFFFF;*/
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+    /*background-color: #4CAF50 !important;*/
+    /*background-color: #DFDFDF !important;*/
+  }
+  /*.has-header {
+    top: 0px !important;
+  }*/
+  .bar-subheader {
+    top: 89px;
+    display: block;
+    height: 44px;
+}
+</style>
+<script>
+  
+</script>

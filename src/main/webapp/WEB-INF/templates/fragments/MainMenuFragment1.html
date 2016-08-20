@@ -1,0 +1,137 @@
+<div class="bot space_bot" th:fragment="MenuFragment(MenuStatus)">
+								<div class="container">
+						<div class="row">
+							<div class="col-md-2 col-xs-6" >
+								<div th:class="(${MenuStatus})?'expand':''" ng-mouseleave="leaveSubMenu()">
+					
+
+								<div class="col-md-12">
+                <nav id="main-menu">
+                  <ul class="menu">
+                    <li class="menu-item active">
+                      <a href="#">Home</a>
+                      <ul class="sub-menu">
+                        <li class="menu-item"><a href="index-2.html">Home version 1</a></li>
+                        <li class="menu-item"><a href="index_v2.html">Home version 2</a></li>
+                        <li class="menu-item"><a href="index_v3.html">Home version 3</a></li>
+                        <li class="menu-item"><a href="index_v4.html">Home version 4</a></li>
+                      </ul>
+                    </li>
+                    <li class="menu-item mega-menu">
+                      <a href="shop.html">Accessories</a>
+                      <ul class="sub-menu mega-submenu">
+                        <li class="col-md-5"></li>
+                        <li class="col-md-2">
+                          <a class="mega-title" href="#">Category</a>
+                          <ul class="mega-submenu">
+                            <li><a href="shop.html">Toy,Kid & baby</a></li>
+                            <li><a href="shop.html">Cameras</a></li>
+                            <li><a href="shop.html">Sport & Ourdoor</a></li>
+                            <li><a href="shop.html">Beauty & Health</a></li>
+                            <li><a href="shop.html">Gift, parties & photo</a></li>
+                          </ul>
+                        </li>
+                        <li class="col-md-5">
+                          <a class="mega-title" href="#">Text widget</a>
+                          <div class="text-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br>Eveniet laboriosam provident at optio reiciendis culpa<br>reprehenderit</div>
+                          <div class="text-block">MAKES UP PHOTOSHOP</div>
+                          <div class="text-block">Voluptates, consectetur soluta laborum maiores alias<br>autem velit deserunt quas quis repellendus beatae veniam<br>omnis sequi expedita nobis debitis</div>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="menu-item new"><a href="shop.html">Shoes</a></li>
+                    <li class="menu-item hot"><a href="shop.html">Jewelry</a></li>
+                    <li class="menu-item"><a href="faqs.html">FAQs</a></li>
+                    <li class="menu-item"><a href="#">Pages</a>
+                      <ul class="sub-menu">
+                        <li class="menu-item"><a href="404.html">404</a></li>
+                        <li class="menu-item"><a href="about_us.html">About Us</a></li>
+                        <li class="menu-item"><a href="blank.html">Blank</a></li>
+                        <li class="menu-item parent"><a href="blog.html">Blog</a>
+                          <ul class="sub-menu">
+                            <li class="menu-item"><a href="blog_details.html">Blog Details</a></li>
+                          </ul>
+                        </li>
+                        <li class="menu-item"><a href="popup.html">Popup</a></li>
+                        <li class="menu-item"><a href="popup_banner.html">Popup Banner</a></li>
+                        <li class="menu-item"><a href="services.html">Services</a></li>
+                        <li class="menu-item parent"><a href="shop.html">Shop</a>
+                          <ul class="sub-menu">
+                            <li class="menu-item"><a href="shop_grid.html">Shop Grid Style</a></li>
+                            <li class="menu-item"><a href="shop_fullwidth.html">Shop Full Width</a></li>
+                            <li class="menu-item"><a href="shop_cart.html">Cart</a></li>
+                            <li class="menu-item"><a href="shop_cart_empty.html">Cart Empty</a></li>
+                            <li class="menu-item"><a href="shop_checkout.html">Checkout</a></li>
+                            <li class="menu-item"><a href="shop_details_fullwidth.html">Shop Details Fullwidth</a></li>
+                            <li class="menu-item"><a href="shop_details_sidebar.html">Shop Details With Sidebar</a></li>
+                          </ul>
+                        </li>
+                        <li class="menu-item"><a href="testimonial.html">Testimonial</a></li>
+                        <li class="menu-item"><a href="topbar_notification.html">Topbar Notification</a></li>
+                        <li class="menu-item"><a href="under_construction.html">Under Construction</a></li>
+                      </ul>
+                    </li>
+                    <li class="menu-item"><a href="contact.html">Contact</a></li>
+                  </ul><!-- .menu -->
+                </nav><!-- #main-menu -->
+                <div class="dl-menuwrapper mobile-menu">
+                  <button class="dl-trigger"><i class="fa fa-bars"></i></button>
+                  <ul class="dl-menu">
+                    <li>
+                      <a href="index-2.html">Home</a>
+                      <ul class="dl-submenu">
+                        <li><a href="index-2.html">Home Version 1</a></li>
+                        <li><a href="index_v2.html">Home Version 2</a></li>
+                        <li><a href="index_v3.html">Home Version 3</a></li>
+                        <li><a href="index_v4.html">Home Version 4</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="shop.html">Accessories</a>
+                      <ul class="dl-submenu">
+                        <li><a href="shop.html">Toy,Kid & baby</a></li>
+                        <li><a href="shop.html">Cameras</a></li>
+                        <li><a href="shop.html">Sport & Ourdoor</a></li>
+                        <li><a href="shop.html">Beauty & Health</a></li>
+                        <li><a href="shop.html">Gift, parties & photo</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="shop.html">Shoes</a></li>
+                    <li><a href="shop.html">Jewelry</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                    <li>
+                      <a href="#">Pages</a>
+                      <ul class="dl-submenu">
+                        <li><a href="404.html">404</a></li>
+                        <li><a href="about_us.html">About Us</a></li>
+                        <li><a href="blank.html">Blank</a></li>
+                        <li><a href="blog.html">Blog</a>
+                          <ul class="dl-submenu">
+                            <li><a href="blog_details.html">Blog Details</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="popup.html">Popup</a></li>
+                        <li><a href="popup_banner.html">Popup Banner</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="shop.html">Shop</a>
+                          <ul class="dl-submenu">
+                            <li><a href="shop_grid.html">Shop Grid Style</a></li>
+                            <li><a href="shop_cart.html">Cart</a></li>
+                            <li><a href="shop_cart_empty.html">Cart Empty</a></li>
+                            <li><a href="shop_checkout.html">Checkout</a></li>
+                            <li><a href="shop_details_fullwidth.html">Shop Details Fullwidth</a></li>
+                            <li><a href="shop_details_sidebar.html">Shop Details With Sidebar</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="testimonial.html">Testimonial</a></li>
+                        <li><a href="topbar_notification.html">Topbar Notification</a></li>
+                        <li><a href="under_construction.html">Under Construction</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /dl-menuwrapper -->
+              </div><!-- .col-md-12 -->
+							<div th:replace="fragments/SearchResultsFragment::MainFragment"></div>
+						</div><!-- .row -->
+					</div><!-- .container -->
+				</div><!-- .bot -->

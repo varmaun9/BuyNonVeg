@@ -1,0 +1,178 @@
+				
+				<div class="cart mgb50 mgb100" ng-controller="CartController">
+					<div class="container">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-none">
+		<div class="topbar" style="background:rgba(232, 232, 232, 0);overflow:hidden;" >
+					<!-- <div class="container"> -->
+					<ul class="breadcrumbs ">
+							 <li>
+							 <a  th:href="'/'">Home</a>
+
+							 </li>
+							<li class="current">Cart</li>
+						</ul>
+						<!-- <div class="cart_totals ">
+									<div class="cart_totals_inner">
+								
+										<div class="wc-proceed-to-checkout pull-right">
+											<input type="submit" value="Update Cart" name="update_cart" class="button"/>
+											<a href="#" class="checkout-button button alt wc-forward" ng-click="checkOutOrder(items)">Proceed to Checkout</a>
+										</div>
+									
+									</div>
+								</div> -->
+
+				
+				</div>
+	</div>					
+		<form method="post" action="#" th:if="${not #lists.isEmpty(#lists.toList(preOrderCartItems))}">
+			<div class="cart_totals ">
+				<div class="cart_totals_inner">
+			
+					<div class="wc-proceed-to-checkout pull-right">
+						<!-- <input type="submit" value="Update Cart" name="update_cart" class="button"/> -->
+						<a href="#" class="checkout-button button alt wc-forward" ng-click="checkOutOrder(items)">Proceed to Checkout</a>
+					</div>
+				
+				</div>
+								</div>
+			<div class="shop_table cart" style="width:100%">
+								<div class="cart_hd effect1">
+										<div class="col-md-1 col-sm-1 col-xs-1 product-nam"><h3>Product</h3></div>
+										<div class="col-md-3 col-sm-3 col-xs-3 product-empty"><h3>Product Name </h3></div>
+										<div class="col-md-2 col-sm-2 col-xs-2 product-empty"><h3>Cut Type &amp; Pieces</h3></div>
+										<div class="col-md-1 col-sm-1 col-xs-1 product-quant "><h3>Qty</h3></div>
+										<div class="col-md-2 col-sm-2 col-xs-2 product-pri "><h3> Price</h3></div>
+										<!-- <div class="col-md-1 col-sm-1 col-xs-1 product-dic"><h4>Discount </h4></div> -->
+										<!-- <div class="col-md-1 col-sm-1 col-xs-1 product-tx"><h3>Tax</h3></div> -->
+										<!-- <div class="col-md-1 col-sm-1 col-xs-1 product-tol text-center"><h3>Total</h3></div> -->
+										<div class="col-md-1 col-sm-1 col-xs-1 product-remv">&nbsp;</div>
+								</div>
+								
+									<div class=" cart_item" th:each="itemkey:${preOrderCartItemsWithOffers}" th:with="item = ${itemkey.key}" th:id="${item.id}" >
+									<div class="row">
+
+										<div class="col-md-1 col-sm-1 col-xs-1 product-thumbnail">
+											<a th:href="@{'/meatitem/'+${item.sellerItem.item.itemName}(id=${item.sellerItem.item.id})}"><img width="80" height="80" alt="home4_product_03" class="attachment-shop_thumbnail wp-post-image" src="/common/img/non-veg/cart/cart_cut.png"/></a>
+
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-3">
+											<a th:href="@{'/meatitem/'+${item.sellerItem.item.itemName}(id=${item.sellerItem.item.id})}" class="text-success" th:text="${item.sellerItem.item.itemName}" style="font-weight: bolder;
+    font-size: initial;"> </a>
+           
+           <div class="row ">
+         
+           		
+           	<div class="col-md-12 col-sm-12 col-xs-12">
+           		<div class="quantity">
+           				
+												<div class="seller_bran">
+													Seller: <span class="seller_bra_nam"  th:text="${item.sellerItem.sellerBranch.branchName}"> </span>
+												</div>
+												<div class="seller_bran">
+													Selected Cutting Type: <span  class="text-danger seller_bra_nam"  th:text="${item.cutType}"> </span>
+												</div>
+												<a href="" class="offer_blc"><span class="offer-hd">OFFER(S):</span><span th:inline="text">[[${#lists.size(itemkey.value)}]]  applied</span></a>
+												
+												</div>
+
+										
+           	</div>
+
+         
+
+           	
+
+           	
+										</div>
+        </div>
+
+							<div class="col-md-2 col-sm-2 col-xs-2"><div class="cart-sel-wrap" th:attr="ng-init='setCartItemCutTypes(\''+${item.id}+'\',\''+${item.cutType}+'\')'"><select class="cart-sel" th:attr="ng-model='cutTypes[\''+${item.id}+'\']',ng-change='changeCutTypeWithPieceType(\''+${item.id}+'\')'"><option>Select</option><option th:each="cutType : ${#strings.arraySplit(item.sellerItem.cutTypes,',')}" th:text="${cutType}" th:value = "${cutType}" th:selected="${cutType==item.cutType}"></option></select></div>
+									<a  class="cart-save-btn cut-piece-save hide" href="#" th:attr="ng-click='modifyPreOrderCartItem(\''+${item.id}+'\')'">save</a>
+
+							</div>				
+
+											 						
+										<div class="col-md-1 col-sm-1 col-xs-1">
+											<div class="quantity" th:attr="ng-init='setItemUnit(\''+${item.id}+'\',\''+${item.units}+'\')'">
+													
+												<input type="number" th:step="${item.sellerItem.baseUnit}" th:min="${item.sellerItem.baseUnit}" style="width:100%;"  class="input-text qty text" title="Qty" th:attr="ng-model='itemunits[\''+${item.id}+'\']',ng-change='changeunit(\''+${item.id}+'\')'" th:value="${item.units}" /> &nbsp;<br/>
+
+												<h5  th:if="${item.sellerItem.measurementUnit}=='KG'" th:text="${item.units*1000}+'Gms'"></h5>
+												<a  class="cart-save-btn unit-save hide" href="#" th:attr="ng-click='modifyPreOrderCartItem(\''+${item.id}+'\')'">save</a>
+											
+											</div>
+										</div>
+								
+													<div class="col-md-2 col-sm-2 col-xs-2">
+											
+													<div class="item-price">
+													<h4> <i class="fa fa-inr"></i> <strong th:text="${#numbers.formatDecimal(item.price,0,2)}">450.00</strong> </h4>
+													</div>
+													<div th:inline="text"> <strong th:text="${#numbers.formatDecimal(item.sellerItem.marketPrice,0,2)}">900</strong>/- per [[${item.sellerItem.quantity}]]  [[${item.sellerItem.measurementUnit}]]</div>
+														<div class="offr_saving" th:unless="${item.sellerItem.marketPrice}==${item.sellerItem.sellingPrice}"></div>
+														<div class="offr_saving" ><i>Offer Saving: <strong th:text="${item.sellerItem.offerPrice+'%'}"></strong>.</i></div>
+													</div>	
+	<!-- <div class="col-md-1 col-sm-1 col-xs-1">
+		<div class="iteam_tax" th:with="tax =${(item.itemTax*item.price)/100}">
+				<h5> <i class="fa fa-inr"></i> <strong th:text="${#numbers.formatDecimal(tax,0,2)}"></strong> 
+				 </h5>
+				 <div class="text-center" > <strong th:inline="text">[[${item.itemTax}]]%</strong></div>
+		</div>
+	</div> --><!-- 
+										<div class="col-md-1 col-sm-1 col-xs-1 text-center">
+										
+
+											<h4> <i class="fa fa-inr"></i> <strong th:text="${#numbers.formatDecimal(item.cartPrice,0,2)}"></strong> </h4> 
+
+										</div> -->
+									<div class="col-md-1 col-sm-1 col-xs-1">
+								
+
+											<a class="cal-dt mgt10" >	<span title="Remove this item" class="remove" href="#" th:attr="ng-click='deletePreOrderCartItems(\''+${item.id}+'\')'"><i class="fa fa-times"></i></span> </a>
+
+										</div> 
+           
+
+          </div>
+          	
+									</div>
+							
+							</div>
+
+						
+						<!-- 	<div class="cart_grand_bar text-right">
+								<div class="Totl_svg">Total Saving:<span class="Totl_svg_amt">Rs.40</span></div>
+								<span class="est_totl">Estimated Total: </span>
+								<span class="est_totl_rs " th:inline="text"><i class="fa fa-inr"></i> [[${#numbers.formatDecimal(cartTotalPrice,3,2)}]]</span>
+								<div class="col-md-1 col-sm-1 col-xs-1 pull-right"></div>
+							</div> -->
+							<div class=""></div>
+							<div class="cart-collaterals pull-right mgt30 " >
+								<div class="cart_totals ">
+									<div class="cart_totals_inner">
+								
+										<div class="wc-proceed-to-checkout pull-right">
+										
+											<a href="#" class="checkout-button button alt wc-forward" ng-click="checkOutOrder(items)">Proceed to Checkout</a>
+										</div>
+								
+									</div>
+								</div>
+							</div>
+						</form>
+						
+						<div class="cart-empty mgt100 mgb100" th:if="${#lists.isEmpty(#lists.toList(preOrderCartItems))}">
+					<div class="container">
+						<div class="woo-cart-empty">
+							<img width="91" height="123" alt="Cart Empty" src="/common/img/EmptyCart.png"/>
+							<p class="cart-empty">Your Bowl is currently empty.</p>
+							<p class="return-to-shop"><a href="/" class="button wc-backward">Return To Menu</a></p>
+						</div>
+
+					</div><!-- .container -->
+				</div>
+
+					</div><!-- .container -->
+				</div><!-- .shop-cart -->
+				

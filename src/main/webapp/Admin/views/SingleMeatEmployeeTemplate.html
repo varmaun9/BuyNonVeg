@@ -1,0 +1,102 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="Meat.MeatEmployeeTemplate">Meat Employee List</a>
+      </li>
+      <li class="active">
+        <strong>Single Meat Employee List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div ng-controller="SingleHungryEmployeeController">
+	<div class="col-lg-12">
+		<div class="tabs-container">
+			<div class="tabs-right">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" data-target="#tab-1"> MEAT EMPLOYEE INFO </a></li>
+				</ul>
+				<div class="tab-content ">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">INFO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="Form" >
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 col-md-4 control-label"> Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{employeeDetails['properties'].userName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Branch Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{employeeDetails['properties'].branchName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Company Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{employeeDetails['properties'].companyName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">EmailId</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{employeeDetails['properties'].emailId}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">PhoneNo</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{employeeDetails['properties'].phoneNo}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Gender</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{employeeDetails['properties'].gender}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">deskNo</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{employeeDetails['properties'].deskNo}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Contact Type</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{employeeDetails['properties'].userType}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="employeeEdit(employeeDetails['properties'])" class="btn btn-outline btn-primary">
+											EDIT
+										</a>	
+										<a ui-sref="Meat.MeatEmployeeTemplate" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+</style>

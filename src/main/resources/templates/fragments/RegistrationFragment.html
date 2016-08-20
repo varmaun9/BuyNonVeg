@@ -1,0 +1,121 @@
+
+<div class="register-signup-newDialog" ng-controller="RegistrationController">
+<div class="container ">
+	<div class="row register-row-non">
+		<div class="col-sm-1"></div>
+		<form>
+		<div class="col-sm-5 pi-div-non">
+			<h2>PERSONAL INFORMATION</h2>
+			<section class="content">
+				<span class="input input--yoshiko">
+					<input class="input__field input__field--yoshiko mgb10" type="text"  name="username"  ng-model="user['properties'].userName"  required="required"/>
+					<i class="fa fa-user icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="username">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Name
+						</span>
+					</label>
+				</span>
+				<span class="input input--yoshiko  mgt10">
+					<input class="input__field input__field--yoshiko mgb10" type="text" name="phoneNo" ng-model="user['properties'].phoneNo"  required="required"/>
+					<i class="fa fa-mobile icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="password">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Mobile number
+						</span>
+					</label>
+				</span>
+			
+
+				<span class="input input--yoshiko  mgt10">
+					<input class="input__field input__field--yoshiko mgb10 datepicker"  ng-model="user['properties'].dob" ng-init="initDatePicker()"  type="text" name="dob"  required="required"/>
+
+					<i class="fa fa-clock-o icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="password">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Date Of Birth
+						</span>
+					</label>
+				</span>
+			</section>
+		</div>
+		<div class="col-sm-5 li-div-non">
+			<h2>LOGIN INFORMATION</h2>
+			<section class="content">
+
+				<span class="input input--yoshiko">
+					<input class="input__field input__field--yoshiko mgb10" type="text" ng-model="user['properties'].emailId"  name="username"    required="required"/>
+					<i class="fa fa-envelope-o icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="username">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Email Id
+						</span>
+					</label>
+				</span>
+				<span class="input input--yoshiko  mgt10">
+					<input class="input__field input__field--yoshiko mgb10" type="password" name="password"  ng-model="user['properties'].password" required="required"/>
+					<i class="fa fa-lock icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="password">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Password
+						</span>
+					</label>
+				</span>
+				<span class="input input--yoshiko  mgt10">
+					<input class="input__field input__field--yoshiko mgb10" type="password" name="confirmpassword"  ng-model="user['properties'].confirmPassword" required="required"/>
+					<i class="fa fa-lock icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="password">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Confirmpassword
+						</span>
+					</label>
+				</span>
+			</section>
+			
+			
+		</div>
+		<button type="submit" class="register-btn-non" ng-click="userRegistration(user)" >REGISTER</button>
+	</form>
+		<div class="col-sm-1"></div>
+	</div>
+</div>
+</div>
+
+
+<script src="/js/classie.js"></script>
+		<script>
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+		</script>
+

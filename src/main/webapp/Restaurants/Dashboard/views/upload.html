@@ -1,0 +1,18 @@
+<div class="row" ng-controller="ImageUploadController">
+<div class="col-lg-4 col-md-4">Image Name</div><div class="col-lg-8 col-md-8"><input type="text" ng-model="image.imageName" class="form-control"/></div>
+<div class="col-lg-4 col-md-4">Image Type</div><div class="col-lg-8 col-md-8"><select ng-model="image.imageType" class="form-control">
+	<option value="mainImage">Main</option>
+	<option value="thumbImage">Thumb</option>
+	
+</select></div><div class="col-lg-4 col-md-4">Category</div>
+<div class="col-lg-8 col-md-8"><input type="text" class="form-control" ng-model="image.categoryId" value=" C1"/></div>
+<div class="col-lg-4 col-md-4">Image Location</div>
+<div class="col-lg-8 col-md-8"> <input ng-model="item" id="fileUpload" class="form-control file" onchange="angular.element(this).scope().upload(this, this.id)" type="file"></div>
+
+<div class="col-lg-6 col-md-6"><button class="btn btn-small" ng-click="uploadImages(image)">Upload</button></div>
+
+
+
+
+
+</div>

@@ -1,0 +1,80 @@
+<ion-view view="" hide-nav-bar="true" hide-back-button="true" title="Login">
+	<ion-content has-header="true" scroll="false" style="background-color: #FFFFFF;">
+		<div class="container-fluid" style="" ng-controller="loginController">
+			<div class="first-Pag col-xs-12">
+				<div class="">
+					<div class="center_logo">
+						<a><img src="img/Login2.PNG" style="width:100%;" /></a>
+						<!-- <i class="ion ion-fork" style="font-size: 60px;"></i>
+						<i class="ion ion-android-restaurant" style="font-size: 60px;"></i>
+						<i class="ion ion-spoon" style="font-size: 60px;"></i> -->
+						<div class="">
+							<!-- <form role="form" method="post" action="http://192.168.0.72:8082/login"> -->
+							<form role="form" method="post" name="sellerForm">
+								<!-- <div class="form-group"> -->
+									<div class="item item-input" ng-class="{'has-error':sellerForm.username.$invalid &amp;&amp; !sellerForm.username.$pristine}" style="background-color: rgba(255, 255, 255, 0);">
+										<i class="icon ion-ios-person placeholder-icon"></i>
+										<input type="email" class="form-control" placeholder="Email Id" autofocus="" ng-model="user.username" required="" name="username"/>
+									</div>
+								<!-- </div> -->
+								<!-- <div class="form-group"> -->
+									<div class="item item-input" ng-class="{'has-error':sellerForm.password.$invalid &amp;&amp; !sellerForm.password.$pristine}" style="background-color: rgba(255, 255, 255, 0);">
+										<i class="icon ion-ios-locked-outline placeholder-icon"></i>
+										<input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required=""/>
+									</div>
+								<!-- </div> -->
+								<!-- <div class="checkbox">
+									<label><input type="checkbox"> Remember me</label>
+								</div> -->
+								<!-- <input type="submit" value="Login In" id="loginform" /> -->
+								 <div class="form-group" style="margin-top: 10px;">
+								<a class="button button-outline button-block button-assertive" ng-disabled="sellerForm.$invalid" ng-click="userLogin(user)">
+								<!-- <a href="#/start/home" class="button button-outline button-block button-assertive" ng-click="userLogin(user)"> -->
+									<span>Log In</span>
+								</a>
+								<!-- <a href="#/start/orders" class="button-color title" ><i class="ion ion-edit"></i> <span>Sign Up</span>  </a> -->
+
+								<!-- <a ng-click="login()" class="button button-outline button-block button-assertive">
+									Log In  
+								</a> -->
+							</div>
+							</form>
+							
+								<div class="row">
+									<!-- <label class="text-left calm col"><input type="checkbox" ng-model="checked" />Remember me</label> -->
+									<!-- <ion-list><ion-checkbox ng-model="filter.red">Remember me</ion-checkbox></ion-list> -->
+									<label class="" ng-model="checked" style=""><input type="checkbox" ng-model="checked" /><span>Remember me</span></label>
+									<span class="text-right assertive col" ng-click="forgotPassword()">Forgot Password?</span>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- .container -->
+	</ion-content>
+</ion-view>
+<style type="text/css">
+	.form-group{
+		padding: 5px 20px;
+	}
+		.form-group input[type="email"],.form-group input[type="password"] {
+			padding-left: 15px;
+			height: 40px;
+			/*background: rgba(255,255,255,0.3);*/
+			box-shadow: none;
+			border-bottom: 1px solid #fff;
+			border-radius: 0;
+	}
+	input[type="email"] , input[type="password"]{
+		/*color: #FFFFFF !important;*/
+		text-align: center;
+	}
+.center_logo {
+    margin-top: 0% !important;
+    font-family: cursive;
+    font-weight: 800;
+    color: #B57878;
+    text-align: center;
+}
+	
+</style>

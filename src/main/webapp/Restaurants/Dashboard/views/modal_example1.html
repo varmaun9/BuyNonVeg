@@ -1,0 +1,68 @@
+<div class="inmodal">
+    <div class="modal-header" style="padding:15px 15px;">
+        <!-- <i class="fa fa-laptop modal-icon"></i> -->
+        <!-- <h4 class="modal-title"></h4> -->
+        <strong class="font-bold">{{OrderItems.timecode}}</strong>
+    </div>
+    <div class="modal-body">
+        <!-- <p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged.</p>
+        <div class="form-group"><label>Sample Input</label> <input type="email" placeholder="Enter your email" class="form-control"></div> -->
+        <!-- <ul class='sidebar-nav'>
+      <li class='sidebar-brand' ng-repeat="orderDataItems in OrderItems.items">
+        <a href='#'>{{orderDataItems.itemName}} &nbsp;&nbsp;&nbsp; {{orderDataItems.unit}}</a><a>X</a>
+      </li>
+    </ul> -->
+
+    <div class="ibox float-e-margins">
+<div class="">
+    <table datatable="ng" class="table table-striped table-bordered table-hover dataTables-example">
+        <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Units</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="orderDataItems in OrderItems.items">
+            <td>{{orderDataItems.itemName}}</td>
+            <td>{{orderDataItems.unit}}</td>
+            <!-- <td><i class="fa fa-times"></i></td> -->
+            <td><button type="button" class="btn btn-danger fa fa-times" ng-click='decline(orderDataItems.itemName)'></button></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="cancel()">CLOSE</button>
+        <button type="button" class="btn btn-primary btn-lg" ng-click="ok(OrderItems.items)">CONFIRM</button>
+    </div>
+</div>
+
+<style>
+@media (min-width: 768px){
+    .modal-dialog {
+        width: 100% !important;
+    }
+}
+.modal-dialog {
+        position: relative;
+    }
+.modal-content{
+    height: 647px !important;
+}
+.inmodal{
+    width: 100%;
+    height: 100%;
+}
+.modal-body{
+        height: 80%;
+}
+
+</style>

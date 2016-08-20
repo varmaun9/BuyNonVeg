@@ -1,0 +1,129 @@
+<div class="page-section v3-seven searchResultsDiv hide animated fadeIn"  style="background-color:#fff;" th:fragment="SearchMainFragment" ng-controller="SearchController" ng-focusout = "closeSearch()">
+</div>	
+<th:block th:fragment="ResultsFragment">
+
+<div class="search-main-div">
+	<div class="container-fluied">
+  		<div class="row">
+  			<div class="col-sm-7 item-div" >
+  				<p class="item">ITEMS</p>
+  				<div class="row" th:if="${not #lists.isEmpty(items)}">
+  					<div class="col-sm-6 item-list1" style="padding-left: 30px;" th:each="item,iterStat :${items}" th:if="${#lists.size(item.sellerItems)}>0" th:with=" sellerItems = ${#lists.toList(item.sellerItems)}">
+	  					<a class="item-list1 sr_word ls05" th:href="'/meatitem/'+${#strings.replace(#strings.replace(item.itemName,' ','-'),'/','-')}+'?id='+${item.id}" th:inline="text" ng-mouseover="getHoverEffect($event)">
+	  					[[${item.itemName}]]</a><br/>
+	  					<del th:if="${sellerItems[0].marketPrice!=null}" th:inline="text">
+	  					<i class="fa fa-inr"></i>[[${sellerItems[0].marketPrice}]]</del>
+	  					<span class="search_fb" th:inline="text"><i class="fa fa-inr"></i>[[  ${sellerItems[0].sellingPrice}]]<br/></span>
+	  					
+	  				</div>
+	  				
+  				</div>
+  				
+  				
+  			</div>
+
+  		<div class="col-sm-4 sub-cat">
+  				<p>Types Of Categories</p>
+  				<ul th:if="${not #lists.isEmpty(subCategories)}">
+  	<li th:each="subCategory:${subCategories}">
+  		<a th:href="'/items/category/'+${subCategory.category.categoryName}+'/a?id='+${subCategory.category.id}+'&amp;scid='+${subCategory.id}" th:inline="text">[[${subCategory.subCategoryName}]]</a>
+  <!-- 	<a th:with="{{zid}}">{{zid}}</a> -->
+
+  	</li>
+  					
+  				</ul>
+  				<!-- <div class="sub-cat-image">
+  					<img src="/common/img/butcher1_mmm.png"/>
+  				</div> -->
+  			</div>
+  			<div class="col-sm-1">
+  				<a href="" ng-click="closeSearch()">
+  					<img src="/common/img/close.png" width="50%" style="float: right;margin:10px;" />
+  				</a>
+  			</div>
+  		</div>
+  			<div class="search-empty mgt100 mgb100"  th:unless="${not #lists.isEmpty(items)}">
+					
+						<div class="woo-cart-empty">
+							<img width="91" height="91" alt="Cart Empty" src="/common/img/EmptyCart.png"/>
+							<p class="cart-empty">Sorry We can't understand, what you are saying</p>
+							<!-- <p class="return-to-shop"><a href="/" class="button wc-backward">Please the Menu</a></p> -->
+						</div>
+
+			
+				</div> 
+	</div>
+</div>
+<style type="text/css">
+.search-empty  .woo-cart-empty{  
+margin-top: 5px;
+border: none;
+}
+	.search-main-div{
+		width: 100%;
+		height:420px;
+		background-color: #f2f2f2;
+		background-image: url('/common/img/meat_logo1.png');
+		background-repeat: no-repeat;
+		border: 1px solid #ddd;
+	}
+	.search-main-div .sub-cat p{
+		background: linear-gradient(to right, red , transparent);
+		/*background: linear-gradient(to right, rgba(255,0,0,5), rgba(255,0,0,0));*/
+		color: #fff;
+		padding: 10px;
+		font-weight: bold;
+	}
+	.search-main-div .sub-cat ul{
+		list-style: none;
+	}
+	.search-main-div .sub-cat ul li a{
+		color: #567474;
+		font-weight: bold;
+		padding-top: 15px;
+	}
+	.search-main-div .sub-cat ul li{
+		padding-top: 10px;
+	}
+	.search-main-div .item{
+		background: linear-gradient(to right, red , transparent);
+		/*background: linear-gradient(to right, rgba(255,0,0,5), rgba(255,0,0,0));*/
+		color: #fff;
+		padding: 10px;
+		font-weight: bold;
+	}
+	.search-main-div .item-list1{
+		    /*padding-left: 30px;*/
+    /*border-bottom: 1px solid #ddd;*/
+    padding-bottom: 10px; 
+	}
+	.search-main-div .item-list1 a{
+		/*padding-left: 20px;*/
+		/*padding-bottom: 10px;
+		border-bottom: 1px solid #ddd;*/
+	}
+	.search-main-div .sub-cat-image{
+	    /* padding-top: 0px; */
+    /* padding-left: 75px; */
+    position: fixed;
+    top: 259px;
+    right: 300px;
+
+	}
+
+
+	.item-div{
+		color: #000;
+	}
+</style>
+		
+			
+</th:block>
+
+
+
+
+
+
+
+

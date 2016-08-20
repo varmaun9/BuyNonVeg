@@ -1,0 +1,268 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="ItemMaster.SellersItemsTemplate">Seller Item List</a>
+      </li>
+      <li class="active">
+        <strong>Single Seller Item List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div class="row" ng-controller="SingleSellerItemsController">
+	<div class="col-lg-12 white-bg" style="padding-bottom:10px;padding-top:10px">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      	<select class="form-control select2_demo_6" ng-model="sellerBranchId" required name="name" ng-change="sellerBranchItems(sellerBranchId)">
+			<option value=""></option>
+			<option ng-repeat="data in branchEntities" value="{{data.id}}">{{data.branchName}}</option>
+		</select>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+    </div>
+	</div>
+	<div class="row wrapper">
+		<div class="col-lg-3">
+			<label style="width:280px;margin-top: 5px;border-style: double">
+				<input type="text" class="form-control" ng-model="searchItem" placeholder="Search for Items...." />
+			</label>
+			<div class="item_scrl">
+				<ul style="list-style-type:none;" class="nav nav-bar" ng-repeat="sellerBranchItems in sellerItemEntities">
+					<li ng-repeat="sellerItem in sellerBranchItems.itemsData | filter:searchItem" ng-click="sellerItemClick(sellerItem.sellerItemName)"><a class="clr_active" href="javascript:;" style="text-decoration:none;">{{sellerItem.sellerItemName}}</a>
+					<li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-lg-9">
+			<div class="tabs-container">
+				<div class="tabs-right">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" data-target="#tab-1"> INFO & SEO</a></li>
+						<li class=""><a data-toggle="tab" data-target="#tab-2"> CUT TYPES</a></li>
+						<!-- <li class=""><a data-toggle="tab" data-target="#tab-3">TIMINGS</a></li> -->
+					</ul>
+					<div class="tab-content ">
+						<div id="tab-1" class="tab-pane active">
+							<div class="panel-body">
+								<div class="col-lg-6 b-r" style="padding-left: 0px;">
+									<div class="font-bold text-center b-b">INFO</div>
+									<form class="form-horizontal form-bordered padder-t-b" name="ItemForm" >
+										<div class="form-group">
+											<label class="col-sm-4 control-label"> Name</label>
+											<div class="col-sm-8">
+												<div class="form-control-static">{{sellerItemDetails.sellerItemName}}</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Seller Price</label>
+											<div class="col-sm-8">
+												<div class="form-control-static">{{sellerItemDetails.sellingPrice}}</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Market Price</label>
+											<div class="col-sm-8">
+												<div class="form-control-static">{{sellerItemDetails.marketPrice}}</div>
+											</div>
+										</div>
+										<!-- <div class="form-group">
+											<label class="col-sm-4 control-label">Cut Types</label>
+											<div class="col-sm-8">
+												<div class="form-control-static">{{sellerItemDetails.cutTypes}}</div>
+											</div>
+										</div> -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label"> Quantity</label>
+											<div class="col-sm-8">
+												<div class="form-control-static">{{sellerItemDetails.quantity}}</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Status</label>
+											<div class="col-sm-8">
+												<div class="form-control-static">{{sellerItemDetails.itemAvailableStatus}}</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Description</label>
+											<div class="col-sm-8">
+												<div class="form-control-static">{{sellerItemDetails.description}}</div>
+											</div>
+										</div>
+									</form>
+									<div class="form-actions">
+										<div class="row">
+											<div class="text-center col-md-12">
+												<a href="javascript:;" class="btn btn-outline btn-warning">
+													CANCEL
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="font-bold text-center b-b">SEO</div>
+									<form class="form-horizontal form-bordered padder-t-b" name="ItemSeoForm">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Title</label>
+											<div class="col-sm-7">
+												<div class="form-control-static">
+													{{sellerItemDetails.seoTitle}}
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Keywords</label>
+											<div class="col-sm-8">
+												<div class="form-control-static">
+													{{sellerItemDetails.seoKeywords}}
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-4">Meta Description</label>
+											<div class="col-sm-8">
+												<div class="form-control-static">
+													{{sellerItemDetails.seoMetaDescription}}
+												</div>
+											</div>
+										</div>
+									</form>
+									<div class="form-actions">
+										<div class="row">
+											<div class="text-center col-md-12">
+												<!-- <a href="javascript:;" class="btn btn-outline btn-primary">
+													EDIT
+												</a> -->
+												<a href="javascript:;" class="btn btn-outline btn-warning">
+													CANCEL
+												</a>
+											</div>
+										</div>
+									</div>
+								</div> 
+							</div>
+						</div>
+						<div id="tab-2" class="tab-pane">
+							<div class="panel-body">
+								<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+									<div class="font-bold text-center col-lg-8">Cut Types</div>
+									<div class="col-lg-4">
+										<a ng-click="addSellerItemCutTypes()" class="pull-right">
+											<i class="fa fa-plus"></i>
+											ADD CUT TYPE
+										</a>
+									</div>
+								</div>
+								<div name="ItemForm">
+									<table class="footable table table-striped toggle-arrow-tiny" data-page-size="4">
+								<thead>
+									<tr>
+										<th data-toggle="true">Cut Type Name</th>
+										<th data-toggle="true"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="details in itemCutType" my-directive >
+										<td>{{details}}</td>
+										<td>
+											<div class="col-sm-3 pull-right">
+												<a href="javascript:;" class="btn btn-outline btn-danger" ng-click="editSellerItemCutType(details)" style="margin:5px;">
+													DELETE
+												</a>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="5">
+								  		<ul class="pagination pull-right"></ul>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+								</div>	
+								<div class="form-actions">
+									<div class="row">
+										<div class="text-center col-md-12">
+											<a ui-sref="ItemMaster.CategoryTemplate" class="btn btn-outline btn-warning">
+												CANCEL
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<!-- <div id="tab-3" class="tab-pane">
+							<div class="panel-body">
+								<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+									<div class="font-bold text-center col-lg-8">TIMINGS</div>
+							
+								</div>
+								<a class="col-lg-4" ng-repeat="itemTiming in sellerImageDetails" ng-if="itemTiming['class']=='sellerItemTiming'">
+	                
+	                <div class="widget style1">
+	                  <div class="row">
+	                    <div class="col-xs-12">
+	                      <div class="text-warning text-center font-bold h5" ng-click="addTimingInterval(itemTiming['properties'].timingDetailsId)">{{itemTiming['properties'].timingName}}</div>
+	                      <div class="clearfix"></div>
+	                      <select class="form-control" name="time" ng-model="sellerBranchZone" style="width:100%;" ng-change="timechange()" required>	
+													  <option value=""></option>			
+														<option ng-repeat="time in timeEntities" value="{{time['properties'].id}}" data="{{time['properties'].startTimeInterval}}-{{time['properties'].endTimeInterval}}" ng-if="time['class']=='timingsInterval'">{{time['properties'].startTimeInterval}}-{{time['properties'].endTimeInterval}}</option>
+												</select>
+	                      <span class="font-bold">{{itemTiming['properties'].startTime}}</span>
+	                      <span class="font-bold pull-right">{{itemTiming['properties'].endTime}}</span>
+	                    </div>
+	                  </div>
+	                </div>
+	            	</a>
+							</div>
+						</div> -->
+						<!-- <div id="tab-4" class="tab-pane">
+							<div class="panel-body">
+								<div class="font-bold text-center b-b"> IMAGES</div>
+								<div class="lightBoxGallery">
+									<a ng-repeat="itemImage in restaurantImageDetails" ng-if="itemImage['class']=='restaurantItemImage'">
+										<label class="col-sm-4 col-md-4 control-label">{{itemImage['properties'].imageName}}</label>
+										<label class="col-sm-4 col-md-4 control-label">{{itemImage['properties'].imageType}}</label>
+										<div class="col-sm-4">
+											<img class="" ng-src="{{itemImage['properties'].imageLocation}}" alt="{{itemImage['properties'].imageName}}" width="50%" />
+										</div>
+									</a>
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+  $(".select2_demo_6").select2({
+                placeholder: "SELECT A SELLER BRANCH.....",
+                allowClear: true
+            });
+  $('.select2_demo_3').select2({
+                placeholder: "SELECT A INTERVAL.....",
+                allowClear: true
+            });
+</script>
+<style>
+	.item_scrl {
+    display: block;
+  overflow-y: scroll;
+  height: 450px;
+
+}
+.clr_active{
+   background-color: #fff;
+}
+</style>

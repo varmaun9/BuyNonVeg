@@ -1,0 +1,132 @@
+							<div class="product-related" ng-if="recentItems!=null">
+									<h5 class="title-1 textup">Recent Items</h5>
+									<div class="related-item navtop">
+							<!-- 			<div class="product style-2" th:each='relativeItem :${relativeItems}'>
+											<div class="p-imag
+												<img src="/common/img/home/img/170x139/f_s_22.png" width="170" height="139" th:alt="${relativeItem.restaurantItemName}" />
+												<div class="p-action">
+													<a href="#" class="add-to-wishlist">
+														<i class="fa fa-heart-o"></i>
+														<span>Add To Wishlist</span>
+													</a>
+													<a data-lightbox="roadtrip" href="placeholder/shop/170x139/01_large.jpg" class="quickview">
+														<i class="fa fa-eye"></i>
+														<span>Quick View</span>
+													</a>
+												</div>
+											</div>
+											<div class="p-info">
+												<h4><a th:href="'/itemf/'+${#strings.replace(#strings.replace(relativeItem.restaurantItemName  ,' ','-'),'/','-')}+'?id='+${relativeItem.id}" th:text="${relativeItem.restaurantItemName}">Pelican Chair</a></h4>
+												<span class="price">
+													<span class="amount" th:text="${relativeItem.price}">$192.00</span>
+												</span>
+												<div class="p-action">
+													<a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+													<a href="#" th:attr="ng-click='showModal(\''+${relativeItem.id}+'\')'" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Xpress Bowl</a>
+												</div>
+											</div>
+										</div> -->
+										
+										
+
+
+
+
+
+
+		    									<div class="product animated zoomIn text-center item_effet" style="border: 1px dashed #E7F3EF !important;" ng-repeat='recentItem in recentItems'>
+		    										
+
+
+										<div class="p-image ">
+											<img src="/common/img/home/img/170x139/f_s_22.png" width="170" height="139" />
+
+<!-- 												<div class="item_effet">
+<img src="/common/img/home/img/170x139/f_s_22.png" alt="" />
+<div class="textbox">
+<p class="text">TEXT</p>
+</div>
+</div> -->
+											<div class="p-mask textbox" style="top:40px !important;left:40px !important;">
+									<!-- 		<div class="row" style="margin-top:15px !important;">
+									<div class="col-lg-6 col-md-6"> -->
+									
+														<a href="#"  class="text p-4 xprsBowl bg-w" ><i class="fa flaticon-food20"></i> Xpress Bowl</a>
+													<!-- </div>
+
+													<div class="col-lg-6 col-md-6"> -->
+														<div class="clearfix"></div>
+													<a href="javascript:;" class="text p-4 xprsBowl bg-w" style="float:right;margin-top:10px;">
+														<i class="fa flaticon-hot-food"></i> Add to Bowl
+											<!-- 	<img src="../../common/img/home/img/20x22/bowl_4.png" alt="Cart" width="22" height="20" style="vertical-align:text-bottom !important;"/> -->
+												<!-- <span>Add to Bowl</span> -->
+											</a>
+
+
+										<!-- </div>
+													</div> -->
+											</div>
+										</div>
+										<div class="p-info">
+											<h5><a ng-bind="recentItem.itemName">Pelican Chair</a></h5>
+											<!-- <span class="price">
+												<span class="amount" th:inline="text">&#8377; [[${item.price}]]</span>
+												
+											</span> -->
+
+											<span class="price">
+													<span class="amount" ng-bind="recentItem.price">$192.00</span>
+												</span>
+											<!-- <th:block th:each="tagName:${item.item.itemTagses}" th:if="${tagName.tags.tagName=='Veg'}">
+											<span class="veg"><a></a></span> -->
+											<!-- <ul class="social">
+												<li class="veg"><a href="#" class="compare"> -->
+											<!-- <img src="../../common/img/home/img/sprites/sprite_1.png" alt="Cart" width="22" height="20" /> -->
+												
+										<!-- 	</a></li>
+											</ul> -->
+											<!-- </th:block>
+											<th:block th:each="tagName:${item.item.itemTagses}" th:if="${tagName.tags.tagName=='NonVeg'}">
+											<span class="non-veg"><a></a></span>
+											</th:block> -->
+											<!-- <div class="star-rating">
+												<span style="width:60%"></span>
+											</div> -->
+									<!-- 		<h5><a th:href="'/itemf/'+${#strings.replace(#strings.replace(item.restaurantItemName,' ','-'),'/','-')}+'?id='+${item.id}" th:text="${item.item.restaurantBranch.id}"></a></h5> -->
+										 <!-- 	<div class="p-action">
+										<a href="#" class="compare">
+												<img src="../../common/img/home/img/20x22/cart_bowl.png" alt="Cart" width="22" height="20" />
+												<span>Add to Bowl</span>
+											</a>
+											<a href="#" class="compare" th:attr="ng-click='showModal(\''+${item.id}+'\')'">
+												<img src="../../common/img/home/img/20x22/cart_bowl.png" alt="Cart" width="22" height="20" />
+												<span>Grab the Bowl</span>
+											</a>
+											
+										</div> -->
+										</div>
+									</div><!-- product#1 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+									
+								
+										
+									</div><!-- .related-item -->
+								</div><!-- .product-related -->

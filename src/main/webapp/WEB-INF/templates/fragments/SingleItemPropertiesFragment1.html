@@ -1,0 +1,458 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-none">
+		<div class="topbar" style="background:rgba(247, 247, 247, 0.73);">
+					<!-- <div class="container"> -->
+					<ul class="breadcrumbs" style="padding-top: 20px;">
+							 <li><a  th:href="@{/}">Home</a>
+							
+
+							 </li>
+
+              <li class="">
+              <a  th:href="'/items/category/'+${#strings.replace(#strings.replace(item.subCategory.category.categoryName,' ','-'),'/','-')}+'?id='+${item.subCategory.category.id}" th:text="${item.subCategory.category.categoryName}" >CategoryName</a>
+              </li>	
+
+                <li class="">
+                	<a  th:href="'/items/category/'+${#strings.replace(#strings.replace(item.subCategory.category.categoryName,' ','-'),'/','-')}+'?id='+${item.subCategory.category.id}+'&amp;scid='+${item.subCategory.id}" th:text="${item.subCategory.subCategoryName}" >Sub Category</a>
+                	
+                </li>	
+              <li class="current">
+              	<a th:text="${item.itemName}" >Item Name</a>
+              </li>	
+						</ul>
+						<!-- <div class="page-title">
+							<div class="page-title-inner">
+								<h5 class="t-c-w">Single Item Page</h5>
+							</div>
+						</div> --><!-- .page-title -->
+						
+					<!-- </div> -->
+				</div>
+	</div>
+<!-- <div class="row" ng-controller="LoginController"> -->
+<div class="row" >
+	                    <div class="col-md-12 mgb10" style="padding-top: 20px;">
+	                    <div class="sinl_i">
+	                
+							<div class="col-md-5 col-sm-12 col-xs-12">
+				 		<div id="p-preview">
+							<div class="item">
+										<img class="product-slider-image" src="/common/img/home/img/360x360/boneless-skinless-chicken-thighs.jpg" alt="" title="Product Photo" />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+							</div>
+											<!--<th:block th:unless="${#lists.isEmpty(#lists.toList(item.restaurantItemImages))}">
+									<div class="item">
+									
+										<th:block  th:each= "image:${item.restaurantItemImages}">
+										<img class="product-slider-image" th:if="${image.imageType=='360X360(1)'}" th:src="${image.imageLocation}" alt="" th:title="${image.imageName}" />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+										</th:block>
+									</div>
+									<div class="item">
+										<th:block th:each= "image:${item.restaurantItemImages}">
+										<img class="product-slider-image" th:if="${image.imageType=='360X360(2)'}" th:src="${image.imageLocation}" alt="" th:title="${image.imageName}" />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+										</th:block>
+									</div>
+									<div class="item">
+										<th:block th:each= "image:${item.restaurantItemImages}">
+										<img class="product-slider-image" th:if="${image.imageType=='360X360(3)'}" th:src="${image.imageLocation}" alt="" th:title="${image.imageName}" />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+										</th:block>
+									</div>
+									<div class="item">
+										<th:block th:each= "image:${item.restaurantItemImages}">
+										<img class="product-slider-image" th:if="${image.imageType=='360X360(4)'}" th:src="${image.imageLocation}" alt="" th:title="${image.imageName}" />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+										</th:block>
+									</div>
+								</th:block> -->
+								<!-- <div class="item" th:if="${#lists.isEmpty(#lists.toList(item.restaurantItemImages))}">
+										
+										<img class="product-slider-image"  src="/Item/Images/default_360.png"  />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+									
+									</div> -->
+								</div>
+						
+									<div id="p-thumb">
+									<div class="item">
+										<img width="100" height="100" src="/common/img/home/img/360x360/default_80.png" class="attachment-shop_thumbnail" alt="Product Photo" />
+									</div>
+
+<!-- 
+									<div class="item">
+										<th:block th:each="image:${item.restaurantItemImages}">
+										<img width="100" height="100" th:if="${image.imageType=='80X61(1)'}" th:src="${image.imageLocation}" class="attachment-shop_thumbnail" th:alt="${image.imageName}" />
+									</th:block>
+									</div>
+									<div class="item">
+										<th:block th:each="image:${item.restaurantItemImages}">
+										<img width="100" height="100" th:if="${image.imageType=='80X61(2)'}" th:src="${image.imageLocation}" class="attachment-shop_thumbnail" th:alt="${image.imageName}" />
+									</th:block>
+									</div>
+									<div class="item">
+										<th:block th:each="image:${item.restaurantItemImages}">
+										<img width="100" height="100" th:if="${image.imageType=='80X61(3)'}" th:src="${image.imageLocation}" class="attachment-shop_thumbnail" th:alt="${image.imageName}" />
+									</th:block>
+									</div>
+									<div class="item">
+										<th:block th:each="image:${item.restaurantItemImages}">
+										<img width="100" height="100" th:if="${image.imageType=='80X61(4)'}" th:src="${image.imageLocation}" class="attachment-shop_thumbnail" th:alt="${image.imageName}" />
+									</th:block>
+									</div> -->
+
+								</div>
+							
+							</div><!-- .col-md-6 -->
+							<div class="col-md-7 col-sm-12 col-xs-12 p-none" th:with=" sellerItems = ${#arrays.toArray(sellerItemsWithOffers)}">
+
+
+								<div class="product">
+									<div class="p-info" style="padding-top: 30px;">
+                             			<h1 th:text="${item.itemName}"></h1>
+											<span class="price" style="float: right;"><th:block th:with="price=${sellerItems[0].key.sellingPrice}">
+												<span style="padding-right: 40px;" class="amount" th:inline="text"><i class="fa fa-inr"></i>[[${price}]]</span>
+												<!-- <del>£99.00</del> -->
+												</th:block><br/>
+												<span><del th:inline="text"><i class="fa fa-inr"></i>[[${sellerItems[0].key.marketPrice}]]</del></span>
+											</span>
+
+									<!-- 		<th:block th:each="itemtag:${item.itemTagses}" th:if="${itemtag.tags.tagName=='Veg'}">
+											<span class="veg"><a></a></span>
+										
+											</th:block>
+											<th:block th:each="tagName:${item.item.itemTagses}" th:if="${tagName.tags.tagName=='Non Veg'}">
+											<span class="non-veg"><a></a></span>
+											</th:block>
+
+											<th:block th:each="tagName:${item.item.itemTagses}" th:if="${tagName.tags.tagType.tagTypeName=='Organic'}">
+													<span class="organic"><a></a></span>
+										</th:block> -->
+
+
+										<!-- <span th:each="itemtag:${item.item.itemTagses}" class="veg"><a th:text="${itemtag.tags.tagName}"></a></span>
+										<span th:each="itemtag:${item.item.itemTagses}" class="veg"><a th:text="${itemtag.tags.tagType.tagTypeName}"></a></span> -->
+										<div class="p-rate clearfix">
+											<div class="star-rating pull-left">
+												<span style="width:60%"></span>
+											</div>
+											<!-- <div class="pull-right pdr10">1 reviews / <a href="#">Write a review</a></div> -->
+										</div>
+										<!-- <div class="p-desc">
+											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
+										</div> -->
+										<div class="p-meta">
+											<!-- <div class="p-meta-one">
+												<ul>
+
+													<li th:inline="text"><span>Restaurant</span>:[[${item.restaurantBranch.restaurant.restaurantName}]]</li>
+													<li th:inline="text"><span>Branch</span>:[[${item.restaurantBranch.branchName}]]</li>
+													<li><span>Item Code</span>: Product 3</li>
+													<li><span>Reward Points</span>: 200</li>
+													<li><span>Availability</span>: In Stock </li>
+												</ul>
+											</div> -->
+											
+											<div class="p-meta-two col-sm-6">
+												<ul>
+													<th:block th:with="sellerName=${sellerItems[0].key.sellerBranch.seller.sellerName}">
+												   <li th:inline="text"><span>SellerName</span>:[[${sellerName}]]</li>
+												  </th:block>
+													<th:block th:with="sellerBranch=${sellerItems[0].key.sellerBranch.branchName}">
+												   <li th:inline="text"><span>Branch</span>:[[${sellerBranch}]]</li>
+												  </th:block>
+
+													<li><span>MeatType</span>:<th:block th:each="itemTag:${item.itemTagses}" th:if="${itemTag.tags.tagType.tagTypeName=='MeatType'}"> <a th:text="${itemTag.tags.tagName}"> South Indian</a></th:block></li>
+														<th:block th:with="sellerItemQuantity=${sellerItems[0].key.quantity}">
+													<li><span>Quantity</span>: <a href="#" th:inline="text">[[${sellerItemQuantity}]]</a> </li>
+												</th:block>
+												</ul>
+											</div>
+												<div class="col-sm-6 bg-default-offer" style="margin-top: -13px;">
+											 	<a class="add-to-cart bg-default"><!-- <i class="fa flaticon-bag-of-flour m-i"></i> --><h5 class=" t-c-lime">3 OFFERS</h5></a>
+
+											 	<!-- <div class="clearfix"></div> -->
+											 <ul class="list-n pull-left" >
+													<li><i class="fa fa-hand-o-right"></i>100% OFF on SBI Credit Card</li>
+													<li><i class="fa fa-hand-o-right"></i>20% cash Back on HDFC Credit Card</li>
+													<li><i class="fa fa-hand-o-right"></i>10% OFF on ICICI Banking</li>
+													<li><!-- <i class="fa fa-hand-o-right"></i> --><span class="c-p t-c-lime">View T&amp;C</span></li>
+												</ul>
+												
+										</div>
+										
+										<!-- 	<div class="p-meta-three">
+												<a>Offers</a>
+											</div> -->
+											
+										</div>
+										<div class="p-action b-none">
+											<div class="col-lg-12 col-md-12 col-sm-12 p-none">
+											<!-- <a class="textup b-none"><i class="fa fa-balance-scale"></i></a> -->
+												<div class="col-lg-12 col-md-12 col-sm-12 p-none" style="margin-top: -40px;">
+												<a class="f-f-u" th:attr="ng-init='setItemUnits(\''+${sellerItems[0].key.baseUnit}+'\')'" style="padding-bottom: 57px;"> Units:</a>
+											<input type="number" th:step="${sellerItems[0].key.baseUnit}" th:min="${sellerItems[0].key.baseUnit}" th:value="${sellerItems[0].key.baseUnit}"  title="Qty" class="qty bdr-0 " size="4" ng-model="itemUnits"/><span th:text="${sellerItems[0].key.measurementUnit}"></span>
+										</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 p-none" style="margin-bottom: 12px;">
+												<span class="f-f-u" style="margin-bottom: 17px;"> Select your type of piece cuts</span>
+									<select class="form-control" ng-model="cutType"><option>Select</option>><option th:each="cutType : ${#strings.arraySplit(sellerItems[0].cutTypes,',')}" th:text="${cutType}" th:value = "${cutType}"></option></select>
+										</div>
+
+										<!-- 	<a class="textup b-none">Timings:</a>
+											<input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4"/> -->
+											<!-- <a class="textup b-none">Date:</a>
+											<input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4"/> -->
+											
+											
+                                            
+											<!-- <a><i class="fa fa-clock-o"></i></a>
+											<input type="text"  ng-model="deliveryTime"  class="qty b-d form-control"/> -->
+											<!-- <div class="clearfix"></div> -->
+												<div class="col-lg-12 col-md-12 col-sm-12 p-none">
+											<a href="#" class="add-to-cart clwt t-c-w b-none" th:attr="ng-click='addtocart(\''+${sellerItems[0].key.id}+'\',itemUnits,$event,cutType,\'C\')'" style="background-color: rgb(105, 166, 105);"><i class="fa fa-shopping-cart t-c-w"></i> Add to cart</a>
+											<a href="javascript:;" class="add-to-cart xb clwt t-c-w b-none" th:attr="ng-click='addtocart(\''+${sellerItems[0].key.id}+'\',itemUnits,$event,cutType,\'QC\')'" style="background-color: rgba(255, 29, 29, 0.85);"><i class="fa fa-shopping-cart t-c-w"></i>Xpress Bowl</a>
+												</div>
+
+											<div class="clearfix"></div>
+											<br/>
+										
+										</div>
+																					<div class="row col-lg-12 col-md-12 mgt10 mgb10 t_division hide animated p-none">
+												<div class="col-lg-4 col-md-4 p-none">
+												<a><i class="fa fa-calendar"></i></a>
+											<input type="text"  ng-model="deliveryDate" class="singleItemDatePicker form-control"  ng-change="getRestaurantItemTimingDetailsByDate(deliveryDate)"  style="width:100px !important;" ng-init="initDatePicker()" />
+											</div>
+												<div class="col-lg-4 col-md-4 p-none">
+													
+											<a><i class="fa fa-cloud"></i></a>
+											<!-- <p  th:each="itemTiming:${item.restaurantItemTimingses}"  th:text="${itemTiming.timingDetails.timingName}" ></p> -->
+											<!-- <select class="h-40 w-110 itemTimingDetailsId" ng-model="timingId" ng-show="thTimingDetail" ng-change="getRestaurantTimingsInterval(timingId)">
+												<option   th:each="itemTiming:${item.restaurantItemTimingses}" th:value="${itemTiming.timingDetails.id}" th:text="${itemTiming.timingDetails.timingName}"></option>
+											</select>
+											<select class="h-40 w-110" ng-model="timingId" ng-show="ngTimingDetail" ng-change="getRestaurantTimingsInterval(timingId)">
+												<option  ng-repeat="timing in timingDetails"  value="{{timing.id}}">{{timing.timingName}}</option>
+											</select> -->
+										
+											</div>
+										<div class="col-lg-3 col-md-3 p-none">
+											<a><i class="fa fa-clock-o"></i></a>
+											
+											<!-- <select class="h-40 w-60 1" ng-model="deliveryTime" >
+												<option  ng-repeat="timing in timingIntervals"  value="{{timing.id}}">{{timing.interval}}</option>
+											</select> -->
+										</div>
+										<div class="col-lg-1 col-md-1 p-none"><a href="javascript:;" ng-click="checkOutNow(timingId,deliveryDate,deliveryTime,itemUnits)"><img src="/common/img/home/img/list_tick.png"/></a></div>
+										</div>
+									<div class="">
+									
+									</div>
+
+										</div>
+
+											<div class="p-share clearfix mgt10 mgb10">
+											<!-- <span class="pull-left">Share:</span> -->
+											<ul class="social pull-left">
+											   <li class="f-f-u">Share: </li>
+												<li><a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook fb"></i></a></li>
+												<li><a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter tw"></i></a></li>
+												<li><a href="#" title="Dribbble" target="_blank"><i class="fa fa-dribbble dr"></i></a></li>
+												<li><a href="#" title="Googleplus" target="_blank"><i class="fa fa-google-plus gp"></i></a></li>
+												<li><a href="#" title="Youtube" target="_blank"><i class="fa fa-youtube yt"></i></a></li>
+											</ul>
+										</div>
+
+										<!-- <div class="p-share clearfix">
+											<span class="pull-left">Share:</span>
+											<ul class="social pull-left">
+												<li><a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+												<li><a href="#" title="Dribbble" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+												<li><a href="#" title="Googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+												<li><a href="#" title="Youtube" target="_blank"><i class="fa fa-youtube"></i></a></li>
+											</ul>
+										</div> -->
+									</div><!-- .p-info -->
+								</div><!-- .summary.product -->
+							</div><!-- .col-md-6 -->
+							</div>
+							</div><!-- .col-md-8 -->
+
+
+<!-- Recommended Items Div -->
+
+<!-- 	<div class="col-md-3 col-sm-12 col-xs-12 " >
+      <div class="rc_itms">
+      <div class="section-header" ><h2>Recomended </h2></div>
+      <div class="scrollbar" id="style-3">
+      	<div class="force-overflow">
+        <div class="rcmi " ng-init="setSearchedItems('4028802550618b9d015062795be00179','40288025506540d201506649f44e00a6','4028802550618b9d01506257bd90010f','Paradise','Paradise Kukatpally Veg Mixed Biryani','120.00','150Grams');" th:each='relativeItem :${relativeItems}'>
+         	  <div class="">
+         			<input type="hidden"  th:attr="ng-init='setRelativeItems(\''+${relativeItem.item.id}+'\',\''+${relativeItem.id}+'\',\''+${relativeItem.restaurantBranch.restaurant.id}+'\',\''+${relativeItem.restaurantBranch.restaurant.restaurantName}+'\',\''+${relativeItem.restaurantItemName}+'\',\''+${relativeItem.price}+'\',\''+${relativeItem.quantity}+'\');'"/>
+										<div class="row">
+										<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 ">
+											<div class="post-item" th:each="image:${relativeItem.restaurantItemImages}" th:if="${image.imageType=='170X139'}">
+												 
+												<img class="custom_thumbnail" width="80" height="100" alt="Product 15" th:src="${image.imageLocation}" th:alt="${relativeItem.restaurantItemName}" />
+																					</div>
+							
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-9 ">
+
+
+									<div class="animated flipInX" style="padding-left:0px !important;">
+
+										<div class="row">
+											<div class="">
+								
+										<span class="amount t-c-g h5 p-l" th:text="${relativeItem.price}">120.00</span>
+										
+											<div class="p-action" style="margin-top:10px !important;">
+											<span class="veg">
+										
+											</span>
+													<span class="organic"><a></a></span>
+										
+											
+										</div>
+									</div>
+										
+										</div>
+										</div>
+
+									</div>
+									<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="padding-top:5px;" th:with="itemUrl = '/itemf/'+${#strings.replace(#strings.replace(item.restaurantItemName,' ','-'),'/','-')}+'?id='+${item.id}">
+										<a style="text-overflow:ellipsis;width:12em;" th:href="'/itemf/'+${#strings.replace(#strings.replace(relativeItem.restaurantItemName  ,' ','-'),'/','-')}+'?id='+${relativeItem.id}" th:text="${relativeItem.restaurantItemName}">Paradise Kukatpally
+															 Veg Mixed Biryani</a>
+			
+									</div>
+									</div>
+								</div> 
+								</div>
+								</div>
+							</div>
+                           
+                 </div>
+                         </div>   --> 
+                         <div class="page-section faq-two pdt50 pdb30" >
+					<div class="container">
+						<div class="row">
+                         <div class="col-md-12">
+									
+									 <div class="div_latest_header">
+              <a href="#">
+               <h2 class="latest_div">More Sellers</h2>
+               </a> 
+               </div>
+									<!-- <div class="panel-group" role="tablist" aria-multiselectable="true">
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="headingNine">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="true" aria-controls="collapseNine"><i></i>Seller1</a></h4>
+											</div>
+											<div id="collapseNine" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingNine">
+												<div class="panel-body">WordPress is a free content management system (CMS) that began as a blogging platform but is now so much more. It’s hands down the most versatile website publishing software out there.</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="headingTen">
+												<h4 class="panel-title"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen"><i></i>Seller2</a></h4>
+											</div>
+											<div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+												<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, qui inventore cum recusandae in sapiente minima nisi. Placeat, quisquam eveniet repellendus. Nulla possimus, quaerat nihil.
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="headingEleven">
+												<h4 class="panel-title"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven"><i></i>Seller3</a></h4>
+											</div>
+											<div id="collapseEleven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEleven">
+												<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis reprehenderit, aperiam, tempore doloribus facere quod! Debitis illum voluptatibus aliquam qui, quasi perspiciatis doloremque corporis odio.
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="headingTwelve">
+												<h4 class="panel-title"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve"><i></i>Seller4</a></h4>
+											</div>
+											<div id="collapseTwelve" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwelve">
+												<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis reprehenderit, aperiam, tempore doloribus facere quod! Debitis illum voluptatibus aliquam qui, quasi perspiciatis doloremque corporis odio.
+												</div>
+											</div>
+										</div>
+									</div> -->
+
+
+
+
+
+										<div class="cart p-none m-none">
+					<div class="container">
+						<form method="post" action="#">
+							<table class="shop_table cart" style="width:100% !important;" >
+								<thead class="b-b">
+									<tr>
+										<th class="product-remove">Seller Name</th>
+										<!-- <th class="product-empty">Brand</th> -->
+										<th class="product-quantity">Delivery Time</th>
+										<!-- <th class="product-subtotal">Offers</th> -->
+										<th class="product-remove">Price</th>
+											<th class="product-offer">Offers</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr class="cart_item" th:each='sellerItem :${sellerItemsWithOffers}' th:id="${#maps.size(sellerItems)}">
+										
+										<td class="product-name" >
+											<a href="shop_details_fullwidth.html" th:text="${sellerItem.key.sellerBranch.branchName}">Honeycomb Glass Pendant </a>
+											 </td>
+										<!-- 	<td class="product-thumbnail">
+											<a href="hop_details_fullwidth.html/index.html"><img width="80" height="80" alt="home4_product_03" class="attachment-shop_thumbnail wp-post-image" src="placeholder/shop/80x80/01.png" /></a>
+										</td> -->
+										<td class="product-quantity">
+											<div class="quantity">
+												<!-- <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="cart[3df1d4b96d8976ff5986393e8767f5b2][qty]" min="0" step="1" /> -->
+												<span th:text="${sellerItem.key.sellerBranch.minimumOrderTime}+' mins'"></span>
+											</div>
+										</td>
+										<td class="product-subtotal">
+											<span><del th:inline="text" ><i class="fa fa-inr"></i>[[${sellerItem.key.marketPrice}]]</del></span>
+											<span class="amount" th:inline="text"><i class="fa fa-inr"></i>[[${sellerItem.key.sellingPrice}]]</span> </td>
+											<!-- <td class="product-offer"></td> -->
+										<td class="product-remove">
+										<!-- 	<a href="#" class="add-to-cart clwt  " ng-click="addtocart($event,itemUnits)" style="background-color: rgb(105, 166, 105);"><i class="fa fa-shopping-cart"></i> Add to cart</a> -->
+											<!-- <a href="javascript:;" class="add-to-cart xb clwt " ng-click="xpressBowl($event)" style="background-color: rgba(255, 29, 29, 0.85);"><i class="fa fa-shopping-cart"></i>Xpress Bowl</a> --> 
+											<button type="text" class="btn-lg add_t_cart" th:attr="ng-click='addtocart(\''+${sellerItem.key.id}+'\',\''+${sellerItem.key.baseUnit}+'\',$event,\'Regular\',\'C\')'"><i class="fa fa-shopping-cart t-c-w"></i>Add To Cart</button>
+											<button type="text" class="btn-lg buy_now" th:attr="ng-click='addtocart(\''+${sellerItem.key.id}+'\',\''+${sellerItem.key.baseUnit}+'\',$event,\'Regular\',\'QC\')'"><i class="fa fa-shopping-cart t-c-w"></i>BuyNow</button>
+
+										</td>
+									</tr>
+
+									 
+								</tbody>
+							</table>
+							<!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+  <div id="demo" class="collapse">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </div> -->
+							
+						</form>
+
+					</div><!-- .container -->
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-12 more-seller-btn">
+								<button>MORE SELLERS</button>
+								<div class="button-arrow-down"><i class="fa fa-arrow-down"></i></div>
+							</div>
+						</div>
+					</div>
+				</div><!-- .shop-cart -->
+								</div><!-- .col-md-12 -->      
+								</div>
+								</div>
+								</div>            
+						</div><!-- .row -->
+						

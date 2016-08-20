@@ -1,0 +1,98 @@
+<ion-view>
+<ion-content>
+  <ion-list>
+    <th:block th:each="subOrder:${subOrders}" th:if="${subOrder.timings}">
+      <input type="hidden" th:attr="ng-init='setOrderData(\''+${subOrder.id}+'\',\''+${subOrder.subOrderCode}+'\',\''+${subOrder.subOrderStatus}+'\',\''+${subOrder.subOrderTotalPrice}+'\',\''+${subOrder.timings.startTime}+'\',\''+${subOrder.timings.endTime}+'\',\''+${subOrder.timings.timingName}+'\',\''+${subOrder.subOrderDeliveryTime}+'\',\''+${#dates.format(subOrder.subOrderDeliveryDate, 'dd-MMM-yyyy')}+'\')'" />
+      <th:block th:each="orderItem:${subOrder.orderItems}">
+        <input type="hidden" th:attr="ng-init='setOrderItemsData(\''+${subOrder.id}+'\',\''+${subOrder.subOrderCode}+'\',\''+${orderItem.sellerItem.item.itemName}+'\',\''+${orderItem.id}+'\',\''+${orderItem.units}+'\')'" />
+      </th:block>
+    </th:block>
+    <th:block th:each="subOrder:${subOrders}" th:unless="${subOrder.timings}">
+      <input type="hidden" th:attr="ng-init='setOrderData(\''+${subOrder.id}+'\',\''+${subOrder.subOrderCode}+'\',\''+${subOrder.subOrderStatus}+'\',\''+${subOrder.subOrderTotalPrice}+'\',\'N/A\',\'N/A\',\'N/A\',\''+${subOrder.subOrderDeliveryTime}+'\',\''+${#dates.format(subOrder.subOrderDeliveryDate, 'dd-MMM-yyyy')}+'\')'" />
+      <th:block th:each="orderItem:${subOrder.orderItems}">
+        <input type="hidden" th:attr="ng-init='setOrderItemsData(\''+${subOrder.id}+'\',\''+${subOrder.subOrderCode}+'\',\''+${orderItem.sellerItem.item.itemName}+'\',\''+${orderItem.id}+'\',\''+${orderItem.units}+'\',\''+${orderItem.sellerItem.measurementUnit}+'\')'" />
+      </th:block>
+    </th:block>
+    <!-- <p class="text-center" style="color:#F27028">Confirmed Orders</p>
+    <ion-item ng-repeat="subOrder in orderData track by $index" class="order-item animated bounceInLeft" ng-if="subOrder.subOrderStatus == 'CONFIRMED' " ng-click='toggleGroup(subOrder.id)'>
+      <div class="row no-padding">
+        <span class="col col-50" style="color: #908282;font-size: 16px;" ng-class='{active: isGroupShown(subOrder.id)}'>
+          {{subOrder.subOrderCode}}
+        </span>
+        <span class="col col-25"  style="font-size: 14px;color: #4CAF50;">
+          <i class="ion ion-clock"></i> {{subOrder.subOrderDeliveryTime}}
+        </span>
+        <span class="col col-25"  style="font-size: 14px;color: #607D8B;">
+          <i class="ion ion-card"></i> {{subOrder.subOrderTotalPrice}}
+        </span>
+      </div>
+      <div class="item-accordion" style="" ng-show='isGroupShown(subOrder.id)'>
+        <div class="row accordion-toggle no-padding" style="font-size:14px;" >
+          <div class="col col-80" style="">
+            <div class="padding-left" ng-repeat="orderItem in subOrder.orderItems">
+              <p style="">
+                <span class="item-color">{{orderItem.itemName}}</span>
+                <span class="units">
+                  <span style="margin-left:4px;">{{orderItem.units}} {{orderItem.measurementUnit}}</span>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button class="button button-small col col-10 col-offset-10 button-balanced" ng-click="shippedOrder(subOrder.id,'SHIPPED')">SHIPPED <i class="ion ion-checkmark-round"></i></button>
+        </div>
+      </div>
+    </ion-item> -->
+    <div ng-repeat="subOrder in orderData track by $index" class="card order-item animated bounceInLeft" ng-if="subOrder.subOrderStatus == 'CONFIRMED' ">
+      <div class="item item-divider" style="background-color:#FFFFFF;padding: 5px;">
+        <div class="row" style="color: #CCCBCB;padding:0px;">
+          <div class="col col-50 font-size">Delivery Time</div>
+          <div class="col col-50 font-size" style="text-align: right;">Order No</div>
+        </div>
+        <div class="row" style="padding:0px;">
+          <span class="col col-50" style="font-size: 12px;color: #4CAF50;">
+            {{subOrder.subOrderDeliveryDate}} {{subOrder.subOrderDeliveryTime}}
+          </span>
+          <div class="col col-50 font-size" style="text-align: right;color: #4CAF50;">
+            {{subOrder.subOrderCode}} 
+            <!-- <span style="font-size: 10px;">({{subOrder.orderItems.length}})</span> -->
+          </div>
+        </div>
+      </div>
+      <div class="item item-text-wrap" style="padding: 5px;">
+        <div class="row font-12" ng-repeat="orderItem in subOrder.orderItems">
+          <div class="col-50 item-color order-item">
+            {{orderItem.itemName}}
+          </div>
+          <div class="col-50">
+            <span class="pull-right">{{orderItem.units}} {{orderItem.measurementUnit}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="item item-divider" style="background-color:#FFFFFF;padding: 5px;">
+        <div class="row">
+          <!-- <a class="col-50 font-size button button-balanced" ng-click="shippedOrder(subOrder.id,'SHIPPED')">SHIPPED</a> -->
+          <a class="col-50 font-size button button-balanced" ng-click="selectingUser(subOrder.id)">SHIP</a>
+          <a class="col-50 font-size button button-balanced" ng-click="shippedOrder(subOrder.id,'SHIPPED')">SHIPPED</a>
+          <div class="font-size col-50" style="text-align: center;color:#F44336;padding-top:10px;">
+            <i class="fa fa-rupee"></i> {{subOrder.subOrderTotalPrice | number}}
+            <p style="font-size:9px;">inclusive of all taxes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-show="!orderData.length" class="text-center">
+        No Confirmed Orders 
+    </div>
+  </ion-list>
+</ion-content>
+</ion-view>
+<style type="text/css">
+   .font-size{
+      font-size: 14px;
+    }
+    .font-12{
+      font-size: 12px;
+    }
+   </style>

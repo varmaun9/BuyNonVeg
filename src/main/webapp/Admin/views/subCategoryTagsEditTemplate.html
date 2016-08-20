@@ -1,0 +1,58 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">SUBCATEGORY TAG EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b subCategorytagform" name="TagForm">
+			<div class="form-group">
+					<div class="col-sm-4 col-md-4">
+						<label class="control-label">TagType Name</label> 
+					</div>
+					<div class="col-sm-4">
+						 <label class="control-label">Tag Name</label> 
+					</div>
+					<div class="col-sm-4">
+						 <label class="control-label">Status</label> 
+					</div>
+			</div>
+			<div class="form-group" ng-repeat="tagsData in subCategoryEditData">
+				<div class="col-sm-4 col-md-4">
+					<input type="text" class="form-control" name="tagTypeName" disabled ng-model="tagsData['properties'].tagTypeName">
+				</div>
+				<div class="col-sm-4">
+					<!-- <div class="form-control-static">{{tagsData.tagName}}</div> -->
+					<input type="text" class="form-control" name="tagName" disabled ng-model="tagsData['properties'].tagName">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-3 col-md-3">
+					<select class=" form-control" name="select" style="width:100%;" required ng-change="tagtypeChange(tagTypeId)" ng-model="tagTypeId">
+						<option value=""></option>
+						<option ng-repeat="tagt in tagsTypes" value="{{tagt['properties'].id}}">{{tagt['properties'].tagTypeName}}</option>
+					</select>
+				</div>
+				<div class="col-sm-3">
+					 	<select class=" form-control" name="select" style="width:100%;" required ng-model="subcategoryTags.tagsId">
+						<option value=""></option>
+						<option ng-repeat="tag in tags" value="{{tag['properties'].id}}">{{tag['properties'].tagName}}</option>
+					</select>
+				</div>
+				<div class="col-sm-3">
+					<select class=" form-control" name="select" style="width:100%;" required ng-model="subcategoryTags.subcategoryTagsStatus">
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+				</div>
+				<div class="col-sm-3">
+					<button type="button" class="btn btn-primary" ng-click="subCategoryTagCreate(subcategoryTags)">ADD</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="subCategoryTagEdit(subCategoryEditData)">Save changes</button>
+	</div>
+</div>
+

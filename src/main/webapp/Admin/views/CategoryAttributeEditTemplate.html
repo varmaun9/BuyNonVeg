@@ -1,0 +1,47 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">CATEGORY ATTRIBUTE EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b itemform" name="ItemForm">
+			
+			<div class="form-group">
+				<label class="col-sm-4 control-label">ATTRIBUTE Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class=" form-control" name="select" style="width:100%;" required ng-model="categoryAttributes.attributesId">
+						<option value=""></option>
+						<option ng-repeat="attributeData in attributesDetails" value="{{attributeData['properties'].id}}">{{attributeData['properties'].attributeName}}</option>
+					</select>
+						<!-- <input type="text" class="form-control" name="attributeName" ng-model="CategoryAttributeEdit['properties'].attributeName"/> -->
+					</div>
+				</div>
+			</div>
+			<!-- <div class="form-group">
+				<label class="control-label col-md-4">ATTRIBUTE VALUE</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="attributeValue" ng-model="CategoryAttributeEdit['properties'].attributeValue"/>
+					</div>
+				</div>
+			</div> -->
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class=" form-control" name="select" ng-model="CategoryAttributeEdit['properties'].status" style="width:100%;" required>
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="categoryattrEdit(CategoryAttributeEdit)">Save changes</button>
+	</div>
+</div>
+

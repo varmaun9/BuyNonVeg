@@ -1,0 +1,299 @@
+<th:block th:fragment="ResultsFragment">
+<div class="list" style="padding-top:50px !important;">
+  <div class="item item-input custom_search">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="text" class="" ng-modal="{{searchVal}}" value="{{searchVal}}" ng-keyup="getSearchResults($event)" placeholder="Search" />
+  </div>
+</div>
+<!-- <h4 class="custom_title-1 textup text-center t-c-o">Items</h4> -->
+                <div class="col" th:if="${not #lists.isEmpty(items)}">
+                  <th:block th:each="item,iterStat :${items}">
+                  <div class="row searchItem b-b-t" th:attr="ng-init='setSearchedItems(\''+${item.item.id}+'\',\''+${item.id}+'\',\''+${item.restaurantBranch.restaurant.id}+'\',\''+${item.restaurantBranch.restaurant.restaurantName}+'\',\''+${item.restaurantItemName}+'\',\''+${item.price}+'\',\''+${item.quantity}+'\');'">
+                    
+                    <div class="col col-20">
+                      <div class="list">
+
+       <img class="" src="/img/80x61/thumb_2.png" alt="Product 15" />
+     
+</div>
+                   
+                      
+                        <!-- <div class="wrp-meta">
+                          <a href="shop_details_fullwidth.html">Chairs Design Decorating</a>
+                          <span class="price">$124.00</span>
+                        </div> -->
+                    
+                <!--  <div class="p-image animated flipInX"> -->
+                    <!-- <a href="shop_details_fullwidth.html"><img src="../../common/img/home/img/20x22/dish.png" width="25" height="25" alt="Product 15" /></a> -->
+
+                    <!-- <img th:src="@{/common/img/images/8.png}" width="25" height="25" alt="Product 15" /> -->
+                          <!-- <span class="price" th:text="${item.price}">$124.00</span> -->
+                  <!-- </div> -->
+                </div>
+
+
+
+                <div class="col col-80" >
+
+
+                  <div class="animated flipInX" style="padding-left:0px !important;">
+
+                    <div class="row">
+                      <div class="col col-25">
+                    
+                    <span class="amount t-c-g h5 p-l" th:text="${item.price}">$34.95</span>
+                    
+                      <div class="p-action" style="margin-top:10px !important;">
+                    
+                      <th:block th:each="tagName:${item.item.itemTagses}" >
+                      
+                      <span class="veg" th:if="${tagName.tags.tagName=='Veg'}">
+                        <!-- <img src="../../common/img/home/img/20x22/veg-icon.jpg" alt="Cart" width="12" height="20" /> -->
+                        <!-- <span>Pure Veg</span> -->
+                      </span>
+                      </th:block>
+                      <!-- <div class="clearfix"></div> -->
+                      <th:block th:each="tagName:${item.item.itemTagses}" >
+                      
+                      <span class="non-veg" th:if="${tagName.tags.tagName=='NonVeg'}">
+                        <!-- <img src="../../common/img/home/img/20x22/nonveg_icon.png" alt="Cart" width="12" height="20" /> -->
+    
+                        <!-- <span>Non-Veg</span> -->
+                      </span>
+                      </th:block>
+                      <th:block th:each="tagName:${item.item.itemTagses}" th:if="${tagName.tags.tagType.tagTypeName=='Organic'}">
+                          <span class="organic"><a></a></span>
+                    </th:block>
+                    </div>
+                  </div>
+                    <div class="col col-80">
+
+                    <a class="h5 balanced" style="text-overflow:ellipsis;text-decoration:none;" th:href="'/itemf/'+${#strings.replace(#strings.replace(item.restaurantItemName,' ','-'),'/','-')}+'?id='+${item.id}" th:text="${item.restaurantItemName}"></a>
+      
+                <div class="row p-none">
+                  <div class="col col-50">
+                    <!-- <a class="button button-outline icon-right ion-navicon button-balanced">Reorder</a> -->
+                            <a href="#" th:attr="ng-click='showModal(\''+${item.id}+'\')'" class="button button-small button-outline icon-right ion-navicon button-balanced"><i class="fa fa-cart-plus"></i> Xpress Bowl</a>
+                          </div>
+                          <div class="col col-50">
+                          <a href="javascript:;" th:attr="ng-click='addToCart(\''+${item.id}+'\')'" class="button button-small button-outline icon-right ion-navicon button-balanced">Add to Bowl</a>
+                    </div>
+                          </div>
+                    
+                  
+                  </div>
+                    <!-- <div class="star-rating">
+                      <span style="width:60%"></span>
+                    </div> -->
+                    
+                  </div>
+                  </div>
+                </div>
+             
+              </div>
+                </th:block>
+                </div><!-- end product-1 -->
+                
+              <!-- .col-md-9 -->
+
+<!-- 
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <h4 class="custom_title-1 textup text-left t-c-o">Categories</h4>
+                <a class="x-cart" ng-click="closeSearch()" href="#" style="float: right;margin-right: 10px;font-size: 30px; margin-top: -54px;"><i>×</i></a>
+                <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 product animated flipInX " th:if="${not #lists.isEmpty(categories)}">
+                  <th:block th:each="category,iterStat :${categories}">
+                  <div class="mgt10"> -->
+                  <!-- <div class="col-lg-1 col-md-1 col-sm-1 animated flipInX p-none">
+                    <img src="../../common/img/home/img/20x22/dish.png" width="25" height="25" alt="Product 15"/>
+                  </div> -->
+                  <!-- <div class="col-lg-11 col-md-11 col-sm-11 " > -->
+                   <!--  <a class="h5 t-c-g" th:href="'/items/category/'+${#strings.replace(#strings.replace(category.categoryName,' ','-'),'/','-')}+'?id='+${category.id}" th:text="${category.categoryName}"></a> -->
+              <!-- <div class="product style-2 p-none">
+                        <div class="p-info" style="width:100% !important;">                         
+                          <div class="p-action"> -->
+                          <!--   <div class="clearfix"></div>
+                            <div><span th:text="${category.description}" href="#" class="add-to-wishlist"></span>&nbsp;<span class=" f-f-m">Items</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${category.status}" href="#" data-lightbox="roadtrip" class="quickview"></span>&nbsp;<span class=" f-f-m">Restarants</span> 
+                      </div> -->
+                    <!--      </div>
+                        </div>
+                      </div> -->
+                    
+                  <!-- </div> -->
+              <!--   </div>
+                  </th:block>
+                </div> --><!-- end product-1 -->
+               <!--  </div>
+              </div> --><!-- .col-md-3 -->
+
+
+
+
+              <!--  --><!-- .col-md-3 -->
+           <!--  <div class="col-md-12 col-sm-12 col-xs-12" style="position:absolute !important;top:26em !important;">
+                <div class="h-line-mid"> -->
+                 <!--  <h4 class="custom_title-1 textup text-center t-c-o">Restaurants</h4> -->
+                  <!-- <h4 class="textup t-c-o">Restaurants</h4> -->
+                <!-- </div> -->
+              <!--   <div class="product" th:if="${not #lists.isEmpty(restaurants)}">
+                  <th:block th:each="restaurant,iterStat : ${restaurants}">
+                  <div class="col-lg-2 col-md-2">
+                    <a href="#"><img class="thumbnail" alt="Client 1" th:src="@{/common/img/home/img/195x89/search_rest.png}" width="150" height="89" /></a> -->
+                  <!-- <div class="p-image animated flipInX">
+                    <img src="../../common/img/home/img/143x93/rest_1.png" width="25" height="25" alt="Product 15" />
+                  </div> -->
+                  <!-- <div class="p-info animated flipInX" style="padding-left:0px !important;">
+                    <h4><a href="shop_details_fullwidth.html" th:text="${restaurant.branchName}"></a></h4> -->
+                    <!-- <div class="star-rating">
+                      <span style="width:60%"></span>
+                    </div> -->
+                  
+                  <!-- </div> -->
+              <!--   </div>
+                </th:block>
+                </div>
+                
+              </div> -->
+
+
+
+            <!--   <div class="col-md-3 col-sm-6 col-xs-12"> -->
+                <!-- <h5 class="custom_title-1 textup">rated</h5>
+                <div class="product style-4">
+                  <div class="p-image">
+                    <a href="shop_details_fullwidth.html"><img src="placeholder/shop/50x50/05.png" width="50" height="50" alt="Product 15" /></a>
+                  </div>
+                  <div class="p-info">
+                    <h4><a href="shop_details_fullwidth.html">ASOS Trench Jacket</a></h4>
+                    <div class="star-rating">
+                      <span style="width:60%"></span>
+                    </div>
+                    <span class="price">
+                      <span class="amount">$34.95</span>
+                    </span>
+                  </div>
+                </div> --><!-- end product-1 -->
+                
+           <!--    </div> --><!-- .col-md-3 -->
+
+
+
+
+
+            <!-- .row -->
+          <!-- .container -->
+<!-- <div class="row">
+  <div class="col-lg-2 col-md-2">
+<div class="wr_widget_recent_posts">
+        <h4 class="widget-title">Categories</h4>
+        <ul th:if="${not #lists.isEmpty(categories)}">
+          <th:block th:each="category,iterStat :${categories}">
+            <li class="post-item animated">
+                        <img src="placeholder/shop/50x50/17.png" width="50" height="50" alt="Product 1"/>
+                        <div class="wrp-meta">
+                          <a th:href="'/items/category/'+${#strings.replace(#strings.replace(category.categoryName,' ','-'),'/','-')}+'?id='+${category.id}" th:text="${category.categoryName}"></a>
+                          <span class="price">$124.00</span>
+                        </div>
+                      </li>
+                    </th:block>
+          </ul>
+ -->
+
+          
+
+
+
+      
+
+
+  <!--  </div>
+  </div> -->
+<!--  <div class="col-lg-2 col-md-2">
+    <div class="wr_widget_recent_posts">
+        <h4 class="widget-title">Items</h4>
+        <ul th:if="${not #lists.isEmpty(items)}">
+          <th:block th:each="item,iterStat :${items}">
+            <li class="post-item" th:if="${iterStat.index >5} ">
+                        <img th:src="@{/common/img/home/img/foodimg/bestdeals/b8.png}" width="50" height="50" alt="Product 1"/>
+                        <div class="wrp-meta">
+                          <a th:href="'/itemf/'+${#strings.replace(#strings.replace(item.restaurantItemName,' ','-'),'/','-')}+'?id='+${item.id}" th:text="${item.restaurantItemName}"></a>
+                          <span class="price" th:text="${item.price}">$124.00</span>
+                        </div>
+                      </li>
+                    </th:block>
+          </ul>
+
+
+          
+
+
+
+      
+
+
+    </div>
+  </div> -->
+  <!-- <div class="col-lg-2 col-md-2">
+    <div class="wr_widget_recent_posts">
+        <h4 class="widget-title">Restaurants</h4>
+        <ul th:if="${not #lists.isEmpty(restaurants)}">
+          <th:block th:each="restaurant,iterStat : ${restaurants}">
+            <li  class="post-item">
+                        <img src="/common/img/images/Restaurants/6.png" width="50" height="50" alt="Product 1"/>
+                        <div class="wrp-meta">
+                          <a href="shop_details_fullwidth.html" th:text="${restaurant.branchName}"></a> -->
+                        <!--  <span class="price">$124.00</span> -->
+<!--                        </div>
+                      </li>
+                    </th:block>
+          </ul>
+
+
+          
+
+
+
+      
+
+
+    </div>
+  </div>
+  <div class="col-lg-5 col-md-5">
+    <div class="wr_widget_recent_posts">
+        <h4 class="widget-title">Items</h4>
+        <ul th:if="${not #lists.isEmpty(items)}" class="col-lg-12 col-md-12">
+          <th:block th:each="item,iterStat :${items}">
+            <li class="post-item col-lg-6 col-md-6" >
+                        <img th:src="@{/common/img/home/img/foodimg/bestdeals/b8.png}" width="50" height="50" alt="Product 1"/>
+                        <div class="wrp-meta">
+                          <a style="text-overflow:ellipsis;width:12em;" th:href="'/itemf/'+${#strings.replace(#strings.replace(item.restaurantItemName,' ','-'),'/','-')}+'?id='+${item.id}" th:text="${item.restaurantItemName}"></a>
+                          <span class="price" th:text="${item.price}">$124.00</span>
+                        </div>
+                      </li>
+                    </th:block>
+          </ul>
+
+
+          
+
+
+
+      
+
+
+    </div>
+  </div> -->
+  <!-- <div class="col-md-3 col-sm-3 searchadspace">
+  <div class="row xs-text-center">
+                <a href="#"><img class="effect7 img-responsive" src="../../common/img/home/img/369x201/offer_3.png" width="369" height="201" alt="banner 05"/></a>
+              </div>
+              <div class="row xs-text-center">
+                <a href="#"><img class="effect7 img-responsive" src="../../common/img/home/img/369x201/offer_3.png" width="369" height="201" alt="banner 05"/></a>
+              </div>
+              <div class="row xs-text-center">
+                <a href="#"><img class="effect7 img-responsive" src="../../common/img/home/img/369x201/offer_3.png" width="369" height="201" alt="banner 05"/></a>
+              </div>
+            </div> -->
+<!-- </div> -->
+</th:block>

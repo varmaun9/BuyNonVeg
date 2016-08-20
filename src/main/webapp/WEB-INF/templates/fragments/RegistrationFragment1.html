@@ -1,0 +1,121 @@
+
+<div class="register-signup-newDialog" ng-controller="RegistrationController">
+<div class="container ">
+	<div class="row register-row-non">
+		<div class="col-sm-1"></div>
+		<form name="myForm">
+		<div class="col-sm-5 col-md-5">
+			<div>
+
+				<a class="reg_a t-c-w">Create Account</a>
+
+			</div>
+			
+				<div class="row" style="margin-top:15px;">
+				<span class="input input--yoshiko">
+					<input class="input__field input__field--yoshiko mgb10" type="text"  name="username"  ng-model="userdata.userName"  required="required"/>
+					<i class="fa fa-user icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="username">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Name
+						</span>
+					</label>
+				</span>
+				<span class="input input--yoshiko">
+					<input class="input__field input__field--yoshiko mgb10" type="email" ng-model="userdata.emailId"  name="username"    required="required"/>
+					<i class="fa fa-envelope-o icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="username">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Email Id
+						</span>
+					</label>
+				</span>
+
+				<span class="input input--yoshiko  mgt10">
+					<input class="input__field input__field--yoshiko mgb10 phnumber" type="text" pattern="\d*" maxlength="10"  name="phoneNo" ng-model="userdata.phoneNo"  required="required"/>
+					<i class="fa fa-mobile icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="password">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Mobile number
+						</span>
+					</label>
+				</span>
+				<span class="input input--yoshiko  mgt10">
+					<input class="input__field input__field--yoshiko mgb10" type="password" name="password"  ng-model="userdata.password" required="required" id="password"/>
+					<i class="fa fa-lock icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="password">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Password
+						</span>
+					</label>
+				</span>
+				<span class="input input--yoshiko  mgt10">
+					<input class="input__field input__field--yoshiko mgb10" type="password" name="confirmpassword"  ng-model="userdata.confirmPassword" id="confirm_password" required="required"/>
+					<i class="fa fa-lock icon-fix-non"></i>
+					<label class="input__label input__label--yoshiko inputlabel-pad" for="password">
+						<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+							Confirmpassword
+						</span>
+					</label>
+				</span>
+				
+</div>
+			<div class="row">
+				
+				<div class="clear-fix"></div>
+				<button type="submit" class="register-btn-non"  ng-click="userRegistration(userdata)" >REGISTER</button>
+			</div>
+
+				
+			</div>
+		<div class="col-lg-5 col-md-5">
+				
+				<img src="/common/img/home/img/banners/banner.png" />
+			</div>
+		
+	
+		
+	</form>
+		<div class="col-sm-1"></div>
+	</div>
+</div>
+</div>
+<th:block th:replace="fragments/HotCategoriesFragment"></th:block>
+
+<script src="/js/classie.js"></script>
+		<script>
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+		</script>
+

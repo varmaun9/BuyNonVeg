@@ -1,0 +1,75 @@
+<ion-view view-title="ITEMS" ng-controller="SellerItemListController">
+	<!-- <ion-nav-buttons side="right"></ion-nav-buttons> -->
+	<!-- <ion-nav-buttons side="right">
+		<button class="button button-icon button-clear ion-iphone" style="color:#FFFFFF" >
+				</button>
+	</ion-nav-buttons> -->
+	<th:block th:each="selItem:${sellerItems}">
+        <input type="hidden" th:attr="ng-init='setSellerItemsData(\''+${selItem.id}+'\',\''+${selItem.sellerItemName}+'\',\''+${selItem.itemAvailableStatus}+'\',\''+${selItem.sellingPrice}+'\',\''+${selItem.marketPrice}+'\')'" />
+      </th:block>
+	<ion-nav-bar class="bar-stable main-menu">
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color:#FFFFFF">
+			</button>
+		</ion-nav-buttons>
+		<ion-nav-title align-title="center">
+			<span class="fontpro" style="color:#FFFFFF;">ITEMS</span>
+		</ion-nav-title>
+		<ion-nav-buttons side="right">
+		<!-- <span style="margin-top: 9px;" th:inline="text"></span> -->
+		<!-- <button class="button button-icon button-clear ion-ios-search-strong" style="color:#FFFFFF;font-size:15px;" ng-click="globalObj.searchItemLabel = !globalObj.searchItemLabel">
+      </button> -->
+      <button class="button button-icon button-clear" th:inline="text" style="color:#FFFFFF;font-size:12px;">
+      	[[${#arrays.length(sellerItems)}]] items
+      </button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<!-- <div class="list list-inset"> 
+	  <label class="item item-input item-button-right" ng-show="globalObj.searchItemLabel">
+	    <i class="icon ion-search placeholder-icon"></i>
+	    <input type="text" placeholder="Search Items" ng-model="searchItems" />
+	    <span class="icon ion-close-circled" ng-click="searchItems = null" style="padding-right: 10px;"></span>
+	  </label>
+	</div> -->
+		<div class="bar bar-subheader has-header">
+			<!-- <div class="list"> -->
+			  <label class="item item-input" style="width: 100%;">
+			    <i class="icon ion-search placeholder-icon"></i>
+			    <input type="text" placeholder="Search Items" ng-model="searchItems" />
+			    <!-- <input type="text" placeholder="Search Items" ng-model="searchItems" autofocus='' /> -->
+			  </label>
+	  	<!-- </div> -->
+	  </div>
+	<ion-content class="has-subheader">
+		<div class="list">
+		  <!-- <div class="item item-button-right" ng-show="globalObj.searchItemLabel" style="display:flex;padding: 8px;">
+		    <i class="icon ion-search placeholder-icon" style="margin-top:9px;"></i>
+		    <input type="text" placeholder="Search Items" ng-model="searchItems" style="width: 90%;" autofocus=''/>
+		    <span class="icon ion-close-circled" ng-click="searchItems = '';" style="padding-right: 10px;margin-top:9px;"></span>
+		  </div> -->
+			<!-- <a class="item item_active" th:each="selItem:${sellerItems}" th:attr="ng-click='sellerItemEdit(\''+${selItem.id}+'\',\''+${selItem.itemAvailableStatus}+'\',\''+${selItem.sellerItemName}+'\',\''+${selItem.sellingPrice}+'\',\''+${selItem.marketPrice}+'\')'" style="margin:2px;" ng-class="classAttr">
+				<span th:inline="text">[[${selItem.sellerItemName}]]</span>
+				<span class="pull-right" th:inline="text">[[${selItem.itemAvailableStatus}]]</span>
+				<p th:inline="text" class="text-center">[[${selItem.sellingPrice}]] <del>[[${selItem.marketPrice}]]</del></p>
+			</a> -->
+			<a class="item item_active" ng-repeat="selItem in sellerItemObj| filter:searchItems" ng-click='sellerItemEdit(selItem.id,selItem.itemAvailableStatus,selItem.sellerItemName,selItem.sellingPrice,selItem.marketPrice)' style="margin:2px;" ng-class="classAttr">
+				<span>{{selItem.sellerItemName}}</span>
+				<span class="pull-right">{{selItem.itemAvailableStatus}}</span>
+				<p class="text-center">{{selItem.sellingPrice}} <del>{{selItem.marketPrice}}</del></p>
+			</a>
+			<div class="text-center" th:if="${#arrays.isEmpty(sellerItems)} == true">
+				No Item are Available
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
+<style type="text/css">
+		 /*.itemslist{
+				-webkit-box-shadow: 5px 0px 5px 1px rgba(0,0,0,0.25);
+				-moz-box-shadow: 5px 0px 5px 1px rgba(0,0,0,0.25);
+				box-shadow: 5px 0px 5px 1px rgba(0,0,0,0.25);
+		 }*/
+		 .border_item{
+		 	border-left: 3px solid #EF4B4B;
+		 }
+</style>

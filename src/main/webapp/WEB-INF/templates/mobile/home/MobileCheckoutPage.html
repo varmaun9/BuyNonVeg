@@ -1,0 +1,64 @@
+<ion-content>
+	<div class="list" style="padding-top: 50px;">
+		<div class="row">
+			<div class="col col-30">
+				<img class="img_sum" src="img/fish1.png">
+				<h6 style="">Gold Fish</h6>
+				<span>5Kg</span>
+			</div>	
+			<div class="col col-20">
+				<ion-input class="item item-input box_m">
+	          		<input type="number"/>
+	       		</ion-input>
+			</div>
+			<div class="col col-40" style="line-height: 9;">
+				<span style="margin-left: 27px">$150</span>
+			</div>	
+			<div class="col col-10">
+				<i class="ion ion-ios-close-outline line_h"></i>
+			</div>
+		</div>
+		<div class="horizontal_r"> </div>
+	</div>
+    <ion-header-bar>
+      <h1 class ="title">Checkout Page</h1>
+    </ion-header-bar>
+</ion-content>
+<ion-footer-bar align-title="left">
+	<div ng-controller= "ModalCtrl">
+	  <div class="col col-50">
+	    <button class="button button-outline button-assertive button-small ion-location" ng-click="openModal()" style="width: 140px;margin-left: 88px;">
+	  	Add Address
+	  	</button>
+	  </div>
+	</div>
+</ion-footer-bar>
+
+<style>
+	.img_sum{
+		width: 65px;
+		height: 55px;	  
+		}
+.horizontal_r{
+	    border: 1px solid #eee;
+    width: 370px;
+    margin-left: 2px;
+}
+.item-input input{
+padding-right: 5px;
+}
+.item-input{
+padding: 6px 0px 5px 2px;
+}
+.box_m{
+margin-top: 40px;
+margin-left: -6px;
+width: 45px;
+height: 37px;
+}
+.line_h{
+	font-size: 30px;
+	line-height: 4;
+	color:red;
+}
+</style>

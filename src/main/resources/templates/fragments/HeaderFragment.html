@@ -1,0 +1,136 @@
+<header id="site-header" class="v1" th:fragment="HeaderFragment(MenuStatus)" ng-controller="MainHeaderController">
+
+<div th:replace="fragments/TopHeaderFragment :: TopHeaderFragment"></div>
+
+				<div class="mid bg-r">
+					<div class="container">
+							<div class="row" style="height:8px;">
+                <nav  class="pull-right f-s-p-10">
+                  <ul class="menu">
+                    <li class="menu-item" ><a href="#" class="t-c-f f-s-p-10"><i class="fa fa-phone "></i> Call +9912211004</a></li>
+
+                    <li class="menu-item"><a ng-click="showLocationSelect()" class="pointer t-c-f f-s-p-10"><i class="fa fa-map-marker " ></i><span ng-bind="zName"></span></a></li>
+
+					<li class="menu-item" th:unless="${#authentication.principal}!='anonymousUser'"><a th:href="@{/login}" class="t-c-f f-s-p-10"><i class="fa fa-sign-in"></i> Login/Register</a></li> 
+					<li class="menu-item mega-menu  active">
+	                     
+                  <th:block th:if="${#authentication.principal}!='anonymousUser'">
+           
+                  <input type="hidden" th:attr="ng-init='setSessionVariables(\''+${#authentication.principal.userName}+'\',\''+${#authentication.principal.id}+'\')'" />
+
+                  <nav id="main-menu" class="m-t-n-10">
+                  <ul class="menu m-t-n-2">
+                    <li class="menu-item p-none active" th:if="${#authentication.principal}!='anonymousUser'">
+
+              
+                     <a class="back-none"   th:href="@{/myaccount/profile}"><i class="fa fa-user"></i><span  th:text="${#authentication.principal.userName}"></span></a>
+
+                      <ul class="sub-menu sub_left_top p-t-l" style="width:165px !important;">
+                        <li>
+                        
+                        <a  th:href="@{/myaccount/profile}"><i class="fa fa-user"></i><span>My Account</span></a></li>
+                        <li><a  th:href="@{/logout}"><i class="fa fa-sign-out"></i><span>Logout</span></a>
+
+                        	
+                        </li> 
+                        
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                </th:block>
+               
+               	</li>
+                    
+                  </ul><!-- .menu -->
+
+
+                </nav><!-- #main-menu -->
+				</div>
+
+
+						<div class="row" >
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+								<div class="logo">
+									
+									<a th:href="@{/}"><img src="/common/img/home/img/meat_logo1.png" alt="NONVEG" width="200" height="35" /></a>
+								</div><!-- .logo -->
+							</div><!-- .col-md-4 -->
+
+							<div class="col-lg-8 col-md-8 col-sm-7 col-xs-8 b-d-d">
+										<form class="" role="search" >
+											<div class="input-group">
+											<input type="text" class="form-control input-md brds-none bg-color-w search_inside_icon" placeholder="Type Your Choice...." ng-keyup="getSearchResults($event)" style="font-size:14px !important;" />
+											<a href="#" class="input-group-addon search_btn_yellow" style="font-weight:900;">Search</a>
+											</div>
+										</form>
+							</div><!-- .col-md-8 -->
+						<!-- #############Login start################ -->
+
+
+
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="row">
+								<div class="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
+
+								<div class="col-lg-3 col-md-3 col-xs-3">
+								<!-- <div class="cart_round cart_btn">
+								<a>						
+								<span class="cart-item">
+										<i class="fa fa-shopping-cart cart_font"></i>
+										</span>
+								</a></div> -->
+								</div>
+								<div class="col-lg-7 col-md-7 col-xs-7 p-none">
+							<div class="shop-cart p-none">
+									<a th:href="@{/cart}" class="cart-control cart_btn" style="border-left:0px !important;font-weight:900;">
+										<i class="fa fa-shopping-cart cart_font"></i>
+										<span class="t-c-f" th:text="Cart">[[${cartTotalPrice}]]
+												<span class="cart-number t-c-f">(06)</span>
+										</span>
+									</a><!-- .cart-control -->
+								</div>
+							</div>
+							</div>
+								
+						</div><!-- .row -->
+					</div><!-- .container -->
+
+
+						
+				</div><!-- .mid -->
+
+
+<div ng-mouseleave="leaveSubMenu()">
+			<div class="container buy-non-veg-nav" th:classappend="${MenuStatus}" >
+				<div class="row buy-non-vn">
+					<div class="col-sm-12 bnvn">
+						<ul >
+							<li ><a href="#" ng-click="getSubMenu('sub_div_1',$event)">CHICKEN</a></li>
+							<li><a href="#" ng-click="getSubMenu('sub_div_2',$event)">GOAT MEAT</a></li>
+							<li><a href="#" ng-click="getSubMenu('sub_div_3',$event)">SHEEP MEAT</a></li>
+							<li><a href="#" ng-click="getSubMenu('sub_div_4',$event)">FISH</a></li>
+							<li><a href="#" ng-click="getSubMenu('sub_div_5',$event)">PRAWNS</a></li>
+							<li><a href="#" ng-click="getSubMenu('sub_div_6',$event)">CRABS</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+<div class="mainSubMenu" >
+<th:block th:if="${MenuStatus}!='hide'"  th:include="fragments/SubMenuFragment"> </th:block>
+</div>
+
+</div>
+
+
+
+
+			</div>
+
+				<div th:replace="fragments/SearchResultsFragment::SearchMainFragment"></div>
+			<div class="lightbox hide animated fadeInDown"></div>
+			
+			</header>
+
+
+			

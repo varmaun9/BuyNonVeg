@@ -1,0 +1,456 @@
+<div  th:replace="fragments/LoginModalFragment"></div>
+	
+
+		<!-- Modernizr custom -->
+		<script th:src="@{/common/lib/home/vendor/modernizr.custom.js}"></script>
+
+		<!-- jQuery core -->
+		<script th:src="@{/common/lib/home/vendor/jquery-1.11.2.min.js}"></script>
+		<script th:src="@{/common/lib/home/vendor/jquery-ui.min.js}"></script>
+		<!-- Bootstrap -->
+		<script th:src="@{/common/lib/home/vendor/bootstrap.min.js}"></script>
+
+		<!-- jQuery countdown -->
+		<script th:src="@{/common/lib/home/vendor/jquery.countdown.min.js}"></script>
+		<script th:src="@{/common/lib/bootstrap-datepicker.js}"></script>
+		<!-- <script th:src="@{/common/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js}"></script> -->
+
+		<!-- Owl carousel -->
+		<script th:src="@{/common/lib/home/vendor/owl.carousel.min.js}"></script>
+		<!--<script th:src="@{/common/lib/home/jssor.slider.mini.js}"></script>-->
+		<!-- Slider revolution -->
+		<script th:src="@{/common/lib/home/vendor/jquery.themepunch.tools.min.js}"></script>
+		<script th:src="@{/common/lib/home/vendor/jquery.themepunch.revolution.min.js}"></script>
+		<!-- bootstrap datepicker -->
+		<script th:src="@{/common/lib/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+
+		<!-- dl menu -->
+		<script th:src="@{/common/lib/home/vendor/jquery.dlmenu.js}"></script>
+
+		<!-- Sticky menu -->
+		<script th:src="@{/common/lib/home/vendor/jquery.scrollfix.min.js}"></script>
+
+		<!-- Lightbox -->
+		<script th:src="@{/common/lib/home/vendor/jquery.lightbox.min.js}"></script>
+		<script th:src="@{/common/lib/toastr/toastr.js}"></script>
+
+		<!-- Theme Options -->
+		<script th:src="@{/common/lib/home/theme-options.js}"></script>
+		<script th:src="@{/common/lib/jquery.bootstrap.wizard.min.js}"></script>
+		<script th:src="@{/common/lib/prettify.js}"></script>
+		<!-- Main scripts -->
+		<script th:src="@{/common/lib/home/functions.js}"></script>
+		<script th:src="@{/common/lib/angularjs/angular.min.js}"></script>
+		<script th:src="@{/js/app.js}"></script>
+		<script th:src="@{/js/CartService.js}"></script>
+		<script th:src="@{/js/RecentItemsService.js}"></script>
+		<script th:src="@{/Angular/js/plugins/sweetalert/sweetalert.min.js}"></script>
+
+		<!-- Custom scripts -->
+		  <!--<script>
+        jQuery(document).ready(function ($) {
+            
+            var jssor_1_options = {
+              $AutoPlay: true,
+              $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+              },
+              $ThumbnailNavigatorOptions: {
+                $Class: $JssorThumbnailNavigator$,
+                $Cols: 4,
+                $SpacingX: 4,
+                $SpacingY: 4,
+                $Orientation: 2,
+                $Align: 0
+              }
+            };
+            
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+            
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizing
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 1170);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+            ScaleSlider();
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+            //responsive code end
+          
+
+
+        });
+    </script>-->
+
+
+
+		<script th:inline="javascript">
+			(function($) {
+
+
+
+
+
+
+
+
+				"use strict";
+
+
+				/*  [ Filter by price ]
+				- - - - - - - - - - - - - - - - - - - - */
+				/*$('#slider-range').slider({
+					range: true,
+					min: 0,
+					max: 500,
+					values: [0, 300],
+					slide: function (event, ui) {
+						$('#amount').val('$' + ui.values[0] + ' - $' + ui.values[1]);
+					}
+				});
+				$('#amount').val('$' + $('#slider-range').slider('values', 0) + ' - $' + $('#slider-range').slider('values', 1));*/
+
+				/*  [ Widget product slider ]
+				- - - - - - - - - - - - - - - - - - - - */
+				/*var location=window.location.search;
+
+				if(location)*/
+					
+
+	
+
+	$('.date-picker').datepicker({
+                    format: "dd/mm/yyyy",
+                    autoclose:true,
+                    todayHighlight:true,
+                    startDate:"Beginning of time",
+                    
+                });  
+
+				
+				$( '.widget-post-slider' ).owlCarousel({
+					singleItem: true,
+					pagination : false,
+					navigation : true,
+					navigationText: [
+								'<i class="fa fa-angle-left"></i>',
+						'<i class="fa fa-angle-right"></i>'
+						
+					]
+				});
+				/*  [ Product slider ]
+				- - - - - - - - - - - - - - - - - - - - */
+				$( '.product-slider' ).owlCarousel({
+					items : 5,
+					itemsDesktop : [1366,5],
+					itemsDesktopSmall : [980,5],
+					itemsTablet: [768,5],
+					itemsTabletSmall: false,
+					itemsMobile : [479,1],
+					pagination : false,
+					navigation : true,
+					navigationText: [
+						'<i class="fa fa-angle-left"></i>',
+						'<i class="fa fa-angle-right"></i>'
+					]
+				});
+				$( '.brand-slider' ).owlCarousel({
+					items : 6,
+					itemsDesktop : [1366,6],
+					itemsDesktopSmall : [980,4],
+					itemsTablet: [768,3],
+					itemsTabletSmall: false,
+					itemsMobile : [479,1],
+					pagination : false,
+					navigation : true,
+					navigationText: [
+							'<i class="fa fa-angle-left"></i>',
+						'<i class="fa fa-angle-right"></i>'
+					]
+				});
+					$( '.product-slider2' ).owlCarousel({
+					items : 1,
+					itemsDesktop : [1366,1],
+					itemsDesktopSmall : [980,1],
+					itemsTablet: [768,1],
+					itemsTabletSmall: false,
+					itemsMobile : [479,1],
+					pagination : false,
+					navigation : true,
+					navigationText: [
+						'<i class="fa fa-angle-left"></i>',
+						'<i class="fa fa-angle-right"></i>'
+					]
+				});
+
+				/*  [ Product countdown ]
+				- - - - - - - - - - - - - - - - - - - - */
+				$('.product .p-countdown').countdown('2015/06/30', function(event) {
+				var $this = $(this).html(
+					event.strftime(''
+						+ '<span>%d<span>days</span></span>'
+						+ '<span>%H<span>hours</span></span>'
+						+ '<span>%M<span>minutes</span></span>'
+						+ '<span>%S<span>seconds</span></span>'
+					));
+				});
+
+				/*  [ Rev slider ]
+				- - - - - - - - - - - - - - - - - - - - */
+				var revapi;
+				revapi = $('.tp-banner').revolution({
+					dottedOverlay:"none",
+					delay:5000,
+					startwidth:570,
+					startheight:375,
+					hideThumbs:200,
+
+					thumbWidth:100,
+					thumbHeight:50,
+					thumbAmount:3,	
+					simplifyAll:"off",
+
+					navigationType:"none",
+					navigationArrows:"solo",
+					navigationStyle:"round",
+
+					touchenabled:"on",
+					onHoverStop:"on",
+					nextSlideOnWindowFocus:"off",
+
+					swipe_threshold: 75,
+					swipe_min_touches: 1,
+					drag_block_vertical: false,
+
+					keyboardNavigation:"off",
+
+					navigationHAlign:"center",
+					navigationVAlign:"bottom",
+					navigationHOffset:0,
+					navigationVOffset:20,
+
+					soloArrowLeftHalign:"left",
+					soloArrowLeftValign:"center",
+					soloArrowLeftHOffset:0,
+					soloArrowLeftVOffset:0,
+
+					soloArrowRightHalign:"right",
+					soloArrowRightValign:"center",
+					soloArrowRightHOffset:0,
+					soloArrowRightVOffset:0,
+
+					shadow:0,
+					fullWidth:"on",
+					fullScreen:"off",
+
+					spinner:"spinner0",
+											
+					stopLoop:"off",
+					stopAfterLoops:-1,
+					stopAtSlide:-1,
+
+					shuffle:"off",
+
+					autoHeight:"off",
+					forceFullWidth:"off",
+					
+					hideTimerBar:"on",
+					hideThumbsOnMobile:"off",
+					hideNavDelayOnMobile:1500,
+					hideBulletsOnMobile:"off",
+					hideArrowsOnMobile:"off",
+					hideThumbsUnderResolution:0,
+
+					hideSliderAtLimit:0,
+					hideCaptionAtLimit:0,
+					hideAllCaptionAtLilmit:0,
+					startWithSlide:0
+				});
+
+				/*  [ Product single slide ]
+				- - - - - - - - - - - - - - - - - - - - */
+				var product = $("#p-preview");
+				var thumb   = $("#p-thumb");
+
+				product.owlCarousel({
+					singleItem: true,
+					slideSpeed: 1000,
+					navigation: false,
+					pagination: false,
+					afterAction: syncPosition,
+					responsiveRefreshRate: 200,
+				});
+
+				thumb.owlCarousel({
+					items: 4,
+					itemsDesktop: [1199, 4],
+					itemsDesktopSmall: [979, 4],
+					itemsTablet: [768, 4],
+					itemsMobile: [479, 2],
+					pagination: false,
+					navigation: true,
+					navigationText: [
+							'<i class="fa fa-angle-left"></i>',
+						'<i class="fa fa-angle-right"></i>'
+					],
+					responsiveRefreshRate: 100,
+					afterInit: function (el) {
+						el.find(".owl-item").eq(0).addClass("synced");
+					}
+				});
+
+				function syncPosition(el) {
+					var current = this.currentItem;
+					$("#p-thumb")
+						.find(".owl-item")
+						.removeClass("synced")
+						.eq(current)
+						.addClass("synced")
+					if ($("#p-thumb").data("owlCarousel") !== undefined) {
+						center(current)
+					}
+				}
+
+				$("#p-thumb").on("click", ".owl-item", function (e) {
+					e.preventDefault();
+					var number = $(this).data("owlItem");
+					product.trigger("owl.goTo", number);
+				});
+
+				function center(number) {
+					var thumbvisible = thumb.data("owlCarousel").owl.visibleItems;
+					var num = number;
+					var found = false;
+					for (var i in thumbvisible) {
+						if (num === thumbvisible[i]) {
+							var found = true;
+						}
+					}
+
+					if (found === false) {
+						if (num > thumbvisible[thumbvisible.length - 1]) {
+							thumb.trigger("owl.goTo", num - thumbvisible.length + 2)
+						} else {
+							if (num - 1 === -1) {
+								num = 0;
+							}
+							thumb.trigger("owl.goTo", num);
+						}
+					} else if (num === thumbvisible[thumbvisible.length - 1]) {
+						thumb.trigger("owl.goTo", thumbvisible[1])
+					} else if (num === thumbvisible[0]) {
+						thumb.trigger("owl.goTo", num - 1)
+					}
+				}
+
+				var owl = $(".related-item");
+				owl.owlCarousel({
+					itemsCustom : [
+						[0, 1],
+						[540, 1],
+						[600, 2],
+						[768, 3],
+						[1170, 6],
+					],
+					navigation : true,
+					navigationText: [
+							'<i class="fa fa-angle-left"></i>',
+						'<i class="fa fa-angle-right"></i>'
+					],
+					pagination: false,
+				});
+
+
+
+   $.fn.rating = function( method, options ) {
+		method = method || 'create';
+        // This is the easiest way to have default options.
+        var settings = $.extend({
+            // These are the defaults.
+			limit: 5,
+			value: 0,
+			glyph: "glyphicon-star",
+            coloroff: "gray",
+			coloron: "gold",
+			size: "2.0em",
+			cursor: "default",
+			onClick: function () {},
+            endofarray: "idontmatter"
+        }, options );
+		var style = "";
+		style = style + "font-size:" + settings.size + "; ";
+		style = style + "color:" + settings.coloroff + "; ";
+		style = style + "cursor:" + settings.cursor + "; ";
+	
+
+		
+		if (method == 'create')
+		{
+			//this.html('');	//junk whatever was there
+			
+			//initialize the data-rating property
+			this.each(function(){
+				attr = $(this).attr('data-rating');
+				if (attr === undefined || attr === false) { $(this).attr('data-rating',settings.value); }
+			})
+			
+			//bolt in the glyphs
+			va n =[1,2,3,4,5];
+			for (var i in n)
+			{
+				this.append('<span data-value="' + (i+1) + '" class="ratingicon glyphicon ' + settings.glyph + '" style="' + style + '" aria-hidden="true"></span>');
+			}
+			
+			//paint
+			this.each(function() { paint($(this)); });
+
+		}
+		if (method == 'set')
+		{
+			this.attr('data-rating',options);
+			this.each(function() { paint($(this)); });
+		}
+		if (method == 'get')
+		{
+			return this.attr('data-rating');
+		}
+		//register the click events
+		this.find("span.ratingicon").click(function() {
+			rating = $(this).attr('data-value')
+			$(this).parent().attr('data-rating',rating);
+			paint($(this).parent());
+			settings.onClick.call( $(this).parent() );
+		})
+		function paint(div)
+		{
+			rating = parseInt(div.attr('data-rating'));
+			div.find("input").val(rating);	//if there is an input in the div lets set it's value
+			div.find("span.ratingicon").each(function(){	//now paint the stars
+				
+				var rating = parseInt($(this).parent().attr('data-rating'));
+				var value = parseInt($(this).attr('data-value'));
+				if (value > rating) { $(this).css('color',settings.coloroff); }
+				else { $(this).css('color',settings.coloron); }
+			})
+		}
+
+    };
+						
+			})(jQuery);
+$(document).ready(function() {
+	
+  	$('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps'});
+  	 $('[data-toggle="tooltip"]').tooltip();
+
+  $("#stars-red").rating('create',{coloron:'red',onClick:function(){ alert('rating is ' + this.attr('data-rating')); }});
+});
+
+	</script>

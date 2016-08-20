@@ -1,0 +1,123 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color:#F27028">
+        </button>
+      </ion-nav-buttons>
+      <ion-nav-title align-title="center">
+        <span class="fontpro" style="color:#F27028;">ITEMS</span>
+      </ion-nav-title>
+    </ion-nav-bar>
+    <ion-nav-view name="itemContent" animation="slide-left-right" style="background-color: #F27028;">
+      <!-- <ion-view>
+      </ion-view> -->
+    </ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar align-title="left" class="bar-assertive" style="height:93px">
+      <div class="buttons">
+        <button class="button">yuvateja@gmail.com</button>
+      </div>
+      <h1 class="title">T RaviTeja</h1>
+    </ion-header-bar>
+    <ion-content style="margin-top:90px">
+      <ion-list class="">
+        <ion-item menu-close="" class="text-center row" ng-class="{active: $state.includes('home')}">
+          <a href="#/home" class="col col-50 menu-list" ui-sref-active="active">
+          <span class="pull-left"><i class="ion ion-ios-home-outline" style="font-size: 20px;"></i></span> 
+          <span>Home</span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center row" ng-class="{active: $state.includes('start.orders')}">
+          <a ui-sref="start.orders" class="col col-50 menu-list" ui-sref-active="active">
+          <span class="pull-left"><i class="ion ion-ios-albums-outline" style="font-size: 20px;"></i></span> 
+          <span>Orders</span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center row" ng-class="{active: $state.includes('items.allItems')}">
+          <a ui-sref="items.allItems" class="col col-50 menu-list" ui-sref-active="active">
+            <span class="pull-left"><i class="ion ion-ios-settings" style="font-size: 20px;"></i></span> 
+            <span>Listings</span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center row">
+          <a href="#/start/reports" class="col col-50 menu-list" ui-sref-active="active">
+          <span class="pull-left"><i class="ion ion-clipboard" style="font-size: 20px;"></i></span> 
+          <span>Returns</span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center row">
+          <a ng-click="profileView()" class="col col-50 menu-list" ui-sref-active="active">
+          <span class="pull-left"><i class="ion ion-android-contacts" style="font-size: 20px;"></i></span>  
+          <span>Support</span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center row">
+          <a class="col col-50 menu-list" ui-sref-active="active">
+          <span class="pull-left"><i class="ion ion-ios-gear-outline" style="font-size: 20px;"></i></span>  
+          <span>Settings</span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center row">
+          <a ng-click="profileView()" class="col col-50 menu-list" ui-sref-active="active">
+          <span class="pull-left"><i class="ion ion-ios-paper-outline" style="font-size: 20px;"></i></span>  
+          <span>Feedback</span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center row">
+          <a class="col col-50 menu-list" href="#/app">
+          <span class="pull-left"><i class="ion ion-log-out" style="font-size: 20px;"></i></span> <span>LogOut</span>
+          </a>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+<style type="text/css">
+.bar.bar-stable {
+    /*border-color: #b2b2b2;*/
+    border-bottom: 1px solid #F27028 !important;
+    /*background-color: #08B383 !important;*/
+    /*background-color: #EF4B4B !important;*/
+    background-color: #FFFFFF !important;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #444;
+}
+.bar .title {
+    text-align: center !important;
+}
+.bar-stable.bar h1{
+  top: 35px;
+}
+.nav-bar-block, .bar{
+  border: 0px !important;
+}
+.menu-list{
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif ;
+}
+a.menu-list{
+  text-decoration: none;
+  color: #000000;
+}
+.menu-list p{
+  color: #08B383;
+}
+.item{
+  border: 0px solid #FFFFFF;
+  padding: 20px;
+}
+/*.buttons{
+  height: 50%;
+  width: 100%;
+  display: block;
+}*/
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.cursor-p.header-item').addClass('hide');
+  });
+</script>

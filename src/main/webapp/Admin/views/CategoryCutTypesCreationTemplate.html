@@ -1,0 +1,36 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">CATEGORY CUT TYPES</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b itemform" name="ItemForm">
+			<div class="text-center">please select CutTypes Using <b>CTRL+</b></div>
+			<div class="form-group">
+				<label class="control-label col-md-4">CutType Name</label>
+				<div class="col-md-7">
+					<select class="form-control" ng-model="cutTypeId" multiple style="width:100%;" required name="cutTypeName" ng-change="cutTypeChange(cutTypeId)">
+					  <!-- <option value=""></option> -->
+						<option ng-repeat="cutType in cutTypeDetails" value="{{cutType['properties'].id}}" data="{{cutType['properties'].cutTypeName}}">{{cutType['properties'].cutTypeName}}</option>
+					</select>	
+				</div>
+			</div>
+			<div>
+			<div class="form-group">
+				<label class="control-label col-md-4">Status <span class="required">
+					* </span>
+				</label>
+				<div class="col-md-7">
+					<select class="select2_demo_1 form-control" name="branchStatus" ng-model="cutType.status" style="width:100%;" required>
+						<option value=""></option>
+						<option value="ACTIVE">ACTIVE</option>
+						<option value="INACTIVE">INACTIVE</option>
+					</select>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="categoryCutTypeCreate(cutType)">Save changes</button>
+	</div>
+</div>

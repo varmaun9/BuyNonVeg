@@ -1,0 +1,187 @@
+				
+<ion-view view="" title="Cart Details"   ng-controller="CartController">
+    
+<ion-content>
+
+				<div class="cart mgb50 mgb100">
+					<div class="container">
+									<!-- 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-none">
+		<div class="topbar" > -->
+					<!-- <div class="container"> -->
+				<!-- 	<ul class="breadcrumbs">
+							<li><a th:href="'/'">Home</a></li>
+							<li class="current">Cart</li>
+							
+						</ul> -->
+					 <!--  <div class="page-title">
+							<div class="page-title-inner">
+								<h5 class="t-c-w">Cart Page</h5>
+							</div>
+						</div> --><!-- .page-title -->
+						
+					<!-- </div> -->	
+	<!-- 			</div>
+	</div> -->
+						<form method="post" action="#">
+   <div class="row header">
+          <div class="col">Product</div>
+          <div class="col">Time</div>
+          <div class="col">Quantity</div>
+          <div class="col">Total</div>
+          <div class="col"></div>
+        </div>
+        <div class="row" th:attr="ng-init='setOrderDetails(\''+${order.id}+'\')'">
+        	<th:block  th:each="cartItem : ${order.orderItemses}" >
+          <div class="col">{{data.name}}</div>
+          <div class="col">{{data.code}}</div>
+          <div class="col">LK {{data.limit}}</div>
+          <div class="col">{{data.account}}</div>
+          <div class="col"><button class="button" ng-click="ctrl.add($index)">Add</button></div>
+       </th:block>
+        </div>
+							<table class="shop_table cart" style=
+							"width:100%">
+								<thead>
+									<tr>
+										<th class="product-name">Product</th>
+										<th class="product-empty">&nbsp;</th>
+										<th class="product-quantity">Time</th>
+										<th class="product-quantity">Quantity</th>
+										<th class="product-subtotal">Total</th>
+										<th class="product-remove">&nbsp;</th>
+									</tr>
+								</thead>
+
+								<tbody th:attr="ng-init='setOrderDetails(\''+${order.id}+'\')'">
+									<th:block  th:each="cartItem : ${order.orderItemses}" >
+									 <input type="hidden" th:attr="ng-init='availableTimeSlots=[]'"/>
+												<input type="hidden"  th:each="time : ${cartItem.restaurantItem.restaurantItemTimingses}"  th:attr="ng-init='setOrderItemTimings(\''+${cartItem.id}+'\',\''+${time.timingDetails.id}+'\',\''+${time.timingDetails.timingName}+'\',\''+${time.restaurantItemTimingsStatus}+'\')'"/>
+												<th:block th:with="timingDetailsId=(${cartItem.timingDetails}==null)?'':${cartItem.timingDetails.id}">
+									 <input type="hidden" th:attr="ng-init='setCartItems(\''+${cartItem.id}+'\',\''+${cartItem.restaurantItem.restaurantItemName}+'\',\''+${cartItem.restaurantItem.item.id}+'\',\''+${cartItem.restaurantItem.id}+'\',\''+${cartItem.restaurantItem.restaurantBranch.branchName}+'\',\''+${cartItem.restaurantItem.restaurantBranch.id}+'\',\''+${cartItem.units}+'\',\''+${cartItem.price}+'\',\''+${cartItem.quantity}+'\',\''+${#dates.format(cartItem.deliveryDate,'dd/MM/yyyy')}+'\',\''+${cartItem.deliveryTime}+'\',\''+${cartItem.availableTime}+'\',\''+${cartItem.timingName}+'\',\''+${timingDetailsId}+'\',\''+${cartItem.restaurantItem.restaurantItemTimingses}+'\')'" /> 
+								
+									 <br/>
+								</th:block>
+						<!--        <p th:text="${cartItem.id}"></p>
+									 <p th:text="${cartItem.restaurantItem.restaurantItemName}"></p>
+									 <p th:text="${cartItem.restaurantItem.item.id}"></p>
+									 <p th:text="${cartItem.restaurantItem.restaurantBranch.branchName}"></p>
+									 <p th:text="${cartItem.restaurantItem.restaurantBranch.id}"></p>
+									 <p th:text="${cartItem.units}"></p>
+									 <p th:text="${cartItem.price}"></p>
+									 <p th:text="${cartItem.quantity}"></p>
+									 <p th:text="${#dates.format(cartItem.deliveryDate,'dd/MM/yyyy')}"></p>
+									 <p th:text="${cartItem.deliveryTime}"></p>
+									 <p th:text="${cartItem.availableTime}"></p> -->
+									<!--  <p th:text="${cartItem.timingDetailsId}"></p> -->
+									 
+									 <!-- <p th:text="${cartItem.timingDetailsId}"></p> -->
+									 
+								 </th:block>
+
+									<tr class="cart_item" ng-repeat="item in items">
+										<!-- <td class="product-thumbnail">
+											<a href="hop_details_fullwidth.html/index.html"><img width="80" height="80" alt="home4_product_03" class="attachment-shop_thumbnail wp-post-image" src="/common/img/home/img/80x80/cart_item_1.png"/></a>
+
+										</td> -->
+										<td class="product-name">
+											<a href="shop_details_fullwidth.html" class="text-success" ng-bind="item.itemName"> </a><span ng-bind="item.quantity"></span><h6 class="restaurant text-info" ng-bind="item.restaurantName"></h6>
+											 </td>
+											<td class="product-timings p-none">
+														
+										<!--   <div class="p-action">
+											<a><i class="fa fa-calendar"></i></a>
+											<input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4"/>
+											<a><i class="fa fa-cloud"></i></a>
+											<input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4"/>
+											<a><i class="fa fa-clock-o"></i></a>
+											<input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4"/>
+										</div> -->
+
+
+
+												<div class="product-itemTime col-lg-6 datepicker">
+													<!-- <a class=""><i class="fa fa-calendar"></i>:</a> -->
+										 <!--  <input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4"/> -->
+														<input type="text" class="input-text text cartDatePicker" title="Date" ng-model="item.deliveryDate" ng-init="initCartDatePicker()" ng-change="editItem(item.orderItemId,item.units,item.deliveryDate,item.deliveryTime,item.timingDetailsId)"/>
+
+												</div>
+												<div class="product-itemTime quantity col-lg-3">
+												
+														<select class="input-text text" ng-model="item.timingDetailsId" ng-change="editItem(item.orderItemId,item.units,item.deliveryDate,item.deliveryTime,item.timingDetailsId)">
+															<option 
+															 ng-repeat="availableSlot in item.availableTimeSlots"
+															 ng-selected="item.timingDetailsId==availableSlot.timingId"
+															  ng-init="initAvailableTimings(item.orderItemId,availableSlot.timingId,availableSlot.availableTimings)"
+															   value="{{availableSlot.timingId}}">{{availableSlot.timingName}}</option>
+														</select>
+
+												</div>
+												<div class="product-itemTime quantity col-lg-3">
+													<select class="input-text text" ng-model="item.deliveryTime" ng-change="editItem(item.orderItemId,item.units,item.deliveryDate,item.deliveryTime,item.timingDetailsId)">
+														<option ng-repeat="availableTime in itemTimings[item.orderItemId+item.timingDetailsId]">{{availableTime}}</option>
+													</select>
+												</div>
+
+											</td>
+										<td class="product-quantity">
+											<div class="quantity">
+												<input type="number"  class="input-text qty text" title="Qty" ng-model="item.units" ng-change="editItem(item.orderItemId,item.units,item.deliveryDate,item.deliveryTime,item.timingDetailsId)"/> &nbsp;<i class="fa fa-times"></i> <span class="amount">  &#8377; {{item.price}}</span>
+											</div>
+										</td>
+										<td class="product-subtotal">
+											<span class="amount"> &#8377; {{item.price*item.units}} </span> </td>
+										<td class="product-remove">
+											<a title="Remove this item" class="remove" href="#" ng-click="removeItem(item.orderItemId)">×</a> </td>
+									</tr>
+								
+									
+							
+								</tbody>
+							</table>
+
+
+
+
+							<div class="cart-collaterals pull-right" >
+								<div class="cart_totals ">
+									<h2>Cart Totals</h2>
+									<div class="cart_totals_inner">
+										<table>
+											<tbody>
+												<tr class="cart-subtotal">
+													<th>Subtotal</th>
+													<td><span class="amount">&#8377; {{orderTotalPrice}}</span></td>
+												</tr>
+												<!-- <tr class="shipping">
+													<th>Shipping</th>
+													<td>
+														Free Shipping
+														<input type="hidden" class="shipping_method" value="free_shipping" id="shipping_method_0" data-index="0" name="shipping_method[0]" />
+														<p><a class="shipping-calculator-button" href="#">Calculate Shipping</a></p>
+													</td>
+												</tr> -->
+												<tr class="order-total">
+													<th>Total</th>
+													<td><strong><span class="amount">&#8377; {{orderTotalPrice}}</span></strong> </td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="wc-proceed-to-checkout">
+											<!-- <input type="submit" value="Update Cart" name="update_cart" class="button"/> -->
+											<a href="#" class="checkout-button button alt wc-forward" ng-click="checkOutOrder(items)">Proceed to Checkout</a>
+										</div>
+										<div class="coupon">
+											<label for="coupon_code">Coupon:</label>
+											<input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code"/>
+											<input type="submit" value="Apply Coupon" name="apply_coupon" class="button"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+
+					</div><!-- .container -->
+				</div><!-- .shop-cart -->
+
+				</ion-content>
+</ion-view>

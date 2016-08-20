@@ -1,0 +1,18 @@
+				<div class="shop-item">
+										<div class="shop-item-title">Your shoping Bowl <a class="x-cart" href="#"><i>×</i></a></div>
+										<div class="widget_shopping_cart_content">
+											<ul class="cart_list">
+												<li ng-repeat="item in carteditems">
+													<a title="Remove this item" class="remove" href="#">×</a>
+													<a ng-href="/itemf/{{item.itemName}}?id={{item.restaurantItemId}}"><img width="100" height="100" alt="home4_product_02" class="attachment-shop_thumbnail wp-post-image" src="/common/img/home/img/80x80/cart_item_1.png"/>{{item.itemName}}</a>
+													<span class="quantity">{{item.units}} × <span class="amount">&#8377;{{item.price}}</span></span>
+												</li>
+												
+											</ul><!-- end cart_list -->
+											<p class="total"><strong>Subtotal:</strong> <span class="amount">&#8377;{{cartTotalPrice}}</span></p>
+											<p class="buttons">
+												<a class="button wc-forward" href="/cart">View Cart</a>
+												<!-- <a class="button checkout wc-forward" href="shop_checkout.html">Checkout</a> -->
+											</p>
+										</div>
+									</div>

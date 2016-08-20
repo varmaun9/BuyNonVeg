@@ -1,0 +1,262 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="Meat.CompanyTemplate">Company List</a>
+      </li>
+      <li class="active">
+        <strong>Single Company List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div ng-controller="SingleHungryController">
+	<div class="col-lg-12">
+		<div class="tabs-container">
+			<div class="tabs-right">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" data-target="#tab-1"> COMPANY INFO </a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-2"> BRANCH INFO</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-3"> IMAGES</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-4"> EMPLOYEES</a></li>
+					<!-- <li class=""><a data-toggle="tab" data-target="#tab-5"> ADDRESS</a></li> -->
+				</ul>
+				<div class="tab-content ">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">INFO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="CompanyForm" >
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleHungryDetails['properties'].companyName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Phone No.</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleHungryDetails['properties'].companyPhoneNo}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Email Id</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleHungryDetails['properties'].companyEmailId}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Status</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleHungryDetails['properties'].status}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" class="btn btn-outline btn-primary">
+											EDIT
+										</a>	
+										<a ui-sref="Meat.CompanyTemplate" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<div class="panel-body">
+							<!-- START tags -->
+							<div class="font-bold text-center b-b"> BRANCH DETAILS</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="BranchForm" >
+					 			<div class="col-lg-12">
+			            <div class="col-lg-4 m-t-sm" ng-repeat="branchData in singleHungryBranchDetails" ng-class-odd="'bg-danger'" ng-class-even="'bg-success'" style="height: auto;">
+			            	<div class="padder-t text-center" style="font-family: cursive;font-size: large;">{{branchData['properties'].branchName}}</div>
+			            	<div><span class="font-bold">Email</span><span class="pull-right">{{branchData['properties'].branchEmail}}</span></div>
+			            	<div><span class="font-bold">PhoneNo.</span>:<span class="pull-right">{{branchData['properties'].phoneNo}}</span></div>
+			            	<div><span class="font-bold">LandlineNo</span>:<span class="pull-right">{{branchData['properties'].landlineNo}}</span></div>
+			            	<div class="padder-b"><span class="font-bold">BranchType</span>:<span class="pull-right">{{branchData['properties'].branchType}}</span></div>
+			            </div>
+		        		</div>
+							</form>
+							<!-- <div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" class="btn btn-outline btn-primary">
+											EDIT
+										</a>
+										<a href="javascript:;" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div> -->
+						</div>
+						<!-- END tags -->
+					</div>
+					<div id="tab-3" class="tab-pane">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b"> IMAGES</div>
+							<form class="form-horizontal form-bordered padder-t-b">
+								<div class="form-group newImage hide" >
+									<label class="col-sm-2 control-label">Logo</label>
+									<div class="col-sm-4" style="margin-top:8px;">
+											<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" class="form-control" name="imageLocation" required/>
+									</div>
+									<label class="col-sm-2 control-label">Logo Preview</label>
+									<div class="col-sm-4" style="margin-top:8px;">
+										<div class="companylogoImgPath" >
+										</div>
+									</div>
+								</div>
+								<div class="lightBoxGallery exitImage hide">
+										<label class="col-sm-4 col-md-4 control-label">{{ImageDetails.imageName}}</label>
+										<label class="col-sm-4 col-md-4 control-label">{{ImageDetails.imageType}}</label>
+										<div class="col-sm-4">
+											<img class="" ng-src="{{ImageDetails.imageLocation}}" alt="{{ImageDetails.imageName}}" width="50%" />
+										</div>
+								</div>
+							</form>
+							<div class="form-actions newImage hide" >
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="addImage()" class="btn btn-outline btn-primary">
+											ADD IMAGE
+										</a>
+										<a ui-sref="Meat.CompanyTemplate" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="form-actions exitImage hide">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="editImage()" class="btn btn-outline btn-primary">
+											EDIT IMAGE
+										</a>
+										<a href="javascript:;" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>					
+					<div id="tab-4" class="tab-pane">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b"> EMPLOYEES</div>
+							<div class="col-lg-12">
+		            <div class="col-lg-4 m-t-sm" ng-repeat="userData in userDetails" ng-class-odd="'bg-danger'" ng-class-even="'bg-success'" style="height: 70px;">
+		            	<div class="padder-t"><span>{{userData['properties'].userCode}}</span>:<span class="pull-right">{{userData['properties'].userName}}</span></div>
+		            	<div><span>PhoneNo.</span>:<span class="pull-right">{{userData['properties'].phoneNo}}</span></div>
+		            	<div><span>EmailId</span>:<span class="pull-right">{{userData['properties'].emailId}}</span></div>
+		            </div>
+		        	</div>
+						</div>
+					</div>
+					<!-- <div id="tab-5" class="tab-pane">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b"> ADDRESS</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="CompanyaddressForm">
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Type</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{addressDetails.type}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Zone</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{branchDetails.zoneName}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">line</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{addressDetails.line1}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Town</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{addressDetails.town}}
+										</div>
+									</div>
+					 			</div>
+					 			<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">City</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{addressDetails.city}}
+										</div>
+									</div>
+					 			</div>
+					 			<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">District</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{addressDetails.district}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">State</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{addressDetails.state}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Zip Code</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{addressDetails.zipcode}}
+										</div>
+									</div>
+								</div>
+							</form>		
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="EDIT()" class="btn btn-outline btn-primary">
+											EDIT
+										</a>
+										<a href="javascript:;" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+.padder-b {
+	padding-bottom: 5px;
+}
+.padder-t {
+	padding-top: 5px;
+}
+</style>

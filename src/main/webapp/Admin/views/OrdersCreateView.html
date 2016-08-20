@@ -1,0 +1,195 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Orders Creation</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="#/dashboards/OrdersTemplate">Orders Creation List</a>
+			</li>
+			<li class="active">
+				<strong>Orders Creation</strong>
+			</li>
+		</ol>
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" style="padding: 12px 10px 22px;">
+	<div class="row">
+		<div class="col-lg-12" style="padding:0px;">
+			<div class="ibox">
+				<div class="ibox-content wizard" style="padding:12px 12px 10px 10px;">
+					<div class="wizard">
+						<div class="content">
+							<form id="OrdersForm" method="get" action="" class="form-horizontal">
+								<div id="rootwizard">
+									<ul class="nav nav-pills">
+									  	<li class="active">
+									  		<a data-target="#tab1" class="text-center" data-toggle="tab" aria-expanded="true">Orders DETAILS</a>
+									  	</li>
+											<li>
+												<a data-target="#tab2" class="text-center" data-toggle="tab">TAGS</a>
+											</li>
+											<li>
+												<a data-target="#tab3" class="text-center" data-toggle="tab">CONFIRM</a>
+											</li>
+									</ul>
+									<div class="tab-content">
+									  <div class="tab-pane active" id="tab1">
+									    <div class="form-group" style="">
+												<label class="control-label col-md-2">Orders Name <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<input type="text" class="form-control" name="Name" ng-model="OrdersDetails.OfferName" required/>
+												</div>
+										 	</div>
+											<div class="form-group">
+												<label class="control-label col-md-2">Orders Description <span class="required">
+												* </span>
+												</label>
+												<div class="col-md-4">
+													<textarea type="text" class="form-control" name="" ng-model="OrdersDetails.description" required></textarea>
+												</div>
+											</div>
+											<span class="col-lg-12" style="border-bottom:1px solid #E7E2E2;margin-bottom:10px;">Orders SEO</span>
+											<div class="form-group" style="margin-bottom:10px;">
+												<label class="col-sm-2 control-label">Title <span class="required">
+												* </span></label>
+												<div class="col-sm-4">
+													<input type="text"  class="form-control" name="seoTitle" ng-model="OrdersDetails.seoTitle" value="" required/>
+												</div>
+												<label class="col-sm-2 control-label">Keyword<span class="required">
+												* </span></label>
+												<div class="col-sm-4">
+													<input type="text"  class="form-control"  name="seoKeyWords" ng-model="OrdersDetails.seoKeyWords" value="" required/>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Meta Description<span class="required">
+												* </span></label>
+												<div class="col-sm-4">
+													<textarea type="text" class="form-control" name="seoMetaDescription" ng-model="OrdersDetails.seoMetaDescription" value="" required></textarea>
+												</div>
+											</div>
+									  </div>
+									  <div class="tab-pane" id="tab2">
+									    <div class="portlet-body">
+												<div class="row">
+													<div class="col-md-2 col-sm-2 col-xs-2">
+														<ul class="folder-list">
+															<li class="" ng-repeat="tagtype in itemtagtypeEntities" >
+																<a data-target="#{{tagtype['properties'].id}}" data-toggle="tab" aria-expanded="false" class="text-center"><strong>{{tagtype['properties'].tagTypeName}}</strong></a>
+															</li>
+														</ul>
+													</div>
+													<div class="col-md-9 col-sm-9 col-xs-9">
+														 <div class="tab-content">
+															<div class="tab-pane" ng-repeat="tagtype in itemtagtypeEntities" id="{{tagtype['properties'].id}}">
+																<div class="col-md-10 col-sm-10 col-xs-10">
+																	<ul class="tag-list">
+																		<li class="" ng-repeat="tags in tagtype.entities">
+																				<label ng-click="Itemtags($event)" id="{{tags['properties'].id}}" name="{{tags['properties'].tagName}}" data="{{tagtype['properties'].tagTypeName}}">
+																					<a ng-class="{'label-primary' : tags['properties'].tagName == 'Veg','label-danger' : tags['properties'].tagName == 'Non Veg'}">{{tags['properties'].tagName}}</a> 
+																				</label>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</div> 
+													</div>
+												</div>
+												<div class="row" style="margin-top:30px;">
+													<ul class="actions text-center">
+														<li class="" style="" ng-repeat="tabbed in ItemTagsData">
+															<i class="fa fa-adn"></i>
+															{{tabbed.tagtypeName}} : {{tabbed.tagName}}
+														</li>
+													</ul>
+												</div>
+											</div>
+									  </div>
+										<div class="tab-pane" id="tab3">
+											<div class="row">
+												<h3 class="block text-center">CONFIRM THE ACCOUNT</h3>
+												<div class="col-lg-6 b-r">
+													<div class="form-group">
+														<label class="control-label col-md-4">Orders NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="Orders Name" ng-model="OrdersDetails.OrdersName">
+															{{SellersDetails.SellersName}}</p>
+														</div>
+														<label class="control-label col-md-4">Orders DESCRIPTION:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="description" ng-model="OrdersDetails.description">
+															{{SellersDetails.description}}</p>
+														</div>
+													</div>
+													<h4 class="form-section">SEO:</h4>
+													<div class="form-group">
+														<label class="control-label col-md-4">TITLE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="seoTitle" ng-model="OrdersDetails.seoTitle">
+															{{SellersDetails.seoTitle}}</p>
+														</div>
+														<label class="control-label col-md-4">KEYWORDS:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="seoKeyWords" ng-model="OrdersDetails.seoKeyWords">
+																{{SellersDetails.seoKeyWords}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">META DESCRIPTION:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="seoMetaDescription" ng-model="OrdersDetails.seoMetaDescription">
+															{{SellersDetails.seoMetaDescription}}</p>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<h4 class="form-section">Selected Tags:</h4>
+													<ul class="actions">
+														<li class="btn default yellow-stripe btn-sm" style="" ng-repeat="tabbed in OrdersTagsData">
+															<i class="fa fa-adn"></i>
+															{{tabbed.tagtypeName}} : {{tabbed.tagName}}
+														</li>
+													</ul>
+												</div>
+											</div>
+									  </div>
+										<ul class="pager wizard">
+											<li class="previous first" style="display:none;"><a >First</a></li>
+										  <li class="next pull-right"><a >NEXT</a></li>
+											<li class="previous pull-right m-r-sm disabled"><a>PREVIOUS</a></li>
+											<li class="pull-right m-r-sm"><a href="#/dashboards/OrdersTemplate">CLOSE</a></li>
+											<li class="next last" style="display:none;"><a>Last</a></li>
+											<li class="confirm hide" ng-hide="confirm"><a ng-click="save(OrdersDetails)">CONFIRM</a></li>
+										</ul>
+									</div>	
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+
+#rootwizard >  ul > li{
+	width: 33% !important;
+}
+label.error{
+	display: block !important;
+	margin-bottom: 0px !important
+}
+.tab-pane{
+	padding: 10px;
+}
+.border{
+	border: 1px solid #1ab394;
+}
+.tag-list li a{
+	font-size: 15px;
+}
+</style>

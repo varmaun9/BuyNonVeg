@@ -1,0 +1,57 @@
+<div class="top-cate m-none">
+        <div class="featured-pro container">
+          <div class="row">
+            <div class="">
+            <div class="new_title">
+              <h2 th:inline= "text">Types of [[${category.categoryName}]]</h2>
+            </div>
+            <div id="top-categories" class="product-flexslider hidden-buttons">
+              <div class="slider-items slider-width-col4 products-grid" style="opacity: 1; display: block;">
+								<div class="sub-category">
+									<div class="row navtop" th:with="list=(${#httpServletRequest.getParameterValues('scid')}==null)?${array}:${#httpServletRequest.getParameterValues('scid')}">
+									
+										<th:block th:each="subCategory:${subCategories}" th:with="selectedStatus=${#lists.contains(#lists.toList(list),subCategory.id)}">
+										
+									
+										<div class="col-lg-2 col-md-2 col-sm-2 product style-2 c-p sub-cat" th:classappend="(${selectedStatus}==true)?'sub_selected selected'" th:name="${subCategory.id}">
+					<!-- <a ng-click="getProductsBySubCategoryRemove($event)"><i class="fa fa-times-circle sel-cross-ico c-p" ></i></a> -->
+											<div class="sub-cat" ng-click="getProductsBySubCategory($event)">
+											<div class="pro-img">
+												<div class="pro-img-sub" th:classappend="(${selectedStatus}==true)?'address_selc1'" >
+												<i class="fa fa-check custom_icon_tick" th:classappend="(${selectedStatus}==true)?'show':'hide'" aria-hidden="true"></i>
+												<img  th:src="${#lists.toList(subCategory.subCategoryImageses)[0].imageLocation}" th:classappend="(${selectedStatus}==true)?'selected'" width="100" height="139" alt="Product 01" />
+
+												</div>
+												<div class="pro-info">
+												<h5><a class="f-w-600" href="#" th:text="${subCategory.subCategoryName}"></a></h5>
+												
+												
+											</div>
+												
+											</div>
+											
+										</div>
+										</div>
+									
+									</th:block>
+									
+										
+									
+										
+									</div><!-- .related-item -->
+								</div>
+
+                               
+                          
+                            <!-- <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev"><a class="flex-prev"></a></div><div class="owl-next"><a class="flex-next"></a></div></div></div> --></div><!-- slider-items slider-width-col4 products-grid--> 
+            </div><!--top-categories-->
+          </div><!--slider-items-products-->
+        </div><!--row-->   
+      </div><!--featured-pro container wow bounceInUp animated animated-->
+    </div>
+
+
+
+
+
+

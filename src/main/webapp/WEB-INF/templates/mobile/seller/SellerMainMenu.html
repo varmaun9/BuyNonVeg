@@ -1,0 +1,147 @@
+<ion-side-menus enable-menu-with-back-views="true" ng-controller="orderListController">
+  <ion-side-menu-content>
+    <!-- <ion-view view-title="ORDERS" hide-back-button="true"> -->
+      <!-- <ion-nav-bar class="bar-stable main-menu">
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color:#FFFFFF">
+          </button>
+        </ion-nav-buttons>
+        <ion-nav-title align-title="center">
+          <span class="fontpro" style="color:#FFFFFF;">ORDERS</span>
+        </ion-nav-title>
+        <ion-nav-buttons side="right">
+          <button class="button button-icon button-clear ion-android-calendar" style="color:#FFFFFF" th:attr="ng-click='toggleCalendar()'">
+          </button>
+        </ion-nav-buttons>
+      </ion-nav-bar> -->
+      <ion-nav-view name="menuContent" animation="slide-left-right">
+        <!-- <ion-view>
+        </ion-view> -->
+      </ion-nav-view>
+    <!-- </ion-view>  -->
+  </ion-side-menu-content>
+  <ion-side-menu side="left">
+    <ion-header-bar class="" align-title="left" style="background-image: url('img/regbanner1.png');background-repeat:no-repeat;height:87px;background-size: 275px 86px;">  
+      <!-- <div class="buttons">
+        <button class="button" ng-click="doSomething()">Left Button</button>
+      </div>  -->  
+      
+      <div class="buttons">
+        <h1 class="title text-center" style="color:#FFFFFF;top:22px;">{{userName}}</h1>
+        <!-- <h1 class="title text-center" style="color:#F27028;top:44px;">{{userName}}</h1> -->
+        <!-- <h1 class="title">
+          <div>Title!</div>
+
+        </h1> -->
+        <!-- <div class="button" style="margin-top: 55px;margin-right: 77px;">navayuvaraviteja@gmail.com</div> -->
+      </div>
+    </ion-header-bar>
+    <ion-content class="side-bar has-subheader">
+      <ion-list class="">
+      <ion-item menu-close="" class="text-center menu-list row">
+          <a ui-sref="start.home" class="col" ui-sref-active="active">
+            <i class="ion ion-ios-home-outline pull-left" style="font-size: 20px;padding-right:25px;"></i><span> Home </span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center menu-list row">
+          <a ui-sref="start.orders" class="col" ui-sref-active="active">
+            <i class="ion ion-ios-cart-outline pull-left" style="font-size: 20px;padding-right:25px;"></i><span> Orders </span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center menu-list row">
+          <a ui-sref="start.payments" class="col" ui-sref-active="active">
+            <i class="ion ion-ios-grid-view-outline pull-left" style="font-size: 20px;padding-right:25px;" aria-hidden="true"></i><span> Payments  </span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center menu-list row">
+          <a ui-sref="start.returns" class="col" ui-sref-active="active">
+            <i class="fa ion-arrow-return-left pull-left" style="font-size: 20px;padding-right:25px;" aria-hidden="true"></i><span> Returns  </span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center menu-list row">
+          <a ui-sref="start.allItems" class="col" ui-sref-active="active">
+            <i class="ion ion-ios-settings-strong pull-left" style="font-size: 20px;padding-right:25px;"></i><span> Items  </span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center menu-list row">
+        <!-- <ion-item menu-close="" class="text-center menu-list row" style="border-top: 1px solid #DFDFDF !important;"> -->
+          <a ui-sref="start.profile" class="col" ui-sref-active="active">
+            <i class="ion ion-android-contacts pull-left" style="font-size: 20px;padding-right:25px;"></i><span> Profile </span>
+          </a>
+        </ion-item>
+        <!-- <ion-item menu-close="" class="text-center menu-list row">
+          <a ui-sref="start.support" class="col" ui-sref-active="active">
+            <i class="ion ion-ios-telephone-outline pull-left" style="font-size: 20px;padding-right:25px;"></i><span> Support </span>
+          </a>
+        </ion-item>  -->       
+        <ion-item menu-close="" class="text-center menu-list row">
+          <a ui-sref="start.settings" class="col" ui-sref-active="active">
+            <i class="ion ion-ios-gear-outline pull-left" style="font-size: 20px;padding-right:25px;"></i><span> Settings </span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center menu-list row">
+          <a ui-sref="start.help" class="col" ui-sref-active="active">
+            <i class="ion ion-ios-help-outline pull-left" style="font-size: 20px;padding-right:25px;"></i><span> Help </span>
+          </a>
+        </ion-item>
+        <ion-item menu-close="" class="text-center menu-list row">
+          <a ui-sref="start.request" class="col" ui-sref-active="active">
+            <i class="ion ion-ios-compose-outline pull-left" style="font-size: 20px;padding-right:25px;"></i><span> Write a Request </span>
+          </a>
+        </ion-item>
+        <!-- <ion-item menu-close="" class="text-center row">
+          <a ui-sref="#/start/reports" class="col menu-list" ui-sref-active="active">
+            <i class="ion ion-clipboard pull-left" style="font-size: 20px;"></i><span> REPORTS </span>
+          </a>
+        </ion-item> -->
+        <!-- <ion-item menu-close="" class="text-center row">
+          
+        </ion-item> -->
+      </ion-list>
+    </ion-content>
+    <ion-footer-bar class="">
+      <h2 class="title assertive">{{sellerName}}</h2>
+    </ion-footer-bar>
+  </ion-side-menu>
+</ion-side-menus>
+<style type="text/css">
+.bar.bar-stable {
+    background-color: #EF4B4B !important;
+}
+.bar-stable.bar h1{
+  top: 35px;
+}
+.nav-bar-block, .bar{
+  border: 0px !important;
+}
+.menu-list a{
+  cursor: pointer;
+  font-family: 'Montserrat-Regular', sans-serif ;
+  text-decoration: none;
+  /*color: #F27028;*/
+  color: #8E9293;
+  padding: 10px !important;
+  border-bottom: 1px solid #f3f1f1;
+}
+.menu-list a>span{
+  float: left;
+}
+/*.bar .buttons-left span , .bar .buttons-right span{
+  padding: 5px !important;
+}*/
+.text-center.row.item{
+  border: 1px solid #FFFFFF !important;
+}
+.button{
+  background-color: rgba(248,248,248,0);
+}
+.b-t{
+  border-top: #F27028 !important;
+}
+.side-bar{
+  -webkit-box-shadow: 0px -1px 5px 0px rgba(219,216,219,1);
+  -moz-box-shadow: 0px -1px 5px 0px rgba(219,216,219,1);
+  box-shadow: 0px -1px 5px 0px rgba(219,216,219,1);
+}
+</style>
+      

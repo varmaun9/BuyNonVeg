@@ -1,0 +1,87 @@
+<div class="container effect6 mgt20 mgb20">
+	<!-- <div class="jumbotron mgt20" style="position:relative">
+			<h4>Thank you for the Order!</h4>
+			<h6> Your Order has been Placed Successfully, And is being  Processed Yet to get confirmation from our Supplier, You will re</h6>
+			<div class="col-lg-6 col-md-6"><h5>ORDER10001</h5></div>
+			<div class="col-lg-6 col-md-6"><h5 th:text="${#httpServletRequest.getParameter('amount')}"></h5></div>
+
+
+	</div> -->
+
+<div class="row" style="padding:30px;">
+
+	<div class="col-lg-12 col-md-12">
+	<div class="col-lg-5 col-md-5 ">
+		<h2 class="t-c-r">Thank you for the Order!</h2>
+			<h5> Your Order has been Placed Successfully, And is being  Processed Yet to get confirmation from our Suppliers, You will receive an email with the deatils. You can track this order through <strong class="t-d-u c-p"><a href="/myaccount/orders">MyOrders</a></strong> Page</h5>
+			<div class=""><span>Order Id:</span><span th:text="${order.orderCode}"></span></div>
+			<div class=""><span>Order Amount RS.</span><span class="t-success-span" th:text="${order.amount}"></span><span class="t-success-span">/-</span> <span th:inline="text">paid through[[${order.paymentMode}]] </span></div>
+
+	</div>
+	<div class="col-lg-1 col-md-1 t-b-r"> </div>
+	<div class="col-lg-1 col-md-1"> </div>
+	<!-- <div class="col-lg-5 col-md-5" th:with ="address = ${order.orderDeliveryOptionses[0].address}" > 
+<h2 class="t-c-r" th:text="${address.contactPerson}"></h2><span th:text="${address.mobileNo}">9885814564</span>
+			<h5 th:inline="text">[[${address.line1}]],[[${address.area}]]</h5>
+			<h5 th:text="${address.town}">Near Sumana Hospital</h5>
+			<h5 th:text="${city}">Kukatpally,Hyderabad-500072.</h5>
+			<a class="t-s-message">
+			<img src="/common/img/home/img/18x10/deliver_van.png" />
+			<span class="l-s" href="">Your Complete Order will be Delivered by 09 July 2016.</span>
+			</a>
+			</div> -->
+	</div>
+	
+</div>
+
+
+<div class="row" style="padding:30px;">
+
+	<div class="col-lg-12 col-md-12">
+	<div class="col-lg-3 col-md-3 t-icon-div">
+		<img src="/common/img/home/img/deliver/success.png" /><a class="t-icon" href="">Order Placed</a>
+	</div>
+	<div class="col-lg-3 col-md-3 t-icon-div">
+		<img src="/common/img/home/img/deliver/transfer.png" /><a class="t-icon" href="">Processed</a>
+	</div>
+	<div class="col-lg-3 col-md-3 t-icon-div">
+		<img src="/common/img/home/img/deliver/scooter.png" /><a class="t-icon" href="">In-Transit</a>
+	</div>
+	<div class="col-lg-3 col-md-3 t-icon-div">
+		<img src="/common/img/home/img/deliver/courier.png" /><a class="t-icon" href="">Delivery</a>
+	</div>
+	
+	</div>
+	
+</div>
+
+
+<div class="row">
+<h1 class="t-sum-head">YOUR ORDER SUMMARY</h1>
+	<div class="col-lg-12 col-md-12">
+	
+	<h4 class="t-sub-head">OrderId</h4>
+	<th:block th:each="item:${order.orderItems}">
+	<div class="col-lg-2 col-md-2">
+				<a th:href="@{'/meatitem/'+${item.sellerItem.item.itemName}(id=${item.sellerItem.item.id})}"><img width="80" height="80" alt="home4_product_03" class="attachment-shop_thumbnail wp-post-image" th:each="image:${item.sellerItem.item.itemImageses}"  th:if="${image.imageType=='THUMBIMAGE'}" th:src="${image.imageLocation}" src="/common/img/non-veg/cart/cart_cut.png"/></a>
+
+	</div>
+	<div class="col-lg-4 col-md-4"> <h4 th:text="${item.sellerItem.item.itemName}"></h4>
+	</div>
+	<div class="col-lg-4 col-md-4"> <h4>Standard Delivery Timings Sat 9th July.</h4>
+	</div>
+	<div class="col-lg-2 col-md-2"> <h4>Price(212/-)</h4>
+	</div>
+</th:block>
+	<div class="col-lg-12 col-md-12 animated fadeInUpBig mgb20"> <a href="#" class="latest_header_1">Grannd Total</a>
+	</div>
+
+</div>
+<div class="col-lg-12 col-md-12 animated fadeInUpBig t-cont"> <a href="/" class="latest_header_1 pull-left">Continue Shopping</a>
+	</div>
+</div>
+</div>
+
+
+
+

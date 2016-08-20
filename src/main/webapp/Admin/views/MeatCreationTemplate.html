@@ -1,0 +1,347 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>MEAT CREATION</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="#/Meat/MeatTemplate">Meat List</a>
+			</li>
+			<li class="active">
+				<strong>Meat Creation</strong>
+			</li>
+		</ol>
+	</div>
+	<div class="col-lg-2">
+
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" style="padding: 12px 10px 22px;">
+	<div class="row">
+		<div class="col-lg-12" style="padding:0px;">
+			<div class="ibox">
+				<div class="ibox-content wizard" style="padding:12px 12px 10px 10px;">
+					<div class="wizard">
+						<div class="content">
+							<form id="hungryForm" method="get" action="" class="form-horizontal">
+								<div id="meatwizard">
+									<ul>
+									  <li><a data-target="#tab1" class="text-center" data-toggle="tab">MEAT DETAILS</a></li>
+										<li><a data-target="#tab2" class="text-center" data-toggle="tab">MEAT BRANCH</a></li> 
+										<li><a data-target="#tab3" class="text-center" data-toggle="tab">BRANCH ADDRESS</a></li>
+										<li><a data-target="#tab4" class="text-center" data-toggle="tab">CONFIRM</a></li>
+									</ul>
+									<div class="tab-content">
+									  <div class="tab-pane" id="tab1">
+									    <div class="form-group" style="">
+												<label class="col-sm-2 control-label">Meat Name</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control"  ng-model="company.companyName" required />
+												</div>
+												<label class="col-sm-2 control-label">Meat EmailId</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" ng-model="company.companyEmailId" required />
+												</div>
+										 	</div>	
+									    <!-- <div class="form-group">
+												
+												<label class="col-sm-2 control-label">Email ID</label>
+												<div class="col-sm-4">
+														<input type="text" class="form-control" name="restaurantEmailId" ng-model="restaurantBranchDetails.restaurantEmailId" required/>
+												</div>
+												<label class="col-sm-2 control-label">Min.OrderTime</label>
+												<div class="col-sm-4" clock-picker data-autoclose="true">
+													<input type="text" placeholder="Hr.Mn i.e,00.00" class="form-control" name="minimumOrderTime" ng-model="restaurantBranchDetails.minimumOrderTime" required/>
+												</div>
+											</div> -->
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Phone Number</label>
+												<div class="col-sm-4">	
+														<input type="text"  class="form-control" name="companyPhoneNo" ng-model="company.companyPhoneNo" required/>
+												</div>
+												<label class="col-sm-2 control-label">Landline Number</label>
+												<div class="col-sm-4">
+													<input type="text" placeholder="landline No." class="form-control" name="landlineNo" ng-model="company.companyLandLineNo" required/>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Status</label>
+												<div class="col-sm-4">
+														<select class="form-control select2_demo_1" ng-model="company.status" style="width:100%;">
+															<option value=""></option>
+															<option value="active">Active</option>
+															<option value="inactive">InActive</option>
+														</select>
+												</div>
+											</div>
+									  </div>
+									  <div class="tab-pane" id="tab2">
+									  	<div class="form-group" style="">
+												<label class="col-sm-2 control-label">Branch Name</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control"  ng-model="companyBranch.branchName" required />
+												</div>
+												<label class="col-sm-2 control-label">Branch EmailId</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" ng-model="companyBranch.branchEmail" required />
+												</div>
+										 	</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Phone Number</label>
+												<div class="col-sm-4">	
+														<input type="text"  class="form-control" name="companyPhoneNo" ng-model="companyBranch.phoneNo" required/>
+												</div>
+												<label class="col-sm-2 control-label">Landline Number</label>
+												<div class="col-sm-4">
+													<input type="text" placeholder="landline No." class="form-control" name="landlineNo" ng-model="companyBranch.branchLandLineNo" required/>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Branch Type</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_4" ng-model="companyBranch.branchType" style="width:100%;">
+														<option value=""></option>
+														<option value="SubBranch">SubBranch</option>
+														<option value="MainBranch">MainBranch</option>
+													</select>
+												</div>
+												<label class="col-sm-2 control-label">Status</label>
+												<div class="col-sm-4">
+														<select class="form-control select2_demo_1" ng-model="companyBranch.status" style="width:100%;">
+															<option value=""></option>
+															<option value="Active">Active</option>
+															<option value="InActive">InActive</option>
+														</select>
+												</div>
+											</div>
+									  </div>
+									  <div class="tab-pane" id="tab3">
+									  	<div class="form-group">
+												<label class="col-sm-2 control-label">Address Type</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_2" name="type" ng-model="hungryAddress.type" style="width:100%;" required>
+														<option value=""></option>
+														<option value="Permanent">Permanent</option>
+														<option value="Temporary">Temporary</option>
+													</select>
+												</div>
+												<label class="control-label col-md-2">Zones</label>
+												<div class="col-md-4">
+													<select class="form-control select2_demo_3" name="zones" ng-model="companyBranch.zoneId" style="width:100%;" ng-change="zonechange()" required>	
+													  <option value=""></option>			
+														<option ng-repeat="zones in zonesDetails.entities" value="{{zones['properties'].id}}" data="{{zones['properties'].zoneName}}">{{zones['properties'].zoneName}}</option>
+													</select>
+												</div>
+											</div> 
+											<div class="form-group">
+												<label class="col-sm-2 control-label">line:</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="ploatno" ng-model="hungryAddress.line1" required/>
+												</div>
+												<label class="col-sm-2 control-label">Town</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="town" ng-model="hungryAddress.town" required/>
+												</div>
+											</div> 
+											<div class="form-group">
+												<label class="col-sm-2 control-label">City</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="city" ng-model="hungryAddress.city" required/>
+												</div>
+												<label class="col-sm-2 control-label">District</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="district" ng-model="hungryAddress.district" required/>
+												</div>
+											</div> 
+											<div class="form-group">
+												<label class="col-sm-2 control-label">State</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" name="state" ng-model="hungryAddress.state" required/>
+												</div>
+												<label class="col-sm-2 control-label">Zip Code</label>
+												<div class="col-sm-4">
+													<input type="number" class="form-control" name="zipcode" ng-model="hungryAddress.zipcode" required/>
+												</div>
+											</div>
+									  </div>
+										<div class="tab-pane" id="tab4">
+											<div class="row">
+												<h3 class="block text-center b-b">CONFIRM THE ACCOUNT</h3>
+												<div class="col-lg-6 b-r">
+													<div class="form-group">
+														<label class="control-label col-md-4">COMPANY NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="companyName" ng-model="company.companyName">
+															{{company.companyName}}</p>
+														</div>
+														
+														<label class="control-label col-md-4">COMPANY EMAILID:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="companyEmailId" ng-model="company.companyEmailId">
+															{{company.companyEmailId}}</p>
+														</div>
+														<label class="control-label col-md-4">PHONENO.:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" ng-model="company.companyPhoneNo">
+															{{company.companyPhoneNo}}</p>
+														</div>
+													<!--</div>
+													<h4 class="form-section">SEO:</h4> 
+													<div class="form-group">-->
+														<label class="control-label col-md-4">LANDLINE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="company.companyLandLineNo" ng-model="company.companyLandLineNo">
+															{{company.companyLandLineNo}}</p>
+														</div>
+														<label class="control-label col-md-4">STATUS:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="status" ng-model="company.status">
+																{{company.status}}
+															</p>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="form-group">
+														<label class="control-label col-md-4">BRANCH NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="branchName" ng-model="companyBranch.branchName">
+																{{companyBranch.branchName}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">BRANCH EMAILID:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="branchEmail" ng-model="companyBranch.branchEmail">
+																{{companyBranch.branchEmail}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">PHONE NUMBER:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="companyPhoneNo" ng-model="companyBranch.companyPhoneNo">
+																{{companyBranch.companyPhoneNo}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">LANDLINE NUMBER:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="branchLandLineNo" ng-model="companyBranch.branchLandLineNo">
+															{{companyBranch.branchLandLineNo}}</p>
+														</div>
+														<label class="control-label col-md-4">BRANCH TYPE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="branchType" ng-model="companyBranch.branchType">
+																{{companyBranch.branchType}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">STATUS:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="status" ng-model="companyBranch.status">
+																{{companyBranch.status}}
+															</p>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-12">
+													<h4 class="form-section">ADDRESS:</h4>
+													<div class="form-group">
+														<label class="control-label col-md-2">ADDRESS TYPE:</label>
+														<div class="col-md-2">
+															<p class="form-control-static" data-display="type" ng-model="hungryAddress.type">
+															{{hungryAddress.type}}</p>
+														</div>
+														<label class="control-label col-md-1">PLOT NO.:</label>
+														<div class="col-md-3">
+															<p class="form-control-static" data-display="line1" ng-model="hungryAddress.line1">
+																{{hungryAddress.line1}}
+															</p>
+														</div>
+														<label class="control-label col-md-1">TOWN:</label>
+														<div class="col-md-3">
+															<p class="form-control-static" data-display="town" ng-model="hungryAddress.town">
+															{{hungryAddress.town}}</p>
+														</div>
+														<label class="control-label col-md-1">CITY:</label>
+														<div class="col-md-3">
+															<p class="form-control-static" data-display="city" ng-model="hungryAddress.city">
+															{{hungryAddress.city}}</p>
+														</div>
+														<label class="control-label col-md-1">DISTRICT:</label>
+														<div class="col-md-3">
+															<p class="form-control-static" data-display="district" ng-model="hungryAddress.district">
+															{{hungryAddress.district}}</p>
+														</div>
+														<label class="control-label col-md-1">STATE:</label>
+														<div class="col-md-3">
+															<p class="form-control-static" data-display="state" ng-model="hungryAddress.state">
+															{{hungryAddress.state}}</p>
+														</div>
+														<label class="control-label col-md-1">ZIPCODE:</label>
+														<div class="col-md-3">
+															<p class="form-control-static" data-display="zipcode" ng-model="hungryAddress.zipcode">
+															{{hungryAddress.zipcode}}</p>
+														</div>
+														<label class="control-label col-md-1">ZONES:</label>
+														<div class="col-md-6">
+															<p class="form-control-static" data-display="ZoneName" ng-model="ZoneName">
+															{{ZoneName}}</p>
+														</div>
+													</div>
+												</div> 
+											</div>
+									  </div>
+										<ul class="pager wizard">
+											<li class="previous first" style="display:none;"><a >First</a></li>
+										  <li class="next pull-right"><a >NEXT</a></li>
+											<li class="previous pull-right m-r-sm"><a >PREVIOUS</a></li>
+											<li class="pull-right m-r-sm"><a href="#/Meat/MeatTemplate">CLOSE</a></li>
+											<li class="next last" style="display:none;"><a>Last</a></li>
+											<li class="confirm hide" ng-hide="confirm"><a ng-click="save(company,companyBranch,hungryAddress)">CONFIRM</a></li>
+										</ul>
+									</div>	
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+
+#meatwizard >  ul > li{
+	width: 24% !important;
+}
+label.error{
+	display: block !important;
+	margin-bottom: 0px !important
+}
+.tab-pane{
+	padding: 10px;
+}
+.border{
+	border: 1px solid #1ab394;
+}
+.tag-list li a{
+	font-size: 15px;
+}
+</style>
+<script>
+$(".select2_demo_1").select2({
+    placeholder: "SELECT A STATUS .....",
+    allowClear: true
+});	
+$(".select2_demo_2").select2({
+    placeholder: "SELECT A ADDRESS TYPE.....",
+    allowClear: true
+});
+$(".select2_demo_3").select2({
+    placeholder: "SELECT  ZONES.....",
+    allowClear: true
+});
+$(".select2_demo_4").select2({
+    placeholder: "SELECT BRANCH TYPE.....",
+    allowClear: true
+});
+</script>
+<!-- <input type="radio" name="optionsRadios" value="{{tags['properties'].tagName}}" ng-model="tabbed.tagName" /> -->

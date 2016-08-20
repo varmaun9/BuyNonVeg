@@ -1,0 +1,55 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">BRANCH TIMINGS</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b itemform" name="ItemForm">
+			<div class="form-group">
+				<label class="control-label col-md-4">Timing Name</label>
+					<div class="col-sm-7">
+						<div class="form-control-static">
+							<select class="form-control" name="timingsId" ng-model="sellerBranchTimings.timingsId" style="width:100%;" required>
+								<option value=""></option>
+								<option ng-repeat="timings in timingsesDetails.entities" value="{{timings['properties'].id}}">{{timings['properties'].timingName}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			<!-- <div class="form-group">
+				<label class="control-label col-sm-4">Start Time</label>
+				<div class="col-sm-7" clock-picker data-autoclose="true">
+					<input type="text" placeholder="OrderTime" class="form-control" name="startTime" ng-model="sellerBranchTimings.startTime" required/>
+				</div>
+			</div> -->
+			<!-- <div class="form-group">
+				<label class="control-label col-sm-4">End Time</label>
+						<div class="col-sm-7" clock-picker data-autoclose="true">
+					<input type="text" placeholder="OrderTime" class="form-control" name="endTime" ng-model="sellerBranchTimings.endTime" required/>
+				</div>
+			</div> -->
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class=" form-control" name="select" ng-model="sellerBranchTimings.status" style="width:100%;" required>
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="BranchTimingsCreate(sellerBranchTimings)">Save</button>
+	</div>
+</div>
+<style>
+
+.popover.clockpicker-popover.bottom.clockpicker-align-left{
+	z-index: 3000 !important;
+}
+</style>
+

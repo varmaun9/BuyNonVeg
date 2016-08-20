@@ -1,0 +1,41 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">CATEGORY SEO EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b" name="ItemSeoForm">
+			<div class="form-group" style="height:30px;">
+				<label class="col-sm-4 control-label">Title</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<!-- {{categoryDetails.seoTitle}} -->
+						<input type="text" class="form-control" name="seoTitle" ng-model="CategoryEditData.seoTitle" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group" style="height:30px;">
+				<label class="col-sm-4 control-label">Keywords</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<!-- {{categoryDetails.seoKeyWords}} -->
+						<input type="text" class="form-control" name="seoKeyWords" ng-model="CategoryEditData.seoKeywords" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group" style="height:30px;">
+				<label class="control-label col-md-4">Meta Description</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<!-- {{categoryDetails.seoMetaDescription}} -->
+						<textarea type="text" class="form-control" name="seoMetaDescription" ng-model="CategoryEditData.seoMetaDescription" ></textarea>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="categorySeoEdit(CategoryEditData)">Save changes</button>
+	</div>
+</div>
+

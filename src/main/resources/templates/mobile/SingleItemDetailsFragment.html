@@ -1,0 +1,676 @@
+
+<ion-view view="" title="SingleItemsTemplate"  ng-controller="SingleItemController">
+    
+<ion-content>
+
+
+<div class="row responsive-sm responsive-md" >
+ <div class="list  col">
+
+ <!--  <div class="item item-avatar">
+    <img src="mcfly.jpg">
+    <h2>Marty McFly</h2>
+    <p>November 05, 1955</p>
+  </div> -->
+
+  <div class="item item-body main_div" th:attr="ng-init='setRestaurantItem(\''+${item.item.id}+'\',\''+${item.id}+'\',\''+${item.restaurantBranch.restaurant.id}+'\',\''+${item.restaurantBranch.restaurant.restaurantName}+'\',\''+${item.restaurantItemName}+'\',\''+${item.price}+'\',\''+${item.quantity}+'\');'">
+  	<h1 th:text="${item.restaurantItemName}"></h1>
+  	<p><span th:inline="text">[[${item.restaurantBranch.restaurant.restaurantName}]]</span><span th:inline="text">:[[${item.restaurantBranch.branchName}]]</span></p>
+    <img class="full-image" src="img/170x139/f_s_1.png" />
+   
+   
+										<div class="p-rate clearfix">
+											<div class="star-rating pull-left">
+												<span style="width:60%"></span>
+											</div>
+											<!-- <div class="pull-right">1 reviews / <a href="#">Write a review</a></div> -->
+										</div>
+    <p>
+      
+      <span class="amount" th:inline="text">&#8377;[[${item.price}]]</span>
+      <th:block th:each="itemtag:${item.item.itemTagses}" th:if="${itemtag.tags.tagName=='Veg'}">
+											<span class="veg"><a></a></span>
+											<!-- <ul class="social">
+												<li class="veg"><a href="#" class="compare"> -->
+											<!-- <img src="../../common/img/home/img/sprites/sprite_1.png" alt="Cart" width="22" height="20" /> -->
+												
+										<!-- 	</a></li>
+											</ul> -->
+											</th:block>
+											<th:block th:each="tagName:${item.item.itemTagses}" th:if="${tagName.tags.tagName=='NonVeg'}">
+											<span class="non-veg"><a></a></span>
+											</th:block>
+
+											<th:block th:each="tagName:${item.item.itemTagses}" th:if="${tagName.tags.tagType.tagTypeName=='Organic'}">
+													<span class="organic"><a></a></span>
+										</th:block>
+    </p>
+		<div class="row">
+											<div class="col col-50 b-r">
+											<!-- <a class="textup b-none"><i class="fa fa-balance-scale"></i></a> -->
+										<!-- 	<div class="row">	<div class="col col-20"><a class="button button-small button-outline"><i class="icon ion-ios-flask"></i></a></div>
+					<div class="col col-80"><input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4" style="width: 80px;  border: 1px dashed rgba(0, 0, 0, 0.38);"/></div></div> -->
+
+							<div class="list">
+
+  <div class="item item-input">
+    <div class="input-label">
+     <a><i class="fa flaticon-bag-of-flour m-i"></i></a>
+    </div>
+    								<input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4" />
+  </div>
+
+</div>		
+
+		<!-- 									<div class="list list-inset">
+  <label class="item item-input">
+    <i class="icon ion-ios-flask"></i>
+   <input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4"/>
+  </label>
+</div> -->
+										<!-- 	<a class="textup b-none">Timings:</a>
+											<input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4"/> -->
+											<!-- <a class="textup b-none">Date:</a>
+											<input type="number" step="1" min="0" ng-model="itemUnits" value="1" title="Qty" class="qty b-d" size="4"/> -->
+											
+											
+
+											<!-- <a><i class="fa fa-clock-o"></i></a>
+											<input type="text"  ng-model="deliveryTime"  class="qty b-d form-control"/> -->
+											
+												<div class="list">
+
+  <div class="item item-input">
+    
+    <a href="#" class="button icon-left ion-android-cart button-clear button-balanced add-to-cart mgt10" ng-click="addtocart($event,itemUnits)"> Add to cart</a>
+
+  </div>
+
+</div>	
+<div class="list">
+
+  <div class="item item-input">
+    
+   <a href="javascript:;" class="button icon-left ion-ios-bolt button-clear button-assertive add-to-cart xb mgt10" ng-click="xpressBowl($event)">Xpress Bowl</a>
+
+  </div>
+
+</div>	
+										</div>
+									<div class="col col-50">
+										<div class="">
+											 	<a class="balanced" style="border: 1px dashed;padding: 5px;"><i class="icon ion-speakerphone"></i>3 OFFers</a>
+											 	<div class="clearfix"></div>
+											 <ul class="" style="margin-top:5px;">
+											<li>100% OFF on SBI Credit Card</li>
+											<li>20% cash Back on HDFC Credit Card</li>
+											<li>10% OFF on ICICI Banking</li>
+											<li><span class="c-p t-c-lime">View T&amp;C</span></li>
+										</ul>
+										</div>
+									</div>
+										</div>
+<div class="col mgt10 t_division hide animated p-none" >
+												<div class="row">
+												<div class="list col col-50">
+  <div class="item item-input p-none">
+     <ionic-datepicker input-obj="datepickerObjectPopup">
+      <button class="button icon-left ion-android-calendar button-clear button-small button-positive ng-binding" ng-model="deliveryDate">{{datepickerObjectPopup.inputDate | date:'dd / MM / yyyy'}}</button>
+    </ionic-datepicker>
+  
+</div>
+</div>
+
+											<div class="list col">
+
+  <div class="item item-input item-select" style="padding:5px !important;">
+    
+     <a><i class="fa fa-cloud"></i></a>
+    
+    <select ng-model="timingId" style="padding:0px !important;left:25px !important;">
+      <option   th:each="itemTiming:${item.restaurantItemTimingses}" th:value="${itemTiming.timingDetails.id}" th:text="${itemTiming.timingDetails.timingName}" th:attr="ng-init='setTimingDetails(\''+${itemTiming.timingDetails.id}+'\',\''+${itemTiming.restaurantItemTimingsStatus}+'\',\''+${itemTiming.timingDetails.timingName}+'\')'"></option>
+    </select>
+   
+  </div>
+
+</div>
+					
+											<div class="list col">
+
+  						<div class="item item-input item-select" style="padding:5px !important;">
+     						<a><i class="fa fa-clock-o"></i></a>
+    									<select  ng-model="deliveryTime" style="padding:0px !important;left:20px !important;">
+												<option  ng-repeat="timings in availableTimings[timingId]" ng-bind="timings" value="{{timings}}"></option>
+											</select>			
+  							</div>
+								</div>					
+								</div>
+    									<button class="button button-block button-small button-assertive" ng-click="checkOutNow(timingId,deliveryDate,deliveryTime,itemUnits)"><i class="fa fa-thumbs-up"></i>GetIt!</button>
+										</div>
+
+
+
+    <div class="p-action">
+											
+									<!-- <div class="col-lg-6 col-md-6">
+										<div class="">
+											<button class="button button-outline button-balanced">3 OFFers</button>
+                           <div class="clearfix"></div>
+											 <ul class="list" >
+											<li  class="item">100% OFF on SBI Credit Card</li>
+											<li class="item">20% cash Back on HDFC Credit Card</li>
+											<li class="item">10% OFF on ICICI Banking</li>
+											<li class="item"><span class="c-p t-c-lime">View T&amp;C</span></li>
+										</ul>
+										</div>
+									</div>
+ -->
+										<div class="p-meta">
+											<div class="p-meta-one">
+												<ul class="list">
+												<div class="item item-divider">
+    											Restaurant Details
+  													</div>
+													<li class="item" th:inline="text"><span>Restaurant</span>:[[${item.restaurantBranch.restaurant.restaurantName}]]</li>
+													<li class="item" th:inline="text"><span>Branch</span>:[[${item.restaurantBranch.branchName}]]</li>
+
+													<li class="item"><span>Cuisine</span>:<th:block th:each="itemTag:${item.item.itemTagses}" th:if="${itemTag.tags.tagType.tagTypeName=='Cuisine'}"> <a th:text="${itemTag.tags.tagName}"> South Indian</a></th:block></li>
+													<li class="item"><span>Quantity</span>: <a href="#" th:text="${item.quantity}"></a> </li>
+													<li class="item" th:inline="text"><span>Branch</span>:[[${item.restaurantBranch.branchName}]]</li>
+
+													<!-- <li><span>Item Code</span>: Product 3</li> -->
+													<!-- <li><span>Reward Points</span>: 200</li>
+													<li><span>Availability</span>: In Stock </li> -->
+												</ul>
+											</div>
+											<div class="p-meta-one">
+												<ul class="list">
+												<div class="item item-divider">
+    											Information
+  													</div>
+													<li class="item" th:inline="text"><span>Description</span>:<p th:text="${item.description}"></p></li>
+													
+													<!-- <li class="item"><span>Ingredients</span>:<p th:text="${item.ingredients}"></p></li>
+													<li class="item"><span>Reviews</span>: <a href="#"> 50 Reviews</a> </li> -->
+													<!-- <li><span>Item Code</span>: Product 3</li> -->
+													<!-- <li><span>Reward Points</span>: 200</li>
+													<li><span>Availability</span>: In Stock </li> -->
+												</ul>
+											</div>
+
+											<div class="p-meta-one">
+												<ul class="list">
+												<div class="item item-divider">
+    											Ingredients
+  													</div>
+													<li class="item" th:inline="text"><span>Ingradients</span>:<p th:text="${item.ingredients}"></p></li>
+													
+												<!-- 	<li class="item"><span>Ingredients</span>:<p th:text="${item.ingredients}"></p></li>
+													<li class="item"><span>Reviews</span>: <a href="#"> 50 Reviews</a> </li> -->
+													<!-- <li><span>Item Code</span>: Product 3</li> -->
+													<!-- <li><span>Reward Points</span>: 200</li>
+													<li><span>Availability</span>: In Stock </li> -->
+												</ul>
+											</div>
+												<div class="p-meta-one">
+												<ul class="list">
+												<div class="item item-divider">
+    											Reviews
+  													</div>
+													<li class="item"><span>Reviews</span>: <a href="#"> 50 Reviews</a> </li>
+													
+												<!-- 	<li class="item"><span>Ingredients</span>:<p th:text="${item.ingredients}"></p></li>
+													<li class="item"><span>Reviews</span>: <a href="#"> 50 Reviews</a> </li> -->
+													<!-- <li><span>Item Code</span>: Product 3</li> -->
+													<!-- <li><span>Reward Points</span>: 200</li>
+													<li><span>Availability</span>: In Stock </li> -->
+												</ul>
+											</div>
+											
+										<!-- 	<div class="p-meta-three">
+												<a>Offers</a>
+											</div> -->
+											
+										</div>
+
+
+
+
+										
+<!-- by naveen -->
+<!-- 
+<ion-tabs class="tabs-striped tabs-top tabs-icon-only" delegate-handle="myhandle" ng-controller="OrdersController">
+        <ion-tab title="New Orders">
+         
+         <div class="list" style="margin-top: 90px;">
+  <div class="row">
+    <div class="item item-avatar item-button-right col col-50" href="#">
+      <div class="row responsive-sm responsive-md">
+        <div class="col-33">
+      <h1>10:30AM</h1>
+      <p><span>11/12/2015,</span>&nbsp;<span>Wednesday</span></p>
+    </div> 
+ 
+      <div class="col-50">
+      <h2 class="text-center">Ashok Order</h2>
+      <p class="text-center">Infosys,Gachibowli</p>
+    </div> 
+    <div class="col-17">
+      <a class="button button-outline button-medium icon-right ion-ios-redo button-balanced" ng-click="openModal()">View</a>
+    </div>
+  </div>
+    </div>
+    <div class="item item-avatar item-button-right col col-50" href="#">
+      <div class="row responsive-sm responsive-md">
+        <div class="col-33">
+      <h1>10:30AM</h1>
+      <p><span>11/12/2015,</span>&nbsp;<span>Wednesday</span></p>
+    </div> 
+
+      <div class="col-50">
+      <h2 class="text-center">Ashok Order</h2>
+      <p class="text-center">Infosys,Gachibowli</p>
+    </div> 
+    <div class="col-20">
+      <a class="button button-outline button-medium icon-right ion-ios-redo button-balanced" ng-click="openModal()">View</a>
+    </div>
+  </div>
+    </div>
+  </div>
+  
+
+
+</div>
+        </ion-tab>
+        <ion-tab title="Confirmed">
+      
+         <div class="list" style="margin-top: 90px;">
+ 
+
+   <div class="row">
+    <div class="item item-avatar item-button-right col col-50" href="#">
+      <div class="row responsive-sm responsive-md">
+        <div class="col-33">
+      <h1>12:30PM</h1>
+      <p><span>11/7/2015,</span>&nbsp;<span>Monday</span></p>
+    </div> 
+ 
+      <div class="col-50">
+      <h2 class="text-center">Ashok Order</h2>
+      <p class="text-center">InfoTech,Gachibowli</p>
+    </div> 
+    <div class="col-20">
+      <a class="button button-outline button-medium icon-right ion-ios-redo button-balanced" ng-click="openModal()">View</a>
+    </div>
+  </div>
+    </div>
+    <div class="item item-avatar item-button-right col col-50" href="#">
+      <div class="row responsive-sm responsive-md">
+        <div class="col-33">
+      <h1>12:30PM</h1>
+      <p><span>11/7/2015,</span>&nbsp;<span>Monday</span></p>
+    </div> 
+ 
+      <div class="col-50">
+      <h2 class="text-center">Ashok Order</h2>
+      <p class="text-center">Infotecc,Gachibowli</p>
+    </div> 
+    <div class="col-20">
+      <a class="button button-outline button-medium icon-right ion-ios-redo button-balanced" ng-click="openModal()">View</a>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>  </ion-tab>
+       </ion-tabs> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<!-- <div class="row col-lg-12 col-md-12 mgt10 t_division hide animated p-none">
+												<div class="col-lg-4 col-md-4">
+												<a><i class="fa fa-calendar"></i></a>
+											<input type="text"  ng-model="deliveryDate" class="singleItemDatePicker form-control"  style="width:100px !important;" ng-init="initDatePicker()" />
+											</div>
+												<div class="col-lg-4 col-md-4">
+													
+											<a><i class="fa fa-cloud"></i></a> -->
+											<!-- <p  th:each="itemTiming:${item.restaurantItemTimingses}"  th:text="${itemTiming.timingDetails.timingName}" ></p> -->
+									<!-- 		<select class="h-40 w-110" ng-model="timingId">
+												<option   th:each="itemTiming:${item.restaurantItemTimingses}" th:value="${itemTiming.timingDetails.id}" th:text="${itemTiming.timingDetails.timingName}" th:attr="ng-init='setTimingDetails(\''+${itemTiming.timingDetails.id}+'\',\''+${itemTiming.restaurantItemTimingsStatus}+'\',\''+${itemTiming.timingDetails.timingName}+'\')'"></option>
+											</select>
+										
+											</div>
+										<div class="col-lg-3 col-md-3 p-none">
+											<a><i class="fa fa-clock-o"></i></a>
+											
+											<select class="h-40 w-60 " ng-model="deliveryTime">
+												<option  ng-repeat="timings in availableTimings[timingId]" ng-bind="timings" value="{{timings}}"></option>
+											</select>
+										</div>
+								-->
+										</div>
+
+
+
+
+
+
+
+
+<div class="row">
+  <!--  <div class="col col-10">
+     </div> -->
+ <div class="col text-center">
+<!-- <div class="list-inset">
+  <label class="item item-input">
+    <a>Our Foods</a>
+    
+  </label>
+</div> -->
+<a class="h-b-t">Related Products</a>
+</div>
+<!-- <div class="col col-10">
+     </div> -->
+ </div> 
+ 
+
+
+<div class="row responsive-sm responsive-md">
+
+   <div class="col p-none">
+  <!--   <div class="row row-center"> -->
+
+<ion-slide-box ng-click="nextSlide()" show-pager="false">
+<!-- <a class="button" ><i class="icon ion-ios-arrow-back" ></i></a> -->
+  <ion-slide>
+
+    <div class="row" >
+        <div class="col col-25">
+            <div class="list "> 
+              <div class="item item-body p-none">
+               <img class="full-image" src="img/170x139/f_s_1.png" />
+                 <p>
+                 Item Item Name
+                </p>
+                  <p>
+                    <a href="#" class="subdued">250/-</a>
+                    <span class="non-veg"></span>
+                    <span class="organic"></span>
+                  </p>
+                </div>
+
+                 <div class="custom_item_thumb">
+                     <a class="custom_circle pull-left"><i class="icon ion-ios-cart"></i></a>
+    
+<a class="custom_circle pull-right"><i class="icon ion-android-cart"></i></a>
+
+                 </div>
+              </div>
+           </div>
+       
+              <div class="col col-25">
+            <div class="list "> 
+              <div class="item item-body p-none">
+               <img class="full-image" src="img/170x139/f_s_1.png" />
+                 <p>
+                 Item Item Name
+                </p>
+                  <p>
+                    <a href="#" class="subdued">250/-</a>
+                    <span class="non-veg"></span>
+                    <span class="organic"></span>
+                  </p>
+                </div>
+
+                 <div class="custom_item_thumb">
+                     <a class="custom_circle pull-left"><i class="icon ion-ios-cart"></i></a>
+    
+<a class="custom_circle pull-right"><i class="icon ion-android-cart"></i></a>
+
+                 </div>
+              </div>
+           </div>
+      
+    </div>
+  </ion-slide>
+  <ion-slide>
+     <div class="row" >
+        <div class="col col-25">
+            <div class="list "> 
+              <div class="item item-body p-none">
+               <img class="full-image" src="img/170x139/f_s_1.png" />
+                 <p>
+                 Item Item Name
+                </p>
+                  <p>
+                    <a href="#" class="subdued">250/-</a>
+                    <span class="non-veg"></span>
+                    <span class="organic"></span>
+                  </p>
+                </div>
+
+                 <div class="custom_item_thumb">
+                     <a class="custom_circle pull-left"><i class="icon ion-ios-cart"></i></a>
+    
+<a class="custom_circle pull-right"><i class="icon ion-android-cart"></i></a>
+
+                 </div>
+              </div>
+           </div>
+       
+              <div class="col col-25">
+            <div class="list "> 
+              <div class="item item-body p-none">
+               <img class="full-image" src="img/170x139/f_s_1.png" />
+                 <p>
+                 Item Item Name
+                </p>
+                  <p>
+                    <a href="#" class="subdued">250/-</a>
+                    <span class="non-veg"></span>
+                    <span class="organic"></span>
+                  </p>
+                </div>
+
+                 <div class="custom_item_thumb">
+                     <a class="custom_circle pull-left"><i class="icon ion-ios-cart"></i></a>
+    
+<a class="custom_circle pull-right"><i class="icon ion-android-cart"></i></a>
+
+                 </div>
+              </div>
+           </div>
+      
+    </div>
+  </ion-slide>
+  <ion-slide>
+    <div class="row" >
+        <div class="col col-25">
+            <div class="list "> 
+              <div class="item item-body p-none">
+               <img class="full-image" src="img/170x139/f_s_1.png" />
+                 <p>
+                 Item Item Name
+                </p>
+                  <p>
+                    <a href="#" class="subdued">250/-</a>
+                    <span class="non-veg"></span>
+                    <span class="organic"></span>
+                  </p>
+                </div>
+
+                 <div class="custom_item_thumb">
+                     <a class="custom_circle pull-left"><i class="icon ion-ios-cart"></i></a>
+    
+<a class="custom_circle pull-right"><i class="icon ion-android-cart"></i></a>
+
+                 </div>
+              </div>
+           </div>
+       
+              <div class="col col-25">
+            <div class="list "> 
+              <div class="item item-body p-none">
+               <img class="full-image" src="img/170x139/f_s_1.png" />
+                 <p>
+                 Item Item Name
+                </p>
+                  <p>
+                    <a href="#" class="subdued">250/-</a>
+                    <span class="non-veg"></span>
+                    <span class="organic"></span>
+                  </p>
+                </div>
+
+                 <div class="custom_item_thumb">
+                     <a class="custom_circle pull-left"><i class="icon ion-ios-cart"></i></a>
+    
+<a class="custom_circle pull-right"><i class="icon ion-android-cart"></i></a>
+
+                 </div>
+              </div>
+           </div>
+      
+    </div>
+  </ion-slide>
+   <ion-slide>
+     <div class="row" >
+        <div class="col col-25">
+            <div class="list "> 
+              <div class="item item-body p-none">
+               <img class="full-image" src="img/170x139/f_s_1.png" />
+                 <p>
+                 Item Item Name
+                </p>
+                  <p>
+                    <a href="#" class="subdued">250/-</a>
+                    <span class="non-veg"></span>
+                    <span class="organic"></span>
+                  </p>
+                </div>
+
+                 <div class="custom_item_thumb">
+                     <a class="custom_circle pull-left"><i class="icon ion-ios-cart"></i></a>
+    
+<a class="custom_circle pull-right"><i class="icon ion-android-cart"></i></a>
+
+                 </div>
+              </div>
+           </div>
+       
+              <div class="col col-25">
+            <div class="list "> 
+              <div class="item item-body p-none">
+               <img class="full-image" src="img/170x139/f_s_1.png" />
+                 <p>
+                 Item Item Name
+                </p>
+                  <p>
+                    <a href="#" class="subdued">250/-</a>
+                    <span class="non-veg"></span>
+                    <span class="organic"></span>
+                  </p>
+                </div>
+
+                 <div class="custom_item_thumb">
+                     <a class="custom_circle pull-left"><i class="icon ion-ios-cart"></i></a>
+    
+<a class="custom_circle pull-right"><i class="icon ion-android-cart"></i></a>
+
+                 </div>
+              </div>
+           </div>
+      
+    </div>
+  </ion-slide>
+   <ion-slide>
+     <div class="row" >
+        <div class="col col-25">
+            <div class="list "> 
+              <div class="item item-body p-none">
+               <img class="full-image" src="img/170x139/f_s_1.png" />
+                 <p>
+                 Item Item Name
+                </p>
+                  <p>
+                    <a href="#" class="subdued">250/-</a>
+                    <span class="non-veg"></span>
+                    <span class="organic"></span>
+                  </p>
+                </div>
+
+                 <div class="custom_item_thumb">
+                     <a class="custom_circle pull-left"><i class="icon ion-ios-cart"></i></a>
+    
+<a class="custom_circle pull-right"><i class="icon ion-android-cart"></i></a>
+
+                 </div>
+              </div>
+           </div>
+       
+              <div class="col col-25">
+            <div class="list "> 
+              <div class="item item-body p-none">
+               <img class="full-image" src="img/170x139/f_s_1.png" />
+                 <p>
+                 Item Item Name
+                </p>
+                  <p>
+                    <a href="#" class="subdued">250/-</a>
+                    <span class="non-veg"></span>
+                    <span class="organic"></span>
+                  </p>
+                </div>
+
+                 <div class="custom_item_thumb">
+                     <a class="custom_circle pull-left"><i class="icon ion-ios-cart"></i></a>
+    
+<a class="custom_circle pull-right"><i class="icon ion-android-cart"></i></a>
+
+                 </div>
+              </div>
+           </div>
+      
+    </div>
+  </ion-slide>
+</ion-slide-box>
+<!-- </div> -->
+  </div>
+</div>
+
+
+
+ <div class="footer-socials half-bottom">
+                <a href="#" class="footer-facebook"><i class="icon ion-social-facebook"></i></a>
+                <a href="#" class="footer-twitter"><i class="icon ion-social-twitter"></i></a>
+                <a href="#" class="footer-google"><i class="icon ion-social-googleplus"></i></a>
+                <a href="#" class="footer-share show-share-bottom"><i class="icon ion-social-instagram"></i></a>
+                <a href="#" class="footer-up"><i class="icon ion-social-android"></i></a>
+            </div>
+  							</div>
+							</div>	
+ 						</div>    
+			</ion-content>
+		</ion-view>

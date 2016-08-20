@@ -1,0 +1,66 @@
+<ion-view hide-back-button="true">
+  <ion-nav-bar class="bar-stable main-menu">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color:#FFFFFF">
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-title align-title="center">
+      <span class="fontpro" style="color:#FFFFFF;">Payments &amp; Invoices</span>
+    </ion-nav-title>
+    <ion-nav-buttons side="right"></ion-nav-buttons>
+  </ion-nav-bar>
+  <!-- <ion-content> -->
+  <ion-tabs class="tabs-stable tabs-icon-left tabs-top">
+    <ion-tab title="PAYMENTS" style="font-size:12px;">
+      <ion-nav-view animation="slide-left-right">
+        <ion-view style="height:500px;">
+          <ion-content class="padding">
+            <div class="m-b-md">
+              <span style="font-weight:bold;">Unsettled</span>
+              <a class="pull-right">(7+10) Days <i class="ion ion-ios-information-outline"></i></a>
+            </div>
+            <!-- <span style="color:#A7A7A7;">Next Due Date</span> <b>18 Apr 2016</b> -->
+            <div class="list">
+              <div class="item">
+                <span style="color: #ef473a;font-size: 14px;">COD 
+                  <i class="item-note" th:inline="text">([[${unBilledDeliveredCODSubOrdersCount}]])</i>
+                </span>
+                <span class="pull-right" th:inline="text">
+                  <i class="fa fa-inr" style="font-size: 14px;"></i> [[${unBilledDeliveredCODSubOrdersAmount}]]
+                </span>
+                <!-- <div class="text-center m-t-sm" style="font-size:11px;"><a>7 Transactions</a></div> -->
+              </div>
+              <div class="item">
+                <span style="color: #ef473a;font-size: 14px;">PaymentGateWay
+                  <i class="item-note" th:inline="text">([[${unBilledDeliveredPaymentGatewaySubOrdersCount}]])</i>
+                </span>
+                <span class="pull-right" th:inline="text"><i class="fa fa-inr" style="font-size: 14px;"></i> [[${unBilledDeliveredPaymentGatewaySubOrdersAmount}]]</span>
+                <!-- <div class="text-center m-t-sm" style="font-size:11px;"><a>7 Transactions</a></div> -->
+              </div>
+            </div>
+            <!-- <div class="m-t-lg">
+              <span style="font-weight:bold;">Settled</span>
+              <a class="pull-right">Upload TDS <i class="ion ion-ios-upload-outline"></i></a>
+            </div> -->
+          </ion-content>
+        </ion-view>
+      </ion-nav-view>
+    </ion-tab>
+    <ion-tab title="COMMISSION INVOICES" style="font-size:12px;">
+    </ion-tab>
+  </ion-tabs>
+  <!-- </ion-content> -->
+</ion-view>
+<style type="text/css">
+  .tabs > .tab-item-active{
+      color: #92AC2D !important;
+      border-bottom: 2px solid !important;
+  }
+  .tabs-stable > .tabs, .tabs.tabs-stable{
+    background-color: #FFFFFF !important;
+    border-top: 1px solid #E0DDDD;
+  }
+  .tab-item{
+    max-width: 100% !important;
+  }
+</style>

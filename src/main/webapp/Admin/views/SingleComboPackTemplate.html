@@ -1,0 +1,107 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="dashboards.ComboPackTemplate">ComboPack List</a>
+      </li>
+      <li class="active">
+        <strong>Single ComboPack List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div ng-controller="SingleComboPackController">
+	<div class="col-lg-12">
+		<div class="tabs-container">
+			<div class="tabs-right">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" data-target="#tab-1"> INFO</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-2"> ITEMS</a></li>
+				</ul>
+				<div class="tab-content ">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">INFO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="PackForm" >
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Code</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{packData['properties'].packCode}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{packData['properties'].packName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 col-md-4 control-label"> Actual Cost</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{packData['properties'].actualCost}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 col-md-4 control-label"> Pack Cost</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{packData['properties'].packCost}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Status</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{packData['properties'].status}}</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Description</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{packData['properties'].description}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="editCategory(packData['properties'])" class="btn btn-outline btn-primary">
+											EDIT
+										</a>
+										<a ui-sref="dashboards.ComboPackTemplate" class="btn btn-outline btn-warning">
+											CLOSE
+										</a>
+									</div>
+								</div>
+							</div> 
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b"> ITEMS</div>
+							<div class="widget style1 navy-bg col-lg-4" ng-repeat="packitem in restaurantPackItem">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="text-warning text-center font-bold h5">{{packitem['properties'].itemName}}</div>
+                      <div class="clearfix"></div>
+                      <div class="font-bold text-center">{{packitem['properties'].packRestaurantItemStatus}}</div>
+                      <div class="text-center" style="font-size:smaller"><p class="font-bold">{{packitem['properties'].restaurantName}} -	
+                      {{packitem['properties'].branchName}}</p></div>
+                    </div>
+                  </div>
+                </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+</style>

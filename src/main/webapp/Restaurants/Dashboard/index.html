@@ -1,0 +1,92 @@
+<!--
+* HUNGRY - Responsive Admin Theme
+* Version 2.2
+*
+-->
+
+<!DOCTYPE html>
+<html ng-app="HUNGRY">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Page title set in pageTitle directive -->
+    <title page-title=''></title>
+
+    <!-- Bootstrap -->
+    <link href="/Restaurants/Dashboard/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Font awesome -->
+    <link href="/Restaurants/Dashboard/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <!-- Main Inspinia CSS files -->
+    <link href="/Restaurants/Dashboard/css/animate.css" rel="stylesheet"/>
+    <link id="loadBefore" href="/Restaurants/Dashboard/css/style.css" rel="stylesheet"/>
+    <link href="/Restaurants/Dashboard/css/font.css" rel="stylesheet"/>
+
+
+</head>
+
+<!-- ControllerAs syntax -->
+<!-- Main controller with serveral data used in Inspinia theme on diferent view -->
+<body ng-controller="MainCtrl as main" class="{{$state.current.data.specialClass}}" landing-scrollspy='' id="page-top">
+    <input type="hidden" th:attr="ng-init='setSessionVariables(\''+${session.userId}+'\',\''+${session.userName}+'\',\''+${restaurantBranch.id}+'\',\''+${restaurantBranch.branchName}+'\')'" />
+
+    <th:block th:each="subOrder:${subOrders}">
+    <input type="hidden"  />
+        <th:block th:each="orderItem:${subOrder.orderItems}">
+            
+            <input type="hidden" th:attr="ng-init='setOrderItemsVariables(\''+${subOrder.id}+'\',\''+${subOrder.subOrderCode}+'\',\''+${orderItem.restaurantItem.item.itemName}+'\',\''+${orderItem.id}+'\',\''+${orderItem.units}+'\',\''+${orderItem.orderItemCode}+'\',\''+${subOrder.timingsInterval.startTimeInterval}+'\',\''+${subOrder.timingsInterval.endTimeInterval}+'\',\''+${subOrder.timingDetails.timingName}+'\',\''+${orderItem.orderItemStatus}+'\',\''+${orderItem.price}+'\',\''+${orderItem.orderItemTotalPrice}+'\',\''+${subOrder.orders.id}+'\',\''+${orderItem.taxValue}+'\',\''+${subOrder.taxValue}+'\',\''+${subOrder.discount}+'\',\''+${subOrder.subOrderTotalPrice}+'\',\''+${subOrder.orders.orderDeliveryOptionses}+'\',\''+${subOrder.orders.orderDeliveryOptionses}+'\',\''+${subOrder.orders.orderDeliveryOptionses}+'\',\''+${subOrder.orders.orderDeliveryOptionses}+'\',\''+${subOrder.orders.orderDeliveryOptionses}+'\',\''+${subOrder.orders.orderDeliveryOptionses}+'\',\''+${subOrder.orders.orderDeliveryOptionses}+'\',\''+${subOrder.orders.orderDeliveryOptionses}+'\',\''+${subOrder.orders.orderDeliveryOptionses}+'\')'" />
+        </th:block>
+    </th:block>
+<!-- Main view  -->
+<div ui-view=''></div>
+
+<!-- jQuery and Bootstrap -->
+<script src="/Restaurants/Dashboard/js/jquery/jquery-2.1.1.min.js"></script>
+<script src="/Restaurants/Dashboard/js/plugins/jquery-ui/jquery-ui.js"></script>
+<script src="/Restaurants/Dashboard/js/angular/angular.min.js"></script>
+<script src="/Restaurants/Dashboard/js/bootstrap/bootstrap.min.js"></script>
+
+<!-- MetsiMenu -->
+<script src="/Restaurants/Dashboard/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+<!-- SlimScroll -->
+<script src="/Restaurants/Dashboard/js/plugins/slimscroll/jquery.slimscroll.js"></script>
+
+<!-- Peace JS -->
+<script src="/Restaurants/Dashboard/js/plugins/pace/pace.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/Restaurants/Dashboard/js/inspinia.js"></script>
+
+<!-- Main Angular scripts-->
+<script src="/Restaurants/Dashboard/js/plugins/oclazyload/dist/ocLazyLoad.min.js"></script>
+<script src="/Restaurants/Dashboard/js/angular-translate/angular-translate.min.js"></script>
+<script src="/Restaurants/Dashboard/js/ui-router/angular-ui-router.min.js"></script>
+<script src="/Restaurants/Dashboard/js/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+<script src="/Restaurants/Dashboard/js/plugins/angular-idle/angular-idle.js"></script>
+
+<!--
+ You need to include this script on any page that has a Google Map.
+ When using Google Maps on your own site you MUST signup for your own API key at:
+ https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+ After your sign up replace the key in the URL below..
+-->
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQTpXj82d8UpCi97wzo_nKXL7nYrd4G70"></script> -->
+
+<!-- Anglar App Script -->
+<script src="/Restaurants/Dashboard/js/app.js"></script>
+<script src="/Restaurants/Dashboard/js/config.js"></script>
+<script src="/Restaurants/Dashboard/js/translations.js"></script>
+<script src="/Restaurants/Dashboard/js/directives.js"></script>
+<!--<script src="/Restaurants/Dashboard/js/controllers.js"></script>-->
+<script src="../../common/lib/sockjs-0.3.4.js"></script>
+<script src="../../common/lib/stomp.js"></script>
+<script src="/Restaurants/Dashboard/js/controllers.js"></script>
+
+
+</body>
+</html>

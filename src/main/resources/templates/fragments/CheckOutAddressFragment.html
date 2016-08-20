@@ -1,0 +1,64 @@
+	      <div class="tab-pane" id="tab2">
+	    <div class="row orderAddressDiv" th:fragment="UserAddressFragment">
+	    <div class="col-lg-12" >
+
+	   <!--  <div class="address_detail pdb10 address_selc" th:each="address:${userAddress}"> -->
+	     <div class="address_detail pdb10" th:id="${address.id}" th:classappend="${iterationStatus.index==0}?'address_selc':'selcting-address'" th:each="address,iterationStatus:${userAddress}">
+	      	<a href="" class="address_item" style="border: 2px solid #027CD5;">
+	      	<div class="name_repeation">
+	      	<span th:text="${address.contactPerson}"></span>
+	      		</div>
+	      		<span class="adddres_hed">Address:</span>
+	      		<p class="" th:inline="text">
+	      			[[${address.line1}]],[[${address.town}]],[[${address.area}]]
+	      		</p>
+	      		<p th:inline="text">[[${address.city}]],[[${address.district}]],[[${address.zipcode}]]</p>
+	      		<p th:text="${address.state}">[[]]</p>
+	      		
+	      		<span class="phone" th:inline="text"><i class="fa fa-mobile"></i>[[${address.mobileNo}]]</span>
+	      		<p class="Seltd_edress" th:classappend="${iterationStatus.index==0}?'':'hide'" th:attr="ng-init='setSelectedAddress(\''+${address.id}+'\')'">Selected</p>
+	      				<p th:classappend="${iterationStatus.index==0}?'hide':''" class="deliverher" th:attr="ng-click='selectdeliveryaddress(\''+${address.id}+'\')'">
+	      			Delivery Here
+	      		</p>
+	      	</a>
+	      	<div class="address-icon">
+	      	<a href="" th:attr="ng-click='deletedeliveryaddress(\''+${address.id}+'\')'"  data-toggle="tooltip" title="Delete" >Delete<i class="fa fa-trash-o"></i></a>
+	      	<a th:attr="ng-click='showEditModal(\''+${address.id}+'\')'"  title="Edit">Edit	<i class="fa fa-pencil"></i></a>
+	      	</div>
+	      </div>
+	     <!--  <div class="address_detail pdb10 selcting-address">
+	      	<a href="" class="address_item">
+	      	<div class="name_repeation">
+	      		<span>jaiakishore</span>
+	      		</div>
+	      		<span class="adddres_hed">Address:</span>
+	      		<p class="">
+	      			plot no:890/2, suman hospital lane, kukatpally
+ 																				vv nagar colony
+	      		</p>
+	      		<p>500072, Hyderabad</p>
+	      		<p>Telangana</p>
+	      		<span class="phone"><i class="fa fa-mobile"></i>9493735542</span>
+	      		<p href="" class="deliverher">
+	      			Deliver Here
+	      		</p>
+	      		
+	      	</a>
+	      	<div class="address-icon">
+	      	<a href=""  data-toggle="tooltip" title="Delete" >Delete<i class="fa fa-trash-o"></i></a>
+	      	<a href=""  title="Edit" data-toggle="modal" data-target="#myModal">Edit	<i class="fa fa-pencil"></i></a>
+	      	</div>
+	      </div> -->
+	      
+	      <br/>
+	      </div>
+	      <div class="col-md-12 add_addrs mgt20">
+	      	<a href="" data-toggle="modal" data-target="#myModal">
+	      		+ ADD  ADDRESS 
+	      	</a>
+	      </div>
+	      <div class=""></div>
+	      </div>
+	      <div class=" text-center proceed" style="position:absolute;right:210px;"><button ng-click="proceedtopayment(cartItems)" class="btn btn-sm btn-success">Proceed</button>
+	</div>	
+	    </div>

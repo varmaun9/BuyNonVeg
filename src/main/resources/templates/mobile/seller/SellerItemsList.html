@@ -1,0 +1,37 @@
+<ion-view view-title="ITEMS" hide-back-button="true">
+	<!-- <ion-nav-buttons side="right"></ion-nav-buttons> -->
+	<!-- <ion-nav-buttons side="right">
+		<button class="button button-icon button-clear ion-iphone" style="color:#FFFFFF" >
+				</button>
+	</ion-nav-buttons> -->
+	<ion-nav-bar class="bar-stable main-menu">
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color:#FFFFFF">
+			</button>
+		</ion-nav-buttons>
+		<ion-nav-title align-title="center">
+			<span class="fontpro" style="color:#FFFFFF;">ITEMS</span>
+		</ion-nav-title>
+		<ion-nav-buttons side="right"></ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content>
+		<div class="list" style="top: 44px;" ng-controller="SellerItemListController">
+			<a class="item itemslist" ng-repeat="items in SellerItemsData">
+				<span>{{items['properties'].sellerItemName}}</span>
+				<span class="pull-right">{{items['properties'].itemAvailableStatus}}</span>
+				<p>{{items['properties'].price}}</p>
+				<!-- <p ng-click='phoneCall()'><i class="icon ion-iphone"></i></p> -->
+			</a>
+			<div ng-show="!SellerItemsData.length" class="text-center">
+				No Item are Available
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
+<style type="text/css">
+		 .itemslist{
+				-webkit-box-shadow: 5px 0px 5px 1px rgba(0,0,0,0.25);
+				-moz-box-shadow: 5px 0px 5px 1px rgba(0,0,0,0.25);
+				box-shadow: 5px 0px 5px 1px rgba(0,0,0,0.25);
+		 }
+</style>

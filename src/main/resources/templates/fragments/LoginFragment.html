@@ -1,0 +1,362 @@
+
+
+
+<div class="page-content login-signup-newDialog" ng-controller="LoginController">
+	<div class="container">
+		<div class="row">
+			<div class="page-section pdt30 pdb20">     
+				
+       			<div class="col-md-2 login-div">
+       				
+     			</div>
+       			<div class="col-md-4" style="margin:auto 0px;">
+       				<form class="form-signin" method="post" action="/login">
+						<h3>LOGIN</h3>
+						<section class="content">
+							<span class="input input--yoshiko">
+								<input class="input__field input__field--yoshiko mgb10" type="email"  name="username" id="username" required="required"/>
+								<i class="fa fa-envelope-o icon-fix-non"></i>
+								<label class="input__label input__label--yoshiko" for="username">
+									<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+										Email
+									</span>
+								</label>
+							</span>
+							<span class="input input--yoshiko  mgt10">
+								<input class="input__field input__field--yoshiko" type="password" name="password" id="password" required="required"/>
+								<i class="fa fa-lock icon-fix-non"></i>
+								<label class="input__label input__label--yoshiko" for="password">
+									<span class="input__label-content input__label-content--yoshiko" data-content="Bird&#39;s Color">
+										Password
+									</span>
+								</label>
+							</span>
+						</section>
+				        
+        				<!-- <div class="row">
+        					<div class="col-md-6 mgt40" >
+        						<a href="">Forgot Password ?</a>
+        					</div>
+        					<div class="col-md-5 mgt30" >
+        						<div class="text-right ">
+        							<input type="button" class="" value="LOGIN"></input>
+        							
+      							</div>
+        					</div>
+        				</div> -->
+        				<div class="login-btn-wrap mgt20">
+        					<a ng-click="showForgotPassword()" class="frgt-pwd-link pointer">Forgot Password?</a>
+        					<!-- <input type="button" value="LOGIN" class="submit-btn"></input> -->
+        					<button type="submit" class="submit-btn" name="login" value="LOGIN">Submit</button>
+        				</div>
+        				<button class="fb-button" type="button"></button>
+    					<button class="g-button" type="button"></button>
+      				</form>
+       			</div>
+       			<div class="col-md-1 border-line" >
+ 					
+       			</div>
+       			<div class="col-md-5 form-signin">
+       				
+       				<br/><br/><br/><br/>
+       				<h4 class="text-center" style="font-size: 13px;">New to buynonveg?</h4>
+       				<h5 class="text-center ">Create a Buynonveg account</h5>
+       				<a class="btn btn-lg  btn-block sigin mgt20" href="/register">Mobile number or Email</a>
+       				<h4 class="text-center tc">By continuing with registration I agree to <a href="" class="hvr-radial-in">Terms  Conditions</a></h4>
+       			</div>
+  			</div><!-- .page-section -->
+   		</div>
+  	</div>
+ </div>
+ <div id="content-wrap" style="background: #f5f5f5;">
+    <div class="container">
+        <div id="hot-categories" class="row">
+             <div class="div_latest_header">
+              <a href="#">
+               <h2 class="latest_div">Hot Categories</h2>
+               </a> 
+               </div>
+            
+            <div class="col-sm-6  col-lg-3 ">
+            <div class="cate-box">
+                <div class="cate-tit">
+                    <div class="div-1">
+                        <div class="cate-name-wrap">
+                            <p class="cate-name">Boiler Chicken</p>
+                        </div>
+                        
+                    </div>
+                    <div class="div-2">
+                        <a href="#">
+                            <img src="/common/img/home/img/170x140/dealitems/deal_item14.png" alt="Boiler Chicken" class="hot-cate-img img-rounded "/>
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="cate-content">
+                    <ul style="display:inline-block;float:left">
+                        <li><a href="#">Leg Pieces</a></li>
+                        <li><a href="#">Boneless Chicken</a></li>
+                        <li><a href="#">Skinless</a></li>
+                        <li><a href="#">Liver Pieces</a></li>
+                    </ul>
+                    <div class="pull-left shop_nw">
+                        <a href="" class="cate-link link-active" data-ac="flipInX"><span>shop now</span></a>
+                    </div>
+                </div>
+                </div>
+            </div> <!-- /.cate-box -->
+            
+            <div class="col-sm-6  col-lg-3 ">
+            <div class="cate-box">
+                <div class="cate-tit">
+                    <div class="div-1">
+                        <div class="cate-name-wrap">
+                            <p class="cate-name">Country Chicken</p>
+                        </div>
+                      
+                    </div>
+                    <div class="div-2">
+                        <a href="#">
+                            <img src="/common/img/home/img/100x100/Nattukodi-Chicken.png" alt="Electronics" class="hot-cate-img img-rounded"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="cate-content">
+                    <ul>
+                        <li><a href="#">Skinless</a></li>
+                        <li><a href="#">Boneless</a></li>
+                        <li><a href="#">Legpieces</a></li>
+                        <li><a href="#">Breast(Bones)</a></li>
+                    </ul>
+                    <div class="pull-left shop_nw">
+                        <a href="" class="cate-link link-active" data-ac="flipInX"><span>shop now</span></a>
+                    </div>
+                </div>
+                </div>
+            </div> <!-- /.cate-box -->
+            <div class="col-sm-6  col-lg-3 ">
+            <div class="cate-box">
+                <div class="cate-tit">
+                    <div class="div-1">
+                        <div class="cate-name-wrap">
+                            <p class="cate-name">Goat Meat</p>
+                        </div>
+                      
+                    </div>
+                    <div class="div-2">
+                        <a href="#">
+                            <img src="/common/img/home/img/100x100/GoatMutton.png" alt="Electronics" class="hot-cate-img img-rounded"/>
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="cate-content">
+                    <ul>
+                        <li><a href="#">Mutton Bones</a></li>
+                        <li><a href="#">Mutton Boneless</a></li>
+                        <li><a href="#">Mutton Kheema</a></li>
+                        <li><a href="#">Mutton Liver</a></li>
+                    </ul>
+                    <div class="pull-left shop_nw">
+                        <a href="" class="cate-link link-active" data-ac="flipInX"><span>shop now</span></a>
+                    </div>
+                </div>
+                </div>
+            </div> <!-- /.cate-box -->
+            <div class="col-sm-6  col-lg-3 ">
+            <div class="cate-box">
+                <div class="cate-tit">
+                    <div class="div-1">
+                        <div class="cate-name-wrap">
+                            <p class="cate-name">Sheep Meat</p>
+                        </div>
+                    </div>
+                    <div class="div-2">
+                        <a href="#">
+                            <img src="/common/img/home/img/100x100/SheepMutton.png" alt="Electronics" class="hot-cate-img img-rounded"/>
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="cate-content">
+                    <ul>
+                        <li><a href="#">Mutton Bones</a></li>
+                        <li><a href="#">Mutton Boneless</a></li>
+                        <li><a href="#">Mutton Liver</a></li>
+                        <li><a href="#">Mutton Kheema</a></li>
+                    </ul>
+                    <div class="pull-left shop_nw">
+                        <a href="" class="cate-link link-active" data-ac="flipInX"><span>shop now</span></a>
+                    </div>
+                </div>
+                </div>
+            </div> <!-- /.cate-box -->
+            <div class="col-sm-6  col-lg-3 ">
+            <div class="cate-box">
+                <div class="cate-tit">
+                    <div class="div-1">
+                        <div class="cate-name-wrap">
+                            <p class="cate-name">Fish</p>
+                        </div>
+                    </div>
+                    <div class="div-2">
+                        <a href="#">
+                            <img src="/common/img/home/img/100x100/Fish.png" alt="Electronics" class="hot-cate-img img-rounded"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="cate-content">
+                    <ul>
+                        <li><a href="#">Boneless Fish</a></li>
+                        <li><a href="#">Rohu</a></li>
+                        <li><a href="#">Catla</a></li>
+                        <li><a href="#">Basa</a></li>
+                    </ul>
+                    <div class="pull-left shop_nw">
+                        <a href="" class="cate-link link-active" data-ac="flipInX"><span>shop now</span></a>
+                    </div>
+                </div>
+                </div>
+            </div> <!-- /.cate-box -->
+            
+            <div class="col-sm-6  col-lg-3">
+            <div class="cate-box">
+                <div class="cate-tit">
+                    <div class="div-1">
+                        <div class="cate-name-wrap">
+                            <p class="cate-name">Prawns</p>
+                        </div>
+                    </div>
+                    <div class="div-2">
+                        <a href="#">
+                            <img src="/common/img/home/img/100x100/Prawns.png" alt="Electronics" class="hot-cate-img img-rounded"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="cate-content">
+                    <ul>
+                        <li><a href="#">White Prawns</a></li>
+                        <li><a href="#">Tiger Prawns</a></li>
+                        <li><a href="#">Kuruma Prawns</a></li>
+                        <li><a href="#">Caramote Prawns</a></li>
+                    </ul>
+                    <div class="pull-left shop_nw">
+                        <a href="" class="cate-link link-active" data-ac="flipInX"><span>shop now</span></a>
+                    </div>
+                </div>
+                </div>
+            </div><!-- /.cate-box -->
+            <div class="col-sm-6  col-lg-3">
+            <div class="cate-box">
+                <div class="cate-tit">
+                    <div class="div-1">
+                        <div class="cate-name-wrap">
+                            <p class="cate-name">Crabs</p>
+                        </div>
+                    </div>
+                    <div class="div-2">
+                        <a href="#">
+                            <img src="/common/img/home/img/100x100/Crabs.png" alt="Electronics" class="hot-cate-img img-rounded"/>
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="cate-content">
+                    <ul>
+                        <li><a href="#">Crab Legs</a></li>
+                        <li><a href="#">Littoral Crabs</a></li>
+                        <li><a href="#">Oceanic Crabs</a></li>
+                        <li><a href="#">Red Crabs</a></li>
+                    </ul>
+                    <div class="pull-left shop_nw">
+                        <a href="" class="cate-link link-active" data-ac="flipInX"><span>shop now</span></a>
+                    </div>
+                </div>
+                </div>
+            </div> <!-- /.cate-box -->
+            <div class="col-sm-6  col-lg-3">
+            <div class="cate-box">
+                <div class="cate-tit">
+                    <div class="div-1">
+                        <div class="cate-name-wrap">
+                            <p class="cate-name">Others</p>
+                        </div>
+                    </div>
+                    <div class="div-2">
+                        <a href="#">
+                            <img src="/common/img/home/img/100x100/Others.png" alt="Electronics" class="hot-cate-img img-rounded"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="cate-content">
+                    <ul>
+                        <li><a href="#">Bones</a></li>
+                        <li><a href="#">Boneless</a></li>
+                        <li><a href="#">Skin</a></li>
+                        <li><a href="#">Skinless</a></li>
+                    </ul>
+                    <div class="pull-left shop_nw">
+                        <a href="" class="cate-link link-active" data-ac="flipInX"><span>shop now</span></a>
+                    </div>
+                </div>
+                </div>
+            </div><!-- /.cate-box -->                                                       
+        </div> <!-- /#hot-categories -->
+       
+    </div> <!-- /.container -->
+
+</div>
+<th:block th:replace="fragments/ForgotPasswordFragment"></th:block> 
+			<!--  -->
+
+<script src="/js/classie.js"></script>
+		<script>
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

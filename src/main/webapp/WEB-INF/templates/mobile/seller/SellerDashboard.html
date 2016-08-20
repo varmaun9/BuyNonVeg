@@ -1,0 +1,116 @@
+<ion-view title='HOME' hide-back-button="true" ng-controller="DashboardController">
+  <!-- <ion-nav-title align-title="center">
+    <span class="fontpro" style="color:#FFFFFF;">HOME</span>
+  </ion-nav-title> -->
+  <ion-nav-bar class="bar-stable main-menu">
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color:#FFFFFF">
+          </button>
+        </ion-nav-buttons>
+        <ion-nav-title align-title="center">
+          <span class="fontpro" style="color:#FFFFFF;">
+            <!-- <img src='img/logo.png' style="width: 80px;height: 36px;"/>  -->
+            DASHBOARD
+          </span>
+        </ion-nav-title>
+        <ion-nav-buttons side="right"></ion-nav-buttons>
+          <!-- <button class="button button-icon button-clear ion-android-calendar" style="color:#FFFFFF" th:attr="ng-click='toggleCalendar()'">
+          </button> -->
+        
+      </ion-nav-bar>
+  <!-- <ion-nav-buttons side="right"></ion-nav-buttons> -->
+  <ion-content class="" style="margin-top: 50px;">
+    <div class="col">
+      <div class="list">
+        <span style="font-size: smaller;font-weight:bold;">PENDING ORDERS</span>
+        <div class="item item-text-wrap">
+          <div class="row">
+            <div class="col col-50" th:inline="text">
+              [[${currentDateDeliverablePlacedSubOrdersCount}]]
+              <p class="font-style">Today</p>
+            </div> 
+            <div class="col col-50" th:inline="text">
+              [[${allPlacedSubOrdersCount}]]
+              <p class="font-style">Total </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list">
+        <span style="font-size: smaller;font-weight:bold;">TOTAL PRODUCTS</span>
+        <div class="item item-text-wrap">
+          <div class="row">
+            <div class="col col-50" th:inline="text">
+              [[${activeSellerItems}]]
+              <p class="font-style">ACTIVE</p>
+            </div> 
+            <div class="col col-50" th:inline="text">
+            [[${inActiveSellerItems}]]
+              <p class="font-style">INACTIVE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list">
+        <span style="font-size: smaller;font-weight:bold;">OUTSTANDING PAYMENTS</span>
+        <div class="item item-text-wrap">
+          <div class="row">
+            <div class="col col-50" th:inline="text">
+              [[${unBilledDeliveredSubOrdersAmount}]]
+              <p class="font-style">Unbilled Payments</p>
+            </div> 
+            <div class="col col-50" th:inline="text">
+              [[${lastBilledSellerInvoiceAmount}]]
+              <p class="font-style">Last Settled</p>
+            </div>
+            <!-- <p>All payments settled</p> -->
+          </div>
+        </div>
+      </div>
+      <!-- <div class="list">
+        <span style="font-size: smaller;font-weight:bold;">REASONS FOR RETURNS</span>
+        <h5 class="pull-right">Last 7 days</h5>
+        <div class="item item-text-wrap">
+          <div class="row">
+            <div class="col col-50">
+              0
+              <p class="font-style">Buyer Return</p>
+            </div> 
+            <div class="col col-50">
+              0
+              <p class="font-style">Buyer Return Value</p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="list">
+        <span style="font-size: smaller;font-weight:bold;">TOTAL ORDERS</span><h5 class="pull-right" ng-click="periodChange($event)">{{showDays}}</h5>
+        <div class="item item-text-wrap">
+          <div class="row">
+            <div class="col col-50" th:inline="text">
+              [[${last30DaysSubOrdersCount}]]
+              <p class="font-style">Count</p>
+            </div>
+             <div class="col col-50" th:inline="text">
+              [[${last30DaysSubOrdersAmount}]]
+              <p class="font-style">Amount</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+
+<style type="text/css">
+/*.list{
+  -webkit-box-shadow: 5px 0px 5px 1px rgba(76,175,79,0.25);
+  -moz-box-shadow: 5px 0px 5px 1px rgba(76,175,79,0.25);
+  box-shadow: 5px 0px 5px 1px rgba(76,175,79,0.25);
+}*/
+  .font-style{
+    color: #CACACA !important;
+    font-family: sans-serif !important;
+    font-size: small !important;
+  }
+</style>

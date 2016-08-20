@@ -1,0 +1,97 @@
+<!Doctype html>
+<html>
+<head th:replace="fragments/PortalHeadFragment::HeadFragment('Buy Non Veg','Buy Non Veg','Buy Non Veg')"></head>
+
+<body>
+	<div class="container">
+	<div class="col-lg-12 bg-white m- t-md">
+	<div class="new-title">
+	<h3>ABOUT US</h3>
+	</div>
+	<div style="margin-top: 111px;">
+	<div class="col-sm-12 col-lg-12 col-md-12 m-b-md">
+	<div class="jump">
+	<h2 style="color:orange">Buynonveg.com is india's convenient online fresh meat ordering site based out in Hyderabad. With the wide range of options in every meat category,we give you the fresh and hygenic meat of best quality at fair prices.</h2>
+	<p>Buynonveg is the Hyderabad's only online store for delivering fresh chicken, mutton and including all the varieties of sea food.We also provide delivery avilability of meat orders to their door steps.
+	 </p>
+	 <p class="min">Now a days one gets everything, almost everything in the online market, however, people find it difficult to buy meat of good quality neither in people’s market nor in online market. <span style="color:red"><b>BUYNONVEG</b></span>.in stands as a one stop solution to buy meat online. <span style="color:red"><b>BUYNONVEG</b></span>.in aims to give customers an simple and hassle free way of getting the fresh, hygienic and premium quality raw meat online with a lower cost. We follow a timely delivery of your order as we don’t want to delay your appetite. So, with just one click get fresh and hygienic meat quick.</p>
+
+	</div>
+
+	<div class="container" style="padding: 33px;padding-left: 69px;">
+	<p>We have a <span style="color:blue">"no questions asked return and refund policy"</span> which 
+	entitles all our members to return the product at the time of delivery if due to some reason they 
+	are not satisfied with the quality or freshness of the product. We will take the returned product back
+	with us and issue a credit note for the value of the return products which will be credited to your account on the Site.</p>
+
+	</div>
+
+	<div class="container" style="padding: 4px;padding-left: 47px;">
+	<p>We strive to make sure that customers enjoy every element of their shopping experience with us, from their first phonecall or click, through to the last mouthful on their plate.</p>
+	</div>
+
+	<div class="container" style="padding: 33px;padding-left: 44px;">
+	<p> We never compromise on quality, and this is never more evident than when sourcing our meat.<span style="color:orange">Having decades of experience in the buying and selection business,</span> there is no better qualified purchasing team than ours to hand select the finest produce for you.</p>
+	</div>
+
+	<div class="container" style="padding: 8px;padding-left: 36px;">
+	<p> We've always believed in the value of hard work and the importance of taking care of people. And we've always dreamed big. We hire great people, offer Customers the best service and sell only the freshest, safest products. Moreover, we always look for great products for today and tomorrow, and make sure to give Customers low prices with the best value.</p>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<style>
+.bg-white {
+    background-color: #fff;
+    color: #716F6F;
+}
+.m-t-md {
+    margin-top: 20px;
+}
+.new-title {
+    color: #000;
+    height: 20px;
+    margin: 0 auto 40px;
+    text-align: center;
+    text-transform: none;
+    border-bottom: 1px #010101 dotted;
+    width: 85%;
+}
+.new-title h3 {
+    color: #555;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    padding: 10px 45px;
+    position: relative;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    background: #fff;
+    letter-spacing: 1px;
+}
+.m-b-md {
+    margin-bottom: 20px;
+    }
+ .jump{
+ 	padding-left: 60px;
+    padding-right: 60px;
+}
+        
+.min{
+
+	    margin-top: 65px;
+}
+.col-lg-12 {
+    width: 100%;
+}
+/*.container {
+    width: 1170px;
+}*/
+
+ 
+
+</style>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<div class="row wrapper border-bottom white-bg" style="padding:10px 0px">
+  <div class="col-lg-10">
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a ui-sref="ItemMaster.CategoryTemplate">Category List</a>
+      </li>
+      <li class="active">
+        <strong>Single Category List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div ng-controller="SingleCategoryController">
+	<div class="col-lg-12">
+		<div class="tabs-container">
+			<div class="tabs-right">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" data-target="#tab-1"> INFO</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-2"> SEO</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-3"> TAGS</a></li>
+					<!-- <li class=""><a data-toggle="tab" data-target="#tab-4">TIMINGS</a></li> -->
+					<li class=""><a data-toggle="tab" data-target="#tab-4"> CRITERIA</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-5">ATTRIBUTES</a></li>
+					<!-- <li class=""><a data-toggle="tab" data-target="#tab-5">ITEMS</a></li> -->
+					<li class=""><a data-toggle="tab" data-target="#tab-6">SUB-CATEGORY</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-7">IMAGES</a></li>
+					<li class=""><a data-toggle="tab" data-target="#tab-8">Cut Types</a></li>
+				</ul>
+				<div class="tab-content ">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">INFO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="ItemForm" >
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 col-md-4 control-label"> Code</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleCategoryDetails['properties'].categoryCode}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label"> Name</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleCategoryDetails['properties'].categoryName}}</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Status</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleCategoryDetails['properties'].status}}</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Description</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">{{singleCategoryDetails['properties'].description}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a href="javascript:;" ng-click="editCategory(singleCategoryDetails['properties'])" class="btn btn-outline btn-primary">
+											EDIT
+										</a>
+										<a ui-sref="ItemMaster.CategoryTemplate" class="btn btn-outline btn-warning">
+											CLOSE
+										</a>
+									</div>
+								</div>
+							</div> 
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b">SEO</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="ItemSeoForm">
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Title</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{singleCategoryDetails['properties'].seoTitle}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="col-sm-4 control-label">Keywords</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{singleCategoryDetails['properties'].seoKeywords}}
+										</div>
+									</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<label class="control-label col-md-4">Meta Description</label>
+									<div class="col-sm-7">
+										<div class="form-control-static">
+											{{singleCategoryDetails['properties'].seoMetaDescription}}
+										</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+									<div class="row">
+										<div class="text-center col-md-12">
+											<a href="javascript:;" ng-click="editCategorySeo(singleCategoryDetails['properties'])" class="btn btn-outline btn-primary">
+												EDIT
+											</a>
+											<a ui-sref="ItemMaster.CategoryTemplate" class="btn btn-outline btn-warning">
+												CLOSE
+											</a>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					<div id="tab-3" class="tab-pane">
+						<div class="panel-body">
+							<!-- START tags -->
+							<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+								<div class="font-bold text-center col-lg-8">TAGS</div>
+								<div class="col-lg-4">
+									<a ng-click="addCategoryTags()" class="pull-right">
+										<i class="fa fa-plus"></i>
+										ADD TAG
+									</a>
+								</div>
+							</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="TagForm" >
+								<div class="" ng-repeat="tags in categoryTagDetails">
+									<label class="col-sm-4 col-md-4 control-label">{{tags['properties'].tagTypeName}}</label>
+									<div class="col-sm-4">
+										<div class="form-control-static">{{tags['properties'].tagName}}</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="form-control-static">{{tags['properties'].categoryTagsStatus}}</div>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+									<a href="javascript:;" class="btn btn-outline btn-primary" ng-click="editCategoryTag(categoryTagDetails)" style="margin:5px;">
+											EDIT
+										</a>
+										<a ui-sref="ItemMaster.CategoryTemplate" class="btn btn-outline btn-warning">
+											CLOSE
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END tags -->
+					</div>
+					<div id="tab-4" class="tab-pane">
+						<div class="panel-body">
+							<!-- START tags -->
+							<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+								<div class="font-bold text-center col-lg-8">CRITERIA</div>
+								<div class="col-lg-4">
+									<a ng-click="addCategoryCriteria()" class="pull-right">
+										<i class="fa fa-plus"></i>
+										ADD CRITERIA
+									</a>
+								</div>
+								</div>
+							<form class="form-horizontal form-bordered padder-t-b" name="CriteriaForm" >
+								<div class="" ng-repeat="categoryCriteriaData in categoryCriteriaDetails">
+									<label class="col-sm-3 col-md-3 control-label">{{categoryCriteriaData['properties'].criteriaName}}</label>
+									<div class="col-sm-3">
+										<div class="form-control-static">{{categoryCriteriaData['properties'].criteriaValue}}</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-control-static">{{categoryCriteriaData['properties'].status}}</div>
+									</div>
+									<div class="col-sm-3">
+										<a href="javascript:;" class="btn btn-outline btn-primary" ng-click="editCategoryCriteria(categoryCriteriaDetails[$index])" style="margin:5px;">
+											EDIT
+										</a>
+									</div>
+								</div>
+							</form>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a ui-sref="ItemMaster.CategoryTemplate" class="btn btn-outline btn-warning">
+											CLOSE
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END tags -->
+					</div>
+					<div id="tab-5" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+								<div class="font-bold text-center col-lg-8"> ATTRIBUTES</div>
+								<div class="col-lg-4">
+									<a ng-click="addCategoryAttributes()" class="pull-right">
+										<i class="fa fa-plus"></i>
+										ADD ATTRIBUTES
+									</a>
+								</div>
+							</div>
+							<div class="" ng-repeat="attributesData in categoryAttributesDetails">
+									<label class="col-sm-3 col-md-3 control-label">{{attributesData['properties'].attributeName}}</label>
+									<div class="col-sm-3">
+										<div class="form-control-static">{{attributesData['properties'].attributeValue}}</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-control-static">{{attributesData['properties'].status}}</div>
+									</div>
+									<div class="col-sm-3">
+										<a href="javascript:;" class="btn btn-outline btn-primary" ng-click="editCategoryAttribute(categoryAttributesDetails[$index])" style="margin:5px;">
+											EDIT
+										</a>
+									</div>
+								</div>
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a ui-sref="ItemMaster.CategoryTemplate" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+					</div>
+					</div>
+					<div id="tab-6" class="tab-pane">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b"> SUB-CATEGORY</div>
+							<div class="widget style1 navy-bg col-lg-4" ng-repeat="subcategory in categorysubDetails">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="text-warning text-center font-bold h5">{{subcategory.subCategoryName}}</div>
+                      <div class="clearfix"></div>
+                      <span class="font-bold">{{subcategory.status}}</span>
+                    </div>
+                  </div>
+                </div>
+						</div>
+					</div>
+					<div id="tab-7" class="tab-pane">
+						<div class="panel-body">
+							<div class="font-bold text-center b-b"> IMAGES</div>
+							<div>
+								<a class="col-lg-12" ng-repeat="categoryImage in categoryImageDetails">
+									<label class="col-sm-4 col-md-4 control-label">{{categoryImage.imageName}}</label>
+									<label class="col-sm-4 col-md-4 control-label">{{categoryImage.imageType}}</label>
+									<div class="col-sm-4">
+										<img class="" ng-src="{{categoryImage.imageLocation}}" alt="{{categoryImage.imageName}}" width="50%" />
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div id="tab-8" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 b-b" style="padding-bottom:6px;">
+								<div class="font-bold col-lg-4">Cut Type Name</div>
+								<div class="font-bold col-lg-4">Status</div>
+								<div class="col-lg-4">
+									<a ng-click="addCategoryCutTypes()" class="pull-right">
+										<i class="fa fa-plus"></i>
+										ADD CUT TYPE
+									</a>
+								</div>
+							</div>
+							<div class="" ng-repeat="categoryCutType in categoryCutTypeDetails" style="margin-top: 50px;">
+								<label class="col-sm-4 col-md-4 control-label">{{categoryCutType['properties'].cutTypeName}}</label>
+								<div class="col-sm-2">
+									<div class="form-control-static">{{categoryCutType['properties'].status}}</div>
+								</div>
+								<div class="col-sm-2">
+									<a href="javascript:;" class="btn btn-outline btn-primary" ng-click="editCategoryCutType(categoryCutTypeDetails[$index])" style="margin:5px;">
+										EDIT
+									</a>
+								</div>
+								<div class="col-sm-1">
+									<a href="javascript:;" class="btn btn-outline btn-danger" ng-click="categoryCutTypeDeleteDetails(categoryCutTypeDetails[$index])" style="margin:5px;">
+										DELETE
+									</a>
+								</div>
+							</div>	
+							<div class="form-actions">
+								<div class="row">
+									<div class="text-center col-md-12">
+										<a ui-sref="ItemMaster.CategoryTemplate" class="btn btn-outline btn-warning">
+											CANCEL
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.padder-t-b {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+</style>

@@ -1,0 +1,512 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>ComboPack Creation</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="#/Offers/ComboPackTemplate">ComboPack List</a>
+			</li>
+			<li class="active">
+				<strong>ComboPack Creation</strong>
+			</li>
+		</ol>
+	</div>
+	<div class="col-lg-2">
+		<!-- <button type="button" ng-click="combopackView('restaurantView')" class="btn btn-outline btn-primary m-t-lg" ng-show="categoryView">Category View</button>
+		<button type="button" ng-click="combopackView('categoryView')" class="btn btn-outline btn-primary m-t-lg" ng-show="restaurantView">Restaurant View</button> -->
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" style="padding: 12px 10px 22px;">
+	<div class="row">
+		<div class="col-lg-12" style="padding:0px;">
+			<div class="ibox">
+				<div class="ibox-content wizard" style="padding:12px 12px 10px 10px;">
+					<div class="wizard">
+						<div class="content" ng-show="categoryView" >
+							<form id="comboPackForm" method="get" action="" class="form-horizontal">
+								<div id="comboPackwizard">
+									<ul>
+									  <li><a data-target="#tab1" class="text-center" data-toggle="tab">COMBOPACK DETAILS</a></li>
+										<li><a data-target="#tab2" class="text-center" data-toggle="tab">AMOUNT & RESTAURANT DETAILS</a></li>
+										<li><a data-target="#tab3" class="text-center" data-toggle="tab">CONFIRM</a></li>
+									</ul>
+									<div class="tab-content">
+									  <div class="tab-pane" id="tab1">
+									    <div class="form-group" style="">
+												<label class="col-sm-2 control-label">Combo Pack Name</label>
+												<div class="col-sm-4">
+														<input type="text" class="form-control" name="PackName" ng-model="comboPack.packName" required placeholder="Enter Combo Pack Name.." />
+												</div>
+												<label class="col-sm-2 control-label">Combo Pack Cost</label>
+												<div class="col-sm-4">
+													<input type="number" class="form-control" ng-model="comboPack.packCost" required  name="packCost"  placeholder="Enter Combo Pack Cost.." />
+												</div>
+										 	</div>		
+									    <div class="form-group">
+												<label class="col-sm-2 control-label">Timings</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_2" ng-model="timings.timingDetailsId" style="width: 100%">
+                            <option value=""></option>
+                            <option value="{{time['properties'].id}}" data="{{time['properties'].timingName}}" ng-repeat="time in timingDetails">{{time['properties'].timingName}}</option>
+                        	</select>
+												</div>												
+												<label class="col-sm-2 control-label">Status</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_5" ng-model="comboPack.status" style="width: 100%">
+                            <option value=""></option>
+                            <option value="Active">Active</option>
+                            <option value="InActive">InActive</option>
+                        	</select>
+												</div>
+												<!-- <label class="col-sm-2 control-label">Combo Pack Days</label>
+												<div class="col-sm-4">
+														<input type="number" class="form-control" name="PackDays" ng-model="comboPack.packNoOfDays" required  placeholder="Enter Combo Pack Days.."/>
+												</div> --> 
+												
+											</div>
+											<!-- <div class="form-group">
+												<label class="col-sm-2 control-label">Start Date</label>
+												<div class="col-sm-4">	
+													<input type="datetime" class="form-control" date-time ng-model="comboPack.packStartDate" min-view="date" auto-close="true" format="dd/MM/yyyy" placeholder="Enter Start Date.." required />
+												</div>
+												<label class="col-sm-2 control-label">End Date</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" ng-model="comboPack.packEndDate" placeholder="Enter End Date.." required  ng-mouseenter="dateChange()"/>
+												</div>
+											</div> -->
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Start Time</label>
+												<div class="col-sm-4" clock-picker data-autoclose="true">	
+													<input type="text" class="form-control" ng-model="timings.startTime" placeholder="Enter Start Time.." required />
+												</div>
+												<label class="col-sm-2 control-label">End Time</label>
+												<div class="col-sm-4" clock-picker data-autoclose="true">
+													<input type="text" class="form-control" ng-model="timings.endTime" placeholder="Enter End Time.." required/>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Description</label>
+												<div class="col-sm-4">
+													<textarea class="form-control" name="description" ng-model="comboPack.description"  placeholder="Enter Description.."></textarea>
+												</div>
+											</div>
+											
+											<!-- <div class="form-group">
+												<label class="col-sm-2 control-label">Logo</label>
+												<div class="col-sm-4" style="margin-top:8px;">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" class="form-control" name="logoImageNormal" required/>
+												</div>
+												<label class="col-sm-2 control-label">Logo Preview</label>
+												<div class="col-sm-4" style="margin-top:8px;">
+													<div class="logoImgPath1" >
+													</div>
+												</div>
+											</div> -->
+									  </div>
+									  <div class="tab-pane" id="tab2"> 
+									  	<div class="portlet-body">
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Restaurant Name</label>
+													<div class="col-sm-4">	
+														<select class="form-control select2_demo_1" ng-model="restaurantBranchId" required style="width:100%;" ng-change="changeRestaurant(restaurantBranchId)" name="restaurantName">
+															<option value=""></option>
+															<option ng-repeat="rest in restaurantEntities" value="{{rest['branch'].id}}" data="{{rest['supplier'].restaurantName}}@{{rest['branch'].branchName}}">{{rest['supplier'].restaurantName}}@{{rest['branch'].branchName}}</option>
+														</select>
+													</div>
+													<label class="col-sm-2 control-label">SubCategory Name</label>
+													<div class="col-sm-4">	
+														<select class="form-control select2_demo_3" ng-model="subCategoryId" required style="width:100%;" ng-change="changesubCategory(subCategoryId)" name="subCategoryName">
+															<option value=""></option>
+															<option ng-repeat="subcat in subCategoryEntities" value="{{subcat['properties'].id}}" data="{{subcat['properties'].subCategoryName}}">{{subcat['properties'].subCategoryName}}</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Items</label>
+													<div class="col-sm-4">	
+														<!-- <input type="text"  class="form-control" name="amountValue" ng-model="Pack.amountValue" required placeholder="Enter Amount Value.."/> -->
+														<select class="form-control select2_demo_4" multiple ng-model="itemsData" required style="width:100%;" name="itemName" ng-change="itemChange(itemsData,$event)">
+															<option value=""></option>
+															<option value="{{subcategoryItem['properties'].id}}" ng-repeat="subcategoryItem in subCategoryItemsEntities" data="{{subcategoryItem['properties'].itemName}}" data-price="{{subcategoryItem['properties'].price}}">{{subcategoryItem['properties'].itemName}}</option>
+														</select>
+													</div>
+												</div>
+												<!-- <div class="form-group">
+													<label class="col-sm-2 control-label">Amount Value</label>
+													<div class="col-sm-4">	
+														<input type="text"  class="form-control" name="amountValue" ng-model="comboPack.amountTypeValue" required placeholder="Enter Amount Value.."/>
+													</div>
+													<label class="col-sm-2 control-label">Amount Type</label>
+													<div class="col-sm-4">
+														<select class="form-control select2_demo_2" ng-model="comboPack.amountTypeId" required style="width:100%;" name="amountDescription">
+															<option value=""></option>
+															<option value="{{amountype['properties'].amountTypeName}}" ng-repeat="amountype in amountTypeDetails" data="{{amountype['properties'].amountDescription}}">{{amountype['properties'].amountDescription}} </option>
+														</select>
+													</div>
+												</div> -->
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Seo Title </label>
+													<div class="col-sm-4">
+														<input type="text"  class="form-control" name="seoTitle" ng-model="comboPack.seoTitle" value=""  placeholder="Enter Title.." required/>
+													</div>
+													<label class="col-sm-2 control-label">Seo Keyword</label>
+													<div class="col-sm-4">
+														<input type="text"  class="form-control"  name="seoKeyWords" ng-model="comboPack.seoKeyWords" value=""  placeholder="Enter Keywords.." required/>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Seo Description</label>
+													<div class="col-sm-4">
+														<textarea class="form-control" name="seoMetaDescription" ng-model="comboPack.seoMetaDescription"  placeholder="Enter MetaDescription.."></textarea>
+													</div>
+												</div>
+											</div>
+									  </div>
+										<div class="tab-pane" id="tab3">
+											<div class="row">
+												<h3 class="block text-center b-b">CONFIRM THE ACCOUNT</h3>
+												<div class="col-lg-6 b-r">
+													<div class="form-group">
+														<label class="control-label col-md-4">PACK NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" ng-model="comboPack.packName">
+																{{comboPack.packName}}</p>
+														</div>
+														<label class="control-label col-md-4">PACK COST:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="packCost" ng-model="Pack.packageCode">{{comboPack.packCost}}</p>
+														</div>
+														<label class="control-label col-md-4">TIMING NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="timingName" ng-model="timingName">
+															{{timingName}}</p>
+														</div>
+													<!--</div>
+													<h4 class="form-section">SEO:</h4> 
+													<div class="form-group">-->
+														<label class="control-label col-md-4">START TIME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="startTime" ng-model="timings.startTime">
+															{{timings.startTime}}</p>
+														</div>
+														<label class="control-label col-md-4">END TIME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="endTime" ng-model="timings.endTime">
+																{{timings.endTime}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">STATUS:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="comboPack.status" ng-model="comboPack.status">
+															{{comboPack.status}}</p>
+														</div>
+														<label class="control-label col-md-4">DESCRIPTION:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="comboPack.description" ng-model="comboPack.description">
+															{{comboPack.description}}</p>
+														</div>
+													</div>
+												</div>
+												 <div class="col-lg-6">
+													<h4 class="form-section">ADDRESS:</h4>
+													<div class="form-group">
+														<label class="control-label col-md-4">REST @BRANCH NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="Name" ng-model="restaurantBranchName">
+															{{restaurantBranchName}}</p>
+														</div>
+														<label class="control-label col-md-4">SUBCATEGORY NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="Name" ng-model="subCategoryName">
+															{{subCategoryName}}</p>
+														</div>
+														<label class="control-label col-md-4">ITEMS:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="Name" ng-repeat="name in itemName">
+															{{name}}</p>
+														</div>
+														<!-- <label class="control-label col-md-4">Amount Type.:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="amountTypeId" ng-model="comboPack.amountTypeId">
+																{{comboPack.amountTypeId}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">AMOUNT VALUE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="amountValue" ng-model="comboPack.amountTypeValue">
+															{{comboPack.amountTypeValue}}</p>
+														</div> -->
+														<!-- <label class="control-label col-md-4">DESCRIPTION:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="description" ng-model="comboPack.description">
+															{{comboPack.description}}</p>
+														</div> -->
+													</div>
+												</div> 
+											</div>
+									  </div>
+										<ul class="pager wizard">
+											<li class="previous first" style="display:none;"><a >First</a></li>
+										  <li class="next pull-right"><a >NEXT</a></li>
+											<li class="previous pull-right m-r-sm"><a >PREVIOUS</a></li>
+											<li class="pull-right m-r-sm"><a href="#/Offers/ComboPackTemplate">CLOSE</a></li>
+											<li class="next last" style="display:none;"><a>Last</a></li>
+											<li class="confirm hide" ng-hide="confirm"><a ng-click="saveComboPack(comboPack,timings,itemsData)">CONFIRM</a></li>
+										</ul>
+									</div>	
+								</div>
+							</form>
+						</div>
+						<!-- Category View -->
+						<div class="content" ng-show="restaurantView">
+							<form id="comboPackRestForm" method="get" action="" class="form-horizontal">
+								<div id="comboPackRestwizard">
+									<ul>
+									  <li><a data-target="#tab4" class="text-center" data-toggle="tab">COMBOPACK DETAILS</a></li>
+										<li><a data-target="#tab5" class="text-center" data-toggle="tab">AMOUNT & CATEGORY DETAILS</a></li>
+										<li><a data-target="#tab6" class="text-center" data-toggle="tab">CONFIRM</a></li>
+									</ul>
+									<div class="tab-content">
+									  <div class="tab-pane" id="tab4">
+									    <div class="form-group" style="">
+												<label class="col-sm-2 control-label">Combo Pack Name</label>
+												<div class="col-sm-4">
+														<input type="text" class="form-control" name="PackName" ng-model="Pack.packageName" required placeholder="Enter Combo Pack Name.." />
+												</div>
+												<label class="col-sm-2 control-label">Combo Pack Cost</label>
+												<div class="col-sm-4">
+													<input type="number" class="form-control" ng-model="Pack.packageCost" required  name="packageCost"  placeholder="Enter Combo Pack Cost.." />
+												</div>
+										 	</div>		
+									    <div class="form-group">
+												<label class="col-sm-2 control-label">Combo Pack Days</label>
+												<div class="col-sm-4">
+														<input type="number" class="form-control" name="PackageDays" ng-model="Pack.PackageDays" required  placeholder="Enter Combo Pack Days.."/>
+												</div>
+												<label class="col-sm-2 control-label">Status</label>
+												<div class="col-sm-4">
+													<select class="form-control select2_demo_5" ng-model="Pack.status" style="width: 100%">
+                            <option value=""></option>
+                            <option value="Active">Active</option>
+                            <option value="InActive">InActive</option>
+                        	</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Start Date</label>
+												<div class="col-sm-4">	
+													<input type="datetime" class="form-control" date-time ng-model="Pack.startDate" min-view="date" auto-close="true" format="dd/MM/yyyy" placeholder="Enter Start Date..">
+												</div>
+												<label class="col-sm-2 control-label">End Date</label>
+												<div class="col-sm-4">
+													<input type="datetime" class="form-control" date-time ng-model="Pack.endDate" min-view="date" auto-close="true" format="dd/MM/yyyy" placeholder="Enter End Date.." placeholder="Enter End Date.." />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label">Description</label>
+												<div class="col-sm-4">
+													<textarea class="form-control" name="description" ng-model="Pack.description"  placeholder="Enter Description.."></textarea>
+												</div>
+											</div>
+											
+											<!-- <div class="form-group">
+												<label class="col-sm-2 control-label">Logo</label>
+												<div class="col-sm-4" style="margin-top:8px;">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" class="form-control" name="logoImageNormal" required/>
+												</div>
+												<label class="col-sm-2 control-label">Logo Preview</label>
+												<div class="col-sm-4" style="margin-top:8px;">
+													<div class="logoImgPath1" >
+													</div>
+												</div>
+											</div> -->
+									  </div>
+									  <div class="tab-pane" id="tab5"> 
+									  	<div class="portlet-body">
+												<div class="form-group">
+													<!-- <label class="col-sm-2 control-label">Restaurant Name</label>
+													<div class="col-sm-4" clock-picker data-autoclose="true">	
+														<select class="form-control select2_demo_1" ng-model="Package.companyBranchId" required style="width:100%;" ng-change="changeCompany()" name="companyName">
+															<option value=""></option>
+															<option value="{{companyNames['properties'].id}}" ng-repeat="companyNames in companydetails">{{companyNames['properties'].companyName}}@{{companyNames['properties'].branchName}} </option>
+														</select>
+													</div> -->
+													<label class="col-sm-2 control-label">SubCategory Name</label>
+													<div class="col-sm-4">	
+														<select class="form-control select2_demo_3" ng-model="Pack.companyBranchId" required style="width:100%;" ng-change="changeCompany()" name="companyName">
+															<option value=""></option>
+															<option value="{{companyNames['properties'].id}}" ng-repeat="companyNames in companydetails">{{companyNames['properties'].companyName}}@{{companyNames['properties'].branchName}} </option>
+														</select>
+													</div>
+													<label class="col-sm-2 control-label">Items</label>
+													<div class="col-sm-4">	
+														<!-- <input type="text"  class="form-control" name="amountValue" ng-model="Pack.amountValue" required placeholder="Enter Amount Value.."/> -->
+														<select class="form-control select2_demo_4" multiple ng-model="Pack.itemId" required style="width:100%;" ng-change="changeCompany()" name="companyName">
+															<option value=""></option>
+															<option value="{{companyNames['properties'].id}}" ng-repeat="companyNames in companydetails">{{companyNames['properties'].companyName}}@{{companyNames['properties'].branchName}} </option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Amount Value</label>
+													<div class="col-sm-4">	
+														<input type="text"  class="form-control" name="amountValue" ng-model="Pack.amountValue" required placeholder="Enter Amount Value.."/>
+													</div>
+													<label class="col-sm-2 control-label">Amount Type</label>
+													<div class="col-sm-4" clock-picker data-autoclose="true">
+														<select class="form-control select2_demo_2" ng-model="Pack.amountTypeId" required style="width:100%;" name="amountDescription">
+															<option value=""></option>
+															<option value="{{amountype['properties'].amountTypeName}}" ng-repeat="amountype in amountTypeDetails">{{amountype['properties'].amountDescription}} </option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Seo Title </label>
+													<div class="col-sm-4">
+														<input type="text"  class="form-control" name="seoTitle" ng-model="Pack.seoTitle" value=""  placeholder="Enter Title.." required/>
+													</div>
+													<label class="col-sm-2 control-label">Seo Keyword</label>
+													<div class="col-sm-4">
+														<input type="text"  class="form-control"  name="seoKeyWords" ng-model="Pack.seoKeyWords" value=""  placeholder="Enter Keywords.." required/>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Seo Description</label>
+													<div class="col-sm-4">
+														<textarea class="form-control" name="seoMetaDescription" ng-model="Pack.seoMetaDescription"  placeholder="Enter MetaDescription.."></textarea>
+													</div>
+												</div>
+											</div>
+									  </div>
+										<div class="tab-pane" id="tab6">
+											<div class="row">
+												<h3 class="block text-center b-b">CONFIRM THE ACCOUNT</h3>
+												<div class="col-lg-6 b-r">
+													<div class="form-group">
+														<label class="control-label col-md-4">PACKAGE CODE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="packageCode" ng-model="Pack.packageCode">{{Pack.packageCode}}</p>
+														</div>
+														<label class="control-label col-md-4">PACKAGE NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" ng-model="Pack.packageName">
+																{{Pack.packageName}}</p>
+														</div>
+														<label class="control-label col-md-4">PACKAGE DAYS:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="PackageDays" ng-model="Pack.PackageDays">
+															{{Pack.PackageDays}}</p>
+														</div>
+													<!--</div>
+													<h4 class="form-section">SEO:</h4> 
+													<div class="form-group">-->
+														<label class="control-label col-md-4">START DATE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="minimumOrderTime" ng-model="Pack.startDate">
+															{{Pack.startDate}}</p>
+														</div>
+														<label class="control-label col-md-4">END DATE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="endDate" ng-model="Pack.endDate">
+																{{Pack.endDate}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">STATUS:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="Pack.status" ng-model="Pack.status">
+															{{Pack.status}}</p>
+														</div>
+													</div>
+												</div>
+												 <div class="col-lg-6">
+													<h4 class="form-section">ADDRESS:</h4>
+													<div class="form-group">
+														<label class="control-label col-md-4">COMPANY NAME:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="Name" ng-model="Pack.companyBranchId">
+															{{Pack.companyBranchId}}</p>
+														</div>
+														<label class="control-label col-md-4">Amount Type.:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="amountTypeId" ng-model="Pack.amountTypeId">
+																{{Pack.amountTypeId}}
+															</p>
+														</div>
+														<label class="control-label col-md-4">AMOUNT VALUE:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="amountValue" ng-model="Pack.amountValue">
+															{{Pack.amountValue}}</p>
+														</div>
+														<label class="control-label col-md-4">DESCRIPTION:</label>
+														<div class="col-md-8">
+															<p class="form-control-static" data-display="description" ng-model="Pack.description">
+															{{Pack.description}}</p>
+														</div>
+													</div>
+												</div> 
+											</div>
+									  </div>
+										<ul class="pager wizard">
+											<li class="previous first" style="display:none;"><a >First</a></li>
+										  <li class="next pull-right"><a >NEXT</a></li>
+											<li class="previous pull-right m-r-sm"><a >PREVIOUS</a></li>
+											<li class="pull-right m-r-sm"><a href="#/dashboards/RestaurantTemplate">CLOSE</a></li>
+											<li class="next last" style="display:none;"><a>Last</a></li>
+											<li class="confirm hide" ng-hide="confirm"><a ng-click="save(restaurantBranchDetails,restaurantBranchAddress,restaurantBranchZone)">CONFIRM</a></li>
+										</ul>
+									</div>	
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+
+#comboPackwizard >  ul > li{
+	width: 33% !important;
+}
+#comboPackRestwizard >  ul > li{
+	width: 33% !important;
+}
+label.error{
+	display: block !important;
+	margin-bottom: 0px !important
+}
+.tab-pane{
+	padding: 10px;
+}
+.border{
+	border: 1px solid #1ab394;
+}
+.tag-list li a{
+	font-size: 15px;
+}
+</style>
+<script>
+$(".select2_demo_1").select2({
+    placeholder: "SELECT RESTAURANT NAME .....",
+    allowClear: true
+});	
+$(".select2_demo_2").select2({
+    placeholder: "SELECT TIMINGS.....",
+    allowClear: true
+});
+$(".select2_demo_3").select2({
+    placeholder: "SELECT SUBCATEGORY NAME.....",
+    allowClear: true
+});
+$(".select2_demo_4").select2({
+    placeholder: "SELECT ITEMS.....",
+    allowClear: true
+});
+$(".select2_demo_5").select2({
+    placeholder: "SELECT STATUS.....",
+    allowClear: true
+});
+</script>

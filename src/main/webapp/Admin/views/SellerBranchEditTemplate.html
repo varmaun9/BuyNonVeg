@@ -1,0 +1,270 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">SELLER BRANCH EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<tabset>
+      <tab heading="Branch Details">
+				<form class="form-horizontal form-bordered padder-t-b" name="sellerBranchForm">
+					<div class="form-group" style="height:30px;">
+						<label class="col-sm-4 col-md-4 control-label">seller Name</label>
+						<div class="col-sm-7">
+							<div class="form-control-static">
+								{{sellerBranchEditData['properties'].sellerName}}
+							</div>
+						</div>
+					</div>
+					<div class="form-group" style="height:30px;">
+						<label class="col-sm-4 col-md-4 control-label">Branch Name</label>
+						<div class="col-sm-7">
+							<div class="form-control-static">
+								{{sellerBranchEditData['properties'].branchName}}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Min.OrderTime</label>
+						<div class="col-sm-7" clock-picker data-autoclose="true">
+							<div class="form-control-static">
+								<!-- {{sellerBranchEditData.itemName}} -->
+								<input type="text" class="form-control" name="minimumOrderTime" ng-model="sellerBranchEditData['properties'].minimumOrderTime" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4">Email Id</label>
+						<div class="col-sm-7">
+							<div class="form-control-static">
+								<input type="text" class="form-control" name="sellerEmailId" ng-model="sellerBranchEditData['properties'].sellerEmailId" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4">Phone No.</label>
+						<div class="col-sm-8">
+							<div class="form-control-static">
+								<input type="text" class="form-control" name="sellerPhoneNo" ng-model="sellerBranchEditData['properties'].sellerPhoneNo" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Status</label>
+						<div class="col-sm-8">
+							<div class="form-control-static">
+								<select class="form-control" name="select" ng-model="sellerBranchEditData['properties'].branchStatus" style="width:100%;" required>
+									<option value=""></option>
+									<option value="ACTIVE">ACTIVE</option>
+									<option value="INACTIVE">INACTIVE</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</form>
+			</tab>
+			<tab heading="Address Details">
+				<form class="form-horizontal form-bordered padder-t-b" name="sellerBranchForm" ng-repeat="address in sellerBranchAddres" ng-if="address['class']=='address'">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Address Type</label>
+						<div class="col-sm-6">
+							<select class="form-control" name="type" ng-model="address['properties'].type" style="width:100%;" required>
+								<option value=""></option>
+								<option value="Permanent">Permanent</option>
+								<option value="Temporary">Temporary</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4">Zones</label>
+						<div class="col-md-6">
+							<select class="form-control" multiple name="zones" ng-model="sellerZone" style="width:100%;" required ng-change="zonechange()">	
+							  <option value=""></option>			
+								<option ng-repeat="zones in zonesDetails.entities" value="{{zones['properties'].id}}" data="{{zones['properties'].zoneName}}">{{zones['properties'].zoneName}}</option>
+							</select>
+						</div>
+					</div> 
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Plot No:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="line1" ng-model="address['properties'].line1" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Town</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="town" ng-model="address['properties'].town" required/>
+						</div>
+					</div> 
+					<div class="form-group">
+						<label class="col-sm-4 control-label">City</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="city" ng-model="address['properties'].city" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">District</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="district" ng-model="address['properties'].district" required/>
+						</div>
+					</div> 
+					<div class="form-group">
+						<label class="col-sm-4 control-label">State</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="state" ng-model="address['properties'].state" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Zip Code</label>
+						<div class="col-sm-6">
+							<input type="number" string-to-number class="form-control" name="zipcode" ng-model="address['properties'].zipcode" required/>
+						</div>
+					</div>
+				</form>
+			</tab>
+			<tab heading="Images">
+				<div class="table-responsive">
+					<table class="table table-bordered table-stripped">
+						<thead>
+						<tr>
+							<th>
+								Image preview
+							</th>
+							<th>
+								Image url
+							</th>
+							<th>
+								Image Name
+							</th>
+							<!-- <th>
+								Actions
+							</th> -->
+						</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<img ng-src="{{images['properties'].imageLocation}}" style="width: 100px;">
+								</td>
+								<td>
+									<!-- <input type="text" class="form-control" disabled ng-model="images['properties'].imageLocation"> -->
+									<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" class="form-control" name="logoImageNormal" required ng-model="images['properties'].imageLocation"/>
+								</td>
+								<td>
+									<input type="text" class="form-control" disabled value="1" ng-model="images['properties'].imageName">
+								</td>
+								<!-- <td>
+									<button class="btn btn-white"><i class="fa fa-trash"></i> </button>
+								</td> -->
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</tab>
+			<tab heading="Taxes">
+				<div class="table-responsive">
+					<table class="table table-bordered table-stripped">
+						<thead>
+						<tr>
+							<th style="width:28%">
+								Tax Name
+							</th>
+							<th style="width:28%">
+								Tax Type
+							</th>
+							<th style="width:20%">
+								Tax Value
+							</th>
+							<th style="width:24%">
+								Tax Status
+							</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="taxes in sellerBranchAddres" ng-if="taxes['class']=='sellerBranchTax'">
+								<td>
+									<input type="text" class="form-control" disabled ng-model="taxes['properties'].taxName">
+								</td>
+								<td>
+									<!-- <input type="text" class="form-control" disabled ng-model="taxes['properties'].taxType"> -->
+									<select class="form-control" ng-model="taxes['properties'].taxType" style="width:100%" required name="status">
+										<option value=""></option>
+										<option value="MARGIN">MARGIN</option>
+										<option value="TAX">TAX</option>
+									</select>
+								</td>
+								<td>
+									<input type="text" class="form-control" disabled value="1" ng-model="taxes['properties'].taxValue">
+								</td>
+								<td>
+									<select class="form-control" name="type" ng-model="taxes['properties'].sellerBranchTaxStatus" style="width:100%;" required>
+										<option value=""></option>
+										<option value="ACTIVE">ACTIVE</option>
+                    <option value="INACTIVE">INACTIVE</option>
+									</select>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</tab>
+					<tab heading="Taxes">
+				<div class="table-responsive">
+					<table class="table table-bordered table-stripped">
+						<thead>
+						<tr>
+							<th style="width:28%">
+								Tax Name
+							</th>
+							<th style="width:28%">
+								Tax Type
+							</th>
+							<th style="width:20%">
+								Tax Value
+							</th>
+							<th style="width:24%">
+								Tax Status
+							</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="taxes in sellerBranchAddres" ng-if="taxes['class']=='sellerBranchTax'">
+								<td>
+									<input type="text" class="form-control" disabled ng-model="taxes['properties'].taxName">
+								</td>
+								<td>
+									<!-- <input type="text" class="form-control" disabled ng-model="taxes['properties'].taxType"> -->
+									<select class="form-control" ng-model="taxes['properties'].taxType" style="width:100%" required name="status">
+										<option value=""></option>
+										<option value="MARGIN">MARGIN</option>
+										<option value="TAX">TAX</option>
+									</select>
+								</td>
+								<td>
+									<input type="text" class="form-control" disabled value="1" ng-model="taxes['properties'].taxValue">
+								</td>
+								<td>
+									<select class="form-control" name="type" ng-model="taxes['properties'].sellerBranchTaxStatus" style="width:100%;" required>
+										<option value=""></option>
+										<option value="Active">Active</option>
+                    <option value="InActive">InActive</option>
+									</select>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</tab>
+		</tabset>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="BranchEdit(sellerBranchEditData)">Save changes</button>
+	</div>
+</div>
+
+
+<style>
+
+.popover.clockpicker-popover.bottom.clockpicker-align-left{
+	z-index: 3000 !important;
+}
+</style>

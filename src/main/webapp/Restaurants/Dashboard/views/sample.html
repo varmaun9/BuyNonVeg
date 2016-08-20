@@ -1,0 +1,25 @@
+<div class="form-group" ng-controller="UploadFileController">
+												<label class="col-sm-1 control-label">Image Name</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text" ng-model="itemMainImage.imageName"  class="form-control" required/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Image Type</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="text"  class="form-control" ng-model="itemMainImage.imageType" disabled value="170X139" required/>
+													</div>
+												</div>
+												<label class="col-sm-1 control-label">Normal Image</label>
+												<div class="col-sm-2" style="margin-top:8px;">
+													<div class="input-group">
+														<input type="file" onchange="angular.element(this).scope().upload(this, this.id)" name="itemMainImage" class="form-control" required/>
+													</div>
+												</div>
+												<div class="col-sm-3" style="margin-top:8px;">
+													<div class="input-group itemMainImgPath" >
+															<!-- <img ng-src="//{{categoryParallaxImage.imageLocation}}" alt="imagelocation" /> -->
+													</div>
+												</div>
+											</div>

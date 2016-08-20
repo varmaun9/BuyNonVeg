@@ -1,0 +1,92 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">BRANCH ADDRESS EDIT</h4>
+	</div>
+	<div class="modal-body" style="overflow-y: auto;height: 390px;">
+		<tabset>
+		<form class="form-horizontal form-bordered padder-t-b" name="ItemForm">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Address Type</label>
+				<div class="col-sm-7">
+					<select class="form-control select2_demo_2" name="type" ng-model="BranchAddressEditData.type" style="width:100%;" required>
+						<option value=""> </option>
+						<option value="PERMANANT">Permanent</option>
+						<option value="TEMPORARY">Temporary</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Line1</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="line1" ng-model="BranchAddressEditData.line1" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Town</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="town" ng-model="BranchAddressEditData.town" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">City</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="city" ng-model="BranchAddressEditData.city" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">District</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="district" ng-model="BranchAddressEditData.district" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">State</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="state" ng-model="BranchAddressEditData.state" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Country</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="country" ng-model="BranchAddressEditData.country" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Pincode</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="zipcode" ng-model="BranchAddressEditData.zipcode" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-7">
+					<select class="form-control select2_demo_2" name="type" ng-model="BranchAddressEditData.status" style="width:100%;" required>
+						<option value=""> </option>
+						<option value="ACTIVE">ACTIVE</option>
+						<option value="INACTIVE">INACTIVE</option>
+					</select>
+				</div>
+			</div>
+		</form>
+	</tabset>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="AddressEdit(BranchAddressEditData)">Save changes</button>
+	</div>
+</div>
+

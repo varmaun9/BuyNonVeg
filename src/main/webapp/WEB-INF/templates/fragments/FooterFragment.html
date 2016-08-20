@@ -1,0 +1,213 @@
+
+	<footer class="footer4 mgt20" ng-controller="FooterController">
+<section class="f-block footer-bottom-wrapper footer-news">
+		<div class="container">
+			<div class="row">
+				
+			<!-- 	<div class="col-sm-4 coloredIcon">
+					        	
+ 
+            <h3>Follow Us</h3>
+            <ul class="mdl-social">
+                               <li class="facebook"><a title="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            
+                               <li class="twitter"><a title="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            
+                               <li class="google-plus"><a title="google plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            
+                               <li class="youtube"><a title="youtube" href="#"><i class="fa fa-youtube"></i></a></li>
+                            
+                               <li class="pinterest"><a title="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+                            
+                                <li class="linkedin"><a title="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                            
+                            
+                               <li class="rss"><a title="rss" href="#"><i class="fa fa-rss"></i></a></li>
+                            
+                               <li class="tumblr"><a title="tumblr" href="#"><i class="fa fa-tumblr"></i></a></li> 
+                
+            </ul>
+				</div> -->
+				<div class="col-sm-4 coloredIcon">
+					        	
+ 
+            <h3>Follow Us</h3>
+            <ul class="mdl-social">
+                               <!-- <li class="facebook"><a title="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            
+                               <li class="twitter"><a title="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            
+                               <li class="google-plus"><a title="google plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            
+                               <li class="youtube"><a title="youtube" href="#"><i class="fa fa-youtube"></i></a></li>
+                            
+                               <li class="pinterest"><a title="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+                            
+                                <li class="linkedin"><a title="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                            
+                            
+                               <li class="rss"><a title="rss" href="#"><i class="fa fa-rss"></i></a></li>
+                            
+                               <li class="tumblr"><a title="tumblr" href="#"><i class="fa fa-tumblr"></i></a></li>  -->
+                
+            </ul>
+				</div>
+				<div class="col-sm-8">
+					 <form id="newsletter-validate-detail" name="cardForm">
+    <div class="form-subscribe">
+    	<h3><strong>Newsletter Signup</strong></h3>
+        <div class="msg-block">
+			<div class="input-newsletter">
+			<input type="email" name="email" id="emailId"  ng-model="news['properties'].userEmail" title="Sign up for our newsletter" class="input-text required-entry validate-email" required="required" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"/>
+
+
+			</div>
+		
+			<button title="Submit" ng-click="getSubcribeWithUs(news)" class="button-newsletter">
+				<span><i class="fa fa-envelope-o"></i></span>
+			</button>
+		</div>
+    </div>
+</form> 
+  
+
+
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	<section class="f-block footer-wrapper-top">
+		<div class="container">
+			<div class="areaBox f-block">
+				<div class="row">
+					
+					<ul class="uspBox">
+						<li>
+							<i class="fa fa-money"></i>
+							<h3 class="one-b">Great Value</h3>
+							<p>All major credit &amp; debit cards accepted</p>
+							<!-- <p>Lorem ipsum dolor sit amet, consectetur</p> -->
+							<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue non semper lectus lacinia.</p> -->
+						</li>
+						<!-- <li>
+							<i class="fa fa-bus"></i>
+							<h3>Worldwide Delivery</h3>
+							<p>Donec pharetra felis quis tellus porta iaculis. Quisque ut placerat sapien  non semper lectus lacinia.</p>
+						</li> -->
+						<li>
+							
+							<i class="fa fa-credit-card"></i>
+							<!-- <div class="footer-fea"> -->
+							<h3 class="two-b">Safe Payment</h3>
+							<p>100% Payment Protection</p>
+							<!-- </div> -->
+							<!-- <p>Lorem ipsum dolor sit amet, consectetur</p> -->
+							<!-- <p>Integer vitae congue nibh. Ut luctus dolor neque, eu pellentesque erat elementum  non semper lectus lacinia.</p> -->
+						</li>
+						<li>
+							<i class="fa fa-thumbs-up"></i>
+							<h3 class="three-b">Shop with Confidence</h3>
+							<p>Easy Return Policy</p>
+							<!-- <p>Lorem ipsum dolor sit amet, consectetur</p> -->
+							<!-- <p>Duis mattis lectus eu ipsum sagittis, non semper lectus lacinia. Nulla accumsan neque id leo dignissim</p> -->
+						</li>
+						<li class="helpCenter">
+							<i class="fa fa-users"></i>
+							<h3 class="four-b">24/7 Help Center</h3>
+							<p>To Expand Our Service</p>
+							<!-- <p>Lorem ipsum dolor sit amet, consectetur</p> -->
+							<!-- <p>Suspendisse rutrum, nulla nec ultricies tristique, odio ante rhoncus nulla  non semper lectus lacinia.</p> -->
+						</li>
+					</ul>
+								</div>
+			</div>
+		</div>
+	</section>
+<section class="f-block footer-wrapper">
+		<div class="container">
+			<div class="f-block">
+				<div class="row">
+					
+					<div class="links col-sm-20">
+						<h3>Information</h3>
+						<ul>
+							<li>
+								<a th:href="@{/s/privacypolicy}">Privacy Policy</a>
+							</li>
+						<!-- 	<li><a href="#">Terms of Sale</a></li>
+							<li><a href="#">Terms of Use</a></li>
+							<li><a href="#">Report Abuse &amp; Takedown Policy</a></li>
+							<li><a href="#">CSR Policy</a></li>
+							<li><a href="#">T&amp;C Adv./Media Communication</a></li> -->
+						</ul>
+					</div>
+
+					<div class="links col-sm-20">
+						<h3>BuyNonVeg</h3>
+						<ul>
+							<li><a href="/s/about-us">About Us</a></li>
+							<li><a href="/s/terms-and-conditions">Terms And Conditions</a></li>
+							<li><a href="/s/delivery-and-cancel">Delivery And Cancellation</a>
+							</li>
+							<li><a href="/s/orders-and-pricing">Order And Pricing</a></li>
+							<!-- <li><a href="#">Core Values</a></li> -->
+							<!-- <li><a href="#">Press</a></li> -->
+						<!-- 	<li><a href="#">Careers</a></li> -->
+						<!-- 	<li><a href="#">Blog</a></li> -->
+							<!-- <li><a href="#">Sitemap</a></li> -->
+						</ul>
+					</div>
+
+					<!-- <div class="links col-sm-20">
+						<h3>Extras</h3>
+						<ul>
+							<li><a href="#">Brands</a></li>
+							<li><a href="#">Affiliates</a></li>
+						</ul>
+					</div> -->
+
+
+					<div class="links col-sm-20">
+						<h3>Need Help?</h3>
+						<ul>
+							<li><a href="#">FAQ</a></li>
+							<li><a href="/s/contact-us">Contact Us</a></li>
+							
+						</ul>
+					</div>    
+						
+
+					<div class="links col-sm-20 helpCenter" >
+						<h3>Meet Us @</h3>
+						<ul>
+							<li>KUKATPALLY ROAD</li>
+							<li><a href="#">info@arthvedi.com</a></li>
+							<li><i class="fa fa-check"></i><a>890/2,Sumana Hospital Lane,Vivekanandha Nagar Colony</a></li>
+							<li><i class="fa fa-check"></i><a>Kukatpally,Hyderabad-500072.</a></li>
+							<li><a href="#">040-40171745</a></li>
+							<li><a href="#">info@buynonveg.com</a></li>
+							
+						</ul>
+					</div> 
+			</div>
+			</div>
+		</div>
+	</section>
+
+
+<div class="copyrightBox f-block">
+
+		<div class="container ">
+		<div class="col-sm-4 coloredIcon"></div>
+			<p class="copyText pull-left pdt20">© 2016 All Rights Reserved By Open Thoughts Pvt Ltd.</p>
+			
+					<div class="col-sm-4 text-right"><a href="/"><img alt="" src="/common/img/home/img/meat_logo1.png" /></a></div>
+						</div>
+	</div>	
+	
+<th:block th:replace="fragments/SuccessfullMessageModal"></th:block>
+
+
+
+	</footer>
